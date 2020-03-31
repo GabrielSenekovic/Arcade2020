@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RoomBuilder : MonoBehaviour
 {
-    WallBlueprints WallBlockPrefab;
-    GameObject FloorTilePrefab;
+    [SerializeField] WallBlueprints WallBlockPrefab;
+    [SerializeField] GameObject FloorTilePrefab;
     public void Build(List<Room> rooms)
     {
         BuildRooms(rooms);

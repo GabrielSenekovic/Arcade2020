@@ -11,13 +11,61 @@ public class Room : MonoBehaviour
      * 2 = right wall
      * 3 = bottom wall
      */
-    [SerializeField] WallPosition wallPosition; //This will not be here later ofc
+    [SerializeField] WallPosition wallPosition; // This will not be here later ofc
     RoomDirections directions;
 
     public bool IsBuilt;
     int stepsAwayFromMainRoom = 0;
     [SerializeField] Vector2Int CameraBoundaries;
 
+    public void Initialize(Vector2 location)
+    {
+        CameraBoundaries = new Vector2Int(20, 20);
+        directions = GetComponent<RoomDirections>();
+        BuildWallArray();
+        transform.position = location;
+    }
+
+    public void BuildWallArray()
+    {
+        for(int i = 0; i < CameraBoundaries.x; i++)
+        {
+            wallPositions.Add(new List<WallPosition>());
+            for(int j = 0; j < CameraBoundaries.y; j++)
+            {
+                WallPosition temp = Instantiate(wallPosition, new Vector2(i, j), Quaternion.identity, transform);
+                wallPositions[i].Add(temp);
+                wallPositions[i][j].SetPosition(new Vector2(i,j));
+            }
+        }
+    }
+    public bool GetIfHasOneOpenEntrance()
+    {
+        if(directions == null)
+        {
+            return false;
+        }
+        foreach(RoomEntrance entrance in directions.m_directions)
+        {
+            if(entrance == null)
+            {
+                continue;
+            }
+            if (entrance.Open && !entrance.Spawned)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void OpenAllEntrances()
+    {
+        if(!directions)
+        {
+            directions = GetComponent<RoomDirections>();
+        }
+        directions.OpenAllEntrances();
+    }
     public Vector2 GetPosition()
     {
         return transform.position;
@@ -61,7 +109,7 @@ public class Room : MonoBehaviour
 
         for (int i = 0; i < roomWidth; i++)
         {
-            if (i == 9 + j * 20)
+            if (i == j * 20 + 9) 
             {
                 entrancesToTheSouth[j].gameObject.transform.position = new Vector2(transform.position.x + i, transform.position.y);
                 if (entrancesToTheSouth[j].Open == true)

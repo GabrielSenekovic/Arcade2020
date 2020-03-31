@@ -1,19 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class LevelGenerator : MonoBehaviour
 {
-    List<Room> rooms = new List<Room>{};
-    Room RoomPrefab;
-    int numberOfRooms;
+    [SerializeField] List<Room> rooms = new List<Room>{};
+    [SerializeField]Room RoomPrefab;
+    [SerializeField] Room mainRoom;
+    int numberOfRooms = 1;
     int furthestDistanceFromSpawn;
     private RoomBuilder builder;
+
+    void Awake() 
+    {
+        builder = GetComponent<RoomBuilder>();
+        Initiate(mainRoom);
+    }
     void Initiate(Room originRoom)
     {
-        //originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
+        originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
         //SpawnRooms(Random.Range((int)m_data.GetRoomAmountCap().x + rooms.Count, (int)m_data.GetRoomAmountCap().y + rooms.Count));
-        SpawnRooms(Random.Range(10, 20));
+        SpawnRooms(Random.Range(10,15));
         //AdjustEntrances();
         builder.Build(rooms);
     }
@@ -24,20 +30,21 @@ public class LevelGenerator : MonoBehaviour
         {
             Room originRoom = GetRandomRoomInList();
             rooms.Add(Instantiate(RoomPrefab, transform));
-            //Debug.Log(i);
             rooms[i].name = "Room #" + numberOfRooms; numberOfRooms++;
             Vector2 newCoordinates = GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections());
             while(true)
             {
                 if(newCoordinates != new Vector2(0,0))
                 {
-                   // rooms[i].Initialize(newCoordinates);
+                    rooms[i].Initialize(newCoordinates);
                     break;
                 }
                 else
                 {
                     originRoom = GetRandomRoomInList();
                     newCoordinates = GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections());
+                    Debug.Log(newCoordinates);
+                    return;
                 }
             }
             /*rooms[i].SetDistance(originRoom.GetDistance() + 1);
@@ -60,11 +67,12 @@ public class LevelGenerator : MonoBehaviour
             List<Room> roomWithOpenDoors = new List<Room> { };
             foreach (Room room in rooms)
             {
-                /*if (room.GetIfHasOneOpenEntrance())
+                if (room.GetIfHasOneOpenEntrance())
                 {
                     roomWithOpenDoors.Add(room);
-                }*/
+                }
             }
+            Debug.Log("rooms with open doors: " + roomWithOpenDoors.Count);
             return roomWithOpenDoors[Random.Range(0, roomWithOpenDoors.Count - 1)];
         }
         return rooms[0];
@@ -79,10 +87,10 @@ public class LevelGenerator : MonoBehaviour
         {
             if (directionsOfRoom.m_directions[i].Open && !directionsOfRoom.m_directions[i].Spawned)
             {
-                /*if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + directionsOfRoom.m_directions[i].DirectionModifier.x * 20, originCoordinates.y + directionsOfRoom.m_directions[i].DirectionModifier.y * 20)))
+                if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + directionsOfRoom.m_directions[i].DirectionModifier.x * 20, originCoordinates.y + directionsOfRoom.m_directions[i].DirectionModifier.y * 20)))
                 {
                     possibleCoordinates.Add(new Vector2(originCoordinates.x + directionsOfRoom.m_directions[i].DirectionModifier.x * 20, originCoordinates.y + directionsOfRoom.m_directions[i].DirectionModifier.y * 20));
-                }*/
+                }
             }
         }
         int index = Random.Range(0, possibleCoordinates.Count - 1);
@@ -270,5 +278,17 @@ else
                 Debug.LogWarning("These are either the same room, or on top of eachother!");
             }
         }
+    }
+
+    bool CheckIfCoordinatesOccupied(Vector2 roomPosition)
+    {
+        foreach (Room room in rooms)
+        {
+            if(room.GetPosition() == roomPosition)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using System;
 
 namespace UnityEditor.TestTools.TestRunner.Api
@@ -8,14 +7,3 @@ namespace UnityEditor.TestTools.TestRunner.Api
         void Apply();
     }
 }
-=======
-using System;
-
-namespace UnityEditor.TestTools.TestRunner.Api
-{
-    public interface ITestRunSettings : IDisposable
-    {
-        void Apply();
-    }
-}
->>>>>>> master
