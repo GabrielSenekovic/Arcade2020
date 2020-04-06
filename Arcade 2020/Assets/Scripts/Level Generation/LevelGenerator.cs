@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     {
         originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
         //SpawnRooms(Random.Range((int)m_data.GetRoomAmountCap().x + rooms.Count, (int)m_data.GetRoomAmountCap().y + rooms.Count));
-        SpawnRooms(Random.Range(10,15));
+        SpawnRooms(Random.Range(5,15));
         //AdjustEntrances();
         builder.Build(rooms);
     }
