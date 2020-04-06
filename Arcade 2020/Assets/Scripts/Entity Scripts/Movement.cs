@@ -4,45 +4,30 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    Rigidbody2D rig() { return this.GetComponent<Rigidbody2D>();}
+    public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    public float Speed
-    {
-        get { return Speed; }
-        set{ Speed = value; }
-    }
+    public float Speed;
 
-    public Vector2 Dir
-    {
-        get { return Dir;}
-        set { Dir = value;}
-    }
+    public Vector2 Dir;
 
+  
+    [SerializeField] Vector2 vel;
      public Vector2 Vel
     {
         get
         {
-            Vel = Speed * Dir;
-            return Vel; 
+            vel = Speed * Dir;
+            return vel; 
         }
         set 
         {
-            Vel = value;
-            Speed = Vel.magnitude;
-            Dir = Vel.normalized; 
+            vel = value;
+            Speed = vel.magnitude;
+            Dir = vel.normalized; 
         }
     }
-       public Vector2 Acc
-    {
-        get { return Acc; }
-        set { Acc = value; }
-    }
-
-        public float Fric
-    {
-        get { return Fric; }
-        set { Fric = value; }
-    }
+       public Vector2 Acc;
+        public float Fric;
 
     public void AddVelocity(Vector2 vin)
     {
@@ -52,8 +37,8 @@ public class Movement : MonoBehaviour
     public void MoveObject()
     {
         rig().velocity = Vel;
-        rig().velocity *= Acc;
-        rig().velocity *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
-        if((int)(Speed *100) == 0 ) { Speed = 0; }
+        Vel *= Acc;
+        Vel *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
+        if((int)(Speed *10) == 0 ) { Speed = 0; }
     }
 }
