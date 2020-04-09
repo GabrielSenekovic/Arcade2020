@@ -87,167 +87,61 @@ public class Room : MonoBehaviour
         PlaceDownWallFrame();
         DetermineWallVariant();
     }
+    public void OnPlaceDownWallFrame(Vector2 entranceDirection, int limit, int startValue, 
+    int x_modifier, int y_modifier, int x_offset, int y_offset, int height)
+    {
+        RoomEntrance temp = null;
+        foreach (RoomEntrance entrance in directions.m_directions)
+        {
+            if (entrance.DirectionModifier == entranceDirection)
+            {
+                temp = entrance;
+            }
+        }
+        if(temp == null){return;}
+        for (int i = startValue; i < limit; i++)
+        {
+            if (i == 9) 
+            {
+                if (temp.Open == true)
+                {
+                    if (temp.Spawned == true)
+                    {
+                        continue;
+                    }
+                }
+            }
+            if (i == 10)
+            {
+                if (temp.Open == true)
+                {
+                    if (temp.Spawned == true)
+                    {
+                        continue;
+                    }
+                }
+            }
+            wallPositions[i * x_modifier + x_offset][i * y_modifier + y_offset].PlaceDown(height);
+        }
+    }
     public void PlaceDownWallFrame()
     {
         int roomWidth = CameraBoundaries.x;
         int roomHeigth = CameraBoundaries.y;
-        int j = 0;
-
-        List<RoomEntrance> entrancesToTheSouth = new List<RoomEntrance> { };
 
         if (!directions)
         {
             return;
         }
-        foreach (RoomEntrance entrance in directions.m_directions)
-        {
-            if (entrance.DirectionModifier == new Vector2(0, -1))
-            {
-                entrancesToTheSouth.Add(entrance);
-            }
-        }
+        OnPlaceDownWallFrame(new Vector2(0, -1), CameraBoundaries.x, 0, 1, 0, 0, 0, 2);
+        OnPlaceDownWallFrame(new Vector2(-1, 0), CameraBoundaries.y, 1, 0, 1, 0, 0, 2);
+        OnPlaceDownWallFrame(new Vector2(1, 0), CameraBoundaries.y, 1, 0, 1, CameraBoundaries.x - 1 ,0, 2);
+        OnPlaceDownWallFrame(new Vector2(0, 1), CameraBoundaries.x - 1, 1, 1, 0, 0 ,CameraBoundaries.y - 1, 2);
 
-        for (int i = 0; i < roomWidth; i++)
-        {
-            if (i == j * 20 + 9) 
-            {
-                entrancesToTheSouth[j].gameObject.transform.position = new Vector2(transform.position.x + i, transform.position.y);
-                if (entrancesToTheSouth[j].Open == true)
-                {
-                    if (entrancesToTheSouth[j].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            if (i == 10 + j * 20)
-            {
-                j++;
-                if (entrancesToTheSouth[j - 1].Open == true)
-                {
-                    if (entrancesToTheSouth[j - 1].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            wallPositions[i][0].PlaceDown(new Vector2(transform.position.x + i, transform.position.y));
-        }
-        j = 0;
- List<RoomEntrance> entrancesToTheRight = new List<RoomEntrance> { };
-
-        foreach (RoomEntrance entrance in directions.m_directions)
-        {
-            if (entrance.DirectionModifier == new Vector2(-1, 0))
-            {
-                entrancesToTheRight.Add(entrance);
-            }
-        }
-        for (int i = 1; i < roomHeigth; i++)
-        {
-            if (i == 9 + j * 20)
-            {
-                entrancesToTheRight[j].gameObject.transform.position = new Vector2(transform.position.x, transform.position.y + i);
-                if (entrancesToTheRight[j].Open == true)
-                {
-                    if (entrancesToTheRight[j].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            if (i == 10 + j * 20)
-            {
-                j++;
-                if (entrancesToTheRight[j - 1].Open == true)
-                {
-                    if (entrancesToTheRight[j - 1].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            wallPositions[0][i].PlaceDown(new Vector2(transform.position.x, transform.position.y + i));
-        }
-        j = 0;
-List<RoomEntrance> entrancesToTheLeft = new List<RoomEntrance> { };
-
-        foreach (RoomEntrance entrance in directions.m_directions)
-        {
-            if (entrance.DirectionModifier == new Vector2(1, 0))
-            {
-                entrancesToTheLeft.Add(entrance);
-            }
-        }
-        for (int i = 1; i < roomHeigth; i++)
-        {
-            if (i == 9 + j * 20)
-            {
-                entrancesToTheLeft[j].gameObject.transform.position = new Vector2(transform.position.x + roomWidth - 1, transform.position.y + i);
-                if (entrancesToTheLeft[j].Open == true)
-                {
-                    if (entrancesToTheLeft[j].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            if (i == 10 + j * 20)
-            {
-                j++;
-                if (entrancesToTheLeft[j - 1].Open == true)
-                {
-                    if (entrancesToTheLeft[j - 1].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            //if(gameObject.name == "Room #16")
-            //{
-            //    Debug.Log("Trying to put wall down at: " + (roomWidth - 1) + ", " + i);
-            //    Debug.Log(m_wallPositions[31].Count);
-            //}
-            wallPositions[roomWidth - 1][i].PlaceDown(new Vector2(transform.position.x + roomWidth - 1, transform.position.y + i));
-        }
-
-        j = 0;
-List<RoomEntrance> entrancesToTheNorth = new List<RoomEntrance> { };
-
-        foreach (RoomEntrance entrance in directions.m_directions)
-        {
-            if (entrance.DirectionModifier == new Vector2(0, 1))
-            {
-                entrancesToTheNorth.Add(entrance);
-            }
-        }
-
-        for (int i = 1; i < roomWidth - 1; i++)
-        {
-            if (i == 9 + j * 20)
-            {
-                entrancesToTheNorth[j].gameObject.transform.position = new Vector2(transform.position.x + i, transform.position.y + roomHeigth - 1);
-                if (entrancesToTheNorth[j].Open == true)
-                {
-                    if (entrancesToTheNorth[j].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            if (i == 10 + j * 20)
-            {
-                j++;
-                if (entrancesToTheNorth[j - 1].Open == true)
-                {
-                    if (entrancesToTheNorth[j - 1].Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            wallPositions[i][roomHeigth - 1].PlaceDown(new Vector2(transform.position.x + i, transform.position.y + roomHeigth - 1));
-        }
+        OnPlaceDownWallFrame(new Vector2(0, -1), CameraBoundaries.x - 1, 1, 1, 0, 0, 1, 1);
+        OnPlaceDownWallFrame(new Vector2(-1, 0), CameraBoundaries.y - 1, 2, 0, 1, 1, 0, 1);
+        OnPlaceDownWallFrame(new Vector2(1, 0), CameraBoundaries.y - 1, 2, 0, 1, CameraBoundaries.x - 2 ,0, 1);
+        OnPlaceDownWallFrame(new Vector2(0, 1), CameraBoundaries.x - 2, 2, 1, 0, 0 ,CameraBoundaries.y - 2, 1);
     }
     public void DetermineWallVariant()
     {
@@ -299,7 +193,7 @@ List<RoomEntrance> entrancesToTheNorth = new List<RoomEntrance> { };
                             temp+='B';
                         }
                     }
- else
+                    else
                     {
                         temp+='B';
                     }
@@ -319,46 +213,67 @@ List<RoomEntrance> entrancesToTheNorth = new List<RoomEntrance> { };
                         temp+='B';
                     }
                 }
-                switch (temp)
+                if(wallPositions[i][j].heightLevel == 1)
                 {
- case "AAAA":
-                        wallPositions[i][j].SetVariant(WallVariant.TopCorner);
-                        break; //inner wall
-                    case "AAAB":
-                        wallPositions[i][j].SetVariant(WallVariant.Side);
-                        break;
-                    case "AABA":
-                        wallPositions[i][j].SetVariant(WallVariant.Bottom);
-                        break;
-                    case "AABB":
-                        wallPositions[i][j].SetVariant(WallVariant.BottomLeft);
-                        break; 
-                    case "ABAA":
-                        wallPositions[i][j].SetVariant(WallVariant.Side);
-                        break;
-                    case "ABAB":
-                        wallPositions[i][j].SetVariant(WallVariant.Side);
-                        break;
-                    case "ABBA":
-                        wallPositions[i][j].SetVariant(WallVariant.BottomRight);
-                        break; 
-                    case "ABBB": break;
-                    case "BAAA":
-                        wallPositions[i][j].SetVariant(WallVariant.TopCorner); //this is the top room
-                        break;
-                    case "BAAB":
-                        wallPositions[i][j].SetVariant(WallVariant.TopCorner);
-                        break;
-                    case "BABA":
-                        wallPositions[i][j].SetVariant(WallVariant.Bottom);
-                        break;
-                    case "BABB": break;
-                    case "BBAA":
-                        wallPositions[i][j].SetVariant(WallVariant.TopCorner);
-                        break;
-                    case "BBAB": break;
-                    case "BBBA": break;
-                    case "BBBB": break; //pillar
+                    switch (temp)
+                    {
+                        case "AAAB":
+                            wallPositions[i][j].SetVariant(WallVariant.Right_1);
+                            break;
+                        case "AABA":
+                            wallPositions[i][j].SetVariant(WallVariant.Top_1);
+                            break;
+                        case "AABB":
+                            wallPositions[i][j].SetVariant(WallVariant.BottomLeft_1);
+                            break; 
+                        case "ABAA":
+                            wallPositions[i][j].SetVariant(WallVariant.Left_1);
+                            break;
+                        case "ABBA":
+                            wallPositions[i][j].SetVariant(WallVariant.BottomRight_1);
+                            break;
+                        case "BAAA":
+                            wallPositions[i][j].SetVariant(WallVariant.Bottom_1);
+                            break;
+                        case "BAAB":
+                            wallPositions[i][j].SetVariant(WallVariant.TopLeft_1);
+                            break;
+                        case "BBAA":
+                            wallPositions[i][j].SetVariant(WallVariant.TopRight_1);
+                            break;
+                        default: break;
+                    }
+                }
+                if(wallPositions[i][j].heightLevel == 2)
+                {
+                    switch (temp)
+                    {
+                        case "AAAB":
+                            wallPositions[i][j].SetVariant(WallVariant.Left_2);
+                            break;
+                        case "AABA":
+                            wallPositions[i][j].SetVariant(WallVariant.Bottom_2);
+                            break;
+                        case "AABB":
+                            wallPositions[i][j].SetVariant(WallVariant.BottomLeft_2);
+                            break; 
+                        case "ABAA":
+                            wallPositions[i][j].SetVariant(WallVariant.Right_2);
+                            break;
+                        case "ABBA":
+                            wallPositions[i][j].SetVariant(WallVariant.BottomRight_2);
+                            break;
+                        case "BAAA":
+                            wallPositions[i][j].SetVariant(WallVariant.Top_2);
+                            break;
+                        case "BAAB":
+                            wallPositions[i][j].SetVariant(WallVariant.TopLeft_2);
+                            break;
+                        case "BBAA":
+                            wallPositions[i][j].SetVariant(WallVariant.TopRight_2);
+                            break;
+                        default: break;
+                    }
                 }
             }
         }
@@ -372,10 +287,10 @@ List<RoomEntrance> entrancesToTheNorth = new List<RoomEntrance> { };
             {
                 if (wallPositions[i][j].GetIsOccupied())
                 {
-                    GameObject newWall = Instantiate(blueprints.wallBlock, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
+                    //GameObject newWall = Instantiate(blueprints.wallBlock, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
                     if (wallPositions[i][j].GetVariant() != WallVariant.None)
                     {
-                        //Wall newWall = Instantiate(blueprints.GetWall(m_wallPositions[i][j].GetVariant()), new Vector2(transform.position.x, transform.position.y) + m_wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
+                        Wall newWall = Instantiate(blueprints.GetWall(wallPositions[i][j].GetVariant()), new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
 
                         //for(int k = 0; k < newWall.GetAmountOfRenderers(); k++)
                         //{

@@ -5,23 +5,35 @@ using UnityEngine;
 public enum WallVariant
 {
     None = 0,
-    Bottom = 1,
-    BottomLeft = 2,
-    BottomRight = 3,
-    Side = 4,
-    TopCorner = 5
+    Bottom_1 = 1,
+    BottomLeft_1 = 2,
+    BottomRight_1 = 3,
+    Left_1 = 4,
+    Right_1 = 5,
+    Top_1 = 6,
+    TopLeft_1 = 7,
+    TopRight_1 = 8,
+    Bottom_2 = 9,
+    BottomLeft_2 = 10,
+    BottomRight_2 = 11,
+    Left_2 = 12,
+    Right_2 = 13,
+    Top_2 = 14,
+    TopLeft_2 = 15,
+    TopRight_2 = 16
 }
 
 public class WallPosition : MonoBehaviour
 {
     WallVariant m_variant = WallVariant.None;
-
+    public int heightLevel = 0;
     bool m_IsOccupied = false;
     [SerializeField]Vector2 m_Position;
 
-    public void PlaceDown(Vector2 position)
+    public void PlaceDown(int height)
     {
         m_IsOccupied = true;
+        heightLevel = height;
     }
     public void UnPlace()
     {
