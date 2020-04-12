@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class PlayerMovementController : Movement
 {
-    // Start is called before the first frame update
+    
+    private float dirx;
+    private float diry;
+
     void Start()
     {
-        Fric = 0.99f;
+        Fric = 1.0f;
         Acc = new Vector2(1,1);
+        Dir = new Vector2(1,0);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ||Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.S))
         {
-            Vel = new Vector2(-5,0); Debug.Log("rgertjoigeoijtrgejio");
+            Speed = 5;
         }
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(Input.anyKey)
         {
-            Vel = new Vector2(5,0);
+            dirx = 0; 
+            diry = 0;
+           if(Input.GetKey(KeyCode.A)) { dirx =-1;}
+           if(Input.GetKey(KeyCode.D)) { dirx = 1;}
+           if(Input.GetKey(KeyCode.W)) { diry = 1;}
+           if(Input.GetKey(KeyCode.S)) { diry =-1;}
+            Dir.x = dirx;
+            Dir.y = diry;
         }
 
+        if( !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ) )
+        {
+            Vel = new Vector2(0,0);
+        }
         MoveObject();
     }
 }
