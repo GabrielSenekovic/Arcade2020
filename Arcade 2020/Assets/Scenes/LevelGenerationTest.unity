@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 1111172806}
   - component: {fileID: 1111172808}
   - component: {fileID: 1111172807}
+  - component: {fileID: 1111172809}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -586,12 +587,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4345721, g: 0.41941082, b: 0.6132076, a: 1}
+  m_Color: {r: 0.64011693, g: 0.33161268, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 83ccb0df5a036f7408d0a6fa7b71b4a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -609,6 +610,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111172805}
   m_CullTransparentMesh: 0
+--- !u!225 &1111172809
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111172805}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1311885607
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1541858773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -838,13 +851,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1947919312}
+  - component: {fileID: 1947919313}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1947919312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -866,6 +880,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1947919313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947919311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6fd371fa0ba4a4699c89a8f4df4460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseScreen: {fileID: 1111172809}
 --- !u!1 &1990079820
 GameObject:
   m_ObjectHideFlags: 0
