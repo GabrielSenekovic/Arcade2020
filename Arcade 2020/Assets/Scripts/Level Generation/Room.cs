@@ -101,17 +101,7 @@ public class Room : MonoBehaviour
         if(temp == null){return;}
         for (int i = startValue; i < limit; i++)
         {
-            if (i == 9) 
-            {
-                if (temp.Open == true)
-                {
-                    if (temp.Spawned == true)
-                    {
-                        continue;
-                    }
-                }
-            }
-            if (i == 10)
+            if (i == 9 || i == 10) 
             {
                 if (temp.Open == true)
                 {
@@ -312,6 +302,28 @@ public class Room : MonoBehaviour
                     GameObject newWall = Instantiate(floorTile, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
                 }
             }
+        }
+    }
+    public void InstantiateDoors(WallBlueprints blueprints)
+    {
+        if(directions.m_directions[0].Open && directions.m_directions[0].Spawned)
+        {
+            GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 9, transform.position.y + 19), Quaternion.identity, transform);
+        }
+        if(directions.m_directions[1].Open && directions.m_directions[1].Spawned)
+        {
+            GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 18, transform.position.y + 10), Quaternion.identity, transform);
+            door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0,270), Space.Self);
+        }
+        if(directions.m_directions[2].Open && directions.m_directions[2].Spawned)
+        {
+            GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x, transform.position.y + 10), Quaternion.identity, transform);
+            door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, 90), Space.Self);
+        }
+        if(directions.m_directions[3].Open && directions.m_directions[3].Spawned)
+        {
+            GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 9, transform.position.y + 1), Quaternion.identity, transform);
+            door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, 180), Space.Self);
         }
     }
 }

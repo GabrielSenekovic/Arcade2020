@@ -62,3 +62,4 @@ MonoBehaviour:
   - {fileID: 8812412040668764171, guid: dd46ff14b455ff8459bd3006a86b3e8b, type: 3}
   wallBlock: {fileID: 2381413317350468912, guid: 1affdcc27117f5e4792b2b51ee3665e4,
     type: 3}
+  door: {fileID: 8011198522655915051, guid: bc78d4495d560c44691312e1b292eb05, type: 3}

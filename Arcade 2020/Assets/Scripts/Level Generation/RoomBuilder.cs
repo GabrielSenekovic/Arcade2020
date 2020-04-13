@@ -20,6 +20,7 @@ public class RoomBuilder : MonoBehaviour
                 room.PlaceDownWalls();
                 room.InstantiateWalls(WallBlockPrefab);
                 room.InstantiateFloor(FloorTilePrefab);
+                room.InstantiateDoors(WallBlockPrefab);
 
                 foreach (Transform child in room.transform)
                 {

@@ -8,6 +8,7 @@ public class WallBlueprints : MonoBehaviour
     [SerializeField] List<Wall> walls;
 
     public GameObject wallBlock;
+    public GameObject door;
 
     public Wall GetWall(WallVariant variant)
     {
