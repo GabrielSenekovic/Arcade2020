@@ -10,8 +10,11 @@ public class LevelGenerator : MonoBehaviour
     int furthestDistanceFromSpawn;
     private RoomBuilder builder;
 
+    [SerializeField] LevelManager level;
+
     void Awake() 
     {
+        level.firstRoom = mainRoom;
         builder = GetComponent<RoomBuilder>();
         Initiate(mainRoom);
     }
@@ -20,6 +23,7 @@ public class LevelGenerator : MonoBehaviour
         originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
         //SpawnRooms(Random.Range((int)m_data.GetRoomAmountCap().x + rooms.Count, (int)m_data.GetRoomAmountCap().y + rooms.Count));
         SpawnRooms(Random.Range(5,15));
+        level.lastRoom = rooms[rooms.Count - 1];
         //AdjustEntrances();
         builder.Build(rooms);
     }
