@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     [SerializeField] Team team;
-
     void Update()
     {
         if(!team.GetIfBothTouchingDoor())
