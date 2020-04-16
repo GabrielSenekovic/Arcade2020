@@ -7,6 +7,12 @@ public class PlayerMovementController : Movement
     
     private float dirx;
     private float diry;
+    public KeyCode UP;
+    public KeyCode DOWN;
+    public KeyCode LEFT;
+    public KeyCode RIGHT;
+    public KeyCode SHOOT;
+    public List<GameObject> balls = new List<GameObject>();
 
     void Start()
     {
@@ -17,24 +23,29 @@ public class PlayerMovementController : Movement
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ||Input.GetKey(KeyCode.W) ||Input.GetKey(KeyCode.S))
+        if(Input.GetKey(LEFT) || Input.GetKey(RIGHT) ||Input.GetKey(UP) ||Input.GetKey(DOWN))
         {
             Speed = 5;
+        }
+        if(Input.GetKeyDown(SHOOT) && balls.Count > 0)
+        {
+            balls[0].GetComponent<Ball>().isTraveling = true;
+            balls.Remove(balls[0]);
         }
 
         if(Input.anyKey)
         {
             dirx = 0; 
             diry = 0;
-           if(Input.GetKey(KeyCode.A)) { dirx =-1;}
-           if(Input.GetKey(KeyCode.D)) { dirx = 1;}
-           if(Input.GetKey(KeyCode.W)) { diry = 1;}
-           if(Input.GetKey(KeyCode.S)) { diry =-1;}
+           if(Input.GetKey(LEFT)) { dirx =-1;}
+           if(Input.GetKey(RIGHT)) { dirx = 1;}
+           if(Input.GetKey(UP)) { diry = 1;}
+           if(Input.GetKey(DOWN)) { diry =-1;}
             Dir.x = dirx;
             Dir.y = diry;
         }
 
-        if( !(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ) )
+        if( !(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN) ) )
         {
             Vel = new Vector2(0,0);
         }
