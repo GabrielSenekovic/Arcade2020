@@ -11,26 +11,19 @@ public class PlayerMovementController : Movement
     public KeyCode DOWN;
     public KeyCode LEFT;
     public KeyCode RIGHT;
-    public KeyCode SHOOT;
-    public List<GameObject> balls = new List<GameObject>();
 
     void Start()
     {
         Fric = 1.0f;
         Acc = new Vector2(1,1);
-        Dir = new Vector2(1,0);
+        Dir = new Vector2(1,0); 
     }
 
     void Update()
     {
-        if(Input.GetKey(LEFT) || Input.GetKey(RIGHT) ||Input.GetKey(UP) ||Input.GetKey(DOWN))
+        if(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN))
         {
             Speed = 5;
-        }
-        if(Input.GetKeyDown(SHOOT) && balls.Count > 0)
-        {
-            balls[0].GetComponent<Ball>().isTraveling = true;
-            balls.Remove(balls[0]);
         }
 
         if(Input.anyKey)
