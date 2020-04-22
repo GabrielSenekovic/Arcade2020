@@ -26,7 +26,6 @@ public class Ball : Movement
         {
              Speed = 5.0f;
             Dir = (players[1].transform.position - transform.position).normalized;
-            Debug.Log(players[1].transform.position);
         }
         else if (isTraveling && isOn == OwnedByPlayer.PLAYER_TWO)
         {

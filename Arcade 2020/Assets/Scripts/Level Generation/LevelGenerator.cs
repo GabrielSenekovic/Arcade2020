@@ -21,11 +21,47 @@ public class LevelGenerator : MonoBehaviour
     void Initiate(Room originRoom)
     {
         originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
-        //SpawnRooms(Random.Range((int)m_data.GetRoomAmountCap().x + rooms.Count, (int)m_data.GetRoomAmountCap().y + rooms.Count));
         SpawnRooms(Random.Range(5,15));
         level.lastRoom = rooms[rooms.Count - 1];
-        //AdjustEntrances();
-        builder.Build(rooms);
+        LockDoors(level.lastRoom);
+        builder.Build(rooms, level);
+    }
+
+    void LockDoors(Room originRoom)
+    {
+        foreach(RoomEntrance entrance in originRoom.GetDirections().m_directions)
+        {
+            entrance.SetEntranceType(EntranceType.LockedDoor);
+            foreach(Room room in rooms)
+            {
+                if(room.transform.position == new Vector3(
+                    originRoom.transform.position.x + entrance.DirectionModifier.x * 20,
+                    originRoom.transform.position.y + entrance.DirectionModifier.y * 20,
+                    originRoom.transform.position.z))
+                {
+                    if(entrance.DirectionModifier.x != 0)
+                    {
+                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
+                        {
+                            if(otherEntrance.DirectionModifier.x == entrance.DirectionModifier.x + otherEntrance.DirectionModifier.x * 2)
+                            {
+                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
+                            }
+                        }
+                    }
+                    else if(entrance.DirectionModifier.y != 0)
+                    {
+                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
+                        {
+                            if(otherEntrance.DirectionModifier.y == entrance.DirectionModifier.y + otherEntrance.DirectionModifier.y * 2)
+                            {
+                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     void SpawnRooms(int amountOfRooms)
     {

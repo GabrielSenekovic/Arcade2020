@@ -9,6 +9,7 @@ public class WallBlueprints : MonoBehaviour
 
     public GameObject wallBlock;
     public GameObject door;
+    public Key key;
 
     public Wall GetWall(WallVariant variant)
     {

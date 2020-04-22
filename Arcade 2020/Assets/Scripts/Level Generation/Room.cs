@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,9 @@ public class Room : MonoBehaviour
     public bool IsBuilt;
     int stepsAwayFromMainRoom = 0;
     [SerializeField] Vector2Int CameraBoundaries;
+
+    public List<GameObject> doors;
+    public PickUp myItem = null;
 
     public void Initialize(Vector2 location)
     {
@@ -271,6 +274,8 @@ public class Room : MonoBehaviour
     }
     public void InstantiateWalls(WallBlueprints blueprints)
     {
+        GameObject wallParent = new GameObject("Walls");
+        wallParent.transform.SetParent(transform);
         for (int i = 0; i < CameraBoundaries.x; i++)
         {
             for (int j = 0; j < CameraBoundaries.y; j++)
@@ -280,7 +285,7 @@ public class Room : MonoBehaviour
                     //GameObject newWall = Instantiate(blueprints.wallBlock, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
                     if (wallPositions[i][j].GetVariant() != WallVariant.None)
                     {
-                        Wall newWall = Instantiate(blueprints.GetWall(wallPositions[i][j].GetVariant()), new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
+                        Wall newWall = Instantiate(blueprints.GetWall(wallPositions[i][j].GetVariant()), new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, wallParent.transform);
 
                         //for(int k = 0; k < newWall.GetAmountOfRenderers(); k++)
                         //{
@@ -293,13 +298,15 @@ public class Room : MonoBehaviour
     }
     public void InstantiateFloor(GameObject floorTile)
     {
+        GameObject floorParent = new GameObject("Floor");
+        floorParent.transform.SetParent(transform);
         for (int i = 0; i < CameraBoundaries.x; i++)
         {
             for (int j = 0; j < CameraBoundaries.y; j++)
             {
                 if (!wallPositions[i][j].GetIsOccupied())
                 {
-                    GameObject newWall = Instantiate(floorTile, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, transform);
+                    GameObject newWall = Instantiate(floorTile, new Vector2(transform.position.x, transform.position.y) + wallPositions[i][j].GetPosition(), Quaternion.identity, floorParent.transform);
                 }
             }
         }
@@ -309,21 +316,45 @@ public class Room : MonoBehaviour
         if(directions.m_directions[0].Open && directions.m_directions[0].Spawned)
         {
             GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 9, transform.position.y + 19), Quaternion.identity, transform);
+            door.GetComponent<Door>().directionModifier = directions.m_directions[0].DirectionModifier;
+            if(directions.m_directions[0].GetEntranceType() == EntranceType.LockedDoor)
+            {
+                door.GetComponent<Door>().Lock();
+            }
+            doors.Add(door);
         }
         if(directions.m_directions[1].Open && directions.m_directions[1].Spawned)
         {
             GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 18, transform.position.y + 10), Quaternion.identity, transform);
             door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0,270), Space.Self);
+            door.GetComponent<Door>().directionModifier = directions.m_directions[1].DirectionModifier;
+            if(directions.m_directions[1].GetEntranceType() == EntranceType.LockedDoor)
+            {
+                door.GetComponent<Door>().Lock();
+            }
+            doors.Add(door);
         }
         if(directions.m_directions[2].Open && directions.m_directions[2].Spawned)
         {
             GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x, transform.position.y + 10), Quaternion.identity, transform);
             door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, 90), Space.Self);
+            door.GetComponent<Door>().directionModifier = directions.m_directions[2].DirectionModifier;
+            if(directions.m_directions[2].GetEntranceType() == EntranceType.LockedDoor)
+            {
+                door.GetComponent<Door>().Lock();
+            }
+            doors.Add(door);
         }
         if(directions.m_directions[3].Open && directions.m_directions[3].Spawned)
         {
             GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + 9, transform.position.y + 1), Quaternion.identity, transform);
             door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, 180), Space.Self);
+            door.GetComponent<Door>().directionModifier = directions.m_directions[3].DirectionModifier;
+            if(directions.m_directions[3].GetEntranceType() == EntranceType.LockedDoor)
+            {
+                door.GetComponent<Door>().Lock();
+            }
+            doors.Add(door);
         }
     }
 }

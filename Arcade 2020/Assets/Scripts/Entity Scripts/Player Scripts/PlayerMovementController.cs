@@ -14,6 +14,8 @@ public class PlayerMovementController : Movement
     public KeyCode SHOOT;
     public List<GameObject> balls = new List<GameObject>();
 
+    public GameObject touchingDoor = null;
+
     void Start()
     {
         Fric = 1.0f;
@@ -50,5 +52,20 @@ public class PlayerMovementController : Movement
             Vel = new Vector2(0,0);
         }
         MoveObject();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.GetComponent<Door>())
+        {
+            touchingDoor = other.gameObject;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        if(other.gameObject.GetComponent<Door>())
+        {
+            touchingDoor = null;
+        }
     }
 }

@@ -5,11 +5,7 @@ using UnityEngine;
 public enum EntranceType
 {
     NormalDoor = 0,
-    PuzzleDoor = 1,
-    BombableWall = 2,
-    LockedDoor = 3,
-    MultiLockedDoor = 4, //Uses more than one key
-    AmbushDoor = 5 //Locks behind you, defeat all enemies to make them open
+    LockedDoor = 1
 }
 
 public class RoomEntrance : MonoBehaviour
@@ -34,9 +30,8 @@ public class RoomEntrance : MonoBehaviour
     {
         return m_type;
     }
-    public void SetEntranceType(EntranceType type, EntranceLibrary lib)
+    public void SetEntranceType(EntranceType type)
     {
         m_type = type;
-       // m_renderer.sprite = lib.GetSprite(type);
     }
 }
