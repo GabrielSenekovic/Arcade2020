@@ -38,6 +38,6 @@ public class Movement : MonoBehaviour
         rig().velocity = Vel;
         Vel *= Acc;
         Vel *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
-        if((int)(Speed *10) == 0 ) { Speed = 0; }
+        //if((int)(Speed *10) == 0 ) { Speed = 0; }
     }
 }
