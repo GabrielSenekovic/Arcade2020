@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class CreggController : Movement
 {
+    private int time;
     public enum MoveType {HORIZONTAL, VERTICAL };
-    private MoveType movetype;
+    public MoveType movetype;
     void Start()
     {
-        Speed = 7.0f;
+        Fric = 1.0f;
+        Acc = new Vector2(1,1);
+        Speed = 4.0f;
         if( movetype == MoveType.HORIZONTAL) { Dir = new Vector2(1,0); }
         else { Dir = new Vector2(0,1);}
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        
+     time++;   
 
         MoveObject();
     }
 
      private void OnCollisionEnter2D(Collision2D other) 
     {
-        Dir *= -1;
+        if(time > 14)
+        {
+            Dir *= -1;
+        Debug.Log(gameObject.name + " " + Dir);
+            time = 0;
+        }
         //* if collide player hurt (attack) 
     }
 }
