@@ -23,6 +23,7 @@ public class RoomBuilder : MonoBehaviour
                 room.InstantiateWalls(WallBlockPrefab);
                 room.InstantiateFloor(FloorTilePrefab);
                 room.InstantiateDoors(WallBlockPrefab);
+                Instantiate(WallBlockPrefab.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
 
                 foreach (Transform child in room.transform)
                 {

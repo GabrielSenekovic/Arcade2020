@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Team : MonoBehaviour
 {
-    [SerializeField]PlayerMovementController[] players;
+    public PlayerMovementController[] players;
     public uint amountOfKeys = 0;
 
     public bool GetIfBothTouchingDoor()
     {
         return ((players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null);
+    }
+    public bool GetIfBothTouchingStairs()
+    {
+        return (players[0].touchingStairs && players[1].touchingStairs);
     }
     public Door GetDoor()
     {

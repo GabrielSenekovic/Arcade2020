@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] List<Room> rooms = new List<Room>{};
-    [SerializeField]Room RoomPrefab;
-    [SerializeField] Room mainRoom;
+    public List<Room> rooms = new List<Room>{};
+    public Room RoomPrefab;
+    public Room mainRoom;
     int numberOfRooms = 1;
-    int furthestDistanceFromSpawn;
     private RoomBuilder builder;
-
-    [SerializeField] LevelManager level;
 
     void Awake() 
     {
-        level.firstRoom = mainRoom;
         builder = GetComponent<RoomBuilder>();
-        Initiate(mainRoom);
     }
-    void Initiate(Room originRoom)
+    public void Initiate(Room originRoom, LevelManager level)
     {
         originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
-        SpawnRooms(Random.Range(5,15));
+        SpawnRooms(Random.Range((int)(2 + level.currentFloor * 1.3f),(int)(4 + level.currentFloor * 1.3f)));
         level.lastRoom = rooms[rooms.Count - 1];
         LockDoors(level.lastRoom);
         builder.Build(rooms, level);
@@ -330,5 +325,15 @@ else
             }
         }
         return false;
+    }
+
+    public void DestroyLevel()
+    {
+        for(int i = rooms.Count -1; i >= 0; i--)
+        {
+            Destroy(rooms[i].gameObject);
+        }
+        rooms.Clear();
+        numberOfRooms = 1;
     }
 }

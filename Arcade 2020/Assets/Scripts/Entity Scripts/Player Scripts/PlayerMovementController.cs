@@ -15,6 +15,7 @@ public class PlayerMovementController : Movement
     public List<GameObject> balls = new List<GameObject>();
 
     public GameObject touchingDoor = null;
+    public bool touchingStairs = false;
 
     void Start()
     {
@@ -60,12 +61,20 @@ public class PlayerMovementController : Movement
         {
             touchingDoor = other.gameObject;
         }
+        if(other.gameObject.GetComponent<Stairs>())
+        {
+            touchingStairs = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D other) 
     {
         if(other.gameObject.GetComponent<Door>())
         {
             touchingDoor = null;
+        }
+        if(other.gameObject.GetComponent<Stairs>())
+        {
+            touchingStairs = false;
         }
     }
 }
