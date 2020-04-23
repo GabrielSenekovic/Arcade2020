@@ -75,7 +75,7 @@ MonoBehaviour:
   locked: 0
   otherDoor: {fileID: 0}
   doorSprites:
-  - {fileID: 21300000, guid: fb689dc85db8fa3408a058bce32c0daa, type: 3}
+  - {fileID: 5213229242370633579, guid: d0ec543aa0e850f4f979c00fa84a7971, type: 3}
   - {fileID: 436563815456543028, guid: d0ec543aa0e850f4f979c00fa84a7971, type: 3}
 --- !u!1 &8901390106124005026
 GameObject:
