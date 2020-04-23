@@ -6,10 +6,9 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    public float Speed;
+    public float Speed; //? if (things[i] === theThing) { code } (theThing = 5)
 
     public Vector2 Dir;
-
   
     [SerializeField] Vector2 vel;
      public Vector2 Vel

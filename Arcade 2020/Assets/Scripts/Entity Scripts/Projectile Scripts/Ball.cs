@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : Movement
 {
     public bool isTraveling = false;
+    public bool isOrbiting;
 
     [Tooltip("Player1 then Player2")]
     public GameObject[] players;
@@ -19,18 +20,17 @@ public class Ball : Movement
         Dir = new Vector2(1,1);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(isTraveling && isOn == OwnedByPlayer.PLAYER_ONE)
         {
-             Speed = 5.0f;
+            Speed = 5.0f;
             Dir = (players[1].transform.position - transform.position).normalized;
         }
         else if (isTraveling && isOn == OwnedByPlayer.PLAYER_TWO)
         {
-             Speed = 5.0f;
-             Dir = (players[0].transform.position - transform.position).normalized;
+            Speed = 5.0f;
+            Dir = (players[0].transform.position - transform.position).normalized;
         }
         else
         {
@@ -44,10 +44,12 @@ public class Ball : Movement
         if(other.CompareTag("player1") && isTraveling)
         {
             isOn = OwnedByPlayer.PLAYER_ONE;
+            isOrbiting = true;
         }
         else if(other.CompareTag("player2") && isTraveling)
         {
             isOn = OwnedByPlayer.PLAYER_TWO;
+            isOrbiting = true;
         }
     }
 }
