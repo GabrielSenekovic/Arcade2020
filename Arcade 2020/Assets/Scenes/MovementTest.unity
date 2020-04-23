@@ -599,7 +599,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1112825788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +621,8 @@ MonoBehaviour:
   DOWN: 115
   LEFT: 97
   RIGHT: 100
+  touchingDoor: {fileID: 0}
+  touchingStairs: 0
 --- !u!58 &1112825789
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -753,6 +755,8 @@ MonoBehaviour:
   DOWN: 274
   LEFT: 276
   RIGHT: 275
+  touchingDoor: {fileID: 0}
+  touchingStairs: 0
 --- !u!50 &1367827810
 Rigidbody2D:
   serializedVersion: 4
@@ -773,7 +777,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1367827811
 SpriteRenderer:
   m_ObjectHideFlags: 0
