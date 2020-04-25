@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,11 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 875, y: 300}
+=======
+  m_MinSize: {x: 875, y: 542}
+>>>>>>> Created Main menu scene again
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -112,10 +116,17 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
   controlID: 96
+=======
+  m_MinSize: {x: 680, y: 492}
+  m_MaxSize: {x: 14003, y: 14042}
+  vertical: 0
+  controlID: 17
+>>>>>>> Created Main menu scene again
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +148,17 @@ MonoBehaviour:
     y: 0
     width: 1231
     height: 731
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 403, y: 342}
   m_MaxSize: {x: 8003, y: 8042}
   vertical: 1
   controlID: 97
+=======
+  m_MinSize: {x: 403, y: 492}
+  m_MaxSize: {x: 10001, y: 14042}
+  vertical: 1
+  controlID: 65
+>>>>>>> Created Main menu scene again
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,7 +183,11 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< refs/remotes/origin/master
   controlID: 98
+=======
+  controlID: 66
+>>>>>>> Created Main menu scene again
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,9 +261,15 @@ MonoBehaviour:
     y: 442
     width: 1231
     height: 289
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
+=======
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 16}
+>>>>>>> Created Main menu scene again
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
@@ -266,8 +294,13 @@ MonoBehaviour:
     y: 0
     width: 305
     height: 731
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
+=======
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
+>>>>>>> Created Main menu scene again
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -305,7 +338,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1024, y: 1024}
+  m_TargetSize: {x: 1024, y: 768}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -313,7 +346,7 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 07000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 06000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
@@ -321,8 +354,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -409.6
     m_HBaseRangeMax: 409.6
-    m_VBaseRangeMin: -409.6
-    m_VBaseRangeMax: 409.6
+    m_VBaseRangeMin: -307.2
+    m_VBaseRangeMax: 307.2
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -342,7 +375,11 @@ MonoBehaviour:
       y: 21
       width: 925
       height: 400
+<<<<<<< refs/remotes/origin/master
     m_Scale: {x: 0.48828125, y: 0.48828125}
+=======
+    m_Scale: {x: 0.6510416, y: 0.6510416}
+>>>>>>> Created Main menu scene again
     m_Translation: {x: 462.5, y: 200}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -350,12 +387,21 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< refs/remotes/origin/master
       x: -947.2
       y: -409.6
       width: 1894.4
       height: 819.2
     m_MinimalGUI: 1
   m_defaultScale: 0.48828125
+=======
+      x: -710.4
+      y: -307.2
+      width: 1420.8
+      height: 614.4
+    m_MinimalGUI: 1
+  m_defaultScale: 0.6510416
+>>>>>>> Created Main menu scene again
   m_LastWindowPixelSize: {x: 1156.25, y: 526.25}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -391,9 +437,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< refs/remotes/origin/master
       m_SelectedIDs: 26b6feff
       m_LastClickedID: 0
       m_ExpandedIDs: 76b8feff00bffeffc0edfefffaeffeff70fbffff4034000056340000
+=======
+      m_SelectedIDs: 80390000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 50f5ffff34f6ffff
+>>>>>>> Created Main menu scene again
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -603,14 +655,25 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs/Room/Blueprints
   m_LastFoldersGridSize: -1
+<<<<<<< refs/remotes/origin/master
   m_LastProjectPath: C:\Users\Tinyb\OneDrive\Dokument\Arcade2020\Arcade 2020
+=======
+  m_LastProjectPath: C:\Users\nicoh\OneDrive\Skrivbord\Repositories\Arcade2020\Arcade
+    2020
+>>>>>>> Created Main menu scene again
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
+<<<<<<< refs/remotes/origin/master
     m_SelectedIDs: 28360000
     m_LastClickedID: 13864
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000263600004236000000ca9a3b
+=======
+    m_SelectedIDs: d4370000
+    m_LastClickedID: 14292
+    m_ExpandedIDs: 00000000c0370000c2370000c4370000c637000000ca9a3b
+>>>>>>> Created Main menu scene again
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -638,7 +701,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
+=======
+    m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
+>>>>>>> Created Main menu scene again
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
