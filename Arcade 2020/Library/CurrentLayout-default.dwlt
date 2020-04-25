@@ -117,6 +117,7 @@ MonoBehaviour:
     width: 1536
     height: 731
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
@@ -127,6 +128,12 @@ MonoBehaviour:
   vertical: 0
   controlID: 17
 >>>>>>> Created Main menu scene again
+=======
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
+  vertical: 0
+  controlID: 21
+>>>>>>> Safety push
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,8 +164,12 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
+<<<<<<< refs/remotes/origin/master
   controlID: 65
 >>>>>>> Created Main menu scene again
+=======
+  controlID: 22
+>>>>>>> Safety push
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -184,10 +195,14 @@ MonoBehaviour:
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 98
 =======
   controlID: 66
 >>>>>>> Created Main menu scene again
+=======
+  controlID: 23
+>>>>>>> Safety push
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -295,12 +310,17 @@ MonoBehaviour:
     width: 305
     height: 731
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
 =======
   m_MinSize: {x: 277, y: 71}
   m_MaxSize: {x: 4002, y: 4021}
 >>>>>>> Created Main menu scene again
+=======
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> Safety push
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -438,6 +458,7 @@ MonoBehaviour:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
       m_SelectedIDs: 26b6feff
       m_LastClickedID: 0
       m_ExpandedIDs: 76b8feff00bffeffc0edfefffaeffeff70fbffff4034000056340000
@@ -446,6 +467,11 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: 50f5ffff34f6ffff
 >>>>>>> Created Main menu scene again
+=======
+      m_SelectedIDs: 5cfaffff
+      m_LastClickedID: -1444
+      m_ExpandedIDs: a0f2ffff5cfaffffd6fafffff4faffff70fbffff
+>>>>>>> Safety push
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -505,9 +531,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< refs/remotes/origin/master
     m_Target: {x: 10.469905, y: 11.647285, z: -4.942703}
     speed: 2
     m_Value: {x: 10.469905, y: 11.647285, z: -4.942703}
+=======
+    m_Target: {x: 520.82794, y: 335.67007, z: -1042.8223}
+    speed: 2
+    m_Value: {x: 494.74075, y: 336.38278, z: -1011.3373}
+>>>>>>> Safety push
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -557,9 +589,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< refs/remotes/origin/master
     m_Target: 27.156286
     speed: 2
     m_Value: 27.156286
+=======
+    m_Target: 557.8523
+    speed: 2
+    m_Value: 472.7562
+>>>>>>> Safety push
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -666,6 +704,7 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_SelectedIDs: 28360000
     m_LastClickedID: 13864
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000263600004236000000ca9a3b
@@ -674,6 +713,11 @@ MonoBehaviour:
     m_LastClickedID: 14292
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c637000000ca9a3b
 >>>>>>> Created Main menu scene again
+=======
+    m_SelectedIDs: 72340000
+    m_LastClickedID: 13426
+    m_ExpandedIDs: 000000005e34000060340000623400006434000000ca9a3b
+>>>>>>> Safety push
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -702,10 +746,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
 =======
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
 >>>>>>> Created Main menu scene again
+=======
+    m_ExpandedIDs: 000000005e340000603400006234000064340000
+>>>>>>> Safety push
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -730,10 +778,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< refs/remotes/origin/master
     m_SelectedInstanceIDs: 26b6feff
     m_LastClickedInstanceID: -84442
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b039000094350000923900007c6b0000
+=======
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000
+>>>>>>> Safety push
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
