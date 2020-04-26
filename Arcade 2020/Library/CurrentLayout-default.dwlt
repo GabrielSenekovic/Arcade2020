@@ -15,13 +15,13 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: 0
-    y: 43.2
-    width: 1536
-    height: 780.8
+    y: 43
+    width: 1920
+    height: 997
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -44,6 +44,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< refs/remotes/origin/master
     width: 1536
     height: 781
 <<<<<<< refs/remotes/origin/master
@@ -51,6 +52,11 @@ MonoBehaviour:
 =======
   m_MinSize: {x: 875, y: 542}
 >>>>>>> Created Main menu scene again
+=======
+    width: 1920
+    height: 997
+  m_MinSize: {x: 875, y: 300}
+>>>>>>> Added Animation Packages
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -69,7 +75,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1536
+    width: 1920
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -90,8 +96,8 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 761
-    width: 1536
+    y: 977
+    width: 1920
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -114,6 +120,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< refs/remotes/origin/master
     width: 1536
     height: 731
 <<<<<<< refs/remotes/origin/master
@@ -141,6 +148,14 @@ MonoBehaviour:
   vertical: 0
   controlID: 1917
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    width: 1920
+    height: 947
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 14002, y: 14042}
+  vertical: 0
+  controlID: 56
+>>>>>>> Added Animation Packages
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,6 +175,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< refs/remotes/origin/master
     width: 1231
     height: 731
 <<<<<<< refs/remotes/origin/master
@@ -181,6 +197,14 @@ MonoBehaviour:
 =======
   controlID: 1891
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    width: 1539
+    height: 947
+  m_MinSize: {x: 403, y: 492}
+  m_MaxSize: {x: 10001, y: 14042}
+  vertical: 1
+  controlID: 109
+>>>>>>> Added Animation Packages
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,11 +224,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1231
-    height: 442
+    width: 1539
+    height: 573
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
@@ -218,6 +243,9 @@ MonoBehaviour:
 =======
   controlID: 1892
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+  controlID: 110
+>>>>>>> Added Animation Packages
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -235,8 +263,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 304
-    height: 442
+    width: 380
+    height: 573
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 13}
@@ -259,10 +287,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 304
+    x: 380
     y: 0
-    width: 927
-    height: 442
+    width: 1159
+    height: 573
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
@@ -288,6 +316,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< refs/remotes/origin/master
     y: 442
     width: 1231
     height: 289
@@ -296,6 +325,11 @@ MonoBehaviour:
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
 =======
+=======
+    y: 573
+    width: 1539
+    height: 374
+>>>>>>> Added Animation Packages
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
   m_ActualView: {fileID: 16}
@@ -320,8 +354,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1231
+    x: 1539
     y: 0
+<<<<<<< refs/remotes/origin/master
     width: 305
     height: 731
 <<<<<<< refs/remotes/origin/master
@@ -341,6 +376,12 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    width: 381
+    height: 947
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
+>>>>>>> Added Animation Packages
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -362,7 +403,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Game
-    m_Image: {fileID: 257045534191678443, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: -2087823869225018852, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
@@ -392,10 +433,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -409.6
-    m_HBaseRangeMax: 409.6
-    m_VBaseRangeMin: -307.2
-    m_VBaseRangeMax: 307.2
+    m_HBaseRangeMin: -512
+    m_HBaseRangeMax: 512
+    m_VBaseRangeMin: -384
+    m_VBaseRangeMax: 384
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -412,8 +453,9 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 925
+<<<<<<< refs/remotes/origin/master
       height: 400
 <<<<<<< refs/remotes/origin/master
     m_Scale: {x: 0.48828125, y: 0.48828125}
@@ -421,12 +463,18 @@ MonoBehaviour:
     m_Scale: {x: 0.6510416, y: 0.6510416}
 >>>>>>> Created Main menu scene again
     m_Translation: {x: 462.5, y: 200}
+=======
+      height: 421
+    m_Scale: {x: 0.54817706, y: 0.54817706}
+    m_Translation: {x: 462.5, y: 210.5}
+>>>>>>> Added Animation Packages
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
       x: -947.2
       y: -409.6
@@ -443,6 +491,15 @@ MonoBehaviour:
   m_defaultScale: 0.6510416
 >>>>>>> Created Main menu scene again
   m_LastWindowPixelSize: {x: 1156.25, y: 526.25}
+=======
+      x: -843.7055
+      y: -384
+      width: 1687.411
+      height: 768
+    m_MinimalGUI: 1
+  m_defaultScale: 0.54817706
+  m_LastWindowPixelSize: {x: 925, y: 421}
+>>>>>>> Added Animation Packages
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -464,19 +521,20 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Hierarchy
-    m_Image: {fileID: -9000905672528348964, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: -590624980919486359, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73.6
-    width: 303
-    height: 421
+    y: 73
+    width: 379
+    height: 552
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
@@ -498,6 +556,11 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: 68f1ffff70fbffff4e3400005a340000
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+      m_SelectedIDs: 60380000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 40fbffff
+>>>>>>> Added Animation Packages
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -537,15 +600,15 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Scene
-    m_Image: {fileID: -131512000283675692, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: 2318424515335265636, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 304
-    y: 73.6
-    width: 925
-    height: 421
+    x: 380
+    y: 73
+    width: 1157
+    height: 552
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 3031cd90d4b07434180be6dfba1a22bd
@@ -557,6 +620,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
     m_Target: {x: 10.469905, y: 11.647285, z: -4.942703}
     speed: 2
@@ -570,6 +634,11 @@ MonoBehaviour:
 =======
     m_Value: {x: 520.82794, y: 335.67007, z: -1042.8223}
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    m_Target: {x: 424.42297, y: 328.73764, z: -1086.6698}
+    speed: 2
+    m_Value: {x: 424.42297, y: 328.73764, z: -1086.6698}
+>>>>>>> Added Animation Packages
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -620,6 +689,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_Target: 27.156286
     speed: 2
     m_Value: 27.156286
@@ -632,6 +702,11 @@ MonoBehaviour:
 =======
     m_Value: 557.8523
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    m_Target: 9.700983
+    speed: 2
+    m_Value: 9.700983
+>>>>>>> Added Animation Packages
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -672,7 +747,7 @@ MonoBehaviour:
   m_MaxSize: {x: 2048, y: 2048}
   m_TitleContent:
     m_Text: Asset Store
-    m_Image: {fileID: -4391848389275900105, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: 357073275683767465, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
@@ -698,15 +773,15 @@ MonoBehaviour:
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
     m_Text: Project
-    m_Image: {fileID: -2032128904892744680, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: -7501376956915960154, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 515.2
-    width: 1230
-    height: 268
+    y: 646
+    width: 1538
+    height: 353
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -721,6 +796,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< refs/remotes/origin/master
     - Assets/Prefabs/Room/Blueprints
   m_ViewMode: 1
   m_StartGridSize: 64
@@ -731,11 +807,21 @@ MonoBehaviour:
   m_LastProjectPath: C:\Users\Tinyb\OneDrive\Dokument\Arcade2020\Arcade 2020
 =======
   m_LastProjectPath: C:\Users\nicoh\OneDrive\Skrivbord\Repositories\Arcade2020\Arcade
+=======
+    - Assets/Sprites/Monsters
+  m_ViewMode: 1
+  m_StartGridSize: 64
+  m_LastFolders:
+  - Assets/Sprites/Monsters
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: C:\Users\erica\OneDrive\Documents\Uppsala\Arcade2020\Arcade2020Game\Arcade
+>>>>>>> Added Animation Packages
     2020
 >>>>>>> Created Main menu scene again
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< refs/remotes/origin/master
     scrollPos: {x: 0, y: 79}
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
@@ -758,6 +844,12 @@ MonoBehaviour:
     m_LastClickedID: 13548
     m_ExpandedIDs: 00000000da340000dc340000de340000e034000000ca9a3b
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    scrollPos: {x: 0, y: 35}
+    m_SelectedIDs: be380000
+    m_LastClickedID: 14526
+    m_ExpandedIDs: 000000008e380000903800009238000094380000ba38000000ca9a3b
+>>>>>>> Added Animation Packages
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -788,6 +880,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
 =======
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
@@ -798,6 +891,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 00000000da340000dc340000de340000e034000000ca9a3b
 >>>>>>> Main menu is finished (not connected to main game)
+=======
+    m_ExpandedIDs: 000000008e380000903800009238000094380000
+>>>>>>> Added Animation Packages
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -831,8 +927,12 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
+<<<<<<< refs/remotes/origin/master
     m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000
 >>>>>>> Safety push
+=======
+    m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000fc360000
+>>>>>>> Added Animation Packages
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -876,7 +976,7 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Console
-    m_Image: {fileID: -3303252850963283158, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: 111653112392082826, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
@@ -902,15 +1002,15 @@ MonoBehaviour:
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: Inspector
-    m_Image: {fileID: 8356117983803934776, guid: 0000000000000000d000000000000000,
+    m_Image: {fileID: -6905738622615590433, guid: 0000000000000000d000000000000000,
       type: 0}
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1231.2001
-    y: 73.6
-    width: 304
-    height: 710
+    x: 1539
+    y: 73
+    width: 380
+    height: 926
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []

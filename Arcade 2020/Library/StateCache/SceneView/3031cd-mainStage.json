@@ -1,5 +1,9 @@
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":10.469904899597168,"y":11.647285461425782,"z":-4.942702770233154},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":27.156286239624025,"orthographic":true}
 =======
 ﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":520.8279418945313,"y":335.6700744628906,"z":-1042.822265625},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":557.852294921875,"orthographic":true}
 >>>>>>> Safety push
+=======
+﻿{"cameraMode":{"drawMode":0,"name":"Shaded","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":true,"pivot":{"x":424.4229736328125,"y":328.7376403808594,"z":-1086.6697998046875},"rotation":{"x":0.0,"y":0.0,"z":0.0,"w":1.0},"size":9.700983047485352,"orthographic":true}
+>>>>>>> Added Animation Packages
