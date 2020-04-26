@@ -118,6 +118,7 @@ MonoBehaviour:
     height: 731
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 679, y: 342}
   m_MaxSize: {x: 12004, y: 8042}
   vertical: 0
@@ -134,6 +135,12 @@ MonoBehaviour:
   vertical: 0
   controlID: 21
 >>>>>>> Safety push
+=======
+  m_MinSize: {x: 678, y: 492}
+  m_MaxSize: {x: 14001, y: 14042}
+  vertical: 0
+  controlID: 1917
+>>>>>>> Main menu is finished (not connected to main game)
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -165,11 +172,15 @@ MonoBehaviour:
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 65
 >>>>>>> Created Main menu scene again
 =======
   controlID: 22
 >>>>>>> Safety push
+=======
+  controlID: 1891
+>>>>>>> Main menu is finished (not connected to main game)
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,6 +207,7 @@ MonoBehaviour:
   vertical: 0
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 98
 =======
   controlID: 66
@@ -203,6 +215,9 @@ MonoBehaviour:
 =======
   controlID: 23
 >>>>>>> Safety push
+=======
+  controlID: 1892
+>>>>>>> Main menu is finished (not connected to main game)
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -311,6 +326,7 @@ MonoBehaviour:
     height: 731
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
 =======
@@ -321,6 +337,10 @@ MonoBehaviour:
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
 >>>>>>> Safety push
+=======
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> Main menu is finished (not connected to main game)
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -459,6 +479,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
       m_SelectedIDs: 26b6feff
       m_LastClickedID: 0
       m_ExpandedIDs: 76b8feff00bffeffc0edfefffaeffeff70fbffff4034000056340000
@@ -472,6 +493,11 @@ MonoBehaviour:
       m_LastClickedID: -1444
       m_ExpandedIDs: a0f2ffff5cfaffffd6fafffff4faffff70fbffff
 >>>>>>> Safety push
+=======
+      m_SelectedIDs: 90360000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 68f1ffff70fbffff4e3400005a340000
+>>>>>>> Main menu is finished (not connected to main game)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -538,8 +564,12 @@ MonoBehaviour:
 =======
     m_Target: {x: 520.82794, y: 335.67007, z: -1042.8223}
     speed: 2
+<<<<<<< refs/remotes/origin/master
     m_Value: {x: 494.74075, y: 336.38278, z: -1011.3373}
 >>>>>>> Safety push
+=======
+    m_Value: {x: 520.82794, y: 335.67007, z: -1042.8223}
+>>>>>>> Main menu is finished (not connected to main game)
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -596,8 +626,12 @@ MonoBehaviour:
 =======
     m_Target: 557.8523
     speed: 2
+<<<<<<< refs/remotes/origin/master
     m_Value: 472.7562
 >>>>>>> Safety push
+=======
+    m_Value: 557.8523
+>>>>>>> Main menu is finished (not connected to main game)
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -705,6 +739,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 79}
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_SelectedIDs: 28360000
     m_LastClickedID: 13864
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000263600004236000000ca9a3b
@@ -718,6 +753,11 @@ MonoBehaviour:
     m_LastClickedID: 13426
     m_ExpandedIDs: 000000005e34000060340000623400006434000000ca9a3b
 >>>>>>> Safety push
+=======
+    m_SelectedIDs: ec340000
+    m_LastClickedID: 13548
+    m_ExpandedIDs: 00000000da340000dc340000de340000e034000000ca9a3b
+>>>>>>> Main menu is finished (not connected to main game)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -747,6 +787,7 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
 =======
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
@@ -754,6 +795,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000005e340000603400006234000064340000
 >>>>>>> Safety push
+=======
+    m_ExpandedIDs: 00000000da340000dc340000de340000e034000000ca9a3b
+>>>>>>> Main menu is finished (not connected to main game)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -786,7 +830,7 @@ MonoBehaviour:
 =======
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000
 >>>>>>> Safety push
     m_RenameOverlay:
