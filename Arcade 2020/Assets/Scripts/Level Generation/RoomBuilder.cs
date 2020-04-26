@@ -4,37 +4,17 @@ using UnityEngine;
 
 public class RoomBuilder : MonoBehaviour
 {
-    [SerializeField] WallBlueprints WallBlockPrefab;
-    [SerializeField] GameObject FloorTilePrefab;
+    [SerializeField] Blueprint blueprint;
     public void Build(List<Room> rooms, LevelManager level)
-    {
-        BuildRooms(rooms, level);
-        ConnectDoors(rooms);
-        CloseOpenDoors(rooms);
-        PlaceItems(rooms, level);
-    }
-    void BuildRooms(List<Room> rooms, LevelManager level)
     {
         foreach (Room room in rooms)
         {
-            if (!room.IsBuilt)
-            {
-                room.PlaceDownWalls();
-                room.InstantiateWalls(WallBlockPrefab);
-                room.InstantiateFloor(FloorTilePrefab);
-                room.InstantiateDoors(WallBlockPrefab);
-                Instantiate(WallBlockPrefab.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
-
-                foreach (Transform child in room.transform)
-                {
-                    if (child.GetComponent<WallPosition>())
-                    {
-                        Destroy(child.gameObject);
-                    }
-                }
-                room.IsBuilt = true;
-            }
+            room.InstantiateDoors(blueprint);
         }
+        ConnectDoors(rooms);
+        CloseOpenDoors(rooms);
+        PlaceItems(rooms, level);
+        Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
     }
     void ConnectDoors(List<Room> rooms)
     {
@@ -86,7 +66,7 @@ public class RoomBuilder : MonoBehaviour
             }
         }
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
-        Key theKey = Instantiate(WallBlockPrefab.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
+        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
     }
     void CloseOpenDoors(List<Room> rooms)

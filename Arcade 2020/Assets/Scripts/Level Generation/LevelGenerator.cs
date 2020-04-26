@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
-    public List<Room> rooms = new List<Room>{};
-    public Room RoomPrefab;
-    public Room mainRoom;
+    List<Room> rooms = new List<Room>{};
+    [SerializeField] Room RoomPrefab;
     int numberOfRooms = 1;
     private RoomBuilder builder;
+    [Tooltip("X is for minimum value, Y is for maximum value")]
+    [SerializeField] Vector2 MinMaxAmountOfRooms;
+    [Tooltip("This controls the growth rate as the floors increase")]
+    [SerializeField] float floorSizeMultiplier;
 
     void Awake() 
     {
         builder = GetComponent<RoomBuilder>();
     }
-    public void Initiate(Room originRoom, LevelManager level)
+    public void GenerateLevel(LevelManager level, int currentFloor)
     {
-        originRoom.OpenAllEntrances(); originRoom.Initialize(originRoom.transform.position);
-        SpawnRooms(Random.Range((int)(2 + level.currentFloor * 1.3f),(int)(4 + level.currentFloor * 1.3f)));
+        rooms.Add(Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, transform));
+        rooms[0].Initialize();
+
+        SpawnRooms(Random.Range((int)(MinMaxAmountOfRooms.x + currentFloor * floorSizeMultiplier),
+                                (int)(MinMaxAmountOfRooms.y + currentFloor * floorSizeMultiplier)));
+
+        level.firstRoom = rooms[0];
         level.lastRoom = rooms[rooms.Count - 1];
-        LockDoors(level.lastRoom);
+
+        LockDoors(rooms[rooms.Count - 1]);
         builder.Build(rooms, level);
     }
 
@@ -66,27 +75,9 @@ public class LevelGenerator : MonoBehaviour
             Room originRoom = GetRandomRoomInList();
             rooms.Add(Instantiate(RoomPrefab, transform));
             rooms[i].name = "Room #" + numberOfRooms; numberOfRooms++;
-            Vector2 newCoordinates = GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections());
-            while(true)
-            {
-                if(newCoordinates != new Vector2(0,0))
-                {
-                    rooms[i].Initialize(newCoordinates);
-                    break;
-                }
-                else
-                {
-                    originRoom = GetRandomRoomInList();
-                    newCoordinates = GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections());
-                    Debug.Log(newCoordinates);
-                    return;
-                }
-            }
-            /*rooms[i].SetDistance(originRoom.GetDistance() + 1);
-            if(rooms[i].GetDistance() > furthestDistanceFromSpawn)
-            {
-                furthestDistanceFromSpawn = rooms[i].GetDistance();
-            }*/
+
+            rooms[i].Initialize(GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections()));
+            
             SetEntrances(originRoom, rooms[i]);
             LinkRoom(rooms[i]);
             OpenRandomEntrances(rooms[i]);
@@ -96,21 +87,15 @@ public class LevelGenerator : MonoBehaviour
     {
         //This functions gets any of the rooms that are already spawned
         //It should make sure that it doesnt have something spawned in each direction
-        //Debug.Log("Getting the coordinates of a random spawned room");
-        if (rooms.Count != 0)
+        List<Room> roomWithOpenDoors = new List<Room> { };
+        foreach (Room room in rooms)
         {
-            List<Room> roomWithOpenDoors = new List<Room> { };
-            foreach (Room room in rooms)
+            if (room.GetIfHasOneOpenEntrance())
             {
-                if (room.GetIfHasOneOpenEntrance())
-                {
-                    roomWithOpenDoors.Add(room);
-                }
+                roomWithOpenDoors.Add(room);
             }
-            Debug.Log("rooms with open doors: " + roomWithOpenDoors.Count);
-            return roomWithOpenDoors[Random.Range(0, roomWithOpenDoors.Count - 1)];
         }
-        return rooms[0];
+        return roomWithOpenDoors[Random.Range(0, roomWithOpenDoors.Count - 1)];
     }
     Vector2 GetNewRoomCoordinates(Vector2 originCoordinates, RoomDirections directionsOfRoom)
     {
@@ -175,10 +160,6 @@ public class LevelGenerator : MonoBehaviour
                 if (rooms[i].GetDirections().m_directions[2].Open)
                 {
                     SetEntrances(room, rooms[i]);
-                    if (rooms[i].GetDistance() < room.GetDistance() - 1)
-                    {
-                        room.SetDistance(rooms[i].GetDistance() + 1);
-                    }
                 }
                 else
                 {
@@ -195,10 +176,6 @@ public class LevelGenerator : MonoBehaviour
                 if (rooms[i].GetDirections().m_directions[1].Open)
                 {
                     SetEntrances(room, rooms[i]);
-                    if (rooms[i].GetDistance() < room.GetDistance() - 1)
-                    {
-                        room.SetDistance(rooms[i].GetDistance() + 1);
-                    }
                 }
                 else
                 {
@@ -215,10 +192,6 @@ public class LevelGenerator : MonoBehaviour
                 if (rooms[i].GetDirections().m_directions[3].Open)
                 {
                     SetEntrances(room, rooms[i]);
-                    if (rooms[i].GetDistance() < room.GetDistance() - 1)
-                    {
-                        room.SetDistance(rooms[i].GetDistance() + 1);
-                    }
                 }
                 else
                 {
@@ -235,10 +208,6 @@ public class LevelGenerator : MonoBehaviour
                 if (rooms[i].GetDirections().m_directions[0].Open)
                 {
                     SetEntrances(room, rooms[i]);
-                    if (rooms[i].GetDistance() < room.GetDistance() - 1)
-                    {
-                        room.SetDistance(rooms[i].GetDistance() + 1);
-                    }
                 }
                 else
                 {
