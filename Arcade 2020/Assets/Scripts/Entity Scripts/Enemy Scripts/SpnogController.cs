@@ -9,10 +9,10 @@ public class SpnogController : Movement
     // Start is called before the first frame update
     void Start()
     {
-        Fric = 1.0f;
+        Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 
-        Speed = 6.0f;
+        Speed = 4.0f;
         float dist2P1;
         dist2P1 = (players[0].transform.position - transform.position).magnitude;
         if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) )
@@ -25,7 +25,6 @@ public class SpnogController : Movement
     void Update()
     {
         Dir = (players[targetIndex].transform.position - transform.position).normalized;
-        Speed = 4.0f;
         
         Vector3 targ = players[targetIndex].transform.position;
         targ.z = 0f;

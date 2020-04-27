@@ -6,12 +6,24 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    public float Speed; //? if (things[i] === theThing) { code } (theThing = 5)
+    public float Speed; 
 
-    public Vector2 Dir;
+    [SerializeField] Vector2 dir;
+    public Vector2 Dir
+    {
+        get
+        {
+            dir = dir.normalized;
+            return dir;
+        }
+        set
+        {
+            dir = value.normalized;
+        }
+    }
   
     [SerializeField] Vector2 vel;
-     public Vector2 Vel
+    public Vector2 Vel
     {
         get
         {
@@ -37,7 +49,6 @@ public class Movement : MonoBehaviour
     {
         rig().velocity = Vel;
         Vel *= Acc;
-        Vel *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
-        //if((int)(Speed *10) == 0 ) { Speed = 0; }
+        Vel *= (1.0f/(Fric + 1.0f) ); 
     }
 }

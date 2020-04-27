@@ -9,7 +9,7 @@ public class CreggController : Movement
     public MoveType movetype;
     void Start()
     {
-        Fric = 1.0f;
+        Fric = 0.0f;
         Acc = new Vector2(1,1);
         Speed = 4.0f;
         if( movetype == MoveType.HORIZONTAL) { Dir = new Vector2(1,0); }
