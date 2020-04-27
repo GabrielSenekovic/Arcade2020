@@ -25,4 +25,12 @@ public class Team : MonoBehaviour
         players[0].transform.position = new Vector3(players[0].transform.position.x + temp.x, players[0].transform.position.y + temp.y, players[0].transform.position.z);
         players[1].transform.position = new Vector3(players[1].transform.position.x + temp.x, players[1].transform.position.y + temp.y, players[1].transform.position.z);
     }
+    public void ResetTeam()
+    {
+        for(int i = 0; i < 1; i++)
+        {
+            players[i].touchingStairs = false;
+            players[i].transform.position = new Vector2(10, 10);
+        }
+    }
 }

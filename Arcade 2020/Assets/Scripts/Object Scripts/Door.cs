@@ -20,6 +20,7 @@ public class Door : MonoBehaviour
     {
         locked = false;
         GetComponentInChildren<SpriteRenderer>().sprite = doorSprites[0];
-        otherDoor.Unlock();
+        otherDoor.locked = false;
+        otherDoor.GetComponentInChildren<SpriteRenderer>().sprite = doorSprites[0];
     }
 }

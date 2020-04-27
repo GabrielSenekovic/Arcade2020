@@ -4,37 +4,23 @@ using UnityEngine;
 
 public class RoomBuilder : MonoBehaviour
 {
-    [SerializeField] WallBlueprints WallBlockPrefab;
-    [SerializeField] GameObject FloorTilePrefab;
+    [SerializeField] Blueprint blueprint;
     public void Build(List<Room> rooms, LevelManager level)
     {
-        BuildRooms(rooms, level);
+        System.DateTime before = System.DateTime.Now;
+
+        foreach (Room room in rooms)
+        {
+            room.InstantiateDoors(blueprint);
+        }
         ConnectDoors(rooms);
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
-    }
-    void BuildRooms(List<Room> rooms, LevelManager level)
-    {
-        foreach (Room room in rooms)
-        {
-            if (!room.IsBuilt)
-            {
-                room.PlaceDownWalls();
-                room.InstantiateWalls(WallBlockPrefab);
-                room.InstantiateFloor(FloorTilePrefab);
-                room.InstantiateDoors(WallBlockPrefab);
-                Instantiate(WallBlockPrefab.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
+        Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
 
-                foreach (Transform child in room.transform)
-                {
-                    if (child.GetComponent<WallPosition>())
-                    {
-                        Destroy(child.gameObject);
-                    }
-                }
-                room.IsBuilt = true;
-            }
-        }
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
     void ConnectDoors(List<Room> rooms)
     {
@@ -86,7 +72,7 @@ public class RoomBuilder : MonoBehaviour
             }
         }
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
-        Key theKey = Instantiate(WallBlockPrefab.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
+        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
     }
     void CloseOpenDoors(List<Room> rooms)

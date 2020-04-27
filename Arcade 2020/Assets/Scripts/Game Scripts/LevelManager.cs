@@ -11,16 +11,26 @@ public class LevelManager : MonoBehaviour
     [SerializeField] CameraMovement cameraM;
 
     [SerializeField] LevelGenerator generator;
+    EntityManager entityManager;
 
-    public int currentFloor = 1;
+    Vector2Int roomDimensions = new Vector2Int(0,0);
+
+    int currentFloor = 0;
 
     [SerializeField] Text floorText;
 
     void Awake()
     {
-        firstRoom = generator.mainRoom;
-        generator.Initiate(firstRoom, this);
-        floorText.text = "Floor: 1";
+        entityManager = GetComponent<EntityManager>();
+    }
+
+    void Start()
+    {
+        int seed = Random.Range(0, int.MaxValue);
+        Random.InitState(seed);
+        Debug.Log("Seed: " + seed);
+
+        ResetLevel();
     }
     void Update()
     {
@@ -31,6 +41,7 @@ public class LevelManager : MonoBehaviour
                 if(!team.GetDoor().locked)
                 {
                     cameraM.Move(team.GetDoor().directionModifier);
+                    entityManager.ToggleFreezeAllEntities(true);
                 }
                 else
                 {
@@ -43,23 +54,32 @@ public class LevelManager : MonoBehaviour
             }
             if(team.GetIfBothTouchingStairs())
             {
-                team.players[0].touchingStairs = false;
-                team.players[1].touchingStairs = false;
-                generator.DestroyLevel();
-                currentFloor++;
-                firstRoom = Instantiate(generator.RoomPrefab, Vector3.zero, Quaternion.identity, generator.transform);
-                team.players[0].transform.position = new Vector2(firstRoom.transform.position.x + 10, firstRoom.transform.position.y + 10);
-                team.players[1].transform.position = new Vector2(firstRoom.transform.position.x + 10, firstRoom.transform.position.y + 10);
-                cameraM.transform.position = new Vector3(firstRoom.transform.position.x + 10, firstRoom.transform.position.y + 9.5f, cameraM.transform.position.z);
-                generator.rooms.Add(firstRoom);
-                generator.Initiate(firstRoom, this);
-                floorText.text = "Floor: " + currentFloor;
+                ResetLevel();
             }
         }
         if(cameraM.movementDone)
         {
             cameraM.movementDone = false;
             team.MoveTeamToNewRoom();
+            entityManager.ToggleFreezeAllEntities(false);
         }
+    }
+
+    void ResetLevel()
+    {
+        System.DateTime before = System.DateTime.Now;
+
+        if(currentFloor>0){generator.DestroyLevel();};
+        team.ResetTeam();
+        cameraM.transform.position = new Vector3(10, 9.5f, cameraM.transform.position.z);
+        
+        currentFloor++;
+        generator.GenerateLevel(this, currentFloor);
+
+        floorText.text = "Floor: " + currentFloor;
+
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
 }

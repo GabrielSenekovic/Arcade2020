@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 
     public float Speed; 
 
+    bool isFrozen = false;
     [SerializeField] Vector2 dir;
     public Vector2 Dir
     {
@@ -47,8 +48,21 @@ public class Movement : MonoBehaviour
 
     public void MoveObject()
     {
-        rig().velocity = Vel;
-        Vel *= Acc;
-        Vel *= (1.0f/(Fric + 1.0f) ); 
+        if(!isFrozen) //I needed to freeze all entities when the camera moved! If you know a better way then feel free to change
+        {
+            rig().velocity = Vel;
+            Vel *= Acc;
+            Vel *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
+            //if((int)(Speed *10) == 0 ) { Speed = 0; }
+        }
+        else
+        {
+            rig().velocity = Vector2.zero;
+        }
+    }
+
+    public void ToggleFrozen(bool value)
+    {
+        isFrozen = value;
     }
 }

@@ -28,7 +28,7 @@ public class CreggController : Movement
         if(time > 14)
         {
             Dir *= -1;
-        Debug.Log(gameObject.name + " " + Dir);
+        //Debug.Log(gameObject.name + " " + Dir);
             time = 0;
         }
         //* if collide player hurt (attack) 
