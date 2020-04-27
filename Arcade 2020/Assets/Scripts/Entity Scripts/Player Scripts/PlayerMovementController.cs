@@ -17,7 +17,7 @@ public class PlayerMovementController : Movement
 
     void Start()
     {
-        Fric = 1.0f;
+        Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,0); 
     }
@@ -37,8 +37,7 @@ public class PlayerMovementController : Movement
            if(Input.GetKey(RIGHT)) { dirx = 1;}
            if(Input.GetKey(UP)) { diry = 1;}
            if(Input.GetKey(DOWN)) { diry =-1;}
-            Dir.x = dirx;
-            Dir.y = diry;
+            Dir = new Vector2(dirx, diry);
         }
 
         if( !(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN) ) )

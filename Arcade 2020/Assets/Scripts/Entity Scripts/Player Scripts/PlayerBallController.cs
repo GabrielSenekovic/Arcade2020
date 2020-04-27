@@ -10,7 +10,7 @@ public class PlayerBallController : MonoBehaviour
     public List<GameObject> balls = new List<GameObject>();
     void Start(){ }
     
-    void Update() //*
+    void Update() //* fixed update
     {
         time += 0.02f;
         if(Input.GetKeyDown(SHOOT) && balls.Count > 0)

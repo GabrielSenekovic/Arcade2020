@@ -24,12 +24,12 @@ public class Ball : Movement
     {
         if(isTraveling && isOn == OwnedByPlayer.PLAYER_ONE)
         {
-            Speed = 5.0f;
+            Speed = 15.0f;
             Dir = (players[1].transform.position - transform.position).normalized;
         }
         else if (isTraveling && isOn == OwnedByPlayer.PLAYER_TWO)
         {
-            Speed = 5.0f;
+            Speed = 15.0f;
             Dir = (players[0].transform.position - transform.position).normalized;
         }
         else
