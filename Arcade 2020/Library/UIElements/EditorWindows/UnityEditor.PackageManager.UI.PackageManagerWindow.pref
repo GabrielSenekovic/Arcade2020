@@ -18,7 +18,11 @@ MonoBehaviour:
   m_Values:
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":100.0}'
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":1208.0}'
 =======
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":1254.0}'
 >>>>>>> Added Animation Packages
+=======
+  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":2505.0}'
+>>>>>>> Removed faulty sprites

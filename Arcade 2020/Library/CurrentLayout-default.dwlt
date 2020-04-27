@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: 
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -79,6 +79,8 @@ MonoBehaviour:
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
+  m_LoadedToolbars: []
+  m_MainToolbar: {fileID: 19}
   m_LastLoadedLayoutName: 
 --- !u!114 &4
 MonoBehaviour:
@@ -154,8 +156,12 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
+<<<<<<< refs/remotes/origin/master
   controlID: 56
 >>>>>>> Added Animation Packages
+=======
+  controlID: 40
+>>>>>>> Removed faulty sprites
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -203,8 +209,12 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
+<<<<<<< refs/remotes/origin/master
   controlID: 109
 >>>>>>> Added Animation Packages
+=======
+  controlID: 65
+>>>>>>> Removed faulty sprites
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -233,6 +243,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 98
 =======
   controlID: 66
@@ -246,6 +257,9 @@ MonoBehaviour:
 =======
   controlID: 110
 >>>>>>> Added Animation Packages
+=======
+  controlID: 66
+>>>>>>> Removed faulty sprites
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -413,8 +427,10 @@ MonoBehaviour:
     width: 925
     height: 421
   m_ViewDataDictionary: {fileID: 0}
-  m_SerializedViewsNames: []
-  m_SerializedViewsValues: []
+  m_SerializedViewNames: []
+  m_SerializedViewValues: []
+  m_SerializedCustomFieldsNames: []
+  m_SerializedCustomFieldsValues: []
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -424,6 +440,7 @@ MonoBehaviour:
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
   m_MaximizeOnPlay: 0
+  m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -538,6 +555,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
       m_SelectedIDs: 26b6feff
       m_LastClickedID: 0
       m_ExpandedIDs: 76b8feff00bffeffc0edfefffaeffeff70fbffff4034000056340000
@@ -561,6 +579,11 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: 40fbffff
 >>>>>>> Added Animation Packages
+=======
+      m_SelectedIDs: b0580000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 24b5ffff
+>>>>>>> Removed faulty sprites
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -613,6 +636,7 @@ MonoBehaviour:
   m_ShowContextualTools: 0
   m_WindowGUID: 3031cd90d4b07434180be6dfba1a22bd
   m_Gizmos: 0
+  m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 1
@@ -620,6 +644,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
     m_Target: {x: 10.469905, y: 11.647285, z: -4.942703}
@@ -639,6 +664,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 424.42297, y: 328.73764, z: -1086.6698}
 >>>>>>> Added Animation Packages
+=======
+    m_Target: {x: 424.15305, y: 328.90878, z: -1086.9781}
+    speed: 2
+    m_Value: {x: 424.15305, y: 328.90878, z: -1086.9781}
+>>>>>>> Removed faulty sprites
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -647,7 +677,6 @@ MonoBehaviour:
   m_ValidateTrueMetals: 0
   m_DoValidateTrueMetals: 0
   m_ExposureSliderValue: 0
-  m_ExposureSliderMax: 10
   m_SceneViewState:
     showFog: 1
     showMaterialUpdate: 0
@@ -655,6 +684,8 @@ MonoBehaviour:
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
+    showVisualEffectGraphs: 1
+    m_FxEnabled: 1
   m_Grid:
     xGrid:
       m_Fade:
@@ -690,6 +721,7 @@ MonoBehaviour:
   m_Size:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_Target: 27.156286
     speed: 2
     m_Value: 27.156286
@@ -707,6 +739,11 @@ MonoBehaviour:
     speed: 2
     m_Value: 9.700983
 >>>>>>> Added Animation Packages
+=======
+    m_Target: 5.8459196
+    speed: 2
+    m_Value: 5.8459196
+>>>>>>> Removed faulty sprites
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -719,7 +756,7 @@ MonoBehaviour:
     m_EasingEnabled: 1
     m_EasingDuration: 0.4
     m_AccelerationEnabled: 1
-    m_FieldOfView: 90
+    m_FieldOfViewHorizontalOrVertical: 60
     m_NearClip: 0.03
     m_FarClip: 10000
     m_DynamicClip: 1
@@ -809,6 +846,7 @@ MonoBehaviour:
   m_LastProjectPath: C:\Users\nicoh\OneDrive\Skrivbord\Repositories\Arcade2020\Arcade
 =======
     - Assets/Sprites/Monsters
+    m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
@@ -846,10 +884,16 @@ MonoBehaviour:
 >>>>>>> Main menu is finished (not connected to main game)
 =======
     scrollPos: {x: 0, y: 35}
+<<<<<<< refs/remotes/origin/master
     m_SelectedIDs: be380000
     m_LastClickedID: 14526
     m_ExpandedIDs: 000000008e380000903800009238000094380000ba38000000ca9a3b
 >>>>>>> Added Animation Packages
+=======
+    m_SelectedIDs: 14560000
+    m_LastClickedID: 22036
+    m_ExpandedIDs: 00000000e2550000e4550000e6550000e85500001056000000ca9a3b
+>>>>>>> Removed faulty sprites
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -881,6 +925,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
 =======
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
@@ -894,6 +939,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000008e380000903800009238000094380000
 >>>>>>> Added Animation Packages
+=======
+    m_ExpandedIDs: 00000000e2550000e4550000e6550000e8550000
+>>>>>>> Removed faulty sprites
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -928,11 +976,15 @@ MonoBehaviour:
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000
 >>>>>>> Safety push
 =======
     m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000fc360000
 >>>>>>> Added Animation Packages
+=======
+    m_ExpandedInstanceIDs: c6230000023600002c340000863500001636000050710000b03900009435000092390000fc360000e63b0000b059000006590000b4550000d659000024590000
+>>>>>>> Removed faulty sprites
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1012,15 +1064,29 @@ MonoBehaviour:
     width: 380
     height: 926
   m_ViewDataDictionary: {fileID: 0}
-  m_OpenAddComponentMenu: 0
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
-  m_LockTracker:
-    m_IsLocked: 0
   m_PreviewResizer:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
+  m_AssetGUID: 
+  m_InstanceID: 0
+  m_LockTracker:
+    m_IsLocked: 0
+  m_PreviewWindow: {fileID: 0}
+--- !u!114 &19
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13963, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DontSaveToLayout: 0
