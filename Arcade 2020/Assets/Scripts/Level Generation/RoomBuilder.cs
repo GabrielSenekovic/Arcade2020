@@ -7,6 +7,8 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] Blueprint blueprint;
     public void Build(List<Room> rooms, LevelManager level)
     {
+        System.DateTime before = System.DateTime.Now;
+
         foreach (Room room in rooms)
         {
             room.InstantiateDoors(blueprint);
@@ -15,6 +17,10 @@ public class RoomBuilder : MonoBehaviour
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
         Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
+
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
     void ConnectDoors(List<Room> rooms)
     {

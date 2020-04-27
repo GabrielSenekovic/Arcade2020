@@ -24,24 +24,17 @@ public class Room : MonoBehaviour
         directions = GetComponent<RoomDirections>();
         transform.position = location;
     }
-    public bool GetIfHasOneOpenEntrance()
+    public List<RoomEntrance> GetOpenUnspawnedEntrances()
     {
-        if(directions == null)
-        {
-            return false;
-        }
+        List<RoomEntrance> openEntrances = new List<RoomEntrance>{};
         foreach(RoomEntrance entrance in directions.m_directions)
         {
-            if(entrance == null)
-            {
-                continue;
-            }
             if (entrance.Open && !entrance.Spawned)
             {
-                return true;
+                openEntrances.Add(entrance);
             }
         }
-        return false;
+        return openEntrances;
     }
     public void OpenAllEntrances()
     {
@@ -64,25 +57,25 @@ public class Room : MonoBehaviour
     {
         if(directions.m_directions[0].Open && directions.m_directions[0].Spawned)
         {
-            OnInstantiateDoor(blueprints, 0, 9, 19, 0);
+            OnInstantiateDoor(blueprints, 0, 10, 18, 0);
         }
         if(directions.m_directions[1].Open && directions.m_directions[1].Spawned)
         {
-            OnInstantiateDoor(blueprints, 1, 18, 10, 270);
+            OnInstantiateDoor(blueprints, 1, 19, 9.5f, 270);
         }
         if(directions.m_directions[2].Open && directions.m_directions[2].Spawned)
         {
-            OnInstantiateDoor(blueprints, 2, 0, 10, 90);
+            OnInstantiateDoor(blueprints, 2, 1, 9.5f, 90);
         }
         if(directions.m_directions[3].Open && directions.m_directions[3].Spawned)
         {
-            OnInstantiateDoor(blueprints, 3, 9, 1, 180);
+            OnInstantiateDoor(blueprints, 3, 10, 1, 180);
         }
     }
-    void OnInstantiateDoor(Blueprint blueprints, int i, int Xoffset, int Yoffset, int rotation)
+    void OnInstantiateDoor(Blueprint blueprints, int i, int Xoffset, float Yoffset, int rotation)
     {
         GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + Xoffset, transform.position.y + Yoffset), Quaternion.identity, transform);
-        door.GetComponentInChildren<SpriteRenderer>().transform.Rotate(new Vector3(0, 0, rotation), Space.Self);
+        door.transform.Rotate(new Vector3(0, 0, rotation), Space.Self);
         door.GetComponent<Door>().directionModifier = directions.m_directions[i].DirectionModifier;
         if(directions.m_directions[i].GetEntranceType() == EntranceType.LockedDoor)
         {

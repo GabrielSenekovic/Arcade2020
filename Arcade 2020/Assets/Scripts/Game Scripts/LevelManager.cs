@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] LevelGenerator generator;
     EntityManager entityManager;
 
+    Vector2Int roomDimensions = new Vector2Int(0,0);
+
     int currentFloor = 0;
 
     [SerializeField] Text floorText;
@@ -24,8 +26,11 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        int seed = Random.Range(0, int.MaxValue);
+        Random.InitState(seed);
+        Debug.Log("Seed: " + seed);
+
         ResetLevel();
-        Debug.Log(Time.realtimeSinceStartup);
     }
     void Update()
     {
@@ -62,6 +67,8 @@ public class LevelManager : MonoBehaviour
 
     void ResetLevel()
     {
+        System.DateTime before = System.DateTime.Now;
+
         if(currentFloor>0){generator.DestroyLevel();};
         team.ResetTeam();
         cameraM.transform.position = new Vector3(10, 9.5f, cameraM.transform.position.z);
@@ -70,5 +77,9 @@ public class LevelManager : MonoBehaviour
         generator.GenerateLevel(this, currentFloor);
 
         floorText.text = "Floor: " + currentFloor;
+
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
 }

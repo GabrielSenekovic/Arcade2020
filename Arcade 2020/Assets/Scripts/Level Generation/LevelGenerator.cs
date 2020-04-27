@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class LevelGenerator : MonoBehaviour
     }
     public void GenerateLevel(LevelManager level, int currentFloor)
     {
+        System.DateTime before = System.DateTime.Now;
+
         rooms.Add(Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, transform));
         rooms[0].Initialize();
 
-        SpawnRooms(Random.Range((int)(MinMaxAmountOfRooms.x + currentFloor * floorSizeMultiplier),
+        SpawnRooms(UnityEngine.Random.Range((int)(MinMaxAmountOfRooms.x + currentFloor * floorSizeMultiplier),
                                 (int)(MinMaxAmountOfRooms.y + currentFloor * floorSizeMultiplier)));
 
         level.firstRoom = rooms[0];
@@ -29,107 +32,70 @@ public class LevelGenerator : MonoBehaviour
 
         LockDoors(rooms[rooms.Count - 1]);
         builder.Build(rooms, level);
+
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to generate: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
 
-    void LockDoors(Room originRoom)
-    {
-        foreach(RoomEntrance entrance in originRoom.GetDirections().m_directions)
-        {
-            entrance.SetEntranceType(EntranceType.LockedDoor);
-            foreach(Room room in rooms)
-            {
-                if(room.transform.position == new Vector3(
-                    originRoom.transform.position.x + entrance.DirectionModifier.x * 20,
-                    originRoom.transform.position.y + entrance.DirectionModifier.y * 20,
-                    originRoom.transform.position.z))
-                {
-                    if(entrance.DirectionModifier.x != 0)
-                    {
-                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
-                        {
-                            if(otherEntrance.DirectionModifier.x == entrance.DirectionModifier.x + otherEntrance.DirectionModifier.x * 2)
-                            {
-                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
-                            }
-                        }
-                    }
-                    else if(entrance.DirectionModifier.y != 0)
-                    {
-                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
-                        {
-                            if(otherEntrance.DirectionModifier.y == entrance.DirectionModifier.y + otherEntrance.DirectionModifier.y * 2)
-                            {
-                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
     void SpawnRooms(int amountOfRooms)
     {
+        System.DateTime before = System.DateTime.Now;
         //this spawns all rooms
         for (int i = rooms.Count; i < amountOfRooms; i++)
         {
-            Room originRoom = GetRandomRoomInList();
+            Tuple<Room, List<RoomEntrance>> originRoom = GetRandomRoomInList();
             rooms.Add(Instantiate(RoomPrefab, transform));
             rooms[i].name = "Room #" + numberOfRooms; numberOfRooms++;
 
-            rooms[i].Initialize(GetNewRoomCoordinates(originRoom.GetPosition(), originRoom.GetDirections()));
+            rooms[i].Initialize(GetNewRoomCoordinates(originRoom.Item1.GetPosition(), originRoom.Item2));
             
-            SetEntrances(originRoom, rooms[i]);
+            SetEntrances(originRoom.Item1, rooms[i]);
             LinkRoom(rooms[i]);
             OpenRandomEntrances(rooms[i]);
         }
+
+        System.DateTime after = System.DateTime.Now; 
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Time to spawn rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
-    Room GetRandomRoomInList()
+    Tuple<Room, List<RoomEntrance>> GetRandomRoomInList()
     {
         //This functions gets any of the rooms that are already spawned
         //It should make sure that it doesnt have something spawned in each direction
-        List<Room> roomWithOpenDoors = new List<Room> { };
+
+        List<Tuple<Room, List<RoomEntrance>>> roomsWithOpenDoors = new List<Tuple<Room, List<RoomEntrance>>>{};
+
         foreach (Room room in rooms)
         {
-            if (room.GetIfHasOneOpenEntrance())
+            List<RoomEntrance> openEntrances = room.GetOpenUnspawnedEntrances();
+            if (openEntrances.Count > 0)
             {
-                roomWithOpenDoors.Add(room);
+                roomsWithOpenDoors.Add(new Tuple<Room, List<RoomEntrance>>(room, openEntrances));
             }
         }
-        return roomWithOpenDoors[Random.Range(0, roomWithOpenDoors.Count - 1)];
+        return roomsWithOpenDoors[UnityEngine.Random.Range(0, roomsWithOpenDoors.Count - 1)];
     }
-    Vector2 GetNewRoomCoordinates(Vector2 originCoordinates, RoomDirections directionsOfRoom)
+    Vector2 GetNewRoomCoordinates(Vector2 originCoordinates, List<RoomEntrance> openEntrances)
     {
         //This functions chooses one of the unoccupied directions around that room
         //When it does, it should change that rooms m_direction to say that the opposing entrance is both open and spawned
         //Debug.Log("Getting coordinates for new room");
         List<Vector2> possibleCoordinates = new List<Vector2> { };
-        for(int i = 0; i < 4; i++)
+        foreach(RoomEntrance entrance in openEntrances)
         {
-            if (directionsOfRoom.m_directions[i].Open && !directionsOfRoom.m_directions[i].Spawned)
+            if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * 20, originCoordinates.y + entrance.DirectionModifier.y * 20)))
             {
-                if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + directionsOfRoom.m_directions[i].DirectionModifier.x * 20, originCoordinates.y + directionsOfRoom.m_directions[i].DirectionModifier.y * 20)))
-                {
-                    possibleCoordinates.Add(new Vector2(originCoordinates.x + directionsOfRoom.m_directions[i].DirectionModifier.x * 20, originCoordinates.y + directionsOfRoom.m_directions[i].DirectionModifier.y * 20));
-                }
+                possibleCoordinates.Add(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * 20, originCoordinates.y + entrance.DirectionModifier.y * 20));
             }
         }
-        int index = Random.Range(0, possibleCoordinates.Count - 1);
-        if(possibleCoordinates.Count > 0)
-        {
-            return possibleCoordinates[index];
-        }
-        else
-        {
-            return new Vector2(0,0);
-        }
+        return possibleCoordinates[UnityEngine.Random.Range(0, possibleCoordinates.Count - 1)];
     }
      void OpenRandomEntrances(Room room)
     {
+        //This will open a random amount of doors in the newly spawned room
         List<RoomEntrance> possibleEntrancesToOpen = new List<RoomEntrance> { };
-        if(!room.GetDirections())
-        {
-            return;
-        }
+
         foreach(RoomEntrance entrance in room.GetDirections().m_directions)
         {
             if(entrance.Open == false && entrance.Spawned == false)
@@ -137,11 +103,11 @@ public class LevelGenerator : MonoBehaviour
                 possibleEntrancesToOpen.Add(entrance);
             }
         }
-        if (possibleEntrancesToOpen.Count != 0)
+        if (possibleEntrancesToOpen.Count > 0)
         {
-            for (int i = 0; i < Random.Range(4 - possibleEntrancesToOpen.Count, 5); i++)
+            for (uint i = (uint)UnityEngine.Random.Range(0, possibleEntrancesToOpen.Count-1); i < UnityEngine.Random.Range(4 - possibleEntrancesToOpen.Count, 5); i++)
             {
-                possibleEntrancesToOpen[Random.Range(0, possibleEntrancesToOpen.Count)].Open = true;
+                possibleEntrancesToOpen[UnityEngine.Random.Range(0, possibleEntrancesToOpen.Count)].Open = true;
             }
         }
     }
@@ -294,6 +260,43 @@ else
             }
         }
         return false;
+    }
+
+    void LockDoors(Room originRoom)
+    {
+        foreach(RoomEntrance entrance in originRoom.GetDirections().m_directions)
+        {
+            entrance.SetEntranceType(EntranceType.LockedDoor);
+            foreach(Room room in rooms)
+            {
+                if(room.transform.position == new Vector3(
+                    originRoom.transform.position.x + entrance.DirectionModifier.x * 20,
+                    originRoom.transform.position.y + entrance.DirectionModifier.y * 20,
+                    originRoom.transform.position.z))
+                {
+                    if(entrance.DirectionModifier.x != 0)
+                    {
+                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
+                        {
+                            if(otherEntrance.DirectionModifier.x == entrance.DirectionModifier.x + otherEntrance.DirectionModifier.x * 2)
+                            {
+                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
+                            }
+                        }
+                    }
+                    else if(entrance.DirectionModifier.y != 0)
+                    {
+                        foreach(RoomEntrance otherEntrance in room.GetDirections().m_directions)
+                        {
+                            if(otherEntrance.DirectionModifier.y == entrance.DirectionModifier.y + otherEntrance.DirectionModifier.y * 2)
+                            {
+                                otherEntrance.SetEntranceType(EntranceType.LockedDoor);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void DestroyLevel()
