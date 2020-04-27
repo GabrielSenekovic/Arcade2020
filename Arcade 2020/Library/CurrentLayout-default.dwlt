@@ -157,11 +157,15 @@ MonoBehaviour:
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 56
 >>>>>>> Added Animation Packages
 =======
   controlID: 40
 >>>>>>> Removed faulty sprites
+=======
+  controlID: 133
+>>>>>>> Reimported Draft sprites
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,11 +214,15 @@ MonoBehaviour:
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 109
 >>>>>>> Added Animation Packages
 =======
   controlID: 65
 >>>>>>> Removed faulty sprites
+=======
+  controlID: 107
+>>>>>>> Reimported Draft sprites
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,6 +252,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
   controlID: 98
 =======
   controlID: 66
@@ -260,6 +269,9 @@ MonoBehaviour:
 =======
   controlID: 66
 >>>>>>> Removed faulty sprites
+=======
+  controlID: 108
+>>>>>>> Reimported Draft sprites
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -556,6 +568,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
       m_SelectedIDs: 26b6feff
       m_LastClickedID: 0
       m_ExpandedIDs: 76b8feff00bffeffc0edfefffaeffeff70fbffff4034000056340000
@@ -584,6 +597,11 @@ MonoBehaviour:
       m_LastClickedID: 0
       m_ExpandedIDs: 24b5ffff
 >>>>>>> Removed faulty sprites
+=======
+      m_SelectedIDs: 68400000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 5afbffff
+>>>>>>> Reimported Draft sprites
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -885,6 +903,7 @@ MonoBehaviour:
 =======
     scrollPos: {x: 0, y: 35}
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_SelectedIDs: be380000
     m_LastClickedID: 14526
     m_ExpandedIDs: 000000008e380000903800009238000094380000ba38000000ca9a3b
@@ -894,6 +913,11 @@ MonoBehaviour:
     m_LastClickedID: 22036
     m_ExpandedIDs: 00000000e2550000e4550000e6550000e85500001056000000ca9a3b
 >>>>>>> Removed faulty sprites
+=======
+    m_SelectedIDs: 363c0000
+    m_LastClickedID: 15414
+    m_ExpandedIDs: 00000000043c0000063c0000083c00000a3c0000323c000000ca9a3b
+>>>>>>> Reimported Draft sprites
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -926,6 +950,7 @@ MonoBehaviour:
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
 <<<<<<< refs/remotes/origin/master
+<<<<<<< refs/remotes/origin/master
     m_ExpandedIDs: 00000000a6350000a8350000aa350000ac350000
 =======
     m_ExpandedIDs: 00000000c0370000c2370000c4370000c6370000
@@ -942,6 +967,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 00000000e2550000e4550000e6550000e8550000
 >>>>>>> Removed faulty sprites
+=======
+    m_ExpandedIDs: 00000000043c0000063c0000083c00000a3c0000
+>>>>>>> Reimported Draft sprites
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
