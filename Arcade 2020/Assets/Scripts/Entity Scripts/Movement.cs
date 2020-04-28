@@ -9,7 +9,9 @@ public class Movement : MonoBehaviour
     public float Speed; 
 
     bool isFrozen = false;
+
     [SerializeField] Vector2 dir;
+
     public Vector2 Dir
     {
         get
@@ -52,8 +54,7 @@ public class Movement : MonoBehaviour
         {
             rig().velocity = Vel;
             Vel *= Acc;
-            Vel *= Fric; // ?Fric = 0.09, or 0.9 or 0.000009
-            //if((int)(Speed *10) == 0 ) { Speed = 0; }
+            Vel *= (1.0f/(1.0f + Fric)); 
         }
         else
         {
