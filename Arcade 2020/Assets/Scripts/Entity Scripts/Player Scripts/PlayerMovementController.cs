@@ -12,9 +12,6 @@ public class PlayerMovementController : Movement
     public KeyCode LEFT;
     public KeyCode RIGHT;
 
-    public GameObject touchingDoor = null;
-    public bool touchingStairs = false;
-
     void Start()
     {
         Fric = 0.0f;
@@ -45,28 +42,5 @@ public class PlayerMovementController : Movement
             Vel = new Vector2(0,0);
         }
         MoveObject();
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) 
-    {
-        if(other.gameObject.GetComponent<Door>())
-        {
-            touchingDoor = other.gameObject;
-        }
-        if(other.gameObject.GetComponent<Stairs>())
-        {
-            touchingStairs = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D other) 
-    {
-        if(other.gameObject.GetComponent<Door>())
-        {
-            touchingDoor = null;
-        }
-        if(other.gameObject.GetComponent<Stairs>())
-        {
-            touchingStairs = false;
-        }
     }
 }
