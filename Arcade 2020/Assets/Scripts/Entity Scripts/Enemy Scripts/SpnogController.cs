@@ -7,8 +7,10 @@ public class SpnogController : Movement
     public GameObject[] players;
     private int targetIndex;
     // Start is called before the first frame update
+
     void Start()
     {
+        type = EnemyType.Spnog;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 

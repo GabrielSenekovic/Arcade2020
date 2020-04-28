@@ -6,7 +6,9 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    public float Speed; 
+    public float Speed;
+
+    [System.NonSerialized]public EnemyType type;
 
     bool isFrozen = false;
     [SerializeField] Vector2 dir;

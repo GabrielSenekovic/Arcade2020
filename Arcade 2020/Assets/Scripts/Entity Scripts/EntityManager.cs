@@ -5,6 +5,19 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
     [SerializeField]List<Movement> entities;
+    [SerializeField]Score score;
+
+    public void Update()
+    {
+        foreach(Movement entity in entities)
+        {
+            //if entity is dead
+            if(false)
+            {
+                score.GetScoreFromEnemy(entity.type);
+            }
+        }
+    }
 
     public void ToggleFreezeAllEntities(bool value)
     {
