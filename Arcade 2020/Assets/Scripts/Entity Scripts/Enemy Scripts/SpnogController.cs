@@ -5,14 +5,71 @@ using UnityEngine;
 public class SpnogController : Movement
 {
     public GameObject[] players;
-    private int targetIndex;
+    [SerializeField]  int targetIndex;
+    public int coolDown;
+    [SerializeField] int time;
+    public float turnDeg = 1.0f;
+    public float fovDeg = 20.0f;
+
+    [Range(1.0f,6.0f)]
+    public float spnogspeed = 4.0f;  
     // Start is called before the first frame update
     void Start()
     {
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 
-        Speed = 4.0f;
+        Speed = spnogspeed;
+        checkAggro();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void turnSpnog()
+    {
+        Vector2 playerPos = new Vector2(players[targetIndex].transform.position.x, players[targetIndex].transform.position.y);
+        Vector2 spnogPos = new Vector2(transform.position.x,transform.position.y);
+        Vector2 spnogToPlayer = spnogPos - playerPos;
+        Vector2 bigMagDir = Dir * spnogToPlayer.magnitude;
+        Vector2 distBetween = spnogToPlayer - bigMagDir; 
+
+        //if(distBetween.magnitude < 0.5f || spnogToPlayer.magnitude < 0.5f) { return; }
+
+        float triangleHeight = Mathf.Sqrt(spnogToPlayer.magnitude * spnogToPlayer.magnitude - distBetween.magnitude * 0.5f * distBetween.magnitude * 0.5f);
+        
+        float angle = Mathf.Atan((distBetween.magnitude * 0.5f)/triangleHeight) * Mathf.Rad2Deg; 
+
+        angle *= 2.0f;
+
+        angle += 180.0f;
+
+        Debug.Log("angle: " + angle + " distBetween: " + distBetween + " bigmagdir: " + bigMagDir);
+
+        Debug.DrawLine
+        ( 
+            transform.position, 
+            transform.position + new Vector3(Dir.x, Dir.y, 0),
+            Color.green,
+            0.1f,
+            true
+        );
+
+        Vector3 Dirv3 = new Vector3(Dir.x, Dir.y, 0);
+
+        Dirv3 = Quaternion.Euler(0, 0, angle) * Dirv3;
+
+        //Dir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+        //Vector2(Mathf.Cos(Mathf.Abs(angle * Mathf.Deg2Rad)), Mathf.Sin(Mathf.Abs(angle * Mathf.Deg2Rad)));
+        Dir = new Vector2(Dirv3.x, Dirv3.y);
+       //?transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90.0f));
+    }
+
+    void checkAggro()
+    {
         float dist2P1;
         dist2P1 = (players[0].transform.position - transform.position).magnitude;
         if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) )
@@ -21,20 +78,16 @@ public class SpnogController : Movement
         } else { targetIndex = 1;}
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate() 
     {
-        Dir = (players[targetIndex].transform.position - transform.position).normalized;
-        
-        Vector3 targ = players[targetIndex].transform.position;
-        targ.z = 0f;
- 
-        Vector3 objectPos = transform.position;
-        targ.x = targ.x - objectPos.x;
-        targ.y = targ.y - objectPos.y;
- 
-        float angle = Mathf.Atan2(targ.y, targ.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90.0f));
+        time++;
+        if(time >= coolDown)
+        {
+            time = 0;
+            checkAggro();
+        }
+
+        turnSpnog();
 
         MoveObject();
     }

@@ -6,13 +6,13 @@ public class PlayerBallController : MonoBehaviour
 {
     public KeyCode SHOOT;
     private float time;
+    public float deltatime = 0.1f;
 
     public List<GameObject> balls = new List<GameObject>();
     void Start(){ }
     
-    void Update() //* fixed update
+    void Update() 
     {
-        time += 0.02f;
         if(Input.GetKeyDown(SHOOT) && balls.Count > 0)
         {
             balls[0].GetComponent<Ball>().isTraveling = true;
@@ -30,7 +30,11 @@ public class PlayerBallController : MonoBehaviour
             }
             balls.Remove(balls[0]);
         }
+    }
 
+    void FixedUpdate() //* fixed update
+    {
+        time += deltatime;
         for( int i = 0; i < balls.Count; i++)
         {
             if(!balls[i].GetComponent<Ball>().isOrbiting )

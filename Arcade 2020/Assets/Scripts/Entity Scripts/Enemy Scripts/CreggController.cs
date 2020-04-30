@@ -18,8 +18,7 @@ public class CreggController : Movement
 
     void FixedUpdate()
     {
-     time++;   
-
+        time++;   
         MoveObject();
     }
 
