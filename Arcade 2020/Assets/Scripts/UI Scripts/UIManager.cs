@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     void OpenOrClose(CanvasGroup UIScreen)
     {
         UIScreen.alpha = UIScreen.alpha > 0 ? 0 : 1;
-        UIScreen.blocksRaycasts = UIScreen.blocksRaycasts == true ? false : true;
+        UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
         entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
     }
 }

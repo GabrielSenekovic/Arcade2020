@@ -11,7 +11,7 @@ public class CreggController : Movement
 
     void Start()
     {
-        type = EnemyType.Cregg;
+        gameObject.GetComponent<HealthManager>().type = EnemyType.Cregg;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Speed = 4.0f;
@@ -34,8 +34,9 @@ public class CreggController : Movement
             time = 0;
         }
 
-        if(other.gameObject.tag == "player1" || other.gameObject.tag == "plater2")
+        if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
+            Debug.Break();
             other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage); 
         } 
     }

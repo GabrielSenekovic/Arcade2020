@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 
     public float Speed;
 
-    [System.NonSerialized]public EnemyType type;
+    
 
     bool isFrozen = false;
 
