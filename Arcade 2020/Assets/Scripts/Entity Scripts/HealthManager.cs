@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-
+[System.NonSerialized]public EnemyType type;
     public int currentHealth;
     public int maxHealth;
     public bool isdead;
@@ -18,7 +18,6 @@ public class HealthManager : MonoBehaviour
     {
         if(currentHealth - damage <= 0)
         {
-            isdead = true;
             OnDeath();
         }
         else { currentHealth -= damage;}

@@ -9,18 +9,6 @@ public class EntityManager : MonoBehaviour
 
     public Team team;
 
-    public void Update()
-    {
-        foreach(Movement entity in entities)
-        {
-            //if entity is dead
-            if(false)
-            {
-                score.GetScoreFromEnemy(entity.type);
-            }
-        }
-    }
-
     public void ToggleFreezeAllEntities(bool value)
     {
         foreach(Movement entity in entities)
@@ -34,7 +22,11 @@ public class EntityManager : MonoBehaviour
         {
             if(entities[i].GetComponent<HealthManager>().isdead)
             {
-                Destroy(entities[i]);
+                score.GetScoreFromEnemy(entities[i].GetComponent<HealthManager>().type);
+
+                GameObject temp = entities[i].gameObject;
+                entities.Remove(entities[i]);
+                Destroy(temp);
                 //! score
             }
         }

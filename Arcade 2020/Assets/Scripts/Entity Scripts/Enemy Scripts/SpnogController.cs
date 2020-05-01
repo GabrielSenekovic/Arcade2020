@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SpnogMovementType
-{
-    Charging = 0,
-    Spinning = 1
-}
 public class SpnogController : Movement
 {
+    public enum SpnogMovementType
+    {
+    Charging = 0,
+    Spinning = 1
+    }
     public SpnogMovementType type = SpnogMovementType.Spinning;
     public GameObject[] players;
     [SerializeField]  int targetIndex;
@@ -29,7 +29,7 @@ public class SpnogController : Movement
 
     void Start()
     {
-        type = EnemyType.Spnog;
+        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.Spnog;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 
