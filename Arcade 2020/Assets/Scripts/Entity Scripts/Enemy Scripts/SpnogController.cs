@@ -9,7 +9,7 @@ public enum SpnogMovementType
 }
 public class SpnogController : Movement
 {
-    public SpnogMovementType type = SpnogMovementType.Spinning;
+    public SpnogMovementType movementType = SpnogMovementType.Spinning;
     public GameObject[] players;
     [SerializeField]  int targetIndex;
     public int coolDown;
@@ -76,7 +76,10 @@ public class SpnogController : Movement
         Vector2 playerPos = new Vector2(players[targetIndex].transform.position.x, players[targetIndex].transform.position.y);
         Vector2 spnogPos = new Vector2(transform.position.x,transform.position.y);
         Vector2 spnogToPlayer = playerPos - spnogPos;
-        
+        if(spnogToPlayer.magnitude > 10)
+        {
+            return;
+        }
         Vector2 bigMagDir = Dir * spnogToPlayer.magnitude;
 
         Vector2 distBetween = spnogToPlayer - bigMagDir; 
@@ -87,13 +90,13 @@ public class SpnogController : Movement
         float angle = Mathf.Atan((distBetween.magnitude * 0.5f)/triangleHeight) * Mathf.Rad2Deg; 
         angle *= 2.0f;
 
-        if(type == SpnogMovementType.Charging)
+        if(movementType == SpnogMovementType.Charging)
         {
             if (angle >= maxAngle && targetPosition != Vector2.zero)
             {
                 rig().constraints = RigidbodyConstraints2D.FreezeAll;
                 targetPosition = Vector2.zero;
-                type = SpnogMovementType.Spinning;
+                movementType = SpnogMovementType.Spinning;
             }
             else if(angle < maxAngle)
             {
@@ -106,7 +109,7 @@ public class SpnogController : Movement
             }
         }
 
-        if(type == SpnogMovementType.Spinning)
+        if(movementType == SpnogMovementType.Spinning)
         {
             Vector3 Dirv3 = new Vector3(Dir.x, Dir.y, 0);
             Dirv3 = Quaternion.Euler(0, 0, rotationSpeed) * Dirv3;
@@ -119,7 +122,7 @@ public class SpnogController : Movement
             Dir = new Vector2(Dirv3.x, Dirv3.y);
             if(angle < minAngle)
             {
-                type = SpnogMovementType.Charging;
+                movementType = SpnogMovementType.Charging;
             }
         }
     }

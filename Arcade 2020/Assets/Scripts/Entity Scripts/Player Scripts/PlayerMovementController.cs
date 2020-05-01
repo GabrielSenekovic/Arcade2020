@@ -43,4 +43,8 @@ public class PlayerMovementController : Movement
             Vel = new Vector2(0,0);
         }
     }
+    void FixedUpdate() 
+    {
+        MoveObject();
+    }
 }

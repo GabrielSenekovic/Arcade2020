@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {
-    [SerializeField]List<Movement> entities;
+    public List<Movement> entities;
     [SerializeField]Score score;
 
-    public Team team;
+    public int amountOfEnemies = 0;
 
+    public Team team;
+/*
     public void Update()
     {
         foreach(Movement entity in entities)
@@ -20,7 +22,7 @@ public class EntityManager : MonoBehaviour
             }
         }
     }
-
+*/
     public void ToggleFreezeAllEntities(bool value)
     {
         foreach(Movement entity in entities)
