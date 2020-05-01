@@ -5,6 +5,7 @@ using UnityEngine;
 public class CreggController : Movement
 {
     private int time;
+    public int creggDamage;
     public enum MoveType {HORIZONTAL, VERTICAL };
     public MoveType movetype;
     void Start()
@@ -30,6 +31,10 @@ public class CreggController : Movement
         //Debug.Log(gameObject.name + " " + Dir);
             time = 0;
         }
-        //* if collide player hurt (attack) 
+
+        if(other.gameObject.tag == "player1" || other.gameObject.tag == "plater2")
+        {
+            other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage); 
+        } 
     }
 }

@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public int currentHealth;
+    public int maxHealth;
+    public bool isdead;
+
+    private void Start() 
     {
-        
+        isdead = false;
+        currentHealth = maxHealth;
+    }
+    public void TakeDamage(int damage)
+    {
+        if(currentHealth - damage <= 0)
+        {
+            isdead = true;
+            OnDeath();
+        }
+        else { currentHealth -= damage;}
     }
 
-    // Update is called once per frame
-    void Update()
+    virtual public void OnDeath()
     {
         
     }

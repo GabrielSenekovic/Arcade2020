@@ -13,4 +13,15 @@ public class EntityManager : MonoBehaviour
             entity.ToggleFrozen(value);
         }
     }
+
+    private void Update() {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            if(entities[i].GetComponent<HealthManager>().isdead)
+            {
+                Destroy(entities[i]);
+                //! score
+            }
+        }
+    }
 }

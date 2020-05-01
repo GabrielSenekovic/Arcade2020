@@ -12,6 +12,10 @@ public class Ball : Movement
    
     public enum OwnedByPlayer{ PLAYER_ONE, PLAYER_TWO};
     public OwnedByPlayer isOn;
+    public int damage = 1;
+
+    [Range(10.0f, 30.0f)]
+    public float flySpeed = 15.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +28,12 @@ public class Ball : Movement
     {
         if(isTraveling && isOn == OwnedByPlayer.PLAYER_ONE)
         {
-            Speed = 15.0f;
+            Speed = flySpeed;
             Dir = (players[1].transform.position - transform.position).normalized;
         }
         else if (isTraveling && isOn == OwnedByPlayer.PLAYER_TWO)
         {
-            Speed = 15.0f;
+            Speed = flySpeed;
             Dir = (players[0].transform.position - transform.position).normalized;
         }
         else
@@ -50,6 +54,10 @@ public class Ball : Movement
         {
             isOn = OwnedByPlayer.PLAYER_TWO;
             isOrbiting = true;
+        }
+        else if(other.CompareTag("enemy"))
+        {
+            other.GetComponent<EnemyHealthController>().TakeDamage(damage);
         }
     }
 }
