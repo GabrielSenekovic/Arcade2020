@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Team : MonoBehaviour
 {
-    public PlayerMovementController[] players;
+    public PlayerCollisionController[] players;
     public uint amountOfKeys = 0;
 
     public bool GetIfBothTouchingDoor()
