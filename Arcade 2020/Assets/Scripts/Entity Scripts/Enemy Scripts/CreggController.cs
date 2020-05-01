@@ -7,8 +7,10 @@ public class CreggController : Movement
     private int time;
     public enum MoveType {HORIZONTAL, VERTICAL };
     public MoveType movetype;
+
     void Start()
     {
+        type = EnemyType.Cregg;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Speed = 4.0f;

@@ -5,18 +5,26 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]CanvasGroup pauseScreen;
+    [SerializeField]CanvasGroup deathScreen;
+
+    [SerializeField]EntityManager entityManager;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            OpenOrClose();
+            OpenOrClose(pauseScreen);
+        }
+        //if team is both dead
+        if(false)
+        {
+            OpenOrClose(deathScreen);
         }
     }
 
-    void OpenOrClose()
+    void OpenOrClose(CanvasGroup UIScreen)
     {
-        Debug.Log("Trying to turn on and off pause screen");
-        pauseScreen.alpha = pauseScreen.alpha > 0 ? 0 : 1;
-        pauseScreen.blocksRaycasts = pauseScreen.blocksRaycasts == true ? false : true;
+        UIScreen.alpha = UIScreen.alpha > 0 ? 0 : 1;
+        UIScreen.blocksRaycasts = UIScreen.blocksRaycasts == true ? false : true;
+        entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
     }
 }

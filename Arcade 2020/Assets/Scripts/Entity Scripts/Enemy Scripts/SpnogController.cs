@@ -26,8 +26,10 @@ public class SpnogController : Movement
 
     Vector2 targetPosition = Vector2.zero; 
     // Start is called before the first frame update
+
     void Start()
     {
+        type = EnemyType.Spnog;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 
