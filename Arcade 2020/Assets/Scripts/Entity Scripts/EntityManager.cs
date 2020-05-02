@@ -29,6 +29,7 @@ public class EntityManager : MonoBehaviour
                 GameObject temp = entities[i].gameObject;
                 entities.Remove(entities[i]);
                 Destroy(temp);
+                amountOfEnemies--;
                 //! score
             }
         }

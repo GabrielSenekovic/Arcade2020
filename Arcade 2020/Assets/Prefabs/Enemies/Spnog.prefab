@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7893899713496737582}
   m_Layer: 0
   m_Name: Spnog
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

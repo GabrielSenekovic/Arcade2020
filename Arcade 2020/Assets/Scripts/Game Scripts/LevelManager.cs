@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
     }
     void Update()
     {
-        if(!battleInitiated)
+        if(currentRoom.roomCleared)
         {
             if(Input.GetKeyDown(KeyCode.O))
             {
@@ -78,10 +78,11 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            if(entityManager.amountOfEnemies == 0)
+            if(entityManager.amountOfEnemies == 0 && battleInitiated)
             {
                 battleInitiated = false;
                 currentRoom.roomCleared = true;
+                currentRoom.RevealItem();
             }
         }
     }
@@ -96,6 +97,7 @@ public class LevelManager : MonoBehaviour
         
         currentFloor++;
         generator.GenerateLevel(this, currentFloor);
+        currentRoom = firstRoom;
 
         floorText.text = "Floor: " + currentFloor;
 
@@ -110,7 +112,7 @@ public class LevelManager : MonoBehaviour
         for(int j = 0; j <= amountOfEnemies; j++)
         {
             GameObject newEnemy = Instantiate(enemies[Random.Range(0, enemies.Count)], 
-            new Vector2(newRoom.transform.position.x + Random.Range(3,18), newRoom.transform.position.y + Random.Range(3,18)),
+            new Vector2(newRoom.transform.position.x + Random.Range(4,17), newRoom.transform.position.y + Random.Range(4,17)),
             Quaternion.identity, newRoom.transform);
             entityManager.entities.Add(newEnemy.GetComponent<Movement>());
             entityManager.amountOfEnemies++;

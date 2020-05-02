@@ -9,7 +9,7 @@ public class SpnogController : Movement
     Charging = 0,
     Spinning = 1
     }
-    public SpnogMovementType type = SpnogMovementType.Spinning;
+    public SpnogMovementType movementType = SpnogMovementType.Spinning;
     public GameObject[] players;
     [SerializeField]  int targetIndex;
     public int coolDown;
