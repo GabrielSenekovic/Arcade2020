@@ -5,7 +5,7 @@ using UnityEngine;
 public class CreggController : Movement
 {
     private int time;
-    public int creggDamage;
+    public int creggDamage = 1;
     public enum MoveType {HORIZONTAL, VERTICAL };
     public MoveType movetype;
 
@@ -15,6 +15,10 @@ public class CreggController : Movement
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Speed = 4.0f;
+        int temp = Random.Range(0,2);
+        if( temp == 1) { movetype = MoveType.HORIZONTAL;} 
+        else {movetype = MoveType.VERTICAL;} 
+
         if( movetype == MoveType.HORIZONTAL) { Dir = new Vector2(1,0); }
         else { Dir = new Vector2(0,1);}
     }
@@ -36,8 +40,7 @@ public class CreggController : Movement
 
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            Debug.Break();
-            other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage); 
+            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(creggDamage); 
         } 
     }
 }

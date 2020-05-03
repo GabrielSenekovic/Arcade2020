@@ -61,7 +61,6 @@ GameObject:
   - component: {fileID: 8952820575542865616}
   - component: {fileID: 8952820575542865620}
   - component: {fileID: 8952820575542865623}
-  - component: {fileID: 9047043807827387331}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: player2
@@ -174,6 +173,7 @@ MonoBehaviour:
   Acc: {x: 0, y: 0}
   Fric: 0
   playerspeed: 5
+  isDowned: 0
   UP: 273
   DOWN: 274
   LEFT: 276
@@ -208,18 +208,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchingDoor: {fileID: 0}
   touchingStairs: 0
---- !u!114 &9047043807827387331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952820575542865617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582208f318cbd9143a77459468502d59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 10
-  isdead: 0

@@ -18,7 +18,8 @@ public class SpnogController : Movement
     public float fovDeg = 20.0f;
 
     [Range(0.0f,6.0f)]
-    public float spnogspeed = 4.0f;
+    public float spnogspeed = 3.0f;
+    public int spnogDamage = 1;
     [SerializeField] float rotationSpeed;
 
     public int maxAngle;
@@ -84,7 +85,7 @@ public class SpnogController : Movement
 
         Vector2 distBetween = spnogToPlayer - bigMagDir; 
 
-        DrawThings(playerPos, spnogPos, distBetween, bigMagDir);
+        //!DrawThings(playerPos, spnogPos, distBetween, bigMagDir);
 
         float triangleHeight = Mathf.Sqrt(spnogToPlayer.magnitude * spnogToPlayer.magnitude - distBetween.magnitude * 0.5f * distBetween.magnitude * 0.5f);
         float angle = Mathf.Atan((distBetween.magnitude * 0.5f)/triangleHeight) * Mathf.Rad2Deg; 
@@ -149,5 +150,14 @@ public class SpnogController : Movement
         turnSpnog();
 
         MoveObject();
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D other) 
+    {
+         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
+        {
+            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+        } 
     }
 }

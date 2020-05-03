@@ -104,7 +104,7 @@ MonoBehaviour:
   vel: {x: 0, y: 0}
   Acc: {x: 0, y: 0}
   Fric: 0
-  creggDamage: 0
+  creggDamage: 1
   movetype: 1
 --- !u!50 &4801573099651461854
 Rigidbody2D:

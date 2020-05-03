@@ -24,6 +24,11 @@ public class PlayerCollisionController : MonoBehaviour
         {
             touchingDoor = other.gameObject;
         }
+        if(other.gameObject.GetComponent<PlayerMovementController>())
+        {
+            other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
+            other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {

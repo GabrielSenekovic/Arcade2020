@@ -55,7 +55,7 @@ public class Ball : Movement
             isOn = OwnedByPlayer.PLAYER_TWO;
             isOrbiting = true;
         }
-        else if(other.CompareTag("enemy"))
+        else if(other.CompareTag("enemy") && isTraveling)
         {
             other.GetComponent<EnemyHealthController>().TakeDamage(damage);
         }

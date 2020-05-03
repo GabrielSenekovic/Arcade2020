@@ -451,6 +451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SHOOT: 303
   deltatime: 0.1
+  orbitDist: 1.75
   balls: []
 --- !u!114 &651495866 stripped
 MonoBehaviour:
@@ -489,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 5
   isdead: 0
 --- !u!1 &740029652
 GameObject:
@@ -907,15 +908,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1871163927}
     m_Modifications:
+    - target: {fileID: 8952820575139688550, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_TagString
+      value: player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575139688552, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865617, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865618, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f3ff1c30a8fb1b54eb49686fbf9f2d7e,
+        type: 3}
     - target: {fileID: 8952820575542865619, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_Constraints
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865620, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
@@ -971,6 +993,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42ea38eae090d464f911d6ad6392fbf2, type: 3}
@@ -1207,6 +1244,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1871163927}
     m_Modifications:
+    - target: {fileID: 4668183146382240045, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_TagString
+      value: player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146382240047, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851048, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2d3ca2001818e0840bc48a2892aa2dad,
+        type: 3}
     - target: {fileID: 4668183146512851049, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
       propertyPath: m_Name
@@ -1271,6 +1324,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851051, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851051, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851052, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_Radius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4668183146512851053, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
@@ -1469,6 +1537,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036866, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036866, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4255977375218036867, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}
       propertyPath: players.Array.data[0]
@@ -1484,6 +1562,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball3
       objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036869, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc244a19df14f514e8f4fa9257266c8e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67d0a4320ee2cc458ad5e61071aab98, type: 3}
 --- !u!4 &1894282755 stripped
@@ -1550,8 +1634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseScreen: {fileID: 1111172809}
-  deathScreen: {fileID: 0}
-  entityManager: {fileID: 0}
+  deathScreen: {fileID: 740029654}
+  entityManager: {fileID: 1839633346}
 --- !u!1 &1962673703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4668183146512851049, guid: 660a298eb8e2113438a93be343201174,
@@ -1572,6 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SHOOT: 32
   deltatime: 0.1
+  orbitDist: 1.75
   balls:
   - {fileID: 2106540467}
   - {fileID: 317264528}
@@ -1613,7 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 5
   isdead: 0
 --- !u!1 &1990079820
 GameObject:
@@ -1826,6 +1911,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4835854730527664226, guid: 0e0f7c03db47238469d97f8575097177,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835854730527664226, guid: 0e0f7c03db47238469d97f8575097177,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835854730527664227, guid: 0e0f7c03db47238469d97f8575097177,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc244a19df14f514e8f4fa9257266c8e,
+        type: 3}
     - target: {fileID: 4835854730527664236, guid: 0e0f7c03db47238469d97f8575097177,
         type: 3}
       propertyPath: m_Name
@@ -1895,6 +1996,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036866, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036866, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4255977375218036867, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}
       propertyPath: players.Array.data[0]
@@ -1910,5 +2021,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball1
       objectReference: {fileID: 0}
+    - target: {fileID: 4255977375218036869, guid: c67d0a4320ee2cc458ad5e61071aab98,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc244a19df14f514e8f4fa9257266c8e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67d0a4320ee2cc458ad5e61071aab98, type: 3}

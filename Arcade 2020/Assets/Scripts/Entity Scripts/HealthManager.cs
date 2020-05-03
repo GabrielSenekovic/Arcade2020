@@ -19,6 +19,7 @@ public class HealthManager : MonoBehaviour
         if(currentHealth - damage <= 0)
         {
             OnDeath();
+            currentHealth = 0;
         }
         else { currentHealth -= damage;}
     }

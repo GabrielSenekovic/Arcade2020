@@ -8,12 +8,14 @@ public class PlayerBallController : MonoBehaviour
     private float time;
     public float deltatime = 0.1f;
 
+    public float orbitDist = 1.0f;
+
     public List<GameObject> balls = new List<GameObject>();
     void Start(){ }
     
     void Update() 
     {
-        if(Input.GetKeyDown(SHOOT) && balls.Count > 0)
+        if(Input.GetKeyDown(SHOOT) && balls.Count > 0 && !gameObject.GetComponent<PlayerMovementController>().isDowned)
         {
             balls[0].GetComponent<Ball>().isTraveling = true;
             balls[0].GetComponent<CircleCollider2D>().enabled = true;
@@ -21,12 +23,12 @@ public class PlayerBallController : MonoBehaviour
             if(gameObject.CompareTag("player1"))
             {
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[1].transform.position - transform.position);
-                balls[0].transform.position = transform.position + temp.normalized * 1.0f;
+                balls[0].transform.position = transform.position + temp.normalized * orbitDist;
             }
             if(gameObject.CompareTag("player2"))
             {
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[0].transform.position - transform.position);
-                balls[0].transform.position = transform.position + temp.normalized * 1.0f;
+                balls[0].transform.position = transform.position + temp.normalized * orbitDist;
             }
             balls.Remove(balls[0]);
         }
@@ -44,10 +46,10 @@ public class PlayerBallController : MonoBehaviour
             }
             else
             {
-                Vector3 temp = new Vector3();
-                temp.x = Mathf.Sin(time + 2.0f *(i + 1) * Mathf.PI * (1.0f/balls.Count) );
-                temp.y = Mathf.Cos(time + 2.0f * (i + 1) * Mathf.PI * (1.0f/balls.Count) );
-                balls[i].transform.position = transform.position + temp;
+                Vector3 vecFromPlayer = new Vector3();
+                vecFromPlayer.x = Mathf.Sin(time + 2.0f *(i + 1) * Mathf.PI * (1.0f/balls.Count) );
+                vecFromPlayer.y = Mathf.Cos(time + 2.0f * (i + 1) * Mathf.PI * (1.0f/balls.Count) );
+                balls[i].transform.position = transform.position + vecFromPlayer * orbitDist;
             }
         }
         if(time >= 2.0f * Mathf.PI)
