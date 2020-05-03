@@ -17,6 +17,8 @@ public class CreggController : Movement
         Speed = 4.0f;
         if( movetype == MoveType.HORIZONTAL) { Dir = new Vector2(1,0); }
         else { Dir = new Vector2(0,1);}
+        FindObjectOfType<AudioManager>().Play("CreggShnipp");
+        FindObjectOfType<AudioManager>().Play("CreggWalk");
     }
 
     void FixedUpdate()
@@ -37,7 +39,7 @@ public class CreggController : Movement
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
             Debug.Break();
-            other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage); 
+            other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage);
         } 
     }
 }

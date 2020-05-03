@@ -61,6 +61,7 @@ public class Room : MonoBehaviour
         {
             myItem.gameObject.SetActive(true);
         }
+        FindObjectOfType<AudioManager>().Play("Door");
     }
 
     public void InstantiateDoors(Blueprint blueprints)
