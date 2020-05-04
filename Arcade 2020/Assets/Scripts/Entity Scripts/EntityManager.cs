@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class EntityManager : MonoBehaviour
 {
-    [SerializeField]List<Movement> entities;
+    public List<Movement> entities;
     [SerializeField]Score score;
 
-    public Team team;
+    public int amountOfEnemies = 0;
 
-    public void Update()
-    {
-        foreach(Movement entity in entities)
-        {
-            //if entity is dead
-            if(false)
-            {
-                score.GetScoreFromEnemy(entity.type);
-            }
-        }
-    }
+    public Team team;
 
     public void ToggleFreezeAllEntities(bool value)
     {
         foreach(Movement entity in entities)
         {
             entity.ToggleFrozen(value);
+        }
+    }
+
+    private void Update() {
+        for (int i = 0; i < entities.Count; i++)
+        {
+            if(entities[i].GetComponent<HealthManager>().isdead)
+            {
+                score.GetScoreFromEnemy(entities[i].GetComponent<HealthManager>().type);
+
+                GameObject temp = entities[i].gameObject;
+                entities.Remove(entities[i]);
+                Destroy(temp);
+                amountOfEnemies--;
+                //! score
+            }
         }
     }
 }

@@ -98,6 +98,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -167,18 +168,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
-  Dir: {x: 0, y: 0}
+  dir: {x: 0, y: 0}
   vel: {x: 0, y: 0}
   Acc: {x: 0, y: 0}
   Fric: 0
+  playerspeed: 5
+  isDowned: 0
   UP: 119
   DOWN: 115
   LEFT: 97
   RIGHT: 100
-  SHOOT: 32
-  balls:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!58 &4668183146512851052
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -207,3 +206,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5785c955a62e8a849aa0451417bd9678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchingDoor: {fileID: 0}
+  touchingStairs: 0

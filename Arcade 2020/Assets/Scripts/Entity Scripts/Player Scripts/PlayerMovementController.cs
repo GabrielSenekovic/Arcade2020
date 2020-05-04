@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerMovementController : Movement
 {
-    
+    [Range(1.0f,10.0f)]
+    public float playerspeed = 5.0f;  
+    public bool isDowned = false;
     private float dirx;
     private float diry;
     public KeyCode UP;
@@ -23,7 +25,7 @@ public class PlayerMovementController : Movement
     {
         if(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN))
         {
-            Speed = 5;
+            Speed = playerspeed;
         }
 
         if(Input.anyKey)
@@ -41,6 +43,11 @@ public class PlayerMovementController : Movement
         {
             Vel = new Vector2(0,0);
         }
-        MoveObject();
+    }
+
+    private void FixedUpdate() 
+    {
+        if( !isDowned)
+        MoveObject();    
     }
 }

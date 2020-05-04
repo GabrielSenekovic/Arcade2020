@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402af8e87c56ae94b8ff7c94ceaa4249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallBlock: {fileID: 5990107032442269694, guid: e82b694cdbf71f54292005d8e0b647d0,
-    type: 3}
   door: {fileID: 8011198522655915051, guid: bc78d4495d560c44691312e1b292eb05, type: 3}
   key: {fileID: 6483086451136978034, guid: 6399c1727a3beb6498b1a8dd5dc23601, type: 3}
   stairs: {fileID: 3239159409376077458, guid: f07f1a0cbf73dc745bfae0211081e0ea, type: 3}
+  enemies:
+  - {fileID: 4801573099651461842, guid: 9a67093df4c50054598e9da9a973e303, type: 3}
+  - {fileID: 7681568081088685130, guid: 73b6cc6f05964a74fadd56f42be0b324, type: 3}

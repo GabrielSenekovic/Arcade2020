@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomBuilder : MonoBehaviour
 {
     [SerializeField] Blueprint blueprint;
+    [SerializeField] EntityManager entityManager;
     public void Build(List<Room> rooms, LevelManager level)
     {
         System.DateTime before = System.DateTime.Now;
@@ -17,7 +18,6 @@ public class RoomBuilder : MonoBehaviour
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
         Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
-
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
@@ -74,6 +74,7 @@ public class RoomBuilder : MonoBehaviour
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
         Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
+        chosenRoom.myItem.gameObject.SetActive(false);
     }
     void CloseOpenDoors(List<Room> rooms)
     {

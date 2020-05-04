@@ -10,9 +10,12 @@ public class Room : MonoBehaviour
     public List<GameObject> doors;
     public PickUp myItem = null;
 
+    public bool roomCleared = false;
+
     public void Initialize()
     {
         //This Initialize() function is for the origin room specifically, as it already has its own position
+        roomCleared = true;
         OpenAllEntrances();
         CameraBoundaries = new Vector2Int(20, 20);
         directions = GetComponent<RoomDirections>();
@@ -51,6 +54,14 @@ public class Room : MonoBehaviour
     public RoomDirections GetDirections()
     {
         return directions;
+    }
+    public void RevealItem()
+    {
+        if(myItem)
+        {
+            myItem.gameObject.SetActive(true);
+        }
+        FindObjectOfType<AudioManager>().Play("Door");
     }
 
     public void InstantiateDoors(Blueprint blueprints)
