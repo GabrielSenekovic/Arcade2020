@@ -19,11 +19,15 @@ public class Team : MonoBehaviour
     {
         return players[0].touchingDoor.GetComponent<Door>();
     }
+    public bool GetIfBothPlayersDead()
+    {
+        return players[0].gameObject.GetComponent<PlayerMovementController>().isDowned && players[1].gameObject.GetComponent<PlayerMovementController>().isDowned;
+    }
     public void MoveTeamToNewRoom()
     {
-        Vector2 temp = GetDoor().directionModifier * 5;
-        players[0].transform.position = new Vector3(players[0].transform.position.x + temp.x, players[0].transform.position.y + temp.y, players[0].transform.position.z);
-        players[1].transform.position = new Vector3(players[1].transform.position.x + temp.x, players[1].transform.position.y + temp.y, players[1].transform.position.z);
+        Vector2 temp = GetDoor().directionModifier * 2 + (Vector2)GetDoor().otherDoor.transform.position;
+        players[0].transform.position = new Vector3(temp.x, temp.y, players[0].transform.position.z);
+        players[1].transform.position = new Vector3(temp.x, temp.y, players[1].transform.position.z);
     }
     public void ResetTeam()
     {

@@ -39,7 +39,6 @@ public class CameraMovement : MonoBehaviour
     {
         moving = true;
         targetPosition = new Vector3(transform.position.x + directionModifier.x * 20, transform.position.y + directionModifier.y * 20, transform.position.z);
-        Debug.Log(targetPosition);
         minPosition.x = transform.position.x + directionModifier.x * 20;
         minPosition.y = transform.position.y + directionModifier.y * 20;
         maxPosition.x = transform.position.x + 20;

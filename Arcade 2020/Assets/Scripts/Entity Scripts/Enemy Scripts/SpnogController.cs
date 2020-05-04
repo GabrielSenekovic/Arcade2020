@@ -134,10 +134,11 @@ public class SpnogController : Movement
     {
         float dist2P1;
         dist2P1 = (players[0].transform.position - transform.position).magnitude;
-        if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) )
+        if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) && !players[0].GetComponent<PlayerMovementController>().isDowned)
         {
             targetIndex = 0;
-        } else { targetIndex = 1;}
+        } 
+        else { targetIndex = 1;}
     }
 
     void FixedUpdate() 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Text floorText;
 
     bool battleInitiated = false;
+
+    [SerializeField] UIManager UI;
 
     void Awake()
     {
@@ -84,6 +87,11 @@ public class LevelManager : MonoBehaviour
                 currentRoom.roomCleared = true;
                 currentRoom.RevealItem();
             }
+        }
+        if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            //UI.OpenOrClose(UI.deathScreen);
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public enum EnemyType
@@ -18,11 +19,18 @@ public enum EnemyType
 }
 public class Score : MonoBehaviour
 {
+    Text scoreText;
     int score = 0;
+
+    void Awake() 
+    {
+        scoreText = GetComponentInChildren<Text>();
+    }
 
     public EnemyScoreEntry[] enemyScores;
     public void GetScoreFromEnemy(EnemyType type)
     {
         score += enemyScores[(int)type].value;
+        scoreText.text = "Score: " + score;
     }
 }
