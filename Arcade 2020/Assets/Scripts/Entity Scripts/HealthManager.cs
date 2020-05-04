@@ -22,6 +22,7 @@ public class HealthManager : MonoBehaviour
             currentHealth = 0;
         }
         else { currentHealth -= damage;}
+        FindObjectOfType<AudioManager>().Play("EnemyHit");
     }
 
     virtual public void OnDeath()

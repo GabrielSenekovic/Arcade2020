@@ -36,6 +36,8 @@ public class SpnogController : Movement
         Dir = new Vector2(1,1); 
         Speed = spnogspeed;
         checkAggro();
+        FindObjectOfType<AudioManager>().Play("SpnogNoice");
+        FindObjectOfType<AudioManager>().Play("SpnogWalk");
     }
 
     // Update is called once per frame

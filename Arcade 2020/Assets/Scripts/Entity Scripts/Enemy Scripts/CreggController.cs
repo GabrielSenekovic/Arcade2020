@@ -21,6 +21,8 @@ public class CreggController : Movement
 
         if( movetype == MoveType.HORIZONTAL) { Dir = new Vector2(1,0); }
         else { Dir = new Vector2(0,1);}
+        FindObjectOfType<AudioManager>().Play("CreggShnipp");
+        FindObjectOfType<AudioManager>().Play("CreggWalk");
     }
 
     void FixedUpdate()
