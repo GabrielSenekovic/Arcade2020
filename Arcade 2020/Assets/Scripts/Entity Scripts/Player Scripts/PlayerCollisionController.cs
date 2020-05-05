@@ -26,7 +26,7 @@ public class PlayerCollisionController : MonoBehaviour
         {
             touchingDoor = other.gameObject;
         }
-        if(other.gameObject.GetComponent<PlayerMovementController>())
+        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
         {
             other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
             other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 

@@ -880,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 35, y: 148}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1330017842
@@ -918,6 +918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865616, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: playerspeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865617, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
@@ -1008,12 +1013,12 @@ PrefabInstance:
     - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
@@ -1167,7 +1172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -120, y: 125}
+  m_AnchoredPosition: {x: -209, y: 275}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1654138847
@@ -1349,12 +1354,12 @@ PrefabInstance:
     - target: {fileID: 4668183146512851051, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4668183146512851051, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4668183146512851052, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
@@ -1371,6 +1376,11 @@ PrefabInstance:
       propertyPath: balls.Array.data[1]
       value: 
       objectReference: {fileID: 317264528}
+    - target: {fileID: 4668183146512851053, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: playerspeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 660a298eb8e2113438a93be343201174, type: 3}
 --- !u!1 &1839633343
@@ -1507,7 +1517,7 @@ PrefabInstance:
     - target: {fileID: 4255977375218036864, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4255977375218036865, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}
@@ -1961,7 +1971,7 @@ PrefabInstance:
     - target: {fileID: 4835854730527664224, guid: 0e0f7c03db47238469d97f8575097177,
         type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4835854730527664225, guid: 0e0f7c03db47238469d97f8575097177,
         type: 3}
@@ -2096,7 +2106,7 @@ PrefabInstance:
     - target: {fileID: 4255977375218036864, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4255977375218036865, guid: c67d0a4320ee2cc458ad5e61071aab98,
         type: 3}

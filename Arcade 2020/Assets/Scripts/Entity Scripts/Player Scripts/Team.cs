@@ -31,10 +31,10 @@ public class Team : MonoBehaviour
     }
     public void ResetTeam()
     {
-        for(int i = 0; i < 1; i++)
+        for(int i = 0; i <= 1; i++)
         {
             players[i].touchingStairs = false;
-            players[i].transform.position = new Vector2(10, 10);
+            players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
         }
     }
 }

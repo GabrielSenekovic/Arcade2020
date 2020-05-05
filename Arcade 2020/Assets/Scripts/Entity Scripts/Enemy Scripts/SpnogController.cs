@@ -14,6 +14,8 @@ public class SpnogController : Movement
     [SerializeField]  int targetIndex;
     public int coolDown;
     [SerializeField] int time;
+    int attackTime = 0;
+    int attackCoolDown = 100;
     public float turnDeg = 1.0f;
     public float fovDeg = 20.0f;
 
@@ -144,6 +146,8 @@ public class SpnogController : Movement
     void FixedUpdate() 
     {
         time++;
+        attackTime++;
+ 
         if(time >= coolDown)
         {
             time = 0;
@@ -158,9 +162,13 @@ public class SpnogController : Movement
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
+        if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+            if( attackTime >= attackCoolDown)
+            {
+                attackTime = 0;
+                other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+            }
         } 
     }
 }
