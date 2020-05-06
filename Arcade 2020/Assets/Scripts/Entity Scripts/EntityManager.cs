@@ -5,7 +5,7 @@ using UnityEngine;
 public class EntityManager : MonoBehaviour
 {
     public List<Movement> entities;
-    [SerializeField]Score score;
+    public Score score;
 
     public int amountOfEnemies = 0;
 

@@ -105,7 +105,7 @@ public class LevelGenerator : MonoBehaviour
         }
         if (possibleEntrancesToOpen.Count > 0)
         {
-            for (uint i = (uint)UnityEngine.Random.Range(0, possibleEntrancesToOpen.Count-1); i < UnityEngine.Random.Range(4 - possibleEntrancesToOpen.Count, 5); i++)
+            for (int i = UnityEngine.Random.Range(0, possibleEntrancesToOpen.Count - 1); i < UnityEngine.Random.Range(i+1, 5); i++)
             {
                 possibleEntrancesToOpen[UnityEngine.Random.Range(0, possibleEntrancesToOpen.Count)].Open = true;
             }

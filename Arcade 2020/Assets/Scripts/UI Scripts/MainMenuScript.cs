@@ -10,10 +10,15 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("play");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void ShowHighScores()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     public void ExitGame()
     {
         Debug.Log("Please do not leave me like this");
+        SaveManager.Save();
         Application.Quit();
     }
 }

@@ -6,5 +6,5 @@ using System;
 [Serializable]
 public class SaveData
 {
-
+    public List<int> highscores = new List<int>(){};
 }
