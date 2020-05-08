@@ -8,7 +8,6 @@ TagManager:
   - player2
   - ball
   - enemy
-  - game
   layers:
   - Default
   - TransparentFX

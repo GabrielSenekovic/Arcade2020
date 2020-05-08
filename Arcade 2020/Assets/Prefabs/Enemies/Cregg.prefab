@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4801573099651461842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.22, y: 11.66, z: -1}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 128860239
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1e82d22f7f6ad1e43ba8653fc36c8aeb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd148be8172aec74da8d3c7797896420, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 62.5, y: 62.5}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -139,9 +139,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Radius: 25
+  m_Radius: 3.5
 --- !u!114 &5631463119093030703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,4 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 1
+  IFrameTime: 0
+  isIFrame: 0
+  IFrameCooldown: 30
   isdead: 0
