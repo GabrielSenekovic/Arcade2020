@@ -52,7 +52,7 @@ public class HealthManager : MonoBehaviour
                 isIFrame = true;
             }
         }
-       
+        FindObjectOfType<AudioManager>().Play("EnemyHit");
     }
 
     virtual public void OnDeath()

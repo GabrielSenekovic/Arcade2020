@@ -14,6 +14,8 @@ public class SpnogController : Movement
     [SerializeField]  int targetIndex;
     public int coolDown;
     [SerializeField] int time;
+    int attackTime = 0;
+    int attackCoolDown = 100;
     public float turnDeg = 1.0f;
     public float fovDeg = 20.0f;
 
@@ -36,6 +38,8 @@ public class SpnogController : Movement
         Dir = new Vector2(1,1); 
         Speed = spnogspeed;
         checkAggro();
+        FindObjectOfType<AudioManager>().Play("SpnogNoice");
+        FindObjectOfType<AudioManager>().Play("SpnogWalk");
     }
 
     // Update is called once per frame
@@ -139,6 +143,8 @@ public class SpnogController : Movement
     void FixedUpdate() 
     {
         time++;
+        attackTime++;
+ 
         if(time >= coolDown)
         {
             time = 0;
@@ -155,7 +161,11 @@ public class SpnogController : Movement
     {
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+            if( attackTime >= attackCoolDown)
+            {
+                attackTime = 0;
+                other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+            }
         } 
     }
 }

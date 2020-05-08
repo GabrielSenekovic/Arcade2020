@@ -13,18 +13,20 @@ public class PlayerCollisionController : MonoBehaviour
             this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
             other.gameObject.GetComponent<Ball>().isTraveling = false;
             other.gameObject.GetComponent<Ball>().isOn =  Ball.OwnedByPlayer.PLAYER_ONE;
+            FindObjectOfType<AudioManager>().Play("BallPassing");
         }
         else if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player2") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
             this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
             other.gameObject.GetComponent<Ball>().isTraveling = false;
             other.gameObject.GetComponent<Ball>().isOn = Ball.OwnedByPlayer.PLAYER_TWO;
+            FindObjectOfType<AudioManager>().Play("BallPassing");
         }
         if(other.gameObject.GetComponent<Door>())
         {
             touchingDoor = other.gameObject;
         }
-        if(other.gameObject.GetComponent<PlayerMovementController>())
+        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
         {
             other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
             other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 

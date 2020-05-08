@@ -23,12 +23,12 @@ public class PlayerMovementController : Movement
 
     void Update()
     {
-        if(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN))
+        if( (Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN)) && !isDowned)
         {
             Speed = playerspeed;
         }
 
-        if(Input.anyKey)
+        if(Input.anyKey && !isDowned)
         {
             dirx = 0; 
             diry = 0;
@@ -47,7 +47,6 @@ public class PlayerMovementController : Movement
 
     private void FixedUpdate() 
     {
-        if( !isDowned)
         MoveObject();    
     }
 }
