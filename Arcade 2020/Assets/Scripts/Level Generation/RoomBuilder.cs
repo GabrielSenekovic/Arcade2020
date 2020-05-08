@@ -6,23 +6,23 @@ public class RoomBuilder : MonoBehaviour
 {
     [SerializeField] Blueprint blueprint;
     [SerializeField] EntityManager entityManager;
-    public void Build(List<Room> rooms, LevelManager level)
+    public void Build(List<Room> rooms, LevelManager level, Vector2 RoomSize)
     {
         System.DateTime before = System.DateTime.Now;
 
         foreach (Room room in rooms)
         {
-            room.InstantiateDoors(blueprint);
+            room.InstantiateDoors(blueprint, RoomSize);
         }
-        ConnectDoors(rooms);
+        ConnectDoors(rooms, RoomSize);
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
-        Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + 10, level.lastRoom.transform.position.y + 10, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
+        Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + RoomSize.x/2, level.lastRoom.transform.position.y + RoomSize.y/2, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
-    void ConnectDoors(List<Room> rooms)
+    void ConnectDoors(List<Room> rooms, Vector2 RoomSize)
     {
         foreach(Room room in rooms)
         {
@@ -31,8 +31,8 @@ public class RoomBuilder : MonoBehaviour
                 foreach(Room connectingRoom in rooms)
                 {
                     if(connectingRoom.transform.position == new Vector3(
-                    room.transform.position.x + door.GetComponent<Door>().directionModifier.x * 20,
-                    room.transform.position.y + door.GetComponent<Door>().directionModifier.y * 20,
+                    room.transform.position.x + door.GetComponent<Door>().directionModifier.x * RoomSize.x,
+                    room.transform.position.y + door.GetComponent<Door>().directionModifier.y * RoomSize.y,
                     room.transform.position.z))
                     {
                         if(door.GetComponent<Door>().directionModifier.x != 0)

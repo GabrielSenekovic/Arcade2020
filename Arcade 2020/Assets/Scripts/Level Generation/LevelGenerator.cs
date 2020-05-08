@@ -17,28 +17,28 @@ public class LevelGenerator : MonoBehaviour
     {
         builder = GetComponent<RoomBuilder>();
     }
-    public void GenerateLevel(LevelManager level, int currentFloor)
+    public void GenerateLevel(LevelManager level, int currentFloor, Vector2 RoomSize)
     {
         System.DateTime before = System.DateTime.Now;
 
         rooms.Add(Instantiate(RoomPrefab, Vector3.zero, Quaternion.identity, transform));
-        rooms[0].Initialize();
+        rooms[0].Initialize(RoomSize);
 
         SpawnRooms(UnityEngine.Random.Range((int)(MinMaxAmountOfRooms.x + currentFloor * floorSizeMultiplier),
-                                (int)(MinMaxAmountOfRooms.y + currentFloor * floorSizeMultiplier)));
+                                (int)(MinMaxAmountOfRooms.y + currentFloor * floorSizeMultiplier)), RoomSize);
 
         level.firstRoom = rooms[0];
         level.lastRoom = rooms[rooms.Count - 1];
 
-        LockDoors(rooms[rooms.Count - 1]);
-        builder.Build(rooms, level);
+        LockDoors(rooms[rooms.Count - 1], RoomSize);
+        builder.Build(rooms, level, RoomSize);
 
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to generate: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
     }
 
-    void SpawnRooms(int amountOfRooms)
+    void SpawnRooms(int amountOfRooms, Vector2 RoomSize)
     {
         System.DateTime before = System.DateTime.Now;
         //this spawns all rooms
@@ -48,10 +48,10 @@ public class LevelGenerator : MonoBehaviour
             rooms.Add(Instantiate(RoomPrefab, transform));
             rooms[i].name = "Room #" + numberOfRooms; numberOfRooms++;
 
-            rooms[i].Initialize(GetNewRoomCoordinates(originRoom.Item1.GetPosition(), originRoom.Item2));
+            rooms[i].Initialize(GetNewRoomCoordinates(originRoom.Item1.GetPosition(), originRoom.Item2, RoomSize), RoomSize);
             
             SetEntrances(originRoom.Item1, rooms[i]);
-            LinkRoom(rooms[i]);
+            LinkRoom(rooms[i], RoomSize);
             OpenRandomEntrances(rooms[i]);
         }
 
@@ -76,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
         }
         return roomsWithOpenDoors[UnityEngine.Random.Range(0, roomsWithOpenDoors.Count - 1)];
     }
-    Vector2 GetNewRoomCoordinates(Vector2 originCoordinates, List<RoomEntrance> openEntrances)
+    Vector2 GetNewRoomCoordinates(Vector2 originCoordinates, List<RoomEntrance> openEntrances, Vector2 RoomSize)
     {
         //This functions chooses one of the unoccupied directions around that room
         //When it does, it should change that rooms m_direction to say that the opposing entrance is both open and spawned
@@ -84,9 +84,9 @@ public class LevelGenerator : MonoBehaviour
         List<Vector2> possibleCoordinates = new List<Vector2> { };
         foreach(RoomEntrance entrance in openEntrances)
         {
-            if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * 20, originCoordinates.y + entrance.DirectionModifier.y * 20)))
+            if(!CheckIfCoordinatesOccupied(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * RoomSize.x, originCoordinates.y + entrance.DirectionModifier.y * RoomSize.y)))
             {
-                possibleCoordinates.Add(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * 20, originCoordinates.y + entrance.DirectionModifier.y * 20));
+                possibleCoordinates.Add(new Vector2(originCoordinates.x + entrance.DirectionModifier.x * RoomSize.x, originCoordinates.y + entrance.DirectionModifier.y * RoomSize.y));
             }
         }
         return possibleCoordinates[UnityEngine.Random.Range(0, possibleCoordinates.Count - 1)];
@@ -111,13 +111,13 @@ public class LevelGenerator : MonoBehaviour
             }
         }
     }
-    void LinkRoom(Room room)
+    void LinkRoom(Room room, Vector2 RoomSize)
     {
         //This function checks if this given room has another spawned room in any direction that it must link to, before it decides if it should link anywhere else
         //It does this by checking if a room in any direction has an open but not spawned gate in its own direction, in which case it opens its own gate in that direction
         for (int i = 0; i < rooms.Count; i++)
         {
-            if(rooms[i].GetPosition() == new Vector2(room.GetPosition().x + 20, room.GetPosition().y))
+            if(rooms[i].GetPosition() == new Vector2(room.GetPosition().x + RoomSize.x, room.GetPosition().y))
             {
                 if (rooms[i].GetDirections().m_directions[2] == null)
                 {
@@ -133,7 +133,7 @@ public class LevelGenerator : MonoBehaviour
                     room.GetDirections().m_directions[1].Spawned = true;
                 }
             }
-            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x - 20, room.GetPosition().y))
+            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x - RoomSize.x, room.GetPosition().y))
             {
                 if(rooms[i].GetDirections().m_directions[1] == null)
                 {
@@ -149,7 +149,7 @@ public class LevelGenerator : MonoBehaviour
                     room.GetDirections().m_directions[2].Spawned = true;
                 }
             }
-            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x, room.GetPosition().y + 20))
+            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x, room.GetPosition().y + RoomSize.y))
             {
                 if (rooms[i].GetDirections().m_directions[3] == null)
                 {
@@ -165,7 +165,7 @@ public class LevelGenerator : MonoBehaviour
                     room.GetDirections().m_directions[0].Spawned = true;
                 }
             }
-            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x, room.GetPosition().y - 20))
+            else if (rooms[i].GetPosition() == new Vector2(room.GetPosition().x, room.GetPosition().y - RoomSize.y))
             {
                 if(rooms[i].GetDirections().m_directions[0] == null)
                 {
@@ -262,7 +262,7 @@ else
         return false;
     }
 
-    void LockDoors(Room originRoom)
+    void LockDoors(Room originRoom, Vector2 RoomSize)
     {
         foreach(RoomEntrance entrance in originRoom.GetDirections().m_directions)
         {
@@ -270,8 +270,8 @@ else
             foreach(Room room in rooms)
             {
                 if(room.transform.position == new Vector3(
-                    originRoom.transform.position.x + entrance.DirectionModifier.x * 20,
-                    originRoom.transform.position.y + entrance.DirectionModifier.y * 20,
+                    originRoom.transform.position.x + entrance.DirectionModifier.x * RoomSize.x,
+                    originRoom.transform.position.y + entrance.DirectionModifier.y * RoomSize.y,
                     originRoom.transform.position.z))
                 {
                     if(entrance.DirectionModifier.x != 0)

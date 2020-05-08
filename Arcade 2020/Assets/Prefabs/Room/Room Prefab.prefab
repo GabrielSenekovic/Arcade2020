@@ -46,12 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca701e2653378b74696350740380ace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallPosition: {fileID: 1848124281996206699, guid: e82b694cdbf71f54292005d8e0b647d0,
-    type: 3}
-  IsBuilt: 0
-  CameraBoundaries: {x: 20, y: 20}
   doors: []
   myItem: {fileID: 0}
+  roomCleared: 0
 --- !u!114 &2886065568409075336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +110,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
