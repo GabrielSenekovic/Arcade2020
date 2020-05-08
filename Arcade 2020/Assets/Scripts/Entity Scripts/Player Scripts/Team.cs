@@ -37,4 +37,9 @@ public class Team : MonoBehaviour
             players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
         }
     }
+
+    public void IncreaseBallAmount()
+    {
+        
+    }
 }

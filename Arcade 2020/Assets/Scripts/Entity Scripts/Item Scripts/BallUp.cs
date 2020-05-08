@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Key : PickUp
+public class BallUp : PickUp
 {
     public override void OnPickUp(GameObject otherObject) 
     {
-        otherObject.gameObject.GetComponentInParent<Team>().amountOfKeys++;
+        transform.parent.transform.gameObject.GetComponent<Team>().IncreaseBallAmount();
     }
 }
