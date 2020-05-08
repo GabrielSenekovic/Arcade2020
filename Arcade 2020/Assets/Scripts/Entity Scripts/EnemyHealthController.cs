@@ -6,13 +6,14 @@ public class EnemyHealthController : HealthManager
 {
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void OnDeath()
     {
-          isdead = true;
+        isdead = true;
+    }
+
+    public override void ChildUpdate()
+    {
+        //! do stuff;
     }
 }
