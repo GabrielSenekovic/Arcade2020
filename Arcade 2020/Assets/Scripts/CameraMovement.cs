@@ -35,13 +35,13 @@ public class CameraMovement : MonoBehaviour
             }
         }
     }
-    public void Move(Vector2 directionModifier)
+    public void Move(Vector2 directionModifier, Vector2 RoomSize)
     {
         moving = true;
-        targetPosition = new Vector3(transform.position.x + directionModifier.x * 20, transform.position.y + directionModifier.y * 20, transform.position.z);
-        minPosition.x = transform.position.x + directionModifier.x * 20;
-        minPosition.y = transform.position.y + directionModifier.y * 20;
-        maxPosition.x = transform.position.x + 20;
-        maxPosition.y = transform.position.y + 20;
+        targetPosition = new Vector3(transform.position.x + directionModifier.x * RoomSize.x, transform.position.y + directionModifier.y * RoomSize.y, transform.position.z);
+        minPosition.x = transform.position.x + directionModifier.x * RoomSize.x;
+        minPosition.y = transform.position.y + directionModifier.y * RoomSize.y;
+        maxPosition.x = transform.position.x + RoomSize.x;
+        maxPosition.y = transform.position.y + RoomSize.y;
     }
 }

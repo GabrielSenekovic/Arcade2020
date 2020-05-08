@@ -998,6 +998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d609ef0e8907043b666177ceae6a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   enemyScores:
   - name: Cregg
     value: 10
@@ -1523,6 +1524,7 @@ MonoBehaviour:
   lastRoom: {fileID: 0}
   team: {fileID: 1871163926}
   cameraM: {fileID: 591912316}
+  RoomSize: {x: 24, y: 20}
   generator: {fileID: 1311885608}
   floorText: {fileID: 1654138847}
   UI: {fileID: 1947919313}
@@ -1891,7 +1893,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1990079821
 MonoBehaviour:
   m_ObjectHideFlags: 0

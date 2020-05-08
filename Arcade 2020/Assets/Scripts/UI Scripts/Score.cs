@@ -20,7 +20,7 @@ public enum EnemyType
 public class Score : MonoBehaviour
 {
     Text scoreText;
-    int score = 0;
+    public int score = 0;
 
     void Awake() 
     {

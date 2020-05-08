@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
 
+    [SerializeField] Vector2 RoomSize;
+
     [SerializeField] LevelGenerator generator;
     EntityManager entityManager;
 
@@ -50,7 +52,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if(!team.GetDoor().locked)
                     {
-                        cameraM.Move(team.GetDoor().directionModifier);
+                        cameraM.Move(team.GetDoor().directionModifier, RoomSize);
                         entityManager.ToggleFreezeAllEntities(true);
                     }
                     else
@@ -90,6 +92,7 @@ public class LevelManager : MonoBehaviour
         }
         if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
         {
+            Game.SaveHighScore(entityManager.score.score);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             //UI.OpenOrClose(UI.deathScreen);
         }
@@ -104,7 +107,7 @@ public class LevelManager : MonoBehaviour
         cameraM.transform.position = new Vector3(10, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;
-        generator.GenerateLevel(this, currentFloor);
+        generator.GenerateLevel(this, currentFloor, RoomSize);
         currentRoom = firstRoom;
 
         floorText.text = "Floor: " + currentFloor;

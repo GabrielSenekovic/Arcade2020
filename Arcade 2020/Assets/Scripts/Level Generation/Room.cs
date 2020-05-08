@@ -5,27 +5,41 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     RoomDirections directions;
-    [SerializeField] Vector2Int CameraBoundaries;
+    Vector2 CameraBoundaries;
 
     public List<GameObject> doors;
     public PickUp myItem = null;
 
     public bool roomCleared = false;
 
-    public void Initialize()
+    public void Initialize(Vector2 RoomSize)
     {
         //This Initialize() function is for the origin room specifically, as it already has its own position
         roomCleared = true;
         OpenAllEntrances();
-        CameraBoundaries = new Vector2Int(20, 20);
+        CameraBoundaries = RoomSize;
         directions = GetComponent<RoomDirections>();
+        AdjustColliders(RoomSize);
     }
 
-    public void Initialize(Vector2 location)
+    public void Initialize(Vector2 location, Vector2 RoomSize)
     {
-        CameraBoundaries = new Vector2Int(20, 20);
+        CameraBoundaries = RoomSize;
         directions = GetComponent<RoomDirections>();
         transform.position = location;
+        AdjustColliders(RoomSize);
+    }
+    public void AdjustColliders(Vector2 RoomSize)
+    {
+        BoxCollider2D[] colliders = GetComponentsInChildren<BoxCollider2D>();
+        colliders[0].offset = new Vector2(0.075f* RoomSize.x, 0.475f*RoomSize.y);
+        colliders[0].size = new Vector2(1, RoomSize.y *0.85f);
+        colliders[1].offset = new Vector2(0.925f * RoomSize.x, 0.475f*RoomSize.y);
+        colliders[1].size = new Vector2(1, RoomSize.y*0.85f);
+        colliders[2].offset = new Vector2(0.5f *RoomSize.x, 0.075f*RoomSize.y);
+        colliders[2].size = new Vector2(RoomSize.x*0.8f, 1);
+        colliders[3].offset = new Vector2(0.5f* RoomSize.x, 0.875f*RoomSize.y);
+        colliders[3].size = new Vector2(RoomSize.x*0.8f, 1);
     }
     public List<RoomEntrance> GetOpenUnspawnedEntrances()
     {
@@ -64,26 +78,26 @@ public class Room : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Door");
     }
 
-    public void InstantiateDoors(Blueprint blueprints)
+    public void InstantiateDoors(Blueprint blueprints, Vector2 RoomSize)
     {
         if(directions.m_directions[0].Open && directions.m_directions[0].Spawned)
         {
-            OnInstantiateDoor(blueprints, 0, 10, 18, 0);
+            OnInstantiateDoor(blueprints, 0, 0.5f * RoomSize.x, 0.9f * RoomSize.y, 0);
         }
         if(directions.m_directions[1].Open && directions.m_directions[1].Spawned)
         {
-            OnInstantiateDoor(blueprints, 1, 19, 9.5f, 270);
+            OnInstantiateDoor(blueprints, 1, 0.95f*RoomSize.x, 0.475f * RoomSize.y, 270);
         }
         if(directions.m_directions[2].Open && directions.m_directions[2].Spawned)
         {
-            OnInstantiateDoor(blueprints, 2, 1, 9.5f, 90);
+            OnInstantiateDoor(blueprints, 2, 0.05f * RoomSize.x, 0.475f * RoomSize.y, 90);
         }
         if(directions.m_directions[3].Open && directions.m_directions[3].Spawned)
         {
-            OnInstantiateDoor(blueprints, 3, 10, 1, 180);
+            OnInstantiateDoor(blueprints, 3, 0.5f * RoomSize.x, 0.05f * RoomSize.y, 180);
         }
     }
-    void OnInstantiateDoor(Blueprint blueprints, int i, int Xoffset, float Yoffset, int rotation)
+    void OnInstantiateDoor(Blueprint blueprints, int i, float Xoffset, float Yoffset, int rotation)
     {
         GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + Xoffset, transform.position.y + Yoffset), Quaternion.identity, transform);
         door.transform.Rotate(new Vector3(0, 0, rotation), Space.Self);

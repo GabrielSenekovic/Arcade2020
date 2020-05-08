@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca701e2653378b74696350740380ace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraBoundaries: {x: 20, y: 20}
   doors: []
   myItem: {fileID: 0}
   roomCleared: 0
