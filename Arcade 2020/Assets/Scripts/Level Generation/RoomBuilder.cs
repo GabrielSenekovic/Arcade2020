@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoomBuilder : MonoBehaviour
 {
     [SerializeField] Blueprint blueprint;
-    [SerializeField] EntityManager entityManager;
     public void Build(List<Room> rooms, LevelManager level, Vector2 RoomSize)
     {
         System.DateTime before = System.DateTime.Now;

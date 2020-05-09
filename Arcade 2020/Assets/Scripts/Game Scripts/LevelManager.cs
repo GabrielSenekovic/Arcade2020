@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public List<GameObject> enemies;
-    public Room firstRoom;
-    public Room lastRoom;
+    [System.NonSerialized]public Room firstRoom;
+    [System.NonSerialized]public Room lastRoom;
 
     Room currentRoom;
     [SerializeField] Team team;
@@ -16,22 +15,19 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Vector2 RoomSize;
 
-    [SerializeField] LevelGenerator generator;
+    LevelGenerator generator;
     EntityManager entityManager;
 
     Vector2Int roomDimensions = new Vector2Int(0,0);
 
     int currentFloor = 0;
 
-    [SerializeField] Text floorText;
-
-    bool battleInitiated = false;
-
-    [SerializeField] UIManager UI;
+    public UIManager UI;
 
     void Awake()
     {
         entityManager = GetComponent<EntityManager>();
+        generator = GetComponent<LevelGenerator>();
     }
 
     void Start()
@@ -75,24 +71,25 @@ public class LevelManager : MonoBehaviour
                 currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
                 if(!currentRoom.roomCleared)
                 {
-                StartCoroutine(spawnEnemies(currentRoom));
+                    StartCoroutine(entityManager.spawnEnemies(currentRoom));
                 }
+                UI.minimap.AddRoomToMap(currentRoom.GetPosition());
                 team.MoveTeamToNewRoom();
                 entityManager.ToggleFreezeAllEntities(false);
             }
         }
         else
         {
-            if(entityManager.amountOfEnemies == 0 && battleInitiated)
+            if(entityManager.amountOfEnemiesSpawned == 0 && entityManager.battleInitiated)
             {
-                battleInitiated = false;
+                entityManager.battleInitiated = false;
                 currentRoom.roomCleared = true;
                 currentRoom.RevealItem();
             }
         }
         if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
         {
-            Game.SaveHighScore(entityManager.score.score);
+            Game.SaveHighScore(UI.score.score);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             //UI.OpenOrClose(UI.deathScreen);
         }
@@ -104,35 +101,16 @@ public class LevelManager : MonoBehaviour
 
         if(currentFloor>0){generator.DestroyLevel();};
         team.ResetTeam();
-        cameraM.transform.position = new Vector3(10, 9.5f, cameraM.transform.position.z);
+        cameraM.transform.position = new Vector3(12, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;
         generator.GenerateLevel(this, currentFloor, RoomSize);
         currentRoom = firstRoom;
 
-        floorText.text = "Floor: " + currentFloor;
+        UI.floorText.text = "Floor: " + currentFloor;
 
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
-    }
-    IEnumerator spawnEnemies(Room newRoom)
-    {
-        yield return new WaitForSeconds(2);
-        int amountOfEnemies = Random.Range(1,4);
-        for(int j = 0; j <= amountOfEnemies; j++)
-        {
-            GameObject newEnemy = Instantiate(enemies[Random.Range(0, enemies.Count)], 
-            new Vector2(newRoom.transform.position.x + Random.Range(4,17), newRoom.transform.position.y + Random.Range(4,17)),
-            Quaternion.identity, newRoom.transform);
-            entityManager.entities.Add(newEnemy.GetComponent<Movement>());
-            entityManager.amountOfEnemies++;
-            if(newEnemy.GetComponent<SpnogController>())
-            {
-                newEnemy.GetComponent<SpnogController>().players[0] = team.players[0].gameObject;
-                newEnemy.GetComponent<SpnogController>().players[1] = team.players[1].gameObject;
-            }
-        }
-        battleInitiated = true;
     }
 }

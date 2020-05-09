@@ -17,9 +17,6 @@ public class PlayerBallController : MonoBehaviour
     {
         if(Input.GetKeyDown(SHOOT) && balls.Count > 0 && !gameObject.GetComponent<PlayerMovementController>().isDowned)
         {
-            balls[0].GetComponent<Ball>().isTraveling = true;
-            balls[0].GetComponent<CircleCollider2D>().enabled = true;
-            balls[0].GetComponent<Ball>().isOrbiting = false;
             if(gameObject.CompareTag("player1"))
             {
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[1].transform.position - transform.position);
@@ -30,6 +27,9 @@ public class PlayerBallController : MonoBehaviour
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[0].transform.position - transform.position);
                 balls[0].transform.position = transform.position + temp.normalized * orbitDist;
             }
+            balls[0].GetComponent<Ball>().isTraveling = true;
+            balls[0].GetComponent<CircleCollider2D>().enabled = true;
+            balls[0].GetComponent<Ball>().isOrbiting = false;
             balls.Remove(balls[0]);
         }
     }

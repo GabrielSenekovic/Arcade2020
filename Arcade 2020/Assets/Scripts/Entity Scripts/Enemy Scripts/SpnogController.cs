@@ -43,10 +43,7 @@ public class SpnogController : Movement
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update(){}
 
     void DrawThings(Vector2 PlayerPosition, Vector2 SpnogPosition, Vector2 DistanceBetween, Vector2 BigMac)
     {
@@ -76,7 +73,7 @@ public class SpnogController : Movement
         );
     }
 
-    void turnSpnog()
+    void TurnSpnog()
     {
         Vector2 playerPos = new Vector2(players[targetIndex].transform.position.x, players[targetIndex].transform.position.y);
         Vector2 spnogPos = new Vector2(transform.position.x,transform.position.y);
@@ -136,11 +133,11 @@ public class SpnogController : Movement
     {
         float dist2P1;
         dist2P1 = (players[0].transform.position - transform.position).magnitude;
-        if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) && !players[0].GetComponent<PlayerMovementController>().isDowned)
-        {
+        if( dist2P1 < Vector3.Distance(players[1].transform.position, transform.position) )
+        {   
+            if(!players[0].GetComponent<PlayerMovementController>().isDowned)
             targetIndex = 0;
-        } 
-        else { targetIndex = 1;}
+        } else if(!players[1].GetComponent<PlayerMovementController>().isDowned) { targetIndex = 1;}
     }
 
     void FixedUpdate() 
@@ -154,7 +151,7 @@ public class SpnogController : Movement
             checkAggro();
         }
 
-        turnSpnog();
+        TurnSpnog();
 
         MoveObject();
     }

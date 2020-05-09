@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField]CanvasGroup pauseScreen;
     public CanvasGroup deathScreen;
+    public Minimap minimap;
+
+    public Score score;
+
+    public Text floorText;
 
     [SerializeField]EntityManager entityManager;
     void Update()
