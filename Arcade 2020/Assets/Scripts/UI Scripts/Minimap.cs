@@ -4,26 +4,41 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    List<Vector2> addedRooms = new List<Vector2>(){};
+    public List<GameObject> addedRooms = new List<GameObject>(){};
     [SerializeField] GameObject roomIcon;
     [SerializeField] Transform mapParent;
 
-    public float revealTime;
+    public GameObject currentRoom;
 
-    private void Awake() 
-    {
-        addedRooms.Add(new Vector2(0,0));
-    }
     public void AddRoomToMap(Vector2 newLocation)
     {
-        if(!addedRooms.Contains(newLocation))
+        for(int i = 0; i < addedRooms.Count; i++)
         {
-            addedRooms.Add(newLocation);
-            Instantiate(roomIcon, new Vector3(newLocation.x + 12, newLocation.y + 9.5f, roomIcon.transform.position.z), Quaternion.identity, mapParent);
+            if((Vector2)addedRooms[i].transform.position != new Vector2(newLocation.x + 12, newLocation.y + 9.5f))
+            {
+                GameObject newIcon = Instantiate(roomIcon, new Vector3(newLocation.x + 12, newLocation.y + 9.5f, -10), Quaternion.identity, mapParent);
+                addedRooms.Add(newIcon);
+                currentRoom = newIcon;
+                return;
+            }
+            else
+            {
+                currentRoom = addedRooms[i];
+            }
         }
-        else
+    }
+    public void ResetMap()
+    {
+        if(addedRooms.Count > 1)
         {
-            return;
+            for(int i = addedRooms.Count -1; i >= 0; i--)
+            {
+                Debug.Log(i);
+                GameObject temp = addedRooms[i];
+                addedRooms.RemoveAt(i);
+                Destroy(temp);
+            }
         }
+        addedRooms.Add(Instantiate(roomIcon, new Vector3(12, 9.5f, -10), Quaternion.identity, mapParent));
     }
 }

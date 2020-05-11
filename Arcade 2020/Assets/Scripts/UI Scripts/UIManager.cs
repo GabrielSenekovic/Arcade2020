@@ -29,10 +29,22 @@ public class UIManager : MonoBehaviour
         entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
     }
 
-    public IEnumerator RevealMap()
+    public IEnumerator RevealMap(float time, bool roomCleared)
     {
         minimap.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(minimap.revealTime);
-        minimap.gameObject.SetActive(false);
+        SpriteRenderer mapRend = minimap.currentRoom.GetComponent<SpriteRenderer>();
+        Color originalColor = mapRend.color;
+
+        for(int i = 0; i < 3; i++)
+        {
+            yield return new WaitForSecondsRealtime(time/6);
+            mapRend.color = new Color(originalColor.r + 0.2f,originalColor.g + 0.4f,originalColor.b,1);
+            yield return new WaitForSecondsRealtime(time/6);
+            mapRend.color = originalColor;
+        }
+        if(!roomCleared)
+        { 
+            minimap.gameObject.SetActive(false);
+        }
     }
 }

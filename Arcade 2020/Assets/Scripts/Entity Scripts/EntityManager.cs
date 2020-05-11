@@ -36,9 +36,9 @@ public class EntityManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator spawnEnemies(Room newRoom)
+    public IEnumerator spawnEnemies(Room newRoom, float time)
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(time);
         int amountOfEnemiesToSpawn = Random.Range(1,4);
         for(int j = 0; j <= amountOfEnemiesToSpawn; j++)
         {

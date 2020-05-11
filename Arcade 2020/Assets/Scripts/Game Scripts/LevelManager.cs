@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     [System.NonSerialized]public Room firstRoom;
     [System.NonSerialized]public Room lastRoom;
 
+    public float enemyLoadTime;
+
     Room currentRoom;
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
@@ -71,10 +73,10 @@ public class LevelManager : MonoBehaviour
                 currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
                 if(!currentRoom.roomCleared)
                 {
-                    StartCoroutine(entityManager.spawnEnemies(currentRoom));
+                    StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime));
                 }
-                UI.StartCoroutine(UI.RevealMap());
                 UI.minimap.AddRoomToMap(currentRoom.GetPosition());
+                UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
                 team.MoveTeamToNewRoom();
                 entityManager.ToggleFreezeAllEntities(false);
             }
@@ -85,6 +87,7 @@ public class LevelManager : MonoBehaviour
             {
                 entityManager.battleInitiated = false;
                 currentRoom.roomCleared = true;
+                UI.minimap.gameObject.SetActive(true);
                 currentRoom.RevealItem();
             }
         }
@@ -101,12 +104,14 @@ public class LevelManager : MonoBehaviour
         System.DateTime before = System.DateTime.Now;
 
         if(currentFloor>0){generator.DestroyLevel();};
+        UI.minimap.ResetMap();
         team.ResetTeam();
         cameraM.transform.position = new Vector3(12, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;
         generator.GenerateLevel(this, currentFloor, RoomSize);
         currentRoom = firstRoom;
+        UI.RevealMap(enemyLoadTime, true);
 
         UI.floorText.text = "Floor: " + currentFloor;
 
