@@ -17,7 +17,6 @@ public class PickUp : MonoBehaviour
         if(other.gameObject.GetComponent<PlayerMovementController>())
         {
             OnPickUp(other.gameObject);
-            Destroy(gameObject);
         }
     }
 }

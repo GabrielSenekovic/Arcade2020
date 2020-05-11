@@ -5,7 +5,29 @@ using UnityEngine;
 public class Team : MonoBehaviour
 {
     public PlayerCollisionController[] players;
+
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] List<GameObject> powerUpBalls;
     public uint amountOfKeys = 0;
+
+    private void Start() 
+    {
+        for(int i = 0; i < 1; i++)
+        {
+            GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
+            newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
+            newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
+            players[0].GetComponent<PlayerBallController>().balls.Add(newBall);
+        }
+        GameObject newBall2 = Instantiate(powerUpBalls[0], players[0].transform.position, Quaternion.identity, transform);
+        players[0].GetComponent<PlayerBallController>().balls.Add(newBall2);
+        newBall2.GetComponent<Ball>().players[0] = players[0].gameObject;
+        newBall2.GetComponent<Ball>().players[1] = players[1].gameObject;
+        GameObject newBall3 = Instantiate(powerUpBalls[1], players[0].transform.position, Quaternion.identity, transform);
+        players[0].GetComponent<PlayerBallController>().balls.Add(newBall3);
+        newBall3.GetComponent<Ball>().players[0] = players[0].gameObject;
+        newBall3.GetComponent<Ball>().players[1] = players[1].gameObject;
+    }
 
     public bool GetIfBothTouchingDoor()
     {
@@ -38,8 +60,30 @@ public class Team : MonoBehaviour
         }
     }
 
-    public void IncreaseBallAmount()
+    public void IncreaseBallAmount(GameObject player)
     {
-        
+        GameObject newBall = Instantiate(ballPrefab, player.transform.position, Quaternion.identity, transform);
+        newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
+        newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
+        player.GetComponent<PlayerBallController>().balls.Add(newBall);
+    }
+
+    public bool PowerUpBall(GameObject player, PowerUpType typeToChangeTo)
+    {
+        foreach(GameObject ball in player.GetComponent<PlayerBallController>().balls)
+        {
+            if(ball.GetComponent<Ball>().myType == PowerUpType.Basic)
+            {
+                player.GetComponent<PlayerBallController>().balls.Remove(ball);
+                Destroy(ball);
+                GameObject newBall = Instantiate(powerUpBalls[(int)typeToChangeTo - 1], player.transform.position, Quaternion.identity, transform); 
+                newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
+                newBall.GetComponent<Ball>().players[1] = players[1].gameObject;              
+                player.GetComponent<PlayerBallController>().balls.Add(newBall);
+                return true;
+            }
+        }
+        Debug.Log("It didnt contain a basic ball");
+        return false;
     }
 }

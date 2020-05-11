@@ -39,7 +39,6 @@ public class EntityManager : MonoBehaviour
     public IEnumerator spawnEnemies(Room newRoom)
     {
         yield return new WaitForSecondsRealtime(2);
-        Debug.Log("Spawn enemies now executing");
         int amountOfEnemiesToSpawn = Random.Range(1,4);
         for(int j = 0; j <= amountOfEnemiesToSpawn; j++)
         {

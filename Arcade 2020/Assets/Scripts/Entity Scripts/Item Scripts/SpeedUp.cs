@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUp : MonoBehaviour
+public class SpeedUp : PickUp
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void OnPickUp(GameObject otherObject) 
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        otherObject.GetComponent<PlayerMovementController>().playerspeed += 0.5f;
+        Destroy(gameObject);
     }
 }

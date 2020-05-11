@@ -6,6 +6,7 @@ public class BallUp : PickUp
 {
     public override void OnPickUp(GameObject otherObject) 
     {
-        transform.parent.transform.gameObject.GetComponent<Team>().IncreaseBallAmount();
+        otherObject.transform.parent.transform.gameObject.GetComponent<Team>().IncreaseBallAmount(otherObject);
+        Destroy(gameObject);
     }
 }

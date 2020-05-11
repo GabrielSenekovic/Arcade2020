@@ -30,6 +30,7 @@ public class PlayerBallController : MonoBehaviour
             balls[0].GetComponent<Ball>().isTraveling = true;
             balls[0].GetComponent<CircleCollider2D>().enabled = true;
             balls[0].GetComponent<Ball>().isOrbiting = false;
+            balls[0].GetComponent<Ball>().OnShoot();
             balls.Remove(balls[0]);
         }
     }

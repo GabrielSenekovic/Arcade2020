@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : Movement
 {
+    public PowerUpType myType;
     public bool isTraveling = false;
     public bool isOrbiting;
 
@@ -24,6 +25,18 @@ public class Ball : Movement
         Dir = new Vector2(1,1);
     }
 
+    public virtual void OnShoot()
+    {
+
+    }
+    protected virtual void OnCatch()
+    {
+
+    }
+    protected virtual void OnAttack(GameObject victim)
+    {
+
+    }
     void Update()
     {
         if(isTraveling && isOn == OwnedByPlayer.PLAYER_ONE)
@@ -40,7 +53,6 @@ public class Ball : Movement
         {
             Speed = 0.0f;
         }
-
         MoveObject();
     }
     private void OnTriggerEnter2D(Collider2D other) 
@@ -49,15 +61,18 @@ public class Ball : Movement
         {
             isOn = OwnedByPlayer.PLAYER_ONE;
             isOrbiting = true;
+            OnCatch();
         }
         else if(other.CompareTag("player2") && isTraveling)
         {
             isOn = OwnedByPlayer.PLAYER_TWO;
             isOrbiting = true;
+            OnCatch();
         }
         else if(other.CompareTag("enemy") && isTraveling)
         {
             other.GetComponent<EnemyHealthController>().TakeDamage(damage);
+            OnAttack(other.gameObject);
         }
     }
 }

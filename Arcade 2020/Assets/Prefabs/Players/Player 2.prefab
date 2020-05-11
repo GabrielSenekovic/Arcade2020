@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8952820575139688552}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 3
 --- !u!1 &8952820575542865617
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +61,8 @@ GameObject:
   - component: {fileID: 8952820575542865616}
   - component: {fileID: 8952820575542865620}
   - component: {fileID: 8952820575542865623}
+  - component: {fileID: 651495865}
+  - component: {fileID: 651495868}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: player2
@@ -77,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 8952820575542865617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children:
   - {fileID: 8952820575139688553}
   m_Father: {fileID: 0}
@@ -123,12 +125,12 @@ SpriteRenderer:
   m_SortingLayerID: 128860239
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 9d0815defb8519644b9fb08e7235742a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -154,7 +156,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8952820575542865616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +174,7 @@ MonoBehaviour:
   vel: {x: 0, y: 0}
   Acc: {x: 0, y: 0}
   Fric: 0
-  playerspeed: 5
+  playerspeed: 6
   isDowned: 0
   UP: 273
   DOWN: 274
@@ -193,7 +195,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 3
 --- !u!114 &8952820575542865623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +210,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchingDoor: {fileID: 0}
   touchingStairs: 0
+--- !u!114 &651495865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952820575542865617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcb22a7db39359479f0f05355059fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SHOOT: 303
+  deltatime: 0.1
+  orbitDist: 1.75
+  balls: []
+--- !u!114 &651495868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952820575542865617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582208f318cbd9143a77459468502d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 5
+  IFrameTime: 0
+  isIFrame: 0
+  IFrameCooldown: 30
+  isdead: 0
