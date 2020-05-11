@@ -90,9 +90,9 @@ public class LevelManager : MonoBehaviour
         }
         if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
         {
+            UI.OpenOrClose(UI.deathScreen);
             Game.SaveHighScore(UI.score.score);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-            //UI.OpenOrClose(UI.deathScreen);
         }
     }
 
