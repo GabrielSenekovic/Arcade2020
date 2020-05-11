@@ -28,4 +28,11 @@ public class UIManager : MonoBehaviour
         UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
         entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
     }
+
+    public IEnumerator RevealMap()
+    {
+        minimap.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(minimap.revealTime);
+        minimap.gameObject.SetActive(false);
+    }
 }

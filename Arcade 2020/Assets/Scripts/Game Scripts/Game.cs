@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
     static public List<int> highscores = new List<int>(){};
     static bool created = false;
 
+    static bool flashingOFF = false;
+
     void Awake()
     {
         if(created)

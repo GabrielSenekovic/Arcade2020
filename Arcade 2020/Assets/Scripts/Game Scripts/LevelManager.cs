@@ -73,6 +73,7 @@ public class LevelManager : MonoBehaviour
                 {
                     StartCoroutine(entityManager.spawnEnemies(currentRoom));
                 }
+                UI.StartCoroutine(UI.RevealMap());
                 UI.minimap.AddRoomToMap(currentRoom.GetPosition());
                 team.MoveTeamToNewRoom();
                 entityManager.ToggleFreezeAllEntities(false);

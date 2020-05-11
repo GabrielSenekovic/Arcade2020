@@ -6,6 +6,9 @@ public class Minimap : MonoBehaviour
 {
     List<Vector2> addedRooms = new List<Vector2>(){};
     [SerializeField] GameObject roomIcon;
+    [SerializeField] Transform mapParent;
+
+    public float revealTime;
 
     private void Awake() 
     {
@@ -16,7 +19,7 @@ public class Minimap : MonoBehaviour
         if(!addedRooms.Contains(newLocation))
         {
             addedRooms.Add(newLocation);
-            Instantiate(roomIcon, new Vector3(newLocation.x + 12, newLocation.y + 9.5f, roomIcon.transform.position.z), Quaternion.identity, transform);
+            Instantiate(roomIcon, new Vector3(newLocation.x + 12, newLocation.y + 9.5f, roomIcon.transform.position.z), Quaternion.identity, mapParent);
         }
         else
         {
