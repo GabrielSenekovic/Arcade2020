@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.O))
             {
-                if(team.GetIfBothTouchingDoor())
+                if(team.GetIfBothTouchingDoor() && !cameraM.moving)
                 {
                     if(!team.GetDoor().locked)
                     {
