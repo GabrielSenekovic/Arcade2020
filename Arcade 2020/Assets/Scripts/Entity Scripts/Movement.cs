@@ -8,8 +8,6 @@ public class Movement : MonoBehaviour
 
     public float Speed;
 
-    
-
     bool isFrozen = false;
 
     [SerializeField] Vector2 dir;
