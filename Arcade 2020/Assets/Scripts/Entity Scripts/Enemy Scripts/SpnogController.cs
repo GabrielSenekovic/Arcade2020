@@ -162,7 +162,8 @@ public class SpnogController : Movement
             if( attackTime >= attackCoolDown)
             {
                 attackTime = 0;
-                other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage); 
+                other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage);
+                FindObjectOfType<AudioManager>().Play("PlayerDamage");
             }
         } 
     }

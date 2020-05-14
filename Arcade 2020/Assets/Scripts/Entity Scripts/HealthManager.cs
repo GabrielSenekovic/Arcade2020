@@ -50,9 +50,9 @@ public class HealthManager : MonoBehaviour
             {
                 currentHealth -= damage;
                 isIFrame = true;
+                FindObjectOfType<AudioManager>().Play("EnemyHit");
             }
         }
-        FindObjectOfType<AudioManager>().Play("EnemyHit");
     }
 
     virtual public void OnDeath()

@@ -2070,13 +2070,37 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: CreggWalk
-    clip: {fileID: 8300000, guid: 78e385dadeca88f4daf540571a29a39c, type: 3}
-    volume: 0.39
+    clip: {fileID: 8300000, guid: dfb6d4f4d555560478182f1693f7abba, type: 3}
+    volume: 0.45
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: SpnogWalk
     clip: {fileID: 8300000, guid: dfb6d4f4d555560478182f1693f7abba, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LightningBallZap
+    clip: {fileID: 8300000, guid: 10961c4bff5a1724eaf983ddd337e413, type: 3}
+    volume: 0.51
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ScorpacaWalk
+    clip: {fileID: 8300000, guid: dfb6d4f4d555560478182f1693f7abba, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ScorpacaSpit
+    clip: {fileID: 8300000, guid: 201ec1dbeecd82f44a1fdb17e51dc926, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CreggDeath
+    clip: {fileID: 8300000, guid: 071f4404f470f094eb3902325bbfad27, type: 3}
     volume: 0.45
     pitch: 1
     loop: 0
