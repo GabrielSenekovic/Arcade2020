@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]CanvasGroup pauseScreen;
+
+    public CanvasGroup speechBubble;
+    public SpeechBubble speechBubble_Obj;
     public CanvasGroup deathScreen;
     public Minimap minimap;
 
@@ -18,7 +21,16 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            OpenOrClose(pauseScreen);
+            if(speechBubble.alpha == 1 && speechBubble_Obj.messageDone)
+            {
+                OpenOrClose(speechBubble);
+                speechBubble.GetComponentInChildren<Text>().text = "";
+                minimap.gameObject.SetActive(true);
+            }
+            else
+            {
+                OpenOrClose(pauseScreen);
+            }
         }
     }
 

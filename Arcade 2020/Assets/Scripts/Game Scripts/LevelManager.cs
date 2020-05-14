@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     public float enemyLoadTime;
 
+    Manuscript script = new Manuscript();
+
     Room currentRoom;
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
@@ -43,6 +45,9 @@ public class LevelManager : MonoBehaviour
         GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity);
         entityManager.entities.Add(newEnemy.GetComponent<Movement>());
         entityManager.amountOfEnemiesSpawned++;
+        UI.minimap.gameObject.SetActive(false);
+        UI.OpenOrClose(UI.speechBubble);
+        StartCoroutine(UI.speechBubble_Obj.PrintMessage(script.dialogs[0]));
     }
     void Update()
     {
