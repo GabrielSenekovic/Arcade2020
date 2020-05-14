@@ -7,6 +7,7 @@ public class ScorpacaProjectile : Movement
     public int damage;
     void Start()
     {
+        Debug.Log("hello yes");
         Fric = 0.0f;
         Acc = new Vector2(1,1);
     }
@@ -20,12 +21,14 @@ public class ScorpacaProjectile : Movement
     {
         if(!(other.CompareTag("player1") || other.CompareTag("player2")))
         {
-            if(! other.CompareTag("enemy"));
+            if(!other.CompareTag("enemy"))
+            {
             Destroy(gameObject);
+            }
         }
         else
         {
-            other.GetComponent<PlayerHealthController>().TakeDamage(damage);
+            other.GetComponentInParent<PlayerHealthController>().TakeDamage(damage);
         }
     }
 }
