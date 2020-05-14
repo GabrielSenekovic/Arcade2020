@@ -71,9 +71,27 @@ public class RoomBuilder : MonoBehaviour
             }
         }
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
-        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + 10, chosenRoom.transform.position.y + 10, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
+        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + level.RoomSize.x/2, chosenRoom.transform.position.y + level.RoomSize.y/2, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
         chosenRoom.myItem.gameObject.SetActive(false);
+        roomsToChooseBetween.Remove(chosenRoom);
+
+        List<PickUp> pickUpProbabilityList = new List<PickUp>(){};
+
+        foreach(Blueprint.PickUpEntry pickup in blueprint.pickUps)
+        {
+            for(int i = 0; i < (int)pickup.rarity; i++)
+            {
+                pickUpProbabilityList.Add(pickup.item);
+            }
+        }
+
+        foreach(Room room in roomsToChooseBetween)
+        {
+            PickUp newItem = Instantiate(pickUpProbabilityList[Random.Range(0, pickUpProbabilityList.Count)], new Vector3(room.transform.position.x + level.RoomSize.x/2, room.transform.position.y + level.RoomSize.y/2, room.transform.position.z), Quaternion.identity, room.transform);
+            room.myItem = newItem;
+            room.myItem.gameObject.SetActive(false);
+        }
     }
     void CloseOpenDoors(List<Room> rooms)
     {

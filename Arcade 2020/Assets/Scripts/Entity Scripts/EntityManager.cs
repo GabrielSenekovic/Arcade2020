@@ -40,11 +40,17 @@ public class EntityManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
         int amountOfEnemiesToSpawn = Random.Range(1,4);
+        List<Vector2> spawnLocations = new List<Vector2>(){};
         for(int j = 0; j <= amountOfEnemiesToSpawn; j++)
         {
-            GameObject newEnemy = Instantiate(TypesOfEnemies[Random.Range(0, TypesOfEnemies.Count)], 
-            new Vector2(newRoom.transform.position.x + Random.Range(4,17), newRoom.transform.position.y + Random.Range(4,17)),
-            Quaternion.identity, newRoom.transform);
+            Vector2 newSpawnLocation = Vector2.zero;
+            while(!spawnLocations.Contains(newSpawnLocation) && newSpawnLocation == Vector2.zero)
+            {
+                newSpawnLocation = new Vector2(newRoom.transform.position.x + Random.Range(4,20), newRoom.transform.position.y + Random.Range(4,17));
+            }
+            spawnLocations.Add(newSpawnLocation);
+
+            GameObject newEnemy = Instantiate(TypesOfEnemies[Random.Range(0, TypesOfEnemies.Count)], newSpawnLocation, Quaternion.identity, newRoom.transform);
             entities.Add(newEnemy.GetComponent<Movement>());
             amountOfEnemiesSpawned++;
             if(newEnemy.GetComponent<SpnogController>())

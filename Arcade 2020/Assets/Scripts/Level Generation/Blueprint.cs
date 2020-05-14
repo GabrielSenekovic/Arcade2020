@@ -6,5 +6,19 @@ public class Blueprint : MonoBehaviour
 {
     public GameObject door;
     public Key key;
+
+    public enum Rarity
+    {
+        COMMON = 20,
+        UNCOMMON = 8,
+        RARE = 2,
+        VERYRARE = 1
+    }
+    [System.Serializable]public struct PickUpEntry
+    {
+        public PickUp item;
+        public Rarity rarity;
+    }
+    public List<PickUpEntry> pickUps;
     public Stairs stairs;
 }

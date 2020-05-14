@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
 
-    [SerializeField] Vector2 RoomSize;
+    public Vector2 RoomSize;
 
     LevelGenerator generator;
     EntityManager entityManager;
@@ -106,7 +106,7 @@ public class LevelManager : MonoBehaviour
         if(currentFloor>0){generator.DestroyLevel();};
         UI.minimap.ResetMap();
         team.ResetTeam();
-        cameraM.transform.position = new Vector3(12, 9.5f, cameraM.transform.position.z);
+        cameraM.transform.position = new Vector3(RoomSize.x/2, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;
         generator.GenerateLevel(this, currentFloor, RoomSize);
