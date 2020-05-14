@@ -16,7 +16,6 @@ public class SpnogController : Movement
     [SerializeField] int time;
     int attackTime = 0;
     int attackCoolDown = 100;
-    public float turnDeg = 1.0f;
     public float fovDeg = 20.0f;
 
     [Range(0.0f,6.0f)]
