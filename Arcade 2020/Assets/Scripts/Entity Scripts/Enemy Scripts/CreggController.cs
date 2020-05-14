@@ -41,7 +41,8 @@ public class CreggController : Movement
 
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(creggDamage); 
+            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(creggDamage);
+            FindObjectOfType<AudioManager>().Play("PlayerDamage");
         } 
     }
 }

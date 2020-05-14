@@ -50,6 +50,7 @@ public class LightningBall : Ball
                     entity.ToggleFrozen(true);
                     targetedEntities.Add(entity);
                     lightnings.Add(newLightning);
+                    FindObjectOfType<AudioManager>().Play("LightningBallZap");
                 }
             }
         }
