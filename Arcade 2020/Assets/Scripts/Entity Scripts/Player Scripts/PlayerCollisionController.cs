@@ -36,6 +36,7 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Door>())
         {
+            other.gameObject.GetComponent<Door>().LightUp(false);
             touchingDoor = null;
         }
     }

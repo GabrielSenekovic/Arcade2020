@@ -31,7 +31,12 @@ public class Team : MonoBehaviour
 
     public bool GetIfBothTouchingDoor()
     {
-        return ((players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null);
+        bool temp = (players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null;
+        if(players[0].touchingDoor && temp)
+        {
+            players[0].touchingDoor.GetComponent<Door>().LightUp(true);
+        }
+        return temp;
     }
     public bool GetIfBothTouchingStairs()
     {

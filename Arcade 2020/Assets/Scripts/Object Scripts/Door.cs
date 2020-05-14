@@ -9,18 +9,36 @@ public class Door : MonoBehaviour
 
     public Door otherDoor = null;
 
+    [SerializeField]SpriteRenderer doorframe;
+    [SerializeField]SpriteRenderer door;
+
     [SerializeField]Sprite[] doorSprites;
+    //1: not close enough
+    //2: close enough
 
     public void Lock()
     {
         locked = true;
-        GetComponentInChildren<SpriteRenderer>().sprite = doorSprites[1];
     }
     public void Unlock()
     {
         locked = false;
-        GetComponentInChildren<SpriteRenderer>().sprite = doorSprites[0];
         otherDoor.locked = false;
-        otherDoor.GetComponentInChildren<SpriteRenderer>().sprite = doorSprites[0];
+        GetComponentInChildren<Animator>().SetTrigger("Open");
+    }
+    public void OpenClose(bool value)
+    {
+        if(value)
+        {
+            GetComponentInChildren<Animator>().SetTrigger("Open");
+        }
+        else
+        { 
+            GetComponentInChildren<Animator>().SetTrigger("Close");
+        }
+    }
+    public void LightUp(bool value)
+    {
+        doorframe.sprite = value ? doorSprites[1] : doorSprites[0];
     }
 }

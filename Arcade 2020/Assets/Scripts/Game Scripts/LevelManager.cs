@@ -39,14 +39,20 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Seed: " + seed);
 
         ResetLevel();
+
+        GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity);
+        entityManager.entities.Add(newEnemy.GetComponent<Movement>());
+        entityManager.amountOfEnemiesSpawned++;
     }
     void Update()
     {
+        bool isBothTouchingDoor = team.GetIfBothTouchingDoor();
+
         if(currentRoom.roomCleared)
         {
             if(Input.GetKeyDown(KeyCode.O))
             {
-                if(team.GetIfBothTouchingDoor() && !cameraM.moving)
+                if(isBothTouchingDoor && !cameraM.moving)
                 {
                     if(!team.GetDoor().locked)
                     {
@@ -74,6 +80,10 @@ public class LevelManager : MonoBehaviour
                 if(!currentRoom.roomCleared)
                 {
                     StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime));
+                    foreach(GameObject door in currentRoom.doors)
+                    {
+                        door.GetComponent<Door>().OpenClose(false);
+                    }
                 }
                 UI.minimap.AddRoomToMap(currentRoom.GetPosition());
                 UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
@@ -89,6 +99,10 @@ public class LevelManager : MonoBehaviour
                 currentRoom.roomCleared = true;
                 UI.minimap.gameObject.SetActive(true);
                 currentRoom.RevealItem();
+                foreach(GameObject door in currentRoom.doors)
+                {
+                    door.GetComponent<Door>().OpenClose(true);
+                }
             }
         }
         if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
