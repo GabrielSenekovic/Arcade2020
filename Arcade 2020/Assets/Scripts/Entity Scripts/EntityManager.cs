@@ -58,6 +58,11 @@ public class EntityManager : MonoBehaviour
                 newEnemy.GetComponent<SpnogController>().players[0] = team.players[0].gameObject;
                 newEnemy.GetComponent<SpnogController>().players[1] = team.players[1].gameObject;
             }
+            if(newEnemy.GetComponent<ScorpacaController>())
+            {
+                newEnemy.GetComponent<ScorpacaController>().players[0] = team.players[0].gameObject;
+                newEnemy.GetComponent<ScorpacaController>().players[1] = team.players[1].gameObject;
+            }
         }
         battleInitiated = true;
     }
