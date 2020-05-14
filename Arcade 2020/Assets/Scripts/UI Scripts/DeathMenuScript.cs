@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,13 +8,13 @@ public class DeathMenuScript : MonoBehaviour
 {
     public void RestartGame()
     {
-        Debug.Log("Yeah, this restarts the game");
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LevelGenerationTest");
     }
 
     public void EnterMainMenu()
     {
-        Debug.Log("Main menu time");
+        Time.timeScale = 1f;
          SceneManager.LoadScene("MainMenuScene");
     }
         public void ExitGame()
