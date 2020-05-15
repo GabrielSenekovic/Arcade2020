@@ -110,6 +110,8 @@ public class ScorpacaController : Movement
         temp.GetComponent<ScorpacaProjectile>().Vel = (playerPos - scorpacaPosV2).normalized * projectileSpeed;
         temp.transform.rotation = Quaternion.Euler(0,0,Mathf.Acos((playerPos - scorpacaPosV2).normalized.x) * Mathf.Rad2Deg);
         temp.GetComponent<ScorpacaProjectile>().damage = scorpacaDamage;
+        temp.transform.LookAt(players[targetIndex].transform, Vector3.back);
+        temp.transform.rotation =  Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
     }
 
     private void FixedUpdate() 

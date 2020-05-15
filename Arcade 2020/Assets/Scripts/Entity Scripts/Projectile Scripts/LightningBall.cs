@@ -61,7 +61,6 @@ public class LightningBall : Ball
     }
     public IEnumerator LightningOver()
     {
-        Debug.Log("peepee");
         for(int i = 0; i < 4; i++)
         {
             foreach(Movement entity in targetedEntities)
@@ -99,6 +98,5 @@ public class LightningBall : Ball
         targetedEntities.Clear();
         lightnings.Clear();
         GetComponent<Movement>().ToggleFrozen(false);
-        Debug.Log("poopoo");
     }
 }

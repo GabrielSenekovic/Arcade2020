@@ -57,22 +57,17 @@ public class Ball : Movement
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("player1") && isTraveling)
+        if(isTraveling)
         {
-            isOn = OwnedByPlayer.PLAYER_ONE;
-            isOrbiting = true;
-            OnCatch();
-        }
-        else if(other.CompareTag("player2") && isTraveling)
-        {
-            isOn = OwnedByPlayer.PLAYER_TWO;
-            isOrbiting = true;
-            OnCatch();
-        }
-        else if(other.CompareTag("enemy") && isTraveling)
-        {
-            other.GetComponent<EnemyHealthController>().TakeDamage(damage);
-            OnAttack(other.gameObject);
+            if(other.CompareTag("player1") || other.CompareTag("player2"))
+            {
+                OnCatch();
+            }
+            else if(other.CompareTag("enemy"))
+            {
+                other.GetComponent<EnemyHealthController>().TakeDamage(damage);
+                OnAttack(other.gameObject);
+            }
         }
     }
 }
