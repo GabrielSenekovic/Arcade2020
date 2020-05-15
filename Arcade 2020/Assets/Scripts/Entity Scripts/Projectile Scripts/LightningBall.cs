@@ -35,24 +35,25 @@ public class LightningBall : Ball
             {
                 if((transform.position - entity.transform.position).magnitude < attackRadius)
                 {
-                    if(!entity.gameObject.GetComponent<PlayerMovementController>() && entity.gameObject != victim)
+                    if (!entity.gameObject.GetComponent<PlayerMovementController>() && entity.gameObject != victim)
                     {
                         GameObject newLightning = Instantiate(LightningPrefab, victim.transform.position, Quaternion.identity, transform);
 
                         Vector3 vectorToTarget = entity.transform.position - newLightning.transform.position;
 
-                      float newsize = vectorToTarget.magnitude/(newLightning.GetComponent<SpriteRenderer>().bounds.size.x);
+                        float newsize = vectorToTarget.magnitude / (newLightning.GetComponent<SpriteRenderer>().bounds.size.x);
 
                         newLightning.GetComponent<SpriteRenderer>().size = new Vector2(newsize, newLightning.GetComponent<SpriteRenderer>().size.y);
 
                         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-                        Quaternion q = Quaternion.AngleAxis(angle+180, Vector3.forward);
-                        newLightning.transform.rotation = Quaternion.RotateTowards(newLightning.transform.rotation, q,360);
+                        Quaternion q = Quaternion.AngleAxis(angle + 180, Vector3.forward);
+                        newLightning.transform.rotation = Quaternion.RotateTowards(newLightning.transform.rotation, q, 360);
 
-                    entity.ToggleFrozen(true);
-                    targetedEntities.Add(entity);
-                    lightnings.Add(newLightning);
-                    FindObjectOfType<AudioManager>().Play("LightningBallZap");
+                        entity.ToggleFrozen(true);
+                        targetedEntities.Add(entity);
+                        lightnings.Add(newLightning);
+                        FindObjectOfType<AudioManager>().Play("LightningBallZap");
+                    }
                 }
             }
         }
