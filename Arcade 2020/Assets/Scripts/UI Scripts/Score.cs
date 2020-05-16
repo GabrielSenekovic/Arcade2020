@@ -6,10 +6,10 @@ using System;
 
 public enum EnemyType
 {
-    Cregg = 0,
-    Spnog = 1,
+    CREGG = 0,
+    SPNOG = 1,
 
-    Skorpacka = 2
+    SCORPACA = 2
 }
 
 [System.Serializable]public struct EnemyScoreEntry

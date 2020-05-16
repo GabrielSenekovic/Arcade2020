@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 
 public partial class LevelManager : MonoBehaviour
 {
@@ -54,8 +55,8 @@ public partial class LevelManager : MonoBehaviour
             {
                 if(!team.GetDoor().locked)
                 {
-                    cameraM.Move(team.GetDoor().directionModifier, RoomSize);
                     entityManager.ToggleFreezeAllEntities(true);
+                    cameraM.Move(team.GetDoor().directionModifier, RoomSize);
                 }
                 else
                 {
@@ -89,6 +90,8 @@ public partial class LevelManager : MonoBehaviour
 
     void ResetLevel()
     {
+       // GarbageCollector.GCMode = GarbageCollector.Mode.Enabled;
+        //System.GC.Collect();
         System.DateTime before = System.DateTime.Now;
 
         if(currentFloor>0){generator.DestroyLevel();};
@@ -106,6 +109,7 @@ public partial class LevelManager : MonoBehaviour
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
+       // GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
     }
 }
 
@@ -123,6 +127,7 @@ partial class LevelManager
             door.GetComponent<Door>().OpenClose(false);
         }
         entityManager.battleInitiated = true;
+        newEnemy.GetComponent<EnemyController>().Spawn();
         UI.OpenOrClose(UI.speechBubble);
         StartCoroutine(UI.speechBubble_Obj.PrintMessage(script.dialogs[0]));
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpnogController : Movement
+public class SpnogController : EnemyController
 {
     public enum SpnogMovementType
     {
@@ -31,7 +31,7 @@ public class SpnogController : Movement
 
     void Start()
     {
-        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.Spnog;
+        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.SPNOG;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,1); 
@@ -39,9 +39,6 @@ public class SpnogController : Movement
         checkAggro();
         FindObjectOfType<AudioManager>().Play("SpnogNoice");
     }
-
-    // Update is called once per frame
-    void Update(){}
 
     void DrawThings(Vector2 PlayerPosition, Vector2 SpnogPosition, Vector2 DistanceBetween, Vector2 BigMac)
     {
@@ -140,18 +137,25 @@ public class SpnogController : Movement
 
     void FixedUpdate() 
     {
-        time++;
-        attackTime++;
- 
-        if(time >= coolDown)
+        if(!isSpawning)
         {
-            time = 0;
-            checkAggro();
+            time++;
+            attackTime++;
+    
+            if(time >= coolDown)
+            {
+                time = 0;
+                checkAggro();
+            }
+
+            TurnSpnog();
+
+            MoveObject();
         }
-
-        TurnSpnog();
-
-        MoveObject();
+        else
+        {
+            OnSpawning();
+        }
     }
 
 

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpeedUp : PickUp
 {
+    [SerializeField]float speedIncrease;
     public override void OnPickUp(GameObject otherObject) 
     {
-        otherObject.GetComponent<PlayerMovementController>().playerspeed += 0.5f;
+        otherObject.GetComponent<PlayerMovementController>().playerspeed += speedIncrease;
         Destroy(gameObject);
     }
 }

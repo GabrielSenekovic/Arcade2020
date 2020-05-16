@@ -35,7 +35,11 @@ public class UIManager : MonoBehaviour
                 speechBubble.GetComponentInChildren<Text>().text = "";
                 minimap.gameObject.SetActive(true);
             }
-            else
+            else if(speechBubble.alpha == 1 && !speechBubble_Obj.messageDone)
+            {
+                speechBubble_Obj.breakPrint = true;
+            }
+            else if(speechBubble.alpha == 0)
             {
                 OpenOrClose(pauseScreen);
             }

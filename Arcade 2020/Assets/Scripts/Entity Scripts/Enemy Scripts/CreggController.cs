@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreggController : Movement
+public class CreggController : EnemyController
 {
     private int time;
     public int creggDamage = 1;
@@ -11,7 +11,7 @@ public class CreggController : Movement
 
     void Start()
     {
-        gameObject.GetComponent<HealthManager>().type = EnemyType.Cregg;
+        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.CREGG;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Speed = 4.0f;
@@ -26,8 +26,15 @@ public class CreggController : Movement
 
     void FixedUpdate()
     {
-        time++;   
-        MoveObject();
+        if(!isSpawning)
+        {
+            time++;   
+            MoveObject();
+        }
+        else
+        {
+            OnSpawning();
+        }
     }
 
      private void OnCollisionEnter2D(Collision2D other) 

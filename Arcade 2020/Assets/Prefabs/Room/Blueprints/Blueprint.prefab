@@ -47,11 +47,13 @@ MonoBehaviour:
   key: {fileID: 6483086451136978034, guid: 6399c1727a3beb6498b1a8dd5dc23601, type: 3}
   pickUps:
   - item: {fileID: 8325218751262637738, guid: 8b56828780aaedc45850bcf85f40e6ba, type: 3}
-    rarity: 4
+    rarity: 1
   - item: {fileID: 2888848646233066039, guid: 1cfb8ba51710f6a41949ccb3f28ad728, type: 3}
     rarity: 8
   - item: {fileID: 3740590953073654436, guid: 62dfd1be482a41c42bcb451eb23f9459, type: 3}
     rarity: 8
   - item: {fileID: 4783757403200204686, guid: 30eecc448613ed8488a7cf5fc3f7a87a, type: 3}
-    rarity: 10
+    rarity: 8
+  - item: {fileID: 3024751678598658224, guid: c8a3aaac9ec0bac4c85d4c9116e55111, type: 3}
+    rarity: 20
   stairs: {fileID: 3239159409376077458, guid: f07f1a0cbf73dc745bfae0211081e0ea, type: 3}

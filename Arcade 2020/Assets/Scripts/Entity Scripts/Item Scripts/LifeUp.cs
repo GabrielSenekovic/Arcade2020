@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeUp : MonoBehaviour
+public class LifeUp : PickUp
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]int healing;
+    public override void OnPickUp(GameObject player)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player.GetComponent<PlayerHealthController>().Heal(healing);
+        Destroy(gameObject);
     }
 }

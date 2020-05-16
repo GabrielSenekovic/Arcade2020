@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LightningBall : Ball
 {
-    [SerializeField]GameObject LightningPrefab;
+    //[SerializeField]GameObject LightningPrefab;
 
     [SerializeField]float attackRadius;
     [SerializeField]float lightningTime;
 
     List<Movement> targetedEntities = new List<Movement>(){};
-    List<GameObject> lightnings = new List<GameObject>(){};
+    [SerializeField]GameObject[] lightnings = new GameObject[4];
+    //List<GameObject> lightnings = new List<GameObject>(){};
     private Shader shaderGUItext;
     private Shader shaderSpritesDefault;
  
@@ -29,6 +30,7 @@ public class LightningBall : Ball
             targetedEntities.Add(victim.GetComponent<Movement>());
         }
         victim.GetComponent<Movement>().ToggleFrozen(true);
+        int i = 0;
         foreach(Movement entity in victim.transform.parent.transform.parent.GetComponent<EntityManager>().entities)
         {
             if(entity != null)
@@ -37,22 +39,25 @@ public class LightningBall : Ball
                 {
                     if (!entity.gameObject.GetComponent<PlayerMovementController>() && entity.gameObject != victim)
                     {
-                        GameObject newLightning = Instantiate(LightningPrefab, victim.transform.position, Quaternion.identity, transform);
+                       // GameObject newLightning = Instantiate(LightningPrefab, victim.transform.position, Quaternion.identity, transform);
+                        lightnings[i].GetComponent<SpriteRenderer>().color = Color.white;
+                        lightnings[i].transform.position = victim.transform.position;
 
-                        Vector3 vectorToTarget = entity.transform.position - newLightning.transform.position;
+                        Vector3 vectorToTarget = entity.transform.position - lightnings[i].transform.position;
 
-                        float newsize = vectorToTarget.magnitude / (newLightning.GetComponent<SpriteRenderer>().bounds.size.x);
+                        float newsize = vectorToTarget.magnitude / (lightnings[i].GetComponent<SpriteRenderer>().bounds.size.x);
 
-                        newLightning.GetComponent<SpriteRenderer>().size = new Vector2(newsize, newLightning.GetComponent<SpriteRenderer>().size.y);
+                        lightnings[i].GetComponent<SpriteRenderer>().size = new Vector2(newsize, lightnings[i].GetComponent<SpriteRenderer>().size.y);
 
                         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
                         Quaternion q = Quaternion.AngleAxis(angle + 180, Vector3.forward);
-                        newLightning.transform.rotation = Quaternion.RotateTowards(newLightning.transform.rotation, q, 360);
+                        lightnings[i].transform.rotation = Quaternion.RotateTowards(lightnings[i].transform.rotation, q, 360);
 
                         entity.ToggleFrozen(true);
                         targetedEntities.Add(entity);
-                        lightnings.Add(newLightning);
+                        //lightnings.Add(newLightning);
                         FindObjectOfType<AudioManager>().Play("LightningBallZap");
+                        i++;
                     }
                 }
             }
@@ -91,12 +96,12 @@ public class LightningBall : Ball
                 entity.gameObject.GetComponent<EnemyHealthController>().TakeDamage(damage);
             }
         }
+        targetedEntities.Clear();
         foreach(GameObject lightning in lightnings)
         {
-            Destroy(lightning);
+            lightning.GetComponent<SpriteRenderer>().color = Color.clear;
         }
-        targetedEntities.Clear();
-        lightnings.Clear();
+        //lightnings.Clear();
         GetComponent<Movement>().ToggleFrozen(false);
     }
 }

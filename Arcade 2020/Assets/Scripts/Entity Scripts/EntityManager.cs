@@ -24,15 +24,17 @@ public class EntityManager : MonoBehaviour
     private void Update() {
         for (int i = 0; i < entities.Count; i++)
         {
-            if(entities[i].GetComponent<HealthManager>().isdead)
+            if(entities[i].GetComponent<EnemyHealthController>())
             {
-                GetComponent<LevelManager>().UI.score.GetScoreFromEnemy(entities[i].GetComponent<HealthManager>().type);
-
-                GameObject temp = entities[i].gameObject;
-                entities.Remove(entities[i]);
-                Destroy(temp);
-                amountOfEnemiesSpawned--;
-                //! score
+                if(entities[i].GetComponent<EnemyHealthController>().isdead)
+                {
+                    GetComponent<LevelManager>().UI.score.GetScoreFromEnemy(entities[i].GetComponent<EnemyHealthController>().type);
+                    GameObject temp = entities[i].gameObject;
+                    entities.Remove(entities[i]);
+                    Destroy(temp);
+                    amountOfEnemiesSpawned--;
+                    //! score
+                }
             }
         }
     }
@@ -63,6 +65,7 @@ public class EntityManager : MonoBehaviour
                 newEnemy.GetComponent<ScorpacaController>().players[0] = team.players[0].gameObject;
                 newEnemy.GetComponent<ScorpacaController>().players[1] = team.players[1].gameObject;
             }
+            newEnemy.GetComponent<EnemyController>().Spawn();
         }
         battleInitiated = true;
     }

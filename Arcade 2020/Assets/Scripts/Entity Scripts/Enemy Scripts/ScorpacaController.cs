@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorpacaController : Movement
+public class ScorpacaController : EnemyController
 {
     public enum ScorpacaMovementType
     {
@@ -33,7 +33,7 @@ public class ScorpacaController : Movement
     Vector2 targetPosition = Vector2.zero; 
     void Start()
     {
-        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.Skorpacka;
+        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.SCORPACA;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,0); 
