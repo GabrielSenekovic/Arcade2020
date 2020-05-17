@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : Movement
 {
     [System.NonSerialized]public bool isSpawning = false;
-    [SerializeField]SpriteRenderer body;
+    public SpriteRenderer body;
     [SerializeField]Transform shadow;
     Vector2 scale;
     float fallSpeed = 6;

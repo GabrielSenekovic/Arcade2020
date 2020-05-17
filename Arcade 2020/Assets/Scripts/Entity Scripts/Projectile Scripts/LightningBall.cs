@@ -37,7 +37,7 @@ public class LightningBall : Ball
             {
                 if((transform.position - entity.transform.position).magnitude < attackRadius)
                 {
-                    if (!entity.gameObject.GetComponent<PlayerMovementController>() && entity.gameObject != victim)
+                    if (entity.gameObject.GetComponent<EnemyController>() && entity.gameObject != victim)
                     {
                        // GameObject newLightning = Instantiate(LightningPrefab, victim.transform.position, Quaternion.identity, transform);
                         lightnings[i].GetComponent<SpriteRenderer>().color = Color.white;
@@ -66,14 +66,15 @@ public class LightningBall : Ball
     }
     public IEnumerator LightningOver()
     {
+        Debug.Log("Lightning over");
         for(int i = 0; i < 4; i++)
         {
             foreach(Movement entity in targetedEntities)
         {
             if(entity != null)
             {
-                entity.gameObject.GetComponent<SpriteRenderer>().material.shader = shaderGUItext;
-                entity.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                entity.gameObject.GetComponent<EnemyController>().body.material.shader = shaderGUItext;
+                entity.gameObject.GetComponent<EnemyController>().body.color = Color.white;
             }
         }
             yield return new WaitForSecondsRealtime(lightningTime/8);
@@ -81,8 +82,8 @@ public class LightningBall : Ball
         {
             if(entity != null)
             {
-                entity.gameObject.GetComponent<SpriteRenderer>().material.shader = shaderSpritesDefault;
-                entity.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                entity.gameObject.GetComponent<EnemyController>().body.material.shader = shaderSpritesDefault;
+                entity.gameObject.GetComponent<EnemyController>().body.color = Color.white;
             }
         }
             yield return new WaitForSecondsRealtime(lightningTime/8);
