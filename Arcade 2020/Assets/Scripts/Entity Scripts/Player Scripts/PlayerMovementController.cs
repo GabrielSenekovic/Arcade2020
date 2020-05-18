@@ -25,6 +25,7 @@ public class PlayerMovementController : Movement
     {
         if( (Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN)) && !isDowned)
         {
+            GetComponent<Animator>().SetBool("Walking", true);
             Speed = playerspeed;
         }
 
@@ -37,10 +38,19 @@ public class PlayerMovementController : Movement
            if(Input.GetKey(UP)) { diry = 1;}
            if(Input.GetKey(DOWN)) { diry =-1;}
             Dir = new Vector2(dirx, diry);
+            if(dirx < 0 && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
+            else if(dirx > 0 && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+            }
         }
 
         if( !(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN) ) )
         {
+            GetComponent<Animator>().SetBool("Walking", false);
             Vel = new Vector2(0,0);
         }
     }

@@ -84,7 +84,6 @@ public partial class LevelManager : MonoBehaviour
         {
             UI.OpenOrClose(UI.deathScreen);
             Game.SaveHighScore(UI.score.score);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 
