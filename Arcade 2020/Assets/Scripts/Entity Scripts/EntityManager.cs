@@ -66,6 +66,7 @@ public class EntityManager : MonoBehaviour
                 newEnemy.GetComponent<ScorpacaController>().players[1] = team.players[1].gameObject;
             }
             newEnemy.GetComponent<EnemyController>().Spawn();
+            FindObjectOfType<AudioManager>().Play("Falling");
         }
         battleInitiated = true;
     }

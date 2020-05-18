@@ -2818,7 +2818,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990079820}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32912b87be7bd234b8048049936337e7, type: 3}
   m_Name: 
@@ -2898,6 +2898,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: CreggDeath
     clip: {fileID: 8300000, guid: 071f4404f470f094eb3902325bbfad27, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Falling
+    clip: {fileID: 8300000, guid: 01b1e287fe4bc0c4fa4c4f790d28acba, type: 3}
+    volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuConfirm
+    clip: {fileID: 8300000, guid: caddd1bcce72a9948b4dd926edc0a935, type: 3}
     volume: 0.45
     pitch: 1
     loop: 0
