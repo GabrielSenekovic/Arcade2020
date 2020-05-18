@@ -25,7 +25,7 @@ public class PlayerMovementController : Movement
     {
         if( (Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN)) && !isDowned)
         {
-            GetComponent<Animator>().SetBool("Walking", true);
+            GetComponentInChildren<Animator>().SetBool("Walking", true);
             Speed = playerspeed;
         }
 
@@ -50,7 +50,7 @@ public class PlayerMovementController : Movement
 
         if( !(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN) ) )
         {
-            GetComponent<Animator>().SetBool("Walking", false);
+            GetComponentInChildren<Animator>().SetBool("Walking", false);
             Vel = new Vector2(0,0);
         }
     }
