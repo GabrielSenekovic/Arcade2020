@@ -2588,10 +2588,10 @@ MonoBehaviour:
   Fric: 0
   playerspeed: 6
   isDowned: 0
-  UP: 273
-  DOWN: 274
-  LEFT: 276
-  RIGHT: 275
+  UP: 114
+  DOWN: 102
+  LEFT: 103
+  RIGHT: 100
 --- !u!58 &8952820575542865620
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfcb22a7db39359479f0f05355059fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SHOOT: 13
+  SHOOT: 97
   deltatime: 0.1
   orbitDist: 2
   balls: []
