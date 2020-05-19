@@ -31,7 +31,12 @@ public class Team : MonoBehaviour
 
     public bool GetIfBothTouchingDoor()
     {
-        return ((players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null);
+        bool temp = (players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null;
+        if(players[0].touchingDoor && temp)
+        {
+            players[0].touchingDoor.GetComponent<Door>().LightUp(true);
+        }
+        return temp;
     }
     public bool GetIfBothTouchingStairs()
     {
@@ -47,7 +52,7 @@ public class Team : MonoBehaviour
     }
     public void MoveTeamToNewRoom()
     {
-        Vector2 temp = GetDoor().directionModifier * 2 + (Vector2)GetDoor().otherDoor.transform.position;
+        Vector2 temp = GetDoor().directionModifier * 4 + (Vector2)GetDoor().otherDoor.transform.position;
         players[0].transform.position = new Vector3(temp.x, temp.y, players[0].transform.position.z);
         players[1].transform.position = new Vector3(temp.x, temp.y, players[1].transform.position.z);
     }

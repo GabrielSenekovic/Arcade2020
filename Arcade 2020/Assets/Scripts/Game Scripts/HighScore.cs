@@ -10,6 +10,7 @@ public class HighScore : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Game.highscores.Count);
         for(int i = 0; i < highscoreText.Length; i++)
         {
             highscoreText[i].text = (i+1) + ": 000";

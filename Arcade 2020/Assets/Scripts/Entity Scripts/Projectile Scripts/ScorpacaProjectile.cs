@@ -7,7 +7,6 @@ public class ScorpacaProjectile : Movement
     public int damage;
     void Start()
     {
-        Debug.Log("hello yes");
         Fric = 0.0f;
         Acc = new Vector2(1,1);
     }

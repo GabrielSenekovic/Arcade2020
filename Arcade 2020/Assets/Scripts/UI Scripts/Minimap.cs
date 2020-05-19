@@ -40,5 +40,6 @@ public class Minimap : MonoBehaviour
             }
         }
         addedRooms.Add(Instantiate(roomIcon, new Vector3(12, 9.5f, -10), Quaternion.identity, mapParent));
+        currentRoom = addedRooms[0];
     }
 }

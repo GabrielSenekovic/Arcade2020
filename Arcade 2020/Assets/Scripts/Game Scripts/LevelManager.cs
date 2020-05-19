@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 
-public class LevelManager : MonoBehaviour
+public partial class LevelManager : MonoBehaviour
 {
     [System.NonSerialized]public Room firstRoom;
     [System.NonSerialized]public Room lastRoom;
 
     public float enemyLoadTime;
+
+    Manuscript script = new Manuscript();
 
     Room currentRoom;
     [SerializeField] Team team;
@@ -39,68 +42,55 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Seed: " + seed);
 
         ResetLevel();
+
+        PlayTutorial();
     }
     void Update()
     {
+        bool isBothTouchingDoor = team.GetIfBothTouchingDoor();
+
         if(currentRoom.roomCleared)
         {
-            if(Input.GetKeyDown(KeyCode.O))
+            if(isBothTouchingDoor && !cameraM.moving && !cameraM.movementDone)
             {
-                if(team.GetIfBothTouchingDoor() && !cameraM.moving)
+                if(!team.GetDoor().locked)
                 {
-                    if(!team.GetDoor().locked)
+                    entityManager.ToggleFreezeAllEntities(true);
+                    cameraM.Move(team.GetDoor().directionModifier, RoomSize);
+                }
+                else
+                {
+                    if(team.amountOfKeys > 0)
                     {
-                        cameraM.Move(team.GetDoor().directionModifier, RoomSize);
-                        entityManager.ToggleFreezeAllEntities(true);
-                    }
-                    else
-                    {
-                        if(team.amountOfKeys > 0)
-                        {
-                            team.amountOfKeys--;
-                            team.GetDoor().Unlock();
-                        }
+                        team.amountOfKeys--;
+                        team.GetDoor().Unlock();
                     }
                 }
-                if(team.GetIfBothTouchingStairs())
-                {
-                    ResetLevel();
-                }
+            }
+            if(team.GetIfBothTouchingStairs())
+            {
+                ResetLevel();
             }
             if(cameraM.movementDone)
             {
-                cameraM.movementDone = false;
-                currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
-                if(!currentRoom.roomCleared)
-                {
-                    StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime));
-                }
-                UI.minimap.AddRoomToMap(currentRoom.GetPosition());
-                UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
-                team.MoveTeamToNewRoom();
-                entityManager.ToggleFreezeAllEntities(false);
+                OnMoveToNewRoom();
             }
         }
         else
         {
-            if(entityManager.amountOfEnemiesSpawned == 0 && entityManager.battleInitiated)
-            {
-                entityManager.battleInitiated = false;
-                currentRoom.roomCleared = true;
-                UI.minimap.gameObject.SetActive(true);
-                currentRoom.RevealItem();
-            }
+            OnEnemiesDefeated();
         }
         if(team.GetIfBothPlayersDead() && UI.deathScreen.alpha == 0)
         {
             UI.OpenOrClose(UI.deathScreen);
             Game.SaveHighScore(UI.score.score);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
     }
 
     void ResetLevel()
     {
+       // GarbageCollector.GCMode = GarbageCollector.Mode.Enabled;
+        //System.GC.Collect();
         System.DateTime before = System.DateTime.Now;
 
         if(currentFloor>0){generator.DestroyLevel();};
@@ -118,5 +108,61 @@ public class LevelManager : MonoBehaviour
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
+       // GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
     }
+}
+
+partial class LevelManager
+{
+    public void PlayTutorial()
+    {
+        GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity, currentRoom.transform);
+        entityManager.entities.Add(newEnemy.GetComponent<Movement>());
+        entityManager.amountOfEnemiesSpawned++;
+        UI.minimap.gameObject.SetActive(false);
+        currentRoom.roomCleared = false;
+        foreach(GameObject door in currentRoom.doors)
+        {
+            door.GetComponent<Door>().OpenClose(false);
+        }
+        entityManager.battleInitiated = true;
+        newEnemy.GetComponent<EnemyController>().Spawn();
+        UI.OpenOrClose(UI.speechBubble);
+        StartCoroutine(UI.speechBubble_Obj.PrintMessage(script.dialogs[0]));
+    }
+    public void OnMoveToNewRoom()
+    {
+        cameraM.movementDone = false;
+        UI.minimap.currentRoom.GetComponent<SpriteRenderer>().color = UI.colors[0];
+        currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
+        if(!currentRoom.roomCleared)
+        {
+            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime));
+            foreach(GameObject door in currentRoom.doors)
+            {
+                door.GetComponent<Door>().OpenClose(false);
+            }
+        }
+        UI.minimap.AddRoomToMap(currentRoom.GetPosition());
+        UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
+        team.MoveTeamToNewRoom();
+        Debug.Log("Moving team");
+        entityManager.ToggleFreezeAllEntities(false);
+    }
+    public void OnEnemiesDefeated()
+    {
+        if(entityManager.amountOfEnemiesSpawned == 0 && entityManager.battleInitiated)
+        {
+            entityManager.battleInitiated = false;
+            currentRoom.roomCleared = true;
+            UI.minimap.gameObject.SetActive(true);
+            UI.minimap.currentRoom.GetComponent<SpriteRenderer>().color = UI.colors[1];
+            currentRoom.RevealItem();
+            foreach(GameObject door in currentRoom.doors)
+            {
+                door.GetComponent<Door>().OpenClose(true);
+            }
+        }
+    } 
+
 }

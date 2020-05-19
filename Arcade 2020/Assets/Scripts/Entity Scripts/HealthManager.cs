@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-[System.NonSerialized]public EnemyType type;
     public int currentHealth;
     public int maxHealth;
 
@@ -50,9 +49,13 @@ public class HealthManager : MonoBehaviour
             {
                 currentHealth -= damage;
                 isIFrame = true;
+                FindObjectOfType<AudioManager>().Play("EnemyHit");
             }
         }
-        FindObjectOfType<AudioManager>().Play("EnemyHit");
+    }
+    public void Heal(int health)
+    {
+        currentHealth = currentHealth+health > maxHealth? maxHealth: currentHealth+=health;
     }
 
     virtual public void OnDeath()

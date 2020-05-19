@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorpacaController : Movement
+public class ScorpacaController : EnemyController
 {
     public enum ScorpacaMovementType
     {
@@ -33,7 +33,7 @@ public class ScorpacaController : Movement
     Vector2 targetPosition = Vector2.zero; 
     void Start()
     {
-        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.Skorpacka;
+        gameObject.GetComponent<EnemyHealthController>().type = EnemyType.SCORPACA;
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,0); 
@@ -63,7 +63,6 @@ public class ScorpacaController : Movement
         if(scorpacaToPlayer.magnitude > followRange){ movementType = ScorpacaMovementType.FOLLOWING;}
         else if(scorpacaToPlayer.magnitude < fleeRange){ movementType = ScorpacaMovementType.FLEEING;}
         else { movementType = ScorpacaMovementType.SHOOTING;}
-        Debug.Log("mag: " + scorpacaToPlayer.magnitude + " type: " + movementType.ToString() + " "  + scorpacaSpeed);
 
         Speed = scorpacaSpeed;
         if(movementType == ScorpacaMovementType.FLEEING) 
@@ -104,33 +103,45 @@ public class ScorpacaController : Movement
 
     void ShootProjectile()
     {
-        Vector2 playerPos = new Vector2(players[targetIndex].transform.position.x, players[targetIndex].transform.position.y);
-        Vector2 scorpacaPosV2 = new Vector2(transform.position.x, transform.position.y);
-        GameObject temp = Instantiate(projectile, transform.position, Quaternion.identity);
-        temp.GetComponent<ScorpacaProjectile>().Vel = (playerPos - scorpacaPosV2).normalized * projectileSpeed;
-        temp.transform.rotation = Quaternion.Euler(0,0,Mathf.Acos((playerPos - scorpacaPosV2).normalized.x) * Mathf.Rad2Deg);
-        temp.GetComponent<ScorpacaProjectile>().damage = scorpacaDamage;
+        //! --- vector from scorp to target and instantiate scorp ---
+        GameObject scorp = Instantiate(projectile, transform.position, Quaternion.identity);
+        Vector3 vectorToTarget = players[targetIndex].transform.position - scorp.transform.position;
+        //! --- calc rotation towards target ---
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        scorp.transform.rotation = Quaternion.RotateTowards(scorp.transform.rotation, q, 360);
+        //! --- set velocity and damage and rotation ---
+        scorp.GetComponent<ScorpacaProjectile>().Vel = 
+        ((Vector2)players[targetIndex].transform.position - (Vector2)transform.position).normalized * projectileSpeed;
+        scorp.GetComponent<ScorpacaProjectile>().damage = scorpacaDamage;
     }
 
     private void FixedUpdate() 
     {
-        time++;
+        if(!isSpawning)
+        {
+            time++;
  
-        if(time >= AggroCoolDown)
-        {
-            time = 0;
-            CheckAggro();
+            if(time >= AggroCoolDown)
+            {
+                time = 0;
+                CheckAggro();
+            }
+
+            if(attackTime >= 0)
+            {
+                attackTime++;
+            }
+
+            TurnScorpaca();
+
+            Speed = 2;
+            MoveObject();
         }
-
-        if(attackTime >= 0)
+        else
         {
-            attackTime++;
+            OnSpawning();
         }
-
-        TurnScorpaca();
-
-        Speed = 2;
-        MoveObject();
     }
 
     void Update(){}

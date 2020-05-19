@@ -6,7 +6,7 @@ public class PlayerCollisionController : MonoBehaviour
 {
     public GameObject touchingDoor = null;
     public bool touchingStairs = false;
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player1") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
@@ -22,6 +22,9 @@ public class PlayerCollisionController : MonoBehaviour
             other.gameObject.GetComponent<Ball>().isOn = Ball.OwnedByPlayer.PLAYER_TWO;
             FindObjectOfType<AudioManager>().Play("BallPassing");
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if(other.gameObject.GetComponent<Door>())
         {
             touchingDoor = other.gameObject;
@@ -29,6 +32,7 @@ public class PlayerCollisionController : MonoBehaviour
         if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
         {
             other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
+            other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
             other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
         }
     }
@@ -36,6 +40,7 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if(other.gameObject.GetComponent<Door>())
         {
+            other.gameObject.GetComponent<Door>().LightUp(false);
             touchingDoor = null;
         }
     }

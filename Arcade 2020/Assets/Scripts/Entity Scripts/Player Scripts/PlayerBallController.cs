@@ -32,6 +32,7 @@ public class PlayerBallController : MonoBehaviour
             balls[0].GetComponent<Ball>().isOrbiting = false;
             balls[0].GetComponent<Ball>().OnShoot();
             balls.Remove(balls[0]);
+            GetComponentInChildren<Animator>().SetTrigger("Throw");
         }
     }
 

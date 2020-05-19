@@ -25,7 +25,7 @@ public class Game : MonoBehaviour
 
     public static void SaveHighScore(int newScore)
     {
-        Debug.Break();
+        Debug.Log("Saving Highscore");
         for(int i = 0; i < highscores.Count; i++)
         {
             if(newScore > highscores[i])

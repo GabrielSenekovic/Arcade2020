@@ -42,7 +42,11 @@ public class SaveManager : MonoBehaviour
         }
         catch(System.Exception)
         {
-            //This is for handling errors, such as corruptions
+            for(int i = 0; i < 10; i++)
+            {
+                Game.highscores.Add(000);
+            }
+            //This is for handling errors, such as corruptions or when the file couldnt be loaded
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthController : HealthManager
 {
-
+    [System.NonSerialized]public EnemyType type;
     // Update is called once per frame
 
     public override void OnDeath()

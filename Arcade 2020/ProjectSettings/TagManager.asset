@@ -8,6 +8,7 @@ TagManager:
   - player2
   - ball
   - enemy
+  - game
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Shadow
+    uniqueID: 966840403
     locked: 0
   - name: Entities
     uniqueID: 128860239
