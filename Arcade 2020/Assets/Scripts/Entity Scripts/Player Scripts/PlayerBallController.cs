@@ -5,17 +5,21 @@ using UnityEngine;
 public class PlayerBallController : MonoBehaviour
 {
     public KeyCode SHOOT;
+
+    public bool throwing = false;
     private float time;
     public float deltatime = 0.1f;
 
     public float orbitDist = 1.0f;
 
     public List<GameObject> balls = new List<GameObject>();
+
+    [SerializeField]Transform ballHand;
     void Start(){ }
     
     void Update() 
     {
-        if(Input.GetKeyDown(SHOOT) && balls.Count > 0 && !gameObject.GetComponent<PlayerMovementController>().isDowned)
+        if(Input.GetKeyDown(SHOOT) && balls.Count > 0 && !gameObject.GetComponent<PlayerMovementController>().isDowned && !throwing)
         {
             if(gameObject.CompareTag("player1"))
             {
@@ -27,12 +31,13 @@ public class PlayerBallController : MonoBehaviour
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[0].transform.position - transform.position);
                 balls[0].transform.position = transform.position + temp.normalized * orbitDist;
             }
-            balls[0].GetComponent<Ball>().isTraveling = true;
-            balls[0].GetComponent<CircleCollider2D>().enabled = true;
+            balls[0].transform.parent = ballHand; throwing = true;
             balls[0].GetComponent<Ball>().isOrbiting = false;
-            balls[0].GetComponent<Ball>().OnShoot();
-            balls.Remove(balls[0]);
+            balls[0].transform.localPosition = new Vector2(5,0);
+            GetComponentInChildren<PlayerAnimationListener>().currentBall = balls[0];
+            balls.Remove(GetComponentInParent<PlayerBallController>().balls[0]);
             GetComponentInChildren<Animator>().SetTrigger("Throw");
+            GetComponent<Movement>().ToggleFrozen(true);
         }
     }
 
@@ -41,7 +46,7 @@ public class PlayerBallController : MonoBehaviour
         time += deltatime;
         for( int i = 0; i < balls.Count; i++)
         {
-            if(!balls[i].GetComponent<Ball>().isOrbiting )
+            if(!balls[i].GetComponent<Ball>().isOrbiting)
             {
                 balls[i].GetComponent<CircleCollider2D>().enabled = false;
                 balls[i].GetComponent<Ball>().isOrbiting = true;

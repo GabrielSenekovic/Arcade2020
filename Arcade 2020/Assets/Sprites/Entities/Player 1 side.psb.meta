@@ -1,7 +1,706 @@
 fileFormatVersion: 2
 guid: fe440ee03d4c42a478e894380517115f
-DefaultImporter:
+ScriptedImporter:
+  internalIDToNameTable: []
   externalObjects: {}
+  serializedVersion: 2
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Layer 2 Copy 4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1698
+      y: 436
+      width: 260
+      height: 280
+    spriteID: 04f8ee22fb7320b49b488fe494d838b1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1244, y: -104}
+  - name: Layer 45 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1484
+      y: 724
+      width: 280
+      height: 340
+    spriteID: ccbc5067ce186e04282a7168c50bb9fd
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1034, y: 250}
+  - name: Layer 17 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 1330
+      width: 252
+      height: 384
+    spriteID: 601700e6e336c704f9780761f07c421c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 332, y: 670}
+  - name: Layer 46 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1280
+      y: 4
+      width: 410
+      height: 584
+    spriteID: 0ef396cfbadd7224ea16773ba0bcd091
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 924, y: -860}
+  - name: Layer 9 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1698
+      y: 4
+      width: 266
+      height: 424
+    spriteID: 15be83f80a695cd4eacdcb2aaba5e4b1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1012, y: -476}
+  - name: Layer 23 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1484
+      y: 1376
+      width: 250
+      height: 250
+    spriteID: e21609ba60977d842b4282d245b07ba5
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 910, y: 1210}
+  - name: Layer 21 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1484
+      y: 1072
+      width: 284
+      height: 296
+    spriteID: f674bf6d3416c984dbd0aadf6e87c65c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 864, y: 732}
+  - name: Layer 25 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1072
+      y: 724
+      width: 404
+      height: 448
+    spriteID: f5051cca01363a5469c716f2b6892898
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 216, y: -694}
+  - name: Layer 24 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 794
+      y: 4
+      width: 478
+      height: 626
+    spriteID: fdfce46c709a27240b0ec51017f5eef2
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 46, y: -1144}
+  - name: Folder 3 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 724
+      width: 676
+      height: 742
+    spriteID: 93ae1cf71d831ed43b32421421a05c1e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -606, y: -168}
+  - name: Layer 49 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 782
+      height: 712
+    spriteID: a57b7e4adf728b448884aa5f0ef52515
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -524, y: -914}
+  - name: Layer 10 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1474
+      width: 432
+      height: 420
+    spriteID: d7b68930658b8c643852c966fac2c58e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -678, y: 776}
+  - name: Layer 19 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1072
+      y: 1180
+      width: 400
+      height: 324
+    spriteID: 5db640ffe8ed41c4eb59e05249da121e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 156, y: 538}
+  - name: Layer 23 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1484
+      y: 1634
+      width: 254
+      height: 234
+    spriteID: ea09db4796aba104e97a17184d82c73c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 356, y: 1414}
+  - name: Layer 20 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 444
+      y: 1474
+      width: 190
+      height: 420
+    spriteID: fde7293c77aad514890e90e4101799d1
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -684, y: 1106}
+  - name: Layer 3 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1772
+      y: 724
+      width: 264
+      height: 306
+    spriteID: df9317b92889a3b48b8dda7e4a9ae984
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 264, y: -20}
+  - name: Layer 27 Copy 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 1722
+      width: 276
+      height: 322
+    spriteID: f6567033573542d4c9ca16a8d6edf9dd
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -814, y: 1000}
+  - name: Layer 16 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1072
+      y: 1512
+      width: 364
+      height: 322
+    spriteID: e8e018b32d809c84a9beb780d443e260
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -212, y: 660}
+  - name: Layer 14 Copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 688
+      y: 724
+      width: 376
+      height: 598
+    spriteID: 6268304d1f4c4474f9dbe70dcf5ca2a8
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -418, y: -256}
+  platformSettings: []
+  mosaicLayers: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  importedTextureWidth: 2048
+  importedTextureHeight: 2048
+  documentSize: {x: 2000, y: 2000}
+  paperDollMode: 0
+  keepDupilcateSpriteName: 0
+  spriteCategoryList:
+    categories: []
+  textureActualWidth: 2048
+  textureActualHeight: 2048
+  spritePackingTag: 
+  resliceFromLayer: 0
+  characterMode: 1
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: Folder 2 Copy 2
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 
+    layerID: 0
+    mosaicPosition: {x: 0, y: 0}
+  - name: R ARM Copy 2
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 
+    layerID: -357315801
+    mosaicPosition: {x: 0, y: 0}
+  - name: Layer 2 Copy 4
+    spriteName: Layer 2 Copy 4
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 04f8ee22fb7320b49b488fe494d838b1
+    layerID: 33296978
+    mosaicPosition: {x: 1698, y: 436}
+  - name: Layer 45 Copy
+    spriteName: Layer 45 Copy
+    isGroup: 0
+    parentIndex: 1
+    spriteID: ccbc5067ce186e04282a7168c50bb9fd
+    layerID: 1097030147
+    mosaicPosition: {x: 1484, y: 724}
+  - name: Layer 17 Copy
+    spriteName: Layer 17 Copy
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 601700e6e336c704f9780761f07c421c
+    layerID: 370201822
+    mosaicPosition: {x: 688, y: 1330}
+  - name: Layer 46 Copy 2
+    spriteName: Layer 46 Copy 2
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 0ef396cfbadd7224ea16773ba0bcd091
+    layerID: -1591770714
+    mosaicPosition: {x: 1280, y: 4}
+  - name: R LEG Copy 2
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 
+    layerID: 664710595
+    mosaicPosition: {x: 0, y: 0}
+  - name: Layer 9 Copy
+    spriteName: Layer 9 Copy
+    isGroup: 0
+    parentIndex: 6
+    spriteID: 15be83f80a695cd4eacdcb2aaba5e4b1
+    layerID: -394522117
+    mosaicPosition: {x: 1698, y: 4}
+  - name: Layer 23 Copy
+    spriteName: Layer 23 Copy
+    isGroup: 0
+    parentIndex: 6
+    spriteID: e21609ba60977d842b4282d245b07ba5
+    layerID: -1083556373
+    mosaicPosition: {x: 1484, y: 1376}
+  - name: Layer 21 Copy
+    spriteName: Layer 21 Copy
+    isGroup: 0
+    parentIndex: 6
+    spriteID: f674bf6d3416c984dbd0aadf6e87c65c
+    layerID: -356765899
+    mosaicPosition: {x: 1484, y: 1072}
+  - name: Layer 25 Copy 2
+    spriteName: Layer 25 Copy 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: f5051cca01363a5469c716f2b6892898
+    layerID: 410236791
+    mosaicPosition: {x: 1072, y: 724}
+  - name: Layer 24 Copy
+    spriteName: Layer 24 Copy
+    isGroup: 0
+    parentIndex: 0
+    spriteID: fdfce46c709a27240b0ec51017f5eef2
+    layerID: 288954340
+    mosaicPosition: {x: 794, y: 4}
+  - name: Folder 3 Copy 2
+    spriteName: Folder 3 Copy 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 93ae1cf71d831ed43b32421421a05c1e
+    layerID: -848560646
+    mosaicPosition: {x: 4, y: 724}
+  - name: Layer 49 Copy 2
+    spriteName: Layer 49 Copy 2
+    isGroup: 0
+    parentIndex: 0
+    spriteID: a57b7e4adf728b448884aa5f0ef52515
+    layerID: 1140866057
+    mosaicPosition: {x: 4, y: 4}
+  - name: Layer 10 Copy
+    spriteName: Layer 10 Copy
+    isGroup: 0
+    parentIndex: 0
+    spriteID: d7b68930658b8c643852c966fac2c58e
+    layerID: -1164449361
+    mosaicPosition: {x: 4, y: 1474}
+  - name: L LEG Copy 2
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 
+    layerID: 258839173
+    mosaicPosition: {x: 0, y: 0}
+  - name: Layer 19 Copy
+    spriteName: Layer 19 Copy
+    isGroup: 0
+    parentIndex: 15
+    spriteID: 5db640ffe8ed41c4eb59e05249da121e
+    layerID: -1744394052
+    mosaicPosition: {x: 1072, y: 1180}
+  - name: Layer 23 Copy 2
+    spriteName: Layer 23 Copy 2
+    isGroup: 0
+    parentIndex: 15
+    spriteID: ea09db4796aba104e97a17184d82c73c
+    layerID: 1472423897
+    mosaicPosition: {x: 1484, y: 1634}
+  - name: Layer 20 Copy 2
+    spriteName: Layer 20 Copy 2
+    isGroup: 0
+    parentIndex: 15
+    spriteID: fde7293c77aad514890e90e4101799d1
+    layerID: 1646949022
+    mosaicPosition: {x: 444, y: 1474}
+  - name: L ARM Copy 2
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 
+    layerID: -753556107
+    mosaicPosition: {x: 0, y: 0}
+  - name: Layer 3 Copy 2
+    spriteName: Layer 3 Copy 2
+    isGroup: 0
+    parentIndex: 19
+    spriteID: df9317b92889a3b48b8dda7e4a9ae984
+    layerID: -1129329349
+    mosaicPosition: {x: 1772, y: 724}
+  - name: Layer 27 Copy 2
+    spriteName: Layer 27 Copy 2
+    isGroup: 0
+    parentIndex: 19
+    spriteID: f6567033573542d4c9ca16a8d6edf9dd
+    layerID: -2099012371
+    mosaicPosition: {x: 688, y: 1722}
+  - name: Layer 16 Copy
+    spriteName: Layer 16 Copy
+    isGroup: 0
+    parentIndex: 19
+    spriteID: e8e018b32d809c84a9beb780d443e260
+    layerID: 1340203001
+    mosaicPosition: {x: 1072, y: 1512}
+  - name: Layer 14 Copy
+    spriteName: Layer 14 Copy
+    isGroup: 0
+    parentIndex: 19
+    spriteID: 6268304d1f4c4474f9dbe70dcf5ca2a8
+    layerID: 289131587
+    mosaicPosition: {x: 688, y: 724}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+  generateGOHierarchy: 0
+  textureAssetName: Player 1 side Texture
+  prefabAssetName: Player 1 side Prefab
+  spriteLibAssetName: Player 1 side Sprite Lib
+  secondarySpriteTextures: []

@@ -57,6 +57,6 @@ public class PlayerMovementController : Movement
 
     private void FixedUpdate() 
     {
-        MoveObject();    
+        MoveObject();  
     }
 }
