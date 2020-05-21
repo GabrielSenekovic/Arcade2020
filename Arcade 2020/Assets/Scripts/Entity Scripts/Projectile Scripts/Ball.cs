@@ -59,7 +59,7 @@ public class Ball : Movement
     {
         if(isTraveling)
         {
-            if(other.CompareTag("player1") || other.CompareTag("player2"))
+            if(other.CompareTag("player1") && isOn != OwnedByPlayer.PLAYER_ONE || other.CompareTag("player2") && isOn != OwnedByPlayer.PLAYER_TWO)
             {
                 OnCatch();
             }

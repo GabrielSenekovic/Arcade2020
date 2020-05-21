@@ -10,6 +10,10 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player1") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
+            if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_ONE)
+            {
+                return;
+            }
             this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
             other.gameObject.GetComponent<Ball>().isTraveling = false;
             other.gameObject.GetComponent<Ball>().isOn =  Ball.OwnedByPlayer.PLAYER_ONE;
@@ -17,6 +21,10 @@ public class PlayerCollisionController : MonoBehaviour
         }
         else if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player2") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
+            if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_TWO)
+            {
+                return;
+            }
             this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
             other.gameObject.GetComponent<Ball>().isTraveling = false;
             other.gameObject.GetComponent<Ball>().isOn = Ball.OwnedByPlayer.PLAYER_TWO;

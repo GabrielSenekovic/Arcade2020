@@ -20,5 +20,9 @@ public class Blueprint : MonoBehaviour
         public Rarity rarity;
     }
     public List<PickUpEntry> pickUps;
+
+    public List<Obstacle> obstacles;
     public Stairs stairs;
+
+    public GameObject piedestal;
 }

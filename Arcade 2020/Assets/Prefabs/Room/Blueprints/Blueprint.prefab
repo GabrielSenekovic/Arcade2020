@@ -56,4 +56,8 @@ MonoBehaviour:
     rarity: 8
   - item: {fileID: 3024751678598658224, guid: c8a3aaac9ec0bac4c85d4c9116e55111, type: 3}
     rarity: 20
+  obstacles:
+  - {fileID: 4678486112735887921, guid: 5cbc0573d463e6d429c61cb89f7ccc09, type: 3}
   stairs: {fileID: 3239159409376077458, guid: f07f1a0cbf73dc745bfae0211081e0ea, type: 3}
+  piedestal: {fileID: 7538270183678848524, guid: 1e0969c26d750774c8336c4560884639,
+    type: 3}

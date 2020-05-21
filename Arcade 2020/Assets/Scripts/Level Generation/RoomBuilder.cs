@@ -16,10 +16,22 @@ public class RoomBuilder : MonoBehaviour
         ConnectDoors(rooms, RoomSize);
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
+        PlaceObstacles(rooms, RoomSize);
         Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + RoomSize.x/2, level.lastRoom.transform.position.y + RoomSize.y/2, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
+    }
+
+    void PlaceObstacles(List<Room> rooms, Vector2 RoomSize)
+    {
+        for(int i = 0; i < rooms.Count - 1; i++)
+        {
+            if(rooms[i].myItem is Key){
+                Instantiate(blueprint.piedestal, new Vector3(rooms[i].transform.position.x + RoomSize.x/2, rooms[i].transform.position.y + RoomSize.y/2, rooms[i].transform.position.z), Quaternion.identity, rooms[i].transform);
+                continue;};
+            rooms[i].InstantiateObstacles(blueprint, Random.Range(0, 4));
+        }
     }
     void ConnectDoors(List<Room> rooms, Vector2 RoomSize)
     {
@@ -71,7 +83,7 @@ public class RoomBuilder : MonoBehaviour
             }
         }
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
-        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + level.RoomSize.x/2, chosenRoom.transform.position.y + level.RoomSize.y/2, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
+        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + level.RoomSize.x/2, chosenRoom.transform.position.y + level.RoomSize.y/2 + 1.5f, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
         chosenRoom.myItem.gameObject.SetActive(false);
         roomsToChooseBetween.Remove(chosenRoom);

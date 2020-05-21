@@ -143,7 +143,7 @@ partial class LevelManager
                 door.GetComponent<Door>().OpenClose(false);
             }
         }
-        UI.minimap.AddRoomToMap(currentRoom.GetPosition());
+        UI.minimap.AddRoomToMap(currentRoom.GetPosition(), currentRoom.doors);
         UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
         team.MoveTeamToNewRoom();
         Debug.Log("Moving team");
