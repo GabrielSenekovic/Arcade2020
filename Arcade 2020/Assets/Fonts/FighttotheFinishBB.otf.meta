@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 8c180dcf7e9d6d6448bc3fa26d013639
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Fight to the Finish BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 18b6e059287eadc4cb8ae211a2bac80b, type: 3}
+  - {fileID: 12800000, guid: a392d42f18a13a24e9e0cfdf57a73f29, type: 3}
+  - {fileID: 12800000, guid: 510d4d3f7aa7b61499adf0aad304f15a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

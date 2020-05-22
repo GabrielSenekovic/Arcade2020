@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 93f5de4041f16c3438f18282af7f1929
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Fight to the Finish Rough BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1112bdcba652a274a8f0b86748bff85c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
