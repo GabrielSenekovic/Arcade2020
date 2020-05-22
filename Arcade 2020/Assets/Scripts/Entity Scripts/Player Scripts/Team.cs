@@ -8,25 +8,19 @@ public class Team : MonoBehaviour
 
     [SerializeField] GameObject ballPrefab;
     [SerializeField] List<GameObject> powerUpBalls;
+
+    [SerializeField] UIManager UI;
     public uint amountOfKeys = 0;
 
     private void Start() 
     {
-        for(int i = 0; i < 1; i++)
+        for(int i = 0; i < 3; i++)
         {
-            GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
+            GameObject newBall = Instantiate(powerUpBalls[0], players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
             newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
             players[0].GetComponent<PlayerBallController>().balls.Add(newBall);
         }
-        GameObject newBall2 = Instantiate(powerUpBalls[0], players[0].transform.position, Quaternion.identity, transform);
-        players[0].GetComponent<PlayerBallController>().balls.Add(newBall2);
-        newBall2.GetComponent<Ball>().players[0] = players[0].gameObject;
-        newBall2.GetComponent<Ball>().players[1] = players[1].gameObject;
-        GameObject newBall3 = Instantiate(powerUpBalls[1], players[0].transform.position, Quaternion.identity, transform);
-        players[0].GetComponent<PlayerBallController>().balls.Add(newBall3);
-        newBall3.GetComponent<Ball>().players[0] = players[0].gameObject;
-        newBall3.GetComponent<Ball>().players[1] = players[1].gameObject;
     }
 
     public bool GetIfBothTouchingDoor()
@@ -88,7 +82,7 @@ public class Team : MonoBehaviour
                 return true;
             }
         }
-        Debug.Log("It didnt contain a basic ball");
+       // UI.OpenBallSwitching(player.GetComponent<PlayerBallController>(), Instantiate(powerUpBalls[(int)typeToChangeTo - 1], player.transform.position, Quaternion.identity, transform).GetComponent<Ball>());
         return false;
     }
 }

@@ -26,6 +26,7 @@ public class Minimap : MonoBehaviour
                     {
                         temp.GetComponent<SpriteRenderer>().color = new Color(1, 0.27f, 0.015f, 1);
                     }
+                    addedRooms.Add(temp);
                 }
                 currentRoom = newIcon;
                 return;

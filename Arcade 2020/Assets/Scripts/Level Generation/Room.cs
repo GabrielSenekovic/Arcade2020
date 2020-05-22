@@ -155,9 +155,7 @@ public class Room : MonoBehaviour
         {
             int index = Random.Range(0, blueprints.obstacles.Count);
             int Xindex = Random.Range(0, ObstacleLocations.Count);
-            Debug.Log("X: " + Xindex);
             int Yindex = Random.Range(0, ObstacleLocations[Xindex].Count);
-            Debug.Log("Y: " + Yindex);
             Vector2 location = ObstacleLocations[Xindex][Yindex].location;
             for(int j = 0; j < blueprints.obstacles[index].sizeToTakeUp.x; j++)
             {
@@ -167,7 +165,6 @@ public class Room : MonoBehaviour
                     if(Yindex - k < 0){goto End;}
                     if(ObstacleLocations[Xindex + j][Yindex - k].occupied == true)
                     {
-                        Debug.Log("Going to end");
                         goto End;
                     }
                     else
@@ -176,8 +173,6 @@ public class Room : MonoBehaviour
                     }
                 }
             }
-                
-            Debug.Log("Time to instantiate");
             Instantiate(blueprints.obstacles[index], location + (Vector2)transform.position, Quaternion.identity, transform);
             End:;
         }

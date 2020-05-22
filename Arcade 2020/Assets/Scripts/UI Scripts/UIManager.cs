@@ -12,9 +12,13 @@ public class UIManager : MonoBehaviour
     public CanvasGroup deathScreen;
     public Minimap minimap;
 
+    public CanvasGroup ballSwitching;
+
     public Score score;
 
     public Text floorText;
+
+    public Cursor cursor;
 
     [System.NonSerialized] public Color[] colors = new Color[2];
 
@@ -29,7 +33,12 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if(speechBubble.alpha == 1 && speechBubble_Obj.messageDone)
+            if(ballSwitching.alpha == 1)
+            {
+                OpenOrClose(ballSwitching);
+                ballSwitching.GetComponent<BallSwitching>().Close();
+            }
+            else if(speechBubble.alpha == 1 && speechBubble_Obj.messageDone)
             {
                 OpenOrClose(speechBubble);
                 speechBubble.GetComponentInChildren<Text>().text = "";
@@ -46,12 +55,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenBallSwitching(PlayerBallController player, Ball pickedUpBall)
+    {
+        OpenOrClose(ballSwitching);
+        ballSwitching.GetComponent<BallSwitching>().Open(player, pickedUpBall);
+    }
+
     public void OpenOrClose(CanvasGroup UIScreen)
     {
         UIScreen.alpha = UIScreen.alpha > 0 ? 0 : 1;
         UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
         entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        cursor.gameObject.SetActive(cursor.gameObject.activeSelf ? false: true);
     }
 
     public IEnumerator RevealMap(float time, bool roomCleared)
