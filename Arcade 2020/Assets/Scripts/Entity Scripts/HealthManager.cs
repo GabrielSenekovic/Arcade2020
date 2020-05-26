@@ -12,12 +12,20 @@ public class HealthManager : MonoBehaviour
     public int IFrameCooldown = 30;
     public bool isdead;
 
+    private Shader shaderGUItext;
+    private Shader shaderSpritesDefault;
+
+    private SpriteRenderer[] sprites;
+
     private void Start() 
     {
         isdead = false;
         currentHealth = maxHealth;
         isIFrame = false;
         IFrameTime = 0;
+        shaderGUItext = Shader.Find("GUI/Text Shader");
+        shaderSpritesDefault = Shader.Find("Sprites/Default");
+        sprites = GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate() 
@@ -25,12 +33,36 @@ public class HealthManager : MonoBehaviour
         if(isIFrame)
         {
             IFrameTime++;
+            if(IFrameTime % 4 == 0)
+            {
+                if(sprites[0].material.shader == shaderSpritesDefault)
+                {
+                    foreach(SpriteRenderer sprite in sprites)
+                    {
+                        sprite.material.shader = shaderGUItext;
+                        sprite.color = Color.red;
+                    }
+                }
+                else
+                {
+                    foreach(SpriteRenderer sprite in sprites)
+                    {
+                        sprite.material.shader = shaderSpritesDefault;
+                        sprite.color = Color.white;
+                    }
+                }
+            }
         }
 
         if(IFrameTime >= IFrameCooldown)
         {
             IFrameTime = 0;
             isIFrame = false;
+            foreach(SpriteRenderer sprite in sprites)
+            {
+                sprite.material.shader = shaderSpritesDefault;
+                sprite.color = Color.white;
+            }
         }
 
         ChildUpdate();
