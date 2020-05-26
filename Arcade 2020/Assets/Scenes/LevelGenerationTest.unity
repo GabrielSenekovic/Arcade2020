@@ -1380,6 +1380,8 @@ MonoBehaviour:
   powerUpBalls:
   - {fileID: 2225837014187637723, guid: 70e30d87ece4a974b82e80ea1fee537d, type: 3}
   - {fileID: 8769231734526243667, guid: 3d43e98684a92894886e547a71b07d88, type: 3}
+  doorCooldown: 0.5
+  canEnterDoor: 1
   UI: {fileID: 1522701800}
   amountOfKeys: 0
 --- !u!4 &1871163927

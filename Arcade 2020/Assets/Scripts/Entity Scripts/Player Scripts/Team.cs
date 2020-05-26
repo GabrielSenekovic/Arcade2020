@@ -9,6 +9,10 @@ public class Team : MonoBehaviour
     [SerializeField] GameObject ballPrefab;
     [SerializeField] List<GameObject> powerUpBalls;
 
+    [SerializeField] float doorCooldown;
+
+    public bool canEnterDoor = true;
+
     [SerializeField] UIManager UI;
     public uint amountOfKeys = 0;
 
@@ -84,5 +88,12 @@ public class Team : MonoBehaviour
         }
        // UI.OpenBallSwitching(player.GetComponent<PlayerBallController>(), Instantiate(powerUpBalls[(int)typeToChangeTo - 1], player.transform.position, Quaternion.identity, transform).GetComponent<Ball>());
         return false;
+    }
+
+    public IEnumerator waitUntilCanEnterDoor()
+    {
+        canEnterDoor = false;
+        yield return new WaitForSeconds(doorCooldown);
+        canEnterDoor = true;
     }
 }

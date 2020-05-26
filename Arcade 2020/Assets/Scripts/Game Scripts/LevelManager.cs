@@ -53,7 +53,7 @@ public partial class LevelManager : MonoBehaviour
         {
             if(isBothTouchingDoor && !cameraM.moving && !cameraM.movementDone)
             {
-                if(!team.GetDoor().locked)
+                if(!team.GetDoor().locked && team.canEnterDoor)
                 {
                     entityManager.ToggleFreezeAllEntities(true);
                     cameraM.Move(team.GetDoor().directionModifier, RoomSize);
@@ -146,6 +146,7 @@ partial class LevelManager
         UI.minimap.AddRoomToMap(currentRoom.GetPosition(), currentRoom.doors);
         UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
         team.MoveTeamToNewRoom();
+        StartCoroutine(team.waitUntilCanEnterDoor());
         Debug.Log("Moving team");
         entityManager.ToggleFreezeAllEntities(false);
     }
