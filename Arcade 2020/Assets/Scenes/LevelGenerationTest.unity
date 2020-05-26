@@ -3709,7 +3709,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: EnemyHit
-    clip: {fileID: 8300000, guid: 0a23fb5dfbaa86d49841d7b74a26998f, type: 3}
+    clip: {fileID: 8300000, guid: 1bb4bb645faee934d99fa41d7c3db4ee, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
