@@ -7,7 +7,7 @@ public class SpeedUp : PickUp
     [SerializeField]float speedIncrease;
     public override void OnPickUp(GameObject otherObject) 
     {
-        otherObject.GetComponent<PlayerMovementController>().playerspeed += speedIncrease;
+        otherObject.GetComponent<PlayerMovementController>().playerSpeed += speedIncrease;
         Destroy(gameObject);
     }
 }

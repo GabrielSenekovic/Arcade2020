@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
+    private List<Vector2> push = new List<Vector2>();
+
     public float Speed;
 
     bool isFrozen = false;
@@ -48,6 +50,17 @@ public class Movement : MonoBehaviour
         Vel += vin;
     }
 
+    public int AddPushVector(Vector2 vin)
+    {
+        push.Add(vin);
+        return push.Count;
+    }
+
+    public void RemovePushVector(int index)
+    {
+        push.RemoveAt(index);
+    }
+
     public void MoveObject()
     {
         if(!isFrozen) //I needed to freeze all entities when the camera moved! If you know a better way then feel free to change
@@ -55,6 +68,10 @@ public class Movement : MonoBehaviour
             rig().velocity = Vel;
             Vel *= Acc;
             Vel *= (1.0f/(1.0f + Fric)); 
+            foreach( Vector2 v in push)
+            {
+                AddVelocity(v);
+            }
         }
         else
         {
