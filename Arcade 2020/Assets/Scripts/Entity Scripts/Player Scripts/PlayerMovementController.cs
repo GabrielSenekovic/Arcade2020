@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerMovementController : Movement
 {
     [Range(1.0f,10.0f)]
-    public float playerspeed = 5.0f;  
+    public float playerSpeed = 5.0f;  
+    private bool isDashing = false;
+    public float playerDashSpeed = 30.0f;
+    private float dashTime = 0.1f;
+    public float startDashTime;
     public bool isDowned = false;
     private float dirx;
     private float diry;
@@ -13,12 +17,14 @@ public class PlayerMovementController : Movement
     public KeyCode DOWN;
     public KeyCode LEFT;
     public KeyCode RIGHT;
+    public KeyCode DASH;
 
     void Start()
     {
         Fric = 0.0f;
         Acc = new Vector2(1,1);
         Dir = new Vector2(1,0); 
+        dashTime = startDashTime;
     }
 
     void Update()
@@ -26,7 +32,7 @@ public class PlayerMovementController : Movement
         if( (Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN)) && !isDowned)
         {
             GetComponentInChildren<Animator>().SetBool("Walking", true);
-            Speed = playerspeed;
+            Speed = playerSpeed;
         }
 
         if(Input.anyKey && !isDowned)
@@ -51,7 +57,25 @@ public class PlayerMovementController : Movement
         if( !(Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN) ) )
         {
             GetComponentInChildren<Animator>().SetBool("Walking", false);
-            Vel = new Vector2(0,0);
+            Vel = Vector2.zero;
+        }
+        if(isDashing)
+        {
+            dashTime -= Time.deltaTime;
+            Vel = Dir * playerDashSpeed;
+            if(dashTime <= 0)
+            {
+                dashTime = startDashTime;
+                isDashing = false;
+                Vel = Vector2.zero;
+            }
+        }
+        else
+        {
+            if(Input.GetKeyDown(DASH))
+            {
+                isDashing = true;
+            }
         }
     }
 

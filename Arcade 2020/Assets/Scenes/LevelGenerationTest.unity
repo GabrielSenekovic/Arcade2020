@@ -2306,6 +2306,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851053, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: DASH
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851053, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: startDashTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 660a298eb8e2113438a93be343201174, type: 3}
 --- !u!1001 &1754502597
