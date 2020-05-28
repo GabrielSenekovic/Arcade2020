@@ -3709,25 +3709,25 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: EnemyHit
-    clip: {fileID: 8300000, guid: 1bb4bb645faee934d99fa41d7c3db4ee, type: 3}
+    clip: {fileID: 8300000, guid: 4e64eb40244e05e48a8a9b198412db98, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PlayerDamage
     clip: {fileID: 8300000, guid: 61bbd7be2041882479c23743a4e6a146, type: 3}
-    volume: 0.56
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: SpnogNoice
-    clip: {fileID: 8300000, guid: 7d29ed5732b05ba498e896af232fa8f4, type: 3}
+    clip: {fileID: 8300000, guid: c715ccc1109f8a44280cafadcbaf90ea, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: CreggShnipp
-    clip: {fileID: 8300000, guid: 142f2563f5c314844bdcf2dedb52c10f, type: 3}
+    clip: {fileID: 8300000, guid: c715ccc1109f8a44280cafadcbaf90ea, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
@@ -3777,6 +3777,12 @@ MonoBehaviour:
   - name: MenuConfirm
     clip: {fileID: 8300000, guid: caddd1bcce72a9948b4dd926edc0a935, type: 3}
     volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BlobAttack
+    clip: {fileID: 8300000, guid: 5f7544065db8fba4989b1bd535031298, type: 3}
+    volume: 0.69
     pitch: 1
     loop: 0
     source: {fileID: 0}
