@@ -22,7 +22,7 @@ public class Blueprint : MonoBehaviour
     public List<PickUpEntry> pickUps;
 
     public List<Obstacle> obstacles;
-    public Stairs stairs;
+    public GameObject stairs;
 
     public GameObject piedestal;
 }

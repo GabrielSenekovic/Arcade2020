@@ -36,9 +36,9 @@ public class Team : MonoBehaviour
         }
         return temp;
     }
-    public bool GetIfBothTouchingStairs()
+    public bool GetIfTouchingStairs()
     {
-        return (players[0].touchingStairs && players[1].touchingStairs);
+        return (players[0].touchingStairs || players[1].touchingStairs);
     }
     public Door GetDoor()
     {

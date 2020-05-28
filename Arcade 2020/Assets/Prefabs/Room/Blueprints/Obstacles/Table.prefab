@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 822d95662fa9bcb4eaacd40202acdc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sizeToTakeUp: {x: 4, y: 4}
+  sizeToTakeUp: {x: 5, y: 5}
 --- !u!61 &1189577213110285661
 BoxCollider2D:
   m_ObjectHideFlags: 0

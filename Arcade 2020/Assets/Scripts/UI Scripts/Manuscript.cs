@@ -15,23 +15,29 @@ public class Manuscript
                 ALCHEMIST = 2
             }
 
-            Line(string line, CharacterIdentity identity)
+            public Line(string line, CharacterIdentity identity)
             {
                 myLine = line;
                 myIdentity = identity;
             }
-            string myLine;
+            public string myLine;
             CharacterIdentity myIdentity;
         }
-        Dialog(List<Line> lines)
+        public Dialog(List<Line> lines)
         {
             myLines = lines;
         }
-        List<Line> myLines;
+        public List<Line> myLines;
 
     }
-    public List<string> dialogs = new List<string>()
+    public Dialog tutorialDialog = new Dialog
+    (
+        new List<Dialog.Line>()
+        {
+            new Dialog.Line("Hey dude, check out that crab egg! Pass me the ball and see if we can destroy it.", Dialog.Line.CharacterIdentity.P1),
+            new Dialog.Line("", Dialog.Line.CharacterIdentity.P2)
+        }
+    )
     {
-        "Hey dude, check out that crab egg! Pass me the ball and see if we can destroy it."
     };
 }

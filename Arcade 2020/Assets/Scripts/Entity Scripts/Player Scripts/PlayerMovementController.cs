@@ -29,6 +29,10 @@ public class PlayerMovementController : Movement
 
     void Update()
     {
+        if(isFrozen)
+        {
+            return;
+        }
         if( (Input.GetKey(LEFT) || Input.GetKey(RIGHT) || Input.GetKey(UP) || Input.GetKey(DOWN)) && !isDowned)
         {
             GetComponentInChildren<Animator>().SetBool("Walking", true);

@@ -39,7 +39,6 @@ public class LightningBall : Ball
                 {
                     if (entity.gameObject.GetComponent<EnemyController>() && entity.gameObject != victim)
                     {
-                       // GameObject newLightning = Instantiate(LightningPrefab, victim.transform.position, Quaternion.identity, transform);
                         lightnings[i].GetComponent<SpriteRenderer>().color = Color.white;
                         lightnings[i].transform.position = victim.transform.position;
 
@@ -55,7 +54,6 @@ public class LightningBall : Ball
 
                         entity.ToggleFrozen(true);
                         targetedEntities.Add(entity);
-                        //lightnings.Add(newLightning);
                         FindObjectOfType<AudioManager>().Play("LightningBallZap");
                         i++;
                     }

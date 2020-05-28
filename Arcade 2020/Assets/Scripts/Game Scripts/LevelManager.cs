@@ -20,6 +20,8 @@ public partial class LevelManager : MonoBehaviour
 
     public Vector2 RoomSize;
 
+    bool tutorial = false;
+
     LevelGenerator generator;
     EntityManager entityManager;
 
@@ -48,6 +50,18 @@ public partial class LevelManager : MonoBehaviour
     void Update()
     {
         bool isBothTouchingDoor = team.GetIfBothTouchingDoor();
+        if(tutorial)
+        {
+            if(!entityManager.entities[2].GetComponent<EnemyController>().isSpawning)
+            {
+                tutorial = false;
+                entityManager.entities[2].ToggleFrozen(true);
+                team.players[0].GetComponent<Movement>().ToggleFrozen(false);
+                team.players[1].GetComponent<Movement>().ToggleFrozen(false);
+                UI.OpenOrClose(UI.speechBubble);
+                UI.speechBubble_Obj.InitiateDialog(script.tutorialDialog);
+            }
+        }
 
         if(currentRoom.roomCleared)
         {
@@ -67,7 +81,7 @@ public partial class LevelManager : MonoBehaviour
                     }
                 }
             }
-            if(team.GetIfBothTouchingStairs())
+            if(team.GetIfTouchingStairs())
             {
                 ResetLevel();
             }
@@ -116,6 +130,9 @@ partial class LevelManager
 {
     public void PlayTutorial()
     {
+        tutorial = true;
+        team.players[0].GetComponent<Movement>().ToggleFrozen(true);
+        team.players[1].GetComponent<Movement>().ToggleFrozen(true);
         GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity, currentRoom.transform);
         entityManager.entities.Add(newEnemy.GetComponent<Movement>());
         entityManager.amountOfEnemiesSpawned++;
@@ -127,8 +144,6 @@ partial class LevelManager
         }
         entityManager.battleInitiated = true;
         newEnemy.GetComponent<EnemyController>().Spawn();
-        UI.OpenOrClose(UI.speechBubble);
-        StartCoroutine(UI.speechBubble_Obj.PrintMessage(script.dialogs[0]));
     }
     public void OnMoveToNewRoom()
     {

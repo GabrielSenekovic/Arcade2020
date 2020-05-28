@@ -18,7 +18,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         UIScreen.alpha = UIScreen.alpha > 0 ? 0 : 1;
         UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
-        entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
+        //entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 

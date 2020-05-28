@@ -38,15 +38,25 @@ public class UIManager : MonoBehaviour
                 OpenOrClose(ballSwitching);
                 ballSwitching.GetComponent<BallSwitching>().Close();
             }
-            else if(speechBubble.alpha == 1 && speechBubble_Obj.messageDone)
+            else if(speechBubble.alpha == 1)
             {
-                OpenOrClose(speechBubble);
-                speechBubble.GetComponentInChildren<Text>().text = "";
-                minimap.gameObject.SetActive(true);
-            }
-            else if(speechBubble.alpha == 1 && !speechBubble_Obj.messageDone)
-            {
-                speechBubble_Obj.breakPrint = true;
+                if(speechBubble_Obj.dialogDone)
+                {
+                    OpenOrClose(speechBubble);
+                    speechBubble.GetComponentInChildren<Text>().text = "";
+                    minimap.gameObject.SetActive(true);
+                }
+                else if(!speechBubble_Obj.dialogDone)
+                {
+                    if(speechBubble_Obj.messageDone)
+                    {
+                        speechBubble_Obj.ContinueDialog();
+                    }
+                    else if(!speechBubble_Obj.messageDone)
+                    {
+                    speechBubble_Obj.breakPrint = true;
+                    }
+                }
             }
             else if(speechBubble.alpha == 0)
             {
@@ -65,7 +75,6 @@ public class UIManager : MonoBehaviour
     {
         UIScreen.alpha = UIScreen.alpha > 0 ? 0 : 1;
         UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
-        entityManager.ToggleFreezeAllEntities(UIScreen.blocksRaycasts);
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         cursor.gameObject.SetActive(cursor.gameObject.activeSelf ? false: true);
     }

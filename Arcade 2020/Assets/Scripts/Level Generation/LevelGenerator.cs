@@ -29,6 +29,7 @@ public class LevelGenerator : MonoBehaviour
 
         level.firstRoom = rooms[0];
         level.lastRoom = rooms[rooms.Count - 1];
+        level.lastRoom.roomCleared = true;
 
         LockDoors(rooms[rooms.Count - 1], RoomSize);
         builder.Build(rooms, level, RoomSize);
