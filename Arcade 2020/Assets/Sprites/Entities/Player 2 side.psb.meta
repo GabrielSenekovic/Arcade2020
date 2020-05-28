@@ -530,14 +530,14 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 0
     mosaicPosition: {x: 0, y: 0}
   - name: R ARM Copy
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: -1689137939
     mosaicPosition: {x: 0, y: 0}
   - name: Layer 2 Copy 3
@@ -572,7 +572,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: -1251217475
     mosaicPosition: {x: 0, y: 0}
   - name: Layer 18 Copy
@@ -635,7 +635,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: -1263516609
     mosaicPosition: {x: 0, y: 0}
   - name: Layer 11 Copy
@@ -663,7 +663,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: 0
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: -1701145221
     mosaicPosition: {x: 0, y: 0}
   - name: Layer 6 Copy 2
