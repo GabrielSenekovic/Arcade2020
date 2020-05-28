@@ -25,18 +25,9 @@ public class Ball : Movement
         Dir = new Vector2(1,1);
     }
 
-    public virtual void OnShoot()
-    {
-
-    }
-    protected virtual void OnCatch()
-    {
-
-    }
-    protected virtual void OnAttack(GameObject victim)
-    {
-
-    }
+    public virtual void OnShoot(){}
+    protected virtual void OnCatch(){}
+    protected virtual void OnAttack(GameObject victim){}
     void Update()
     {
         if(isTraveling && isOn == OwnedByPlayer.PLAYER_ONE)

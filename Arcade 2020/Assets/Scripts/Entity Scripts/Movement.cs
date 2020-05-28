@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    private List<Vector2> push = new List<Vector2>();
+    public List<Vector2> push = new List<Vector2>();
 
     public float Speed;
 
