@@ -6,7 +6,8 @@ public enum PowerUpType
     {
         Basic = 0,
         Lightning = 1,
-        Orbital = 2
+        Orbital = 2,
+        BlackHOle = 3
     }
 public class PowerUp : PickUp
 {
