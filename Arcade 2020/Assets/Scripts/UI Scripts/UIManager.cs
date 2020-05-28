@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
                     }
                     else if(!speechBubble_Obj.messageDone)
                     {
-                    speechBubble_Obj.breakPrint = true;
+                        speechBubble_Obj.breakPrint = true;
                     }
                 }
             }

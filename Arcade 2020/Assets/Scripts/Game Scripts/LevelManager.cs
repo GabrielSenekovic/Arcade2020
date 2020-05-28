@@ -59,7 +59,7 @@ public partial class LevelManager : MonoBehaviour
                 team.players[0].GetComponent<Movement>().ToggleFrozen(false);
                 team.players[1].GetComponent<Movement>().ToggleFrozen(false);
                 UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.InitiateDialog(script.tutorialDialog);
+                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[0]);
             }
         }
 
@@ -109,7 +109,7 @@ public partial class LevelManager : MonoBehaviour
 
         if(currentFloor>0){generator.DestroyLevel();};
         UI.minimap.ResetMap();
-        team.ResetTeam();
+        team.ResetTeam(RoomSize);
         cameraM.transform.position = new Vector3(RoomSize.x/2, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;

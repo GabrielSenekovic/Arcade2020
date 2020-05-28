@@ -54,13 +54,15 @@ public class Team : MonoBehaviour
         players[0].transform.position = new Vector3(temp.x, temp.y, players[0].transform.position.z);
         players[1].transform.position = new Vector3(temp.x, temp.y, players[1].transform.position.z);
     }
-    public void ResetTeam()
+    public void ResetTeam(Vector2 Roomsize)
     {
         for(int i = 0; i <= 1; i++)
         {
             players[i].touchingStairs = false;
-            players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
+            //players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
         }
+        players[0].transform.position = new Vector2(Roomsize.x/2 - 8, Roomsize.y/2);
+        players[1].transform.position = new Vector2(Roomsize.x/2 + 8, Roomsize.y/2);
     }
 
     public void IncreaseBallAmount(GameObject player)

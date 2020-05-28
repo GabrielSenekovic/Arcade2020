@@ -1902,9 +1902,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3865408820599218087, guid: c95b9960ce05db94288c7f13b29298f0,
         type: 3}
+      propertyPath: powerUpBalls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865408820599218087, guid: c95b9960ce05db94288c7f13b29298f0,
+        type: 3}
       propertyPath: UI
       value: 
       objectReference: {fileID: 1522701800}
+    - target: {fileID: 3865408820599218087, guid: c95b9960ce05db94288c7f13b29298f0,
+        type: 3}
+      propertyPath: powerUpBalls.Array.data[2]
+      value: 
+      objectReference: {fileID: 728138150297854692, guid: 53ae839fffac77a46b32dae4b5a21bfb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
 --- !u!1001 &5719572273853620054

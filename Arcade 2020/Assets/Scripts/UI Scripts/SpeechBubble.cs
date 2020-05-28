@@ -19,16 +19,23 @@ public class SpeechBubble : MonoBehaviour
     {
         dialogDone = false;
         currentDialog = dialog;
+        messageDone  = true;
         ContinueDialog();
+    }
+    public void Say(Manuscript.Dialog.Line line)
+    {
+        dialogDone = true;
+        StartCoroutine(PrintMessage(line.myLine));
     }
 
     public void ContinueDialog()
     {
         if(messageDone)
         {
-            PrintMessage(currentDialog.myLines[lineIndex].myLine);
+            GetComponentInChildren<Text>().text = "";
+            StartCoroutine(PrintMessage(currentDialog.myLines[lineIndex].myLine));
             lineIndex++;
-            if(lineIndex > currentDialog.myLines.Count)
+            if(lineIndex > currentDialog.myLines.Count - 1)
             {
                 dialogDone = true;
                 lineIndex = 0;
