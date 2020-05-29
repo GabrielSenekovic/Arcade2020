@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db7b248904989734597decdec124b48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  push: []
   Speed: 0
   dir: {x: 0, y: 0}
   vel: {x: 0, y: 0}
@@ -206,6 +207,9 @@ MonoBehaviour:
   isIFrame: 0
   IFrameCooldown: 30
   isdead: 0
+  deathSprites:
+  - {fileID: 4894506590354250593, guid: 6fc8ec4efd0b9194781d02c7936a6f62, type: 3}
+  - {fileID: 9198679614646628586, guid: 161135878212926499670e819f8dc0ae, type: 3}
 --- !u!82 &1132529068049133739
 AudioSource:
   m_ObjectHideFlags: 0

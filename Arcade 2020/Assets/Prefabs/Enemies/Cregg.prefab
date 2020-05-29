@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d7f6b9ce0f9864aab3924a750e0554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  push: []
   Speed: 0
   dir: {x: 0, y: 0}
   vel: {x: 0, y: 0}
@@ -56,7 +57,6 @@ MonoBehaviour:
   Fric: 0
   body: {fileID: 5832948629810039047}
   shadow: {fileID: 5549217624253689828}
-  fallSpeed: 6
   creggDamage: 1
   movetype: 1
 --- !u!50 &4801573099651461854
@@ -114,6 +114,9 @@ MonoBehaviour:
   isIFrame: 0
   IFrameCooldown: 30
   isdead: 0
+  deathSprites:
+  - {fileID: 9198679614646628586, guid: 161135878212926499670e819f8dc0ae, type: 3}
+  - {fileID: 4894506590354250593, guid: 6fc8ec4efd0b9194781d02c7936a6f62, type: 3}
 --- !u!82 &1901346948638613286
 AudioSource:
   m_ObjectHideFlags: 0
