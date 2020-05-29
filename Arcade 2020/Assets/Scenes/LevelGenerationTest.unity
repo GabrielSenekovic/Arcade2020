@@ -1925,6 +1925,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1947919312}
     m_Modifications:
+    - target: {fileID: 5719572272213212030, guid: 682cd485d22ae9e4e8768e2799d8cc0b,
+        type: 3}
+      propertyPath: pauseScreen
+      value: 
+      objectReference: {fileID: 1111172809}
     - target: {fileID: 5719572273550629098, guid: 682cd485d22ae9e4e8768e2799d8cc0b,
         type: 3}
       propertyPath: m_Name
