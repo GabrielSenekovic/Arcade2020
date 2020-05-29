@@ -182,7 +182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8cfa609935b427840ac227c8734c4e97, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e9847cb42c7cb5b4dbe194c6036c210e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1324,25 +1324,25 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: EnemyHit
-    clip: {fileID: 8300000, guid: 0a23fb5dfbaa86d49841d7b74a26998f, type: 3}
+    clip: {fileID: 8300000, guid: 5faa75af1fa88c8498f03cd65c4db044, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: PlayerDamage
     clip: {fileID: 8300000, guid: 61bbd7be2041882479c23743a4e6a146, type: 3}
-    volume: 0.56
+    volume: 0.19
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: SpnogNoice
-    clip: {fileID: 8300000, guid: 7d29ed5732b05ba498e896af232fa8f4, type: 3}
+    clip: {fileID: 8300000, guid: 7f2671c861969694a96bb2c4480c8106, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: CreggShnipp
-    clip: {fileID: 8300000, guid: 142f2563f5c314844bdcf2dedb52c10f, type: 3}
+    clip: {fileID: 8300000, guid: 7f2671c861969694a96bb2c4480c8106, type: 3}
     volume: 0.25
     pitch: 1
     loop: 0
@@ -1378,7 +1378,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: CreggDeath
-    clip: {fileID: 8300000, guid: 071f4404f470f094eb3902325bbfad27, type: 3}
+    clip: {fileID: 8300000, guid: 5faa75af1fa88c8498f03cd65c4db044, type: 3}
     volume: 0.45
     pitch: 1
     loop: 0
@@ -1390,8 +1390,14 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: MenuConfirm
-    clip: {fileID: 8300000, guid: caddd1bcce72a9948b4dd926edc0a935, type: 3}
+    clip: {fileID: 8300000, guid: 34b7c5ba601878b4ca21e23a3fbbd68b, type: 3}
     volume: 0.45
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BlobAttack
+    clip: {fileID: 8300000, guid: 2dd46e1baa1db364c8c775ac4798ce14, type: 3}
+    volume: 0.7
     pitch: 1
     loop: 0
     source: {fileID: 0}
