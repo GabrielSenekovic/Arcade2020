@@ -10,6 +10,12 @@ public class EnemyHealthController : HealthManager
     public override void OnDeath()
     {
         isdead = true;
+
+    }
+
+    private void BamPow()
+    {
+        
     }
 
     public override void ChildUpdate()
