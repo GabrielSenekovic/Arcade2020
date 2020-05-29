@@ -42,13 +42,20 @@ public class UIManager : MonoBehaviour
             {
                 if(speechBubble_Obj.dialogDone)
                 {
-                    OpenOrClose(speechBubble);
-                    speechBubble.GetComponentInChildren<Text>().text = "";
-                    minimap.gameObject.SetActive(true);
+                    if(speechBubble_Obj.messageDone)
+                    {
+                        OpenOrClose(speechBubble);
+                        speechBubble.GetComponentInChildren<Text>().text = "";
+                        minimap.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        speechBubble_Obj.breakPrint = true;
+                    }
                 }
                 else if(!speechBubble_Obj.dialogDone)
                 {
-                    if(speechBubble_Obj.messageDone)
+                    if(speechBubble_Obj.messageDone && speechBubble_Obj.lineNumber > 0)
                     {
                         speechBubble_Obj.ContinueDialog();
                     }

@@ -13,32 +13,63 @@ public class SpeechBubble : MonoBehaviour
 
     Manuscript.Dialog currentDialog;
 
-    int lineIndex = 0;
+    public Sprite[] sprites;
+
+    public int lineIndex = 0;
+    public int lineNumber = 0;
 
     public void InitiateDialog(Manuscript.Dialog dialog)
     {
+        lineIndex = 0;
         dialogDone = false;
         currentDialog = dialog;
         messageDone  = true;
+        lineNumber = dialog.myLines.Count;
         ContinueDialog();
     }
     public void Say(Manuscript.Dialog.Line line)
     {
+        lineIndex++;
         dialogDone = true;
+        if(line.myIdentity == Manuscript.Dialog.Line.CharacterIdentity.P1)
+        {
+            GetComponent<Image>().sprite = sprites[0];
+        }
+        else
+        {
+            GetComponent<Image>().sprite = sprites[1];
+        }
         StartCoroutine(PrintMessage(line.myLine));
+    }
+
+    public void Say(Manuscript.Dialog lines, int amountOfLines)
+    {
+        dialogDone = false;
+        messageDone = true;
+        lineNumber = amountOfLines;
+        currentDialog = lines;
+        ContinueDialog();
     }
 
     public void ContinueDialog()
     {
         if(messageDone)
         {
+            if(currentDialog.myLines[lineIndex].myIdentity == Manuscript.Dialog.Line.CharacterIdentity.P1)
+            {
+                GetComponent<Image>().sprite = sprites[0];
+            }
+            else
+            {
+                GetComponent<Image>().sprite = sprites[1];
+            }
             GetComponentInChildren<Text>().text = "";
             StartCoroutine(PrintMessage(currentDialog.myLines[lineIndex].myLine));
             lineIndex++;
-            if(lineIndex > currentDialog.myLines.Count - 1)
+            lineNumber--;
+            if(lineNumber == 0)
             {
                 dialogDone = true;
-                lineIndex = 0;
             }
         }
     }

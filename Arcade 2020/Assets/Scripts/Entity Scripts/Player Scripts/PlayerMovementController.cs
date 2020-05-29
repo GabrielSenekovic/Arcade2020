@@ -7,6 +7,9 @@ public class PlayerMovementController : Movement
     [Range(1.0f,10.0f)]
     public float playerSpeed = 5.0f;  
     private bool isDashing = false;
+    public bool canDash = true;
+    public int dashCooldown;
+    [System.NonSerialized] public int dashTimer;
     public float playerDashSpeed = 30.0f;
     private float dashTime = 0.1f;
     public float startDashTime;
@@ -29,6 +32,15 @@ public class PlayerMovementController : Movement
 
     void Update()
     {
+        if(dashTimer > 0)
+        {
+            dashTimer--;
+        }
+        else
+        {
+            dashTimer = 0;
+            canDash = true;
+        }
         if(isFrozen)
         {
             return;
@@ -71,12 +83,14 @@ public class PlayerMovementController : Movement
             {
                 dashTime = startDashTime;
                 isDashing = false;
+                dashTimer = dashCooldown;
+                canDash = false;
                 Vel = Vector2.zero;
             }
         }
         else
         {
-            if(Input.GetKeyDown(DASH))
+            if(Input.GetKeyDown(DASH) && canDash)
             {
                 isDashing = true;
             }

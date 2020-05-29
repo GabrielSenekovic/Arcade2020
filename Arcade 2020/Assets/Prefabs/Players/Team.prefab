@@ -53,6 +53,7 @@ MonoBehaviour:
   powerUpBalls:
   - {fileID: 2225837014187637723, guid: 70e30d87ece4a974b82e80ea1fee537d, type: 3}
   - {fileID: 8769231734526243667, guid: 3d43e98684a92894886e547a71b07d88, type: 3}
+  - {fileID: 728138150297854692, guid: 53ae839fffac77a46b32dae4b5a21bfb, type: 3}
   doorCooldown: 0.5
   canEnterDoor: 1
   UI: {fileID: 0}
@@ -343,6 +344,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
       value: 1.3297698
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865616, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: DASH
+      value: 305
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865616, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: startDashTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865617, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}

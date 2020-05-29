@@ -52,14 +52,37 @@ public partial class LevelManager : MonoBehaviour
         bool isBothTouchingDoor = team.GetIfBothTouchingDoor();
         if(tutorial)
         {
-            if(!entityManager.entities[2].GetComponent<EnemyController>().isSpawning)
+            if(entityManager.entities.Count > 2)
+            {
+                if(!entityManager.entities[2].GetComponent<EnemyController>().isSpawning &&UI.speechBubble_Obj.lineIndex == 0)
+                {
+                    entityManager.entities[2].ToggleFrozen(true);
+                    UI.OpenOrClose(UI.speechBubble);
+                    UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[0]);
+                }
+            }
+            else if(UI.speechBubble_Obj.lineIndex == 1 && team.players[1].GetComponent<PlayerBallController>().balls.Count == 1)
+            {
+                UI.OpenOrClose(UI.speechBubble);
+                UI.speechBubble_Obj.Say(script.tutorialDialog, 2);
+            }
+            else if(UI.speechBubble_Obj.lineIndex == 3 && team.players[0].GetComponent<PlayerBallController>().balls.Count == 3)
+            {
+                UI.OpenOrClose(UI.speechBubble);
+                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[3]);
+            }
+            else if(UI.speechBubble_Obj.lineIndex == 4 && team.players[0].GetComponent<PlayerMovementController>().dashTimer == team.players[0].GetComponent<PlayerMovementController>().dashCooldown)
+            {
+                UI.OpenOrClose(UI.speechBubble);
+                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[4]);
+            }
+            else if(UI.speechBubble_Obj.lineIndex == 5 && team.players[1].GetComponent<PlayerMovementController>().dashTimer == team.players[1].GetComponent<PlayerMovementController>().dashCooldown)
             {
                 tutorial = false;
-                entityManager.entities[2].ToggleFrozen(true);
                 team.players[0].GetComponent<Movement>().ToggleFrozen(false);
                 team.players[1].GetComponent<Movement>().ToggleFrozen(false);
                 UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[0]);
+                UI.speechBubble_Obj.Say(script.tutorialDialog, 4);
             }
         }
 
