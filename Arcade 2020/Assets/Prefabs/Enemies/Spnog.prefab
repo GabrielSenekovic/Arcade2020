@@ -226,9 +226,9 @@ MonoBehaviour:
   isIFrame: 0
   IFrameCooldown: 30
   isdead: 0
-  - {fileID: 9198679614646628586, guid: 161135878212926499670e819f8dc0ae, type: 3}
-  - {fileID: 4894506590354250593, guid: 6fc8ec4efd0b9194781d02c7936a6f62, type: 3}
   deathSprites:
+  - {fileID: 4894506590354250593, guid: 6fc8ec4efd0b9194781d02c7936a6f62, type: 3}
+  - {fileID: 9198679614646628586, guid: 161135878212926499670e819f8dc0ae, type: 3}
 --- !u!1 &8202746314291183427
 GameObject:
   m_ObjectHideFlags: 0
