@@ -73,10 +73,7 @@ public class SpnogController : EnemyController
         Vector2 playerPos = new Vector2(players[targetIndex].transform.position.x, players[targetIndex].transform.position.y);
         Vector2 spnogPos = new Vector2(transform.position.x,transform.position.y);
         Vector2 spnogToPlayer = playerPos - spnogPos;
-        if(spnogToPlayer.magnitude > 10)
-        {
-            return;
-        }
+       
         Vector2 bigMagDir = Dir * spnogToPlayer.magnitude;
 
         Vector2 distBetween = spnogToPlayer - bigMagDir; 

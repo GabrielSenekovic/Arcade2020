@@ -25,6 +25,7 @@ public class Door : MonoBehaviour
     {
         locked = false;
         otherDoor.locked = false;
+        GetComponentInChildren<Animator>().SetBool("IsLocked", false);
         GetComponentInChildren<Animator>().SetTrigger("Unlock");
     }
     public void OpenClose(bool value)
