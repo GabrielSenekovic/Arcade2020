@@ -19,12 +19,13 @@ public class Door : MonoBehaviour
     public void Lock()
     {
         locked = true;
+        GetComponentInChildren<Animator>().SetBool("IsLocked", true);
     }
     public void Unlock()
     {
         locked = false;
         otherDoor.locked = false;
-        GetComponentInChildren<Animator>().SetTrigger("Open");
+        GetComponentInChildren<Animator>().SetTrigger("Unlock");
     }
     public void OpenClose(bool value)
     {

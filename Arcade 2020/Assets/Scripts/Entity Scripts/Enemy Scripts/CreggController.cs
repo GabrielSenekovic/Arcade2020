@@ -50,6 +50,7 @@ public class CreggController : EnemyController
         {
             other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(creggDamage);
             FindObjectOfType<AudioManager>().Play("PlayerDamage");
+            FindObjectOfType<AudioManager>().Play("BlobAttack");
         } 
     }
 }

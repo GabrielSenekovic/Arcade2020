@@ -168,6 +168,7 @@ public class SpnogController : EnemyController
                 attackTime = 0;
                 other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage);
                 FindObjectOfType<AudioManager>().Play("PlayerDamage");
+                FindObjectOfType<AudioManager>().Play("BlobAttack");
             }
         } 
     }

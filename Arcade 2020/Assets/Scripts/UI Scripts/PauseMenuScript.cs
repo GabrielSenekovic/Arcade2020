@@ -24,7 +24,6 @@ public class PauseMenuScript : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
         OpenOrClose(pauseScreen);
     }
     public void EnterMainMenu()
