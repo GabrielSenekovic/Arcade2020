@@ -6,6 +6,8 @@ public class PlayerHealthController : HealthManager
 {
     // Start is called before the first frame update
     // Update is called once per frame
+
+    public SpriteRenderer healingLight;
     void Update()
     {
         
@@ -45,5 +47,11 @@ public class PlayerHealthController : HealthManager
     public override void OnDeath()
     {
         gameObject.GetComponent<PlayerMovementController>().isDowned = true;
+    }
+    public IEnumerator OnRevive()
+    {
+        healingLight.color = Color.white;
+        yield return new WaitForSeconds(1);
+        healingLight.color = Color.clear;
     }
 }

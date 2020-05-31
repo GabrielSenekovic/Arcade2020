@@ -163,7 +163,7 @@ public class SpnogController : EnemyController
             if( attackTime >= attackCoolDown)
             {
                 attackTime = 0;
-                other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(spnogDamage);
+                other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(spnogDamage);
                 FindObjectOfType<AudioManager>().Play("PlayerDamage");
                 FindObjectOfType<AudioManager>().Play("BlobAttack");
             }

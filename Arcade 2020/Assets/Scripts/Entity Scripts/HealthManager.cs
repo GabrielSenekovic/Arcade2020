@@ -17,6 +17,8 @@ public class HealthManager : MonoBehaviour
 
     protected SpriteRenderer[] sprites;
 
+    public GameObject spritesSource;
+
     private void Start() 
     {
         isdead = false;
@@ -25,7 +27,7 @@ public class HealthManager : MonoBehaviour
         IFrameTime = 0;
         shaderGUItext = Shader.Find("GUI/Text Shader");
         shaderSpritesDefault = Shader.Find("Sprites/Default");
-        sprites = GetComponentsInChildren<SpriteRenderer>();
+        sprites = spritesSource.GetComponentsInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate() 

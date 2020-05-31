@@ -27,7 +27,7 @@ public class ScorpacaProjectile : Movement
         }
         else
         {
-            other.GetComponentInParent<PlayerHealthController>().TakeDamage(damage);
+            other.GetComponent<PlayerHealthController>().TakeDamage(damage);
         }
     }
 }

@@ -8,8 +8,13 @@ public class PlayerCollisionController : MonoBehaviour
     public bool touchingStairs = false;
     private void OnTriggerStay2D(Collider2D other)
     {
+        if(other.gameObject.GetComponent<Door>())
+        {
+            touchingDoor = other.gameObject;
+        }
         if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player1") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
+            Debug.Log("Hello");
             if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_ONE)
             {
                 return;
@@ -31,19 +36,6 @@ public class PlayerCollisionController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BallPassing");
         }
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.GetComponent<Door>())
-        {
-            touchingDoor = other.gameObject;
-        }
-        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
-        {
-            other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
-            other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
-            other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
-        }
-    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.GetComponent<Door>())
@@ -57,6 +49,13 @@ public class PlayerCollisionController : MonoBehaviour
         if(other.gameObject.GetComponent<Stairs>())
         {
             touchingStairs = true;
+        }
+        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
+        {
+            other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
+            other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
+            StartCoroutine(other.gameObject.GetComponent<PlayerHealthController>().OnRevive());
+            other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
         }
     }
     private void OnCollisionExit2D(Collision2D other) 

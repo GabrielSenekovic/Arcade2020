@@ -92,7 +92,7 @@ public class Team : MonoBehaviour
         return false;
     }
 
-    public IEnumerator waitUntilCanEnterDoor()
+    public IEnumerator WaitUntilCanEnterDoor()
     {
         canEnterDoor = false;
         yield return new WaitForSeconds(doorCooldown);

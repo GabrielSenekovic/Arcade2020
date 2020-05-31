@@ -48,7 +48,7 @@ public class CreggController : EnemyController
 
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            other.gameObject.GetComponentInParent<PlayerHealthController>().TakeDamage(creggDamage);
+            other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(creggDamage);
             FindObjectOfType<AudioManager>().Play("PlayerDamage");
             FindObjectOfType<AudioManager>().Play("BlobAttack");
         } 

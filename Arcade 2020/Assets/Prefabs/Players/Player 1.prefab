@@ -1289,53 +1289,6 @@ Transform:
   m_Father: {fileID: 7299596961037162284}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 129.611}
---- !u!1 &4668183146382240045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4668183146382240044}
-  - component: {fileID: 4668183146382240047}
-  m_Layer: 0
-  m_Name: collider
-  m_TagString: player1
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4668183146382240044
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4668183146382240045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4668183146512851051}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &4668183146382240047
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4668183146382240045}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.5
 --- !u!1 &4668183146512851049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,7 +1322,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4668183146382240044}
   - {fileID: 2784285909043735739}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1407,17 +1359,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f3b9236aa8462489495663da535f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  push: []
   Speed: 0
   dir: {x: 0, y: 0}
   vel: {x: 0, y: 0}
   Acc: {x: 0, y: 0}
   Fric: 0
-  playerspeed: 6
+  playerSpeed: 5
+  canDash: 1
+  dashCooldown: 0
+  playerDashSpeed: 30
+  startDashTime: 0
   isDowned: 0
   UP: 273
   DOWN: 274
   LEFT: 276
   RIGHT: 275
+  DASH: 0
 --- !u!58 &4668183146512851052
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1433,7 +1391,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!114 &4668183146512851055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,7 +2495,7 @@ Transform:
   - {fileID: 8857392891189447486}
   - {fileID: 6739010357645824635}
   m_Father: {fileID: 4668183146512851051}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &6342340500635791024
 Animator:

@@ -680,6 +680,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 582208f318cbd9143a77459468502d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &674394803 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5201584999867071657, guid: c95b9960ce05db94288c7f13b29298f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865408820893052337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &754165480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1382,12 @@ MonoBehaviour:
     type: 3}
   MinMaxAmountOfRooms: {x: 3, y: 5}
   floorSizeMultiplier: 1.3
+--- !u!1 &1867177416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7157456755131243656, guid: c95b9960ce05db94288c7f13b29298f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865408820893052337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1871163926 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3865408820599218087, guid: c95b9960ce05db94288c7f13b29298f0,
@@ -2184,6 +2196,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 988634891, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988634891, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988634891, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988634891, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600217599234391140, guid: c95b9960ce05db94288c7f13b29298f0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 600217599234391140, guid: c95b9960ce05db94288c7f13b29298f0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061961340797996235, guid: c95b9960ce05db94288c7f13b29298f0,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3865408820599218084, guid: c95b9960ce05db94288c7f13b29298f0,
         type: 3}
       propertyPath: m_Name
@@ -2249,26 +2292,16 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1522701800}
-    - target: {fileID: 5303690283866287227, guid: c95b9960ce05db94288c7f13b29298f0,
+    - target: {fileID: 3865408820630326039, guid: c95b9960ce05db94288c7f13b29298f0,
         type: 3}
-      propertyPath: dashCooldown
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5303690283866287227, guid: c95b9960ce05db94288c7f13b29298f0,
+      propertyPath: spritesSource
+      value: 
+      objectReference: {fileID: 1867177416}
+    - target: {fileID: 3865408821196275436, guid: c95b9960ce05db94288c7f13b29298f0,
         type: 3}
-      propertyPath: DASH
-      value: 306
-      objectReference: {fileID: 0}
-    - target: {fileID: 8461145501162641578, guid: c95b9960ce05db94288c7f13b29298f0,
-        type: 3}
-      propertyPath: dashCooldown
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8461145501162641580, guid: c95b9960ce05db94288c7f13b29298f0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
+      propertyPath: spritesSource
+      value: 
+      objectReference: {fileID: 674394803}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95b9960ce05db94288c7f13b29298f0, type: 3}
 --- !u!1001 &5719572273853620054

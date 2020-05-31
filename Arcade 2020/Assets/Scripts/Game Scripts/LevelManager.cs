@@ -184,7 +184,7 @@ partial class LevelManager
         UI.minimap.AddRoomToMap(currentRoom.GetPosition(), currentRoom.doors);
         UI.StartCoroutine(UI.RevealMap(enemyLoadTime, currentRoom.roomCleared));
         team.MoveTeamToNewRoom();
-        StartCoroutine(team.waitUntilCanEnterDoor());
+        StartCoroutine(team.WaitUntilCanEnterDoor());
         Debug.Log("Moving team");
         entityManager.ToggleFreezeAllEntities(false);
     }
