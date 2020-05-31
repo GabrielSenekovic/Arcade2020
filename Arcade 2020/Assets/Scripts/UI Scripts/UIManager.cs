@@ -94,8 +94,16 @@ public class UIManager : MonoBehaviour
         for(int i = 0; i < 3; i++)
         {
             yield return new WaitForSecondsRealtime(time/6);
+            if(mapRend == null)
+            {
+                break;
+            }
             mapRend.color = colors[1];
             yield return new WaitForSecondsRealtime(time/6);
+            if(mapRend == null)
+            {
+                break;
+            }
             mapRend.color = colors[0];
         }
         if(!roomCleared)
