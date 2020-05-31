@@ -20,7 +20,7 @@ public class Team : MonoBehaviour
     {
         for(int i = 0; i < 3; i++)
         {
-            GameObject newBall = Instantiate(powerUpBalls[0], players[0].transform.position, Quaternion.identity, transform);
+            GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
             newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
             players[0].GetComponent<PlayerBallController>().balls.Add(newBall);
