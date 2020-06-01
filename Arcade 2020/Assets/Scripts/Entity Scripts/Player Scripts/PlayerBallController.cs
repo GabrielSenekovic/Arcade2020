@@ -25,11 +25,31 @@ public class PlayerBallController : MonoBehaviour
             {
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[1].transform.position - transform.position);
                 balls[0].transform.position = transform.position + temp.normalized * orbitDist;
+                if(balls[0].GetComponent<Ball>().players[1].transform.position.x < transform.position.x) 
+                { 
+                    Vector3 tempscale = transform.localScale;
+                    transform.localScale = new Vector3(-1,tempscale.y, tempscale.z);
+                }
+                else
+                {
+                    Vector3 tempscale = transform.localScale;
+                    transform.localScale = new Vector3( 1, tempscale.y, tempscale.z);
+                }
             }
             if(gameObject.CompareTag("player2"))
             {
                 Vector3 temp = (balls[0].GetComponent<Ball>().players[0].transform.position - transform.position);
                 balls[0].transform.position = transform.position + temp.normalized * orbitDist;
+                if(balls[0].GetComponent<Ball>().players[0].transform.position.x < transform.position.x) 
+                { 
+                    Vector3 tempscale = transform.localScale;
+                    transform.localScale = new Vector3(-1, tempscale.y, tempscale.z);
+                }
+                else
+                {
+                    Vector3 tempscale = transform.localScale;
+                    transform.localScale = new Vector3(1, tempscale.y, tempscale.z);
+                }
             }
             balls[0].transform.parent = ballHand; throwing = true;
             balls[0].GetComponent<Ball>().isOrbiting = false;

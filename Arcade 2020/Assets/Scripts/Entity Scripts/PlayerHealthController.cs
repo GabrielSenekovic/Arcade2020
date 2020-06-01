@@ -47,6 +47,7 @@ public class PlayerHealthController : HealthManager
     public override void OnDeath()
     {
         gameObject.GetComponent<PlayerMovementController>().isDowned = true;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 90);
     }
     public IEnumerator OnRevive()
     {

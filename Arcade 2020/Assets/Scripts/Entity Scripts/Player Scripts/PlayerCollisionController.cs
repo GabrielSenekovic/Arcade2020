@@ -36,6 +36,20 @@ public class PlayerCollisionController : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BallPassing");
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.GetComponent<Door>())
+        {
+            touchingDoor = other.gameObject;
+        }
+        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
+        {
+            other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
+            other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
+            other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
+            other.gameObject.transform.eulerAngles = new Vector3(other.gameObject.transform.eulerAngles.x,other.gameObject.transform.eulerAngles.y,0 );
+        }
+    }
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.gameObject.GetComponent<Door>())
