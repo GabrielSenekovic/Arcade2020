@@ -42,6 +42,7 @@ public class PlayerCollisionController : MonoBehaviour
             other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
             other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
             other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
+            other.gameObject.transform.eulerAngles = new Vector3(other.gameObject.transform.eulerAngles.x,other.gameObject.transform.eulerAngles.y,0 );
         }
     }
     private void OnTriggerExit2D(Collider2D other)
