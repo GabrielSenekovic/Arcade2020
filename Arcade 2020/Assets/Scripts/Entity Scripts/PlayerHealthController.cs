@@ -51,6 +51,7 @@ public class PlayerHealthController : HealthManager
     }
     public IEnumerator OnRevive()
     {
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         healingLight.color = Color.white;
         yield return new WaitForSeconds(1);
         healingLight.color = Color.clear;
