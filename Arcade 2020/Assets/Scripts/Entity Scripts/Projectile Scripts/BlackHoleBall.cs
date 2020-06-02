@@ -7,7 +7,11 @@ public class BlackHoleBall : Ball
     bool hasHit = false;
 
     private int time = 0;
-    public int cooldown = 30;
+    public int cooldown;
+
+    public SpriteRenderer orbitingSprite;
+
+    public SpriteRenderer[] travelingSprites;
 
     public float gravSpeed = 5;
 
@@ -28,6 +32,26 @@ public class BlackHoleBall : Ball
 
     private void Start() {
         damage= 0;
+        foreach(SpriteRenderer sprite in travelingSprites)
+        {
+            sprite.color = Color.clear;
+        }
+    }
+    public override void OnShoot()
+    {
+        foreach(SpriteRenderer sprite in travelingSprites)
+        {
+            sprite.color = Color.white;
+        }
+        orbitingSprite.color = Color.clear;
+    }
+    protected override void OnCatch()
+    {
+        foreach(SpriteRenderer sprite in travelingSprites)
+        {
+            sprite.color = Color.clear;
+        }
+        orbitingSprite.color = Color.white;
     }
 
     void FixedUpdate()
@@ -37,25 +61,30 @@ public class BlackHoleBall : Ball
         if(time >= cooldown)
         {
             time = 0;
-            foreach( victim v in Victims)
+            for(int i = 0; i < Victims.Count; i++)
             {
-                v.g.GetComponent<EnemyHealthController>().TakeDamage(specialDamage);
+                Victims[i].g.GetComponent<EnemyHealthController>().TakeDamage(specialDamage);
+                if(Victims[i].g.GetComponent<EnemyHealthController>().isdead)
+                {
+                    Victims.RemoveAt(i);
+                    i--;
+                }
             }
         }
     }
 
     private void OnAttackStay(GameObject vic)
     {
-        bool isNew = false;
+        bool isNew = true;
         for(int i = 0; i < Victims.Count; i++)
         {
             if(Victims[i].g != vic)
             {
-                continue;
+                isNew = true;
             }
             else
             {
-                isNew = true;
+                isNew = false;
                 break;
             }
         }
@@ -63,6 +92,8 @@ public class BlackHoleBall : Ball
         {
             Vector2 pushV2 = (Vector2)(transform.position - vic.transform.position).normalized * gravSpeed; //! times some speed
             Victims.Add( new victim(vic, vic.GetComponent<Movement>().AddPushVector(pushV2)));
+            Debug.Log("Adding: " + vic + " index: " + Victims[Victims.Count-1].pushIndex +" at: " + vic.transform.position);
+            //Debug.Break();
         }
         else if(Victims.Count > 0)
         {
@@ -77,6 +108,8 @@ public class BlackHoleBall : Ball
             }
             if(targetVic.g != null)
             targetVic.g.GetComponent<Movement>().push[targetVic.pushIndex] = (Vector2)(transform.position - vic.transform.position).normalized * gravSpeed;
+            Debug.Log("Same object: " + vic + " index: " + targetVic.pushIndex + " at: " + vic.transform.position);
+            //Debug.Break();
         }
     }
 

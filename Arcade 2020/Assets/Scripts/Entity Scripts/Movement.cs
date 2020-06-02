@@ -53,7 +53,7 @@ public class Movement : MonoBehaviour
     public int AddPushVector(Vector2 vin)
     {
         push.Add(vin);
-        return push.Count;
+        return push.Count - 1;
     }
 
     public void RemovePushVector(int index)
@@ -63,19 +63,20 @@ public class Movement : MonoBehaviour
 
     public void MoveObject()
     {
-        if(!isFrozen) //I needed to freeze all entities when the camera moved! If you know a better way then feel free to change
+        Vector2 buffer = Vector2.zero;
+        foreach( Vector2 v in push)
         {
-            rig().velocity = Vel;
+            buffer += v;
+        }
+        if(!isFrozen) //I needed to freeze all entities when the camera moved! If you know a better way then feel free to change
+        { 
+            rig().velocity = Vel + buffer;
             Vel *= Acc;
-            Vel *= (1.0f/(1.0f + Fric)); 
-            foreach( Vector2 v in push)
-            {
-                AddVelocity(v);
-            }
+            Vel *= (1.0f/(1.0f + Fric));
         }
         else
         {
-            rig().velocity = Vector2.zero;
+            rig().velocity = buffer;
         }
     }
 
