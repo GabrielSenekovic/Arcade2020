@@ -14,7 +14,6 @@ public class PlayerCollisionController : MonoBehaviour
         }
         if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player1") && other.gameObject.GetComponent<Ball>().isTraveling)
         {
-            Debug.Log("Hello");
             if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_ONE)
             {
                 return;

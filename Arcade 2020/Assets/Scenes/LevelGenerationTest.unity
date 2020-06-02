@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomPrefab: {fileID: 2886065568409075337, guid: 78d421d246f08d549b59104de06ceaf6,
     type: 3}
-  MinMaxAmountOfRooms: {x: 3, y: 5}
+  MinMaxAmountOfRooms: {x: 20, y: 30}
   floorSizeMultiplier: 1.3
 --- !u!1 &1867177416 stripped
 GameObject:

@@ -6,7 +6,12 @@ public class BlackHoleBall : Ball
 {
     bool hasHit = false;
 
+    private int time = 0;
+    public int cooldown = 30;
+
     public float gravSpeed = 5;
+
+    public int specialDamage = 1;
 
     struct victim 
     {
@@ -20,11 +25,24 @@ public class BlackHoleBall : Ball
         }
     };
     private List<victim> Victims = new List<victim>();
-    // Start is called before the first frame update
-    void Start(){}
 
-    // Update is called once per frame
-    void Update(){}
+    private void Start() {
+        damage= 0;
+    }
+
+    void FixedUpdate()
+    {
+        time++;
+        if(Victims.Count > 0)
+        if(time >= cooldown)
+        {
+            time = 0;
+            foreach( victim v in Victims)
+            {
+                v.g.GetComponent<EnemyHealthController>().TakeDamage(specialDamage);
+            }
+        }
+    }
 
     private void OnAttackStay(GameObject vic)
     {
@@ -46,7 +64,7 @@ public class BlackHoleBall : Ball
             Vector2 pushV2 = (Vector2)(transform.position - vic.transform.position).normalized * gravSpeed; //! times some speed
             Victims.Add( new victim(vic, vic.GetComponent<Movement>().AddPushVector(pushV2)));
         }
-        else
+        else if(Victims.Count > 0)
         {
             victim targetVic = Victims[0];
             foreach( victim v in Victims)
