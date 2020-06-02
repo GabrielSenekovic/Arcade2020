@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpnogController : EnemyController
+public class SpnogController : HomingEnemyController
 {
     public enum SpnogMovementType
     {
@@ -10,7 +10,6 @@ public class SpnogController : EnemyController
     Spinning = 1
     }
     public SpnogMovementType movementType = SpnogMovementType.Spinning;
-    public GameObject[] players;
     [SerializeField]  int targetIndex;
     public int coolDown;
     [SerializeField] int time;
@@ -40,7 +39,7 @@ public class SpnogController : EnemyController
         FindObjectOfType<AudioManager>().Play("SpnogNoice");
     }
 
-    void DrawThings(Vector2 PlayerPosition, Vector2 SpnogPosition, Vector2 DistanceBetween, Vector2 BigMac)
+    void DrawSpnogTriangle(Vector2 PlayerPosition, Vector2 SpnogPosition, Vector2 DistanceBetween, Vector2 BigMac)
     {
         Debug.DrawLine
         ( 
@@ -78,7 +77,10 @@ public class SpnogController : EnemyController
 
         Vector2 distBetween = spnogToPlayer - bigMagDir; 
 
-        //!DrawThings(playerPos, spnogPos, distBetween, bigMagDir);
+        if(DebugManager.ShowSpnogTriangle)
+        {
+            DrawSpnogTriangle(playerPos, spnogPos, distBetween, bigMagDir);
+        }
 
         float triangleHeight = Mathf.Sqrt(spnogToPlayer.magnitude * spnogToPlayer.magnitude - distBetween.magnitude * 0.5f * distBetween.magnitude * 0.5f);
         float angle = Mathf.Atan((distBetween.magnitude * 0.5f)/triangleHeight) * Mathf.Rad2Deg; 

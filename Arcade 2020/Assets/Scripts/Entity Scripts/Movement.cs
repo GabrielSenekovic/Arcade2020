@@ -6,13 +6,13 @@ public class Movement : MonoBehaviour
 {
     public Rigidbody2D rig() {return this.GetComponent<Rigidbody2D>();}
 
-    public List<Vector2> push = new List<Vector2>();
+    [System.NonSerialized]public List<Vector2> push = new List<Vector2>();
 
-    public float Speed;
+    [System.NonSerialized]public float Speed;
 
     protected bool isFrozen = false;
 
-    [SerializeField] Vector2 dir;
+    Vector2 dir;
 
     public Vector2 Dir
     {
@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
         }
     }
   
-    [SerializeField] Vector2 vel;
+    Vector2 vel;
     public Vector2 Vel
     {
         get
@@ -42,8 +42,8 @@ public class Movement : MonoBehaviour
             Dir = vel.normalized; 
         }
     }
-       public Vector2 Acc;
-        public float Fric;
+    [System.NonSerialized]public Vector2 Acc;
+    [SerializeField]protected float Fric;
 
     public void AddVelocity(Vector2 vin)
     {

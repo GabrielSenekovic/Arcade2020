@@ -21,8 +21,6 @@ public class UIManager : MonoBehaviour
     public Cursor cursor;
 
     [System.NonSerialized] public Color[] colors = new Color[2];
-
-    [SerializeField]EntityManager entityManager;
     
     void Awake()
     {

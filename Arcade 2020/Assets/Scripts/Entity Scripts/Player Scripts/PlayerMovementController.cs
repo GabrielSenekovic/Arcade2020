@@ -7,13 +7,13 @@ public class PlayerMovementController : Movement
     [Range(1.0f,10.0f)]
     public float playerSpeed = 5.0f;  
     private bool isDashing = false;
-    public bool canDash = true;
-    public int dashCooldown;
-    [System.NonSerialized] public int dashTimer;
-    public float playerDashSpeed = 30.0f;
+    bool canDash = true;
+    [SerializeField] int dashCooldown;
+    [System.NonSerialized] public int dashCooldownTimer;
+    [SerializeField] float playerDashSpeed;
     private float dashTime = 0.1f;
-    public float startDashTime;
-    public bool isDowned = false;
+    [SerializeField] float startDashTime;
+    [System.NonSerialized] public bool isDowned = false;
     private float dirx;
     private float diry;
     public KeyCode UP;
@@ -32,13 +32,13 @@ public class PlayerMovementController : Movement
 
     void Update()
     {
-        if(dashTimer > 0)
+        if(dashCooldownTimer > 0)
         {
-            dashTimer--;
+            dashCooldownTimer--;
         }
         else
         {
-            dashTimer = 0;
+            dashCooldownTimer = 0;
             canDash = true;
         }
         if(isFrozen)
@@ -83,7 +83,7 @@ public class PlayerMovementController : Movement
             {
                 dashTime = startDashTime;
                 isDashing = false;
-                dashTimer = dashCooldown;
+                dashCooldownTimer = dashCooldown;
                 canDash = false;
                 Vel = Vector2.zero;
             }
@@ -95,6 +95,10 @@ public class PlayerMovementController : Movement
                 isDashing = true;
             }
         }
+    }
+    public bool HasDashed()
+    {
+        return dashCooldownTimer == dashCooldown;
     }
 
     private void FixedUpdate() 

@@ -18,7 +18,7 @@ public partial class LevelManager : MonoBehaviour
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
 
-    public Vector2 RoomSize;
+    [System.NonSerialized]public Vector2 roomSize = new Vector2(28, 20);
 
     bool tutorial = false;
 
@@ -45,44 +45,20 @@ public partial class LevelManager : MonoBehaviour
 
         ResetLevel();
 
-        PlayTutorial();
+        if(DebugManager.PlayTutorial)
+        {
+            gameObject.AddComponent(typeof(Tutorial));
+            GetComponent<Tutorial>().InitiateTutorial(entityManager, UI, team, currentRoom, roomSize);
+        }
     }
     void Update()
     {
         bool isBothTouchingDoor = team.GetIfBothTouchingDoor();
-        if(tutorial)
+        if(GetComponent<Tutorial>())
         {
-            if(entityManager.entities.Count > 2)
+            if(!GetComponent<Tutorial>().OnPlay(entityManager, UI, script.tutorialDialog, team))
             {
-                if(!entityManager.entities[2].GetComponent<EnemyController>().isSpawning &&UI.speechBubble_Obj.lineIndex == 0)
-                {
-                    entityManager.entities[2].ToggleFrozen(true);
-                    UI.OpenOrClose(UI.speechBubble);
-                    UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[0]);
-                }
-            }
-            else if(UI.speechBubble_Obj.lineIndex == 1 && team.players[1].GetComponent<PlayerBallController>().balls.Count == 1)
-            {
-                UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.Say(script.tutorialDialog, 2);
-            }
-            else if(UI.speechBubble_Obj.lineIndex == 3 && team.players[0].GetComponent<PlayerBallController>().balls.Count == 3)
-            {
-                UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[3]);
-            }
-            else if(UI.speechBubble_Obj.lineIndex == 4 && team.players[0].GetComponent<PlayerMovementController>().dashTimer == team.players[0].GetComponent<PlayerMovementController>().dashCooldown)
-            {
-                UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.Say(script.tutorialDialog.myLines[4]);
-            }
-            else if(UI.speechBubble_Obj.lineIndex == 5 && team.players[1].GetComponent<PlayerMovementController>().dashTimer == team.players[1].GetComponent<PlayerMovementController>().dashCooldown)
-            {
-                tutorial = false;
-                team.players[0].GetComponent<Movement>().ToggleFrozen(false);
-                team.players[1].GetComponent<Movement>().ToggleFrozen(false);
-                UI.OpenOrClose(UI.speechBubble);
-                UI.speechBubble_Obj.Say(script.tutorialDialog, 4);
+                Destroy(GetComponent<Tutorial>());
             }
         }
 
@@ -93,7 +69,7 @@ public partial class LevelManager : MonoBehaviour
                 if(!team.GetDoor().locked && team.canEnterDoor)
                 {
                     entityManager.ToggleFreezeAllEntities(true);
-                    cameraM.Move(team.GetDoor().directionModifier, RoomSize);
+                    cameraM.Move(team.GetDoor().directionModifier, roomSize);
                 }
                 else
                 {
@@ -132,11 +108,11 @@ public partial class LevelManager : MonoBehaviour
 
         if(currentFloor>0){generator.DestroyLevel();};
         UI.minimap.ResetMap();
-        team.ResetTeam(RoomSize);
-        cameraM.transform.position = new Vector3(RoomSize.x/2, 9.5f, cameraM.transform.position.z);
+        team.ResetTeam(roomSize);
+        cameraM.transform.position = new Vector3(roomSize.x/2, 9.5f, cameraM.transform.position.z);
         
         currentFloor++;
-        generator.GenerateLevel(this, currentFloor, RoomSize);
+        generator.GenerateLevel(this, currentFloor, roomSize);
         currentRoom = firstRoom;
         UI.RevealMap(enemyLoadTime, true);
 
@@ -151,23 +127,6 @@ public partial class LevelManager : MonoBehaviour
 
 partial class LevelManager
 {
-    public void PlayTutorial()
-    {
-        tutorial = true;
-        team.players[0].GetComponent<Movement>().ToggleFrozen(true);
-        team.players[1].GetComponent<Movement>().ToggleFrozen(true);
-        GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity, currentRoom.transform);
-        entityManager.entities.Add(newEnemy.GetComponent<Movement>());
-        entityManager.amountOfEnemiesSpawned++;
-        UI.minimap.gameObject.SetActive(false);
-        currentRoom.roomCleared = false;
-        foreach(GameObject door in currentRoom.doors)
-        {
-            door.GetComponent<Door>().OpenClose(false);
-        }
-        entityManager.battleInitiated = true;
-        newEnemy.GetComponent<EnemyController>().Spawn();
-    }
     public void OnMoveToNewRoom()
     {
         cameraM.movementDone = false;
@@ -175,7 +134,7 @@ partial class LevelManager
         currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
         if(!currentRoom.roomCleared)
         {
-            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime));
+            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime, team));
             foreach(GameObject door in currentRoom.doors)
             {
                 door.GetComponent<Door>().OpenClose(false);

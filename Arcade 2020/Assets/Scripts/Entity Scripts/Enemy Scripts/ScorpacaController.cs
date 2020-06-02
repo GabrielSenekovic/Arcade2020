@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScorpacaController : EnemyController
+public class ScorpacaController : HomingEnemyController
 {
     public enum ScorpacaMovementType
     {
@@ -11,7 +11,6 @@ public class ScorpacaController : EnemyController
     FOLLOWING = 2
     }
     public ScorpacaMovementType movementType = ScorpacaMovementType.FOLLOWING;
-    public GameObject[] players;
     [SerializeField]  int targetIndex;
     public int AggroCoolDown = 60;
     [SerializeField] int time;

@@ -10,9 +10,6 @@ public class EntityManager : MonoBehaviour
     public bool battleInitiated = false;
 
     public int amountOfEnemiesSpawned = 0;
-
-    public Team team;
-
     public void ToggleFreezeAllEntities(bool value)
     {
         foreach(Movement entity in entities)
@@ -38,7 +35,7 @@ public class EntityManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator spawnEnemies(Room newRoom, float time)
+    public IEnumerator spawnEnemies(Room newRoom, float time, Team team)
     {
         yield return new WaitForSecondsRealtime(time);
         int amountOfEnemiesToSpawn = Random.Range(1,4);
@@ -55,15 +52,10 @@ public class EntityManager : MonoBehaviour
             GameObject newEnemy = Instantiate(TypesOfEnemies[Random.Range(0, TypesOfEnemies.Count)], newSpawnLocation, Quaternion.identity, newRoom.transform);
             entities.Add(newEnemy.GetComponent<Movement>());
             amountOfEnemiesSpawned++;
-            if(newEnemy.GetComponent<SpnogController>())
+            
+            if(newEnemy.GetComponent<HomingEnemyController>())
             {
-                newEnemy.GetComponent<SpnogController>().players[0] = team.players[0].gameObject;
-                newEnemy.GetComponent<SpnogController>().players[1] = team.players[1].gameObject;
-            }
-            if(newEnemy.GetComponent<ScorpacaController>())
-            {
-                newEnemy.GetComponent<ScorpacaController>().players[0] = team.players[0].gameObject;
-                newEnemy.GetComponent<ScorpacaController>().players[1] = team.players[1].gameObject;
+                newEnemy.GetComponent<HomingEnemyController>().Initialise(team.players);
             }
             newEnemy.GetComponent<EnemyController>().Spawn();
             FindObjectOfType<AudioManager>().Play("Falling");

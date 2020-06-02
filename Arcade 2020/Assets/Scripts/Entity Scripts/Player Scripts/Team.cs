@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Team : MonoBehaviour
 {
-    public PlayerCollisionController[] players;
+    [System.NonSerialized] public Player[] players;
 
     [SerializeField] GameObject ballPrefab;
     [SerializeField] List<GameObject> powerUpBalls;
@@ -16,6 +16,10 @@ public class Team : MonoBehaviour
     [SerializeField] UIManager UI;
     public uint amountOfKeys = 0;
 
+    private void Awake()
+    {
+        players = GetComponentsInChildren<Player>();
+    }
     private void Start() 
     {
         for(int i = 0; i < 3; i++)
@@ -30,20 +34,20 @@ public class Team : MonoBehaviour
 
     public bool GetIfBothTouchingDoor()
     {
-        bool temp = (players[0].touchingDoor == players[1].touchingDoor) && players[0].touchingDoor != null;
-        if(players[0].touchingDoor && temp)
+        bool temp = (players[0].collisionController.touchingDoor == players[1].collisionController.touchingDoor) && players[0].collisionController.touchingDoor != null;
+        if(players[0].collisionController.touchingDoor && temp)
         {
-            players[0].touchingDoor.GetComponent<Door>().LightUp(true);
+            players[0].collisionController.touchingDoor.GetComponent<Door>().LightUp(true);
         }
         return temp;
     }
     public bool GetIfTouchingStairs()
     {
-        return (players[0].touchingStairs || players[1].touchingStairs);
+        return (players[0].collisionController.touchingStairs || players[1].collisionController.touchingStairs);
     }
     public Door GetDoor()
     {
-        return players[0].touchingDoor.GetComponent<Door>();
+        return players[0].collisionController.touchingDoor.GetComponent<Door>();
     }
     public bool GetIfBothPlayersDead()
     {
@@ -59,7 +63,7 @@ public class Team : MonoBehaviour
     {
         for(int i = 0; i <= 1; i++)
         {
-            players[i].touchingStairs = false;
+            players[i].collisionController.touchingStairs = false;
             //players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
         }
         players[0].transform.position = new Vector2(Roomsize.x/2 + 8, Roomsize.y/2);
