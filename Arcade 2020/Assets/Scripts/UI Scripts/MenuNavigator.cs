@@ -36,7 +36,17 @@ public class MenuNavigator : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.J))
         {
-            ExecuteEvents.Execute(buttons[currentIndex].gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+            if(GetComponentInChildren<CanvasGroup>())
+            {
+                if(GetComponentInChildren<CanvasGroup>().alpha > 0)
+                {
+                    ExecuteEvents.Execute(buttons[currentIndex].gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+                }
+            }
+            else
+            {
+                ExecuteEvents.Execute(buttons[currentIndex].gameObject, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+            }
         }
     }
 }

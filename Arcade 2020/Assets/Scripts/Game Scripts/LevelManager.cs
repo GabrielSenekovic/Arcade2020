@@ -134,7 +134,7 @@ partial class LevelManager
         currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
         if(!currentRoom.roomCleared)
         {
-            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime, team));
+            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime, team, roomSize));
             foreach(GameObject door in currentRoom.doors)
             {
                 door.GetComponent<Door>().OpenClose(false);

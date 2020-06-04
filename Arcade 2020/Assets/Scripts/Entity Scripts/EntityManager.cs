@@ -35,7 +35,7 @@ public class EntityManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator spawnEnemies(Room newRoom, float time, Team team)
+    public IEnumerator spawnEnemies(Room newRoom, float time, Team team, Vector2 RoomSize)
     {
         yield return new WaitForSecondsRealtime(time);
         int amountOfEnemiesToSpawn = Random.Range(1,4);
@@ -45,7 +45,7 @@ public class EntityManager : MonoBehaviour
             Vector2 newSpawnLocation = Vector2.zero;
             while(!spawnLocations.Contains(newSpawnLocation) && newSpawnLocation == Vector2.zero)
             {
-                newSpawnLocation = new Vector2(newRoom.transform.position.x + Random.Range(4,20), newRoom.transform.position.y + Random.Range(4,17));
+                newSpawnLocation = new Vector2(newRoom.transform.position.x + Random.Range(6,RoomSize.x-6), newRoom.transform.position.y + Random.Range(6, RoomSize.y-6));
             }
             spawnLocations.Add(newSpawnLocation);
 
