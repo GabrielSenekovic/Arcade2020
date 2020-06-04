@@ -119,6 +119,7 @@ public class SpnogController : HomingEnemyController
             if(angle < minAngle)
             {
                 movementType = SpnogMovementType.Charging;
+                GetComponentInChildren<Animator>().SetTrigger("Slam");
             }
         }
     }
@@ -162,7 +163,7 @@ public class SpnogController : HomingEnemyController
     {
         if(other.gameObject.tag == "player1" || other.gameObject.tag == "player2")
         {
-            if( attackTime >= attackCoolDown)
+            if ( attackTime >= attackCoolDown)
             {
                 attackTime = 0;
                 other.gameObject.GetComponent<PlayerHealthController>().TakeDamage(spnogDamage);
