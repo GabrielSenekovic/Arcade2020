@@ -136,10 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6e41441197bf640af549b325a9d99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  dir: {x: 0, y: 0}
-  vel: {x: 0, y: 0}
-  Acc: {x: 0, y: 0}
   Fric: 0
   damage: 0
 --- !u!95 &1777850860432880772
@@ -171,7 +167,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 201ec1dbeecd82f44a1fdb17e51dc926, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 67f8b20013690b34aa42d39e92a55d20, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.45
   m_Pitch: 1
