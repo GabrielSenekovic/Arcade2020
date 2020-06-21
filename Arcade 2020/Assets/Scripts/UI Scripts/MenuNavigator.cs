@@ -9,7 +9,8 @@ public class MenuNavigator : MonoBehaviour
     public Button[] buttons;
     int currentIndex = 0;
 
-    private void Update() {
+    private void Update() 
+    {
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             if(currentIndex == 0)
@@ -34,7 +35,7 @@ public class MenuNavigator : MonoBehaviour
             }
             buttons[currentIndex].Select();
         }
-        if(Input.GetKeyDown(KeyCode.J))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             if(GetComponentInChildren<CanvasGroup>())
             {

@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 44704594f6cc80a409914a4a6d80a51d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 128860239
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eaccbeb1b028aed49b7b5bee913060c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -134,10 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12378b8a7b64aed44b31ebec9008d10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  dir: {x: 0, y: 0}
-  vel: {x: 0, y: 0}
-  Acc: {x: 0, y: 0}
   Fric: 0
   damage: 1
   flySpeed: 15

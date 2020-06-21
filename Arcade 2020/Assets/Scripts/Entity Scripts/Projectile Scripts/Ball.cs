@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : Movement
 {
-    public PowerUpType myType;
+    public PowerUp.PowerUpType myType;
     public bool isTraveling = false;
     public bool isOrbiting;
 

@@ -58,6 +58,10 @@ MonoBehaviour:
     rarity: 20
   - item: {fileID: 921480397968742648, guid: 9aa18fecdbbf85e48939d5debfa49173, type: 3}
     rarity: 2
+  powerUpBalls:
+  - {fileID: 2225837014187637723, guid: 70e30d87ece4a974b82e80ea1fee537d, type: 3}
+  - {fileID: 8769231734526243667, guid: 3d43e98684a92894886e547a71b07d88, type: 3}
+  - {fileID: 728138150297854692, guid: 53ae839fffac77a46b32dae4b5a21bfb, type: 3}
   obstacles:
   - {fileID: 4678486112735887921, guid: 5cbc0573d463e6d429c61cb89f7ccc09, type: 3}
   stairs: {fileID: 3170862104553450987, guid: f07f1a0cbf73dc745bfae0211081e0ea, type: 3}

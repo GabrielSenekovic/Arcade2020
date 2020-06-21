@@ -26,7 +26,7 @@ public class HealthManager : MonoBehaviour
         isIFrame = false;
         IFrameTime = 0;
         shaderGUItext = Shader.Find("GUI/Text Shader");
-        shaderSpritesDefault = Shader.Find("Sprites/Default");
+        shaderSpritesDefault = Shader.Find("Sprites/Diffuse");
         sprites = spritesSource.GetComponentsInChildren<SpriteRenderer>();
     }
 

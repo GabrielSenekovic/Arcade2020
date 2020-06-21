@@ -82,6 +82,10 @@ public class UIManager : MonoBehaviour
         UIScreen.blocksRaycasts = !(UIScreen.blocksRaycasts); //!  = true ? false : true;
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
         cursor.gameObject.SetActive(cursor.gameObject.activeSelf ? false: true);
+        if(UIScreen.transform.parent.GetComponent<MenuNavigator>())
+        {
+            UIScreen.transform.parent.GetComponent<MenuNavigator>().enabled = UIScreen.blocksRaycasts;
+        }
     }
 
     public IEnumerator RevealMap(float time, bool roomCleared)

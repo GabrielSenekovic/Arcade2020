@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Team : MonoBehaviour
 {
+    [SerializeField] ProjectileRepository projectiles;
     [System.NonSerialized] public Player[] players;
 
     [SerializeField] GameObject ballPrefab;
-    [SerializeField] List<GameObject> powerUpBalls;
 
     [SerializeField] float doorCooldown;
 
@@ -24,7 +24,7 @@ public class Team : MonoBehaviour
     {
         for(int i = 0; i < 3; i++)
         {
-            GameObject newBall = Instantiate(powerUpBalls[2], players[0].transform.position, Quaternion.identity, transform);
+            GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
             newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
             players[0].GetComponent<PlayerBallController>().balls.Add(newBall);
@@ -78,17 +78,19 @@ public class Team : MonoBehaviour
         player.GetComponent<PlayerBallController>().balls.Add(newBall);
     }
 
-    public bool PowerUpBall(GameObject player, PowerUpType typeToChangeTo)
+    public bool PowerUpBall(GameObject player, PowerUp.PowerUpType typeToChangeTo)
     {
         foreach(GameObject ball in player.GetComponent<PlayerBallController>().balls)
         {
-            if(ball.GetComponent<Ball>().myType == PowerUpType.Basic)
+            if(ball.GetComponent<Ball>().myType == PowerUp.PowerUpType.Basic)
             {
                 player.GetComponent<PlayerBallController>().balls.Remove(ball);
                 Destroy(ball);
-                GameObject newBall = Instantiate(powerUpBalls[(int)typeToChangeTo - 1], player.transform.position, Quaternion.identity, transform); 
+                GameObject newBall = projectiles.GetBall(typeToChangeTo).gameObject;
+                newBall.transform.position = player.transform.position;
                 newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
-                newBall.GetComponent<Ball>().players[1] = players[1].gameObject;              
+                newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
+                newBall.SetActive(true);           
                 player.GetComponent<PlayerBallController>().balls.Add(newBall);
                 return true;
             }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class RoomBuilder : MonoBehaviour
 {
     [SerializeField] Blueprint blueprint;
+
+    [SerializeField] ProjectileRepository projectiles;
     public void Build(List<Room> rooms, LevelManager level, Vector2 RoomSize)
     {
         System.DateTime before = System.DateTime.Now;
@@ -103,6 +105,12 @@ public class RoomBuilder : MonoBehaviour
             PickUp newItem = Instantiate(pickUpProbabilityList[Random.Range(0, pickUpProbabilityList.Count)], new Vector3(room.transform.position.x + level.roomSize.x/2, room.transform.position.y + level.roomSize.y/2, room.transform.position.z), Quaternion.identity, room.transform);
             room.myItem = newItem;
             room.myItem.gameObject.SetActive(false);
+            if(newItem.GetComponent<PowerUp>())
+            {
+                GameObject temp = Instantiate(blueprint.powerUpBalls[(int)newItem.GetComponent<PowerUp>().myType- 1], new Vector2(10000, 10000), Quaternion.identity, transform); 
+                projectiles.balls.Add(temp.GetComponent<Ball>());
+                temp.SetActive(false);
+            }
         }
     }
     void CloseOpenDoors(List<Room> rooms)

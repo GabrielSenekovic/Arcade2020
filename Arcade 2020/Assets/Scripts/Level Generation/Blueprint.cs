@@ -20,6 +20,8 @@ public class Blueprint : MonoBehaviour
         public Rarity rarity;
     }
     public List<PickUpEntry> pickUps;
+    
+    public List<GameObject> powerUpBalls;
 
     public List<Obstacle> obstacles;
     public GameObject stairs;
