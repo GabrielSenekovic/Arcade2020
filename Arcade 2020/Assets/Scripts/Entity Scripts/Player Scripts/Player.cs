@@ -13,11 +13,19 @@ public class Player : MonoBehaviour
     [System.NonSerialized]public PlayerMovementController movementController;
     [System.NonSerialized]public PlayerHealthController healthController;
 
+    public BoostsDisplay boosts;
     private void Awake() 
     {
         ballController = GetComponent<PlayerBallController>();
         collisionController = GetComponent<PlayerCollisionController>();
         movementController = GetComponent<PlayerMovementController>();
         healthController = GetComponent<PlayerHealthController>();
+    }
+    private void Update() 
+    {
+        /*if(Input.GetKeyDown(KeyCode.R))
+        {
+            boosts.AddBoost(BoostsDisplay.BoostType.SpeedBoost);
+        }*/
     }
 }

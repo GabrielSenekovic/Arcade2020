@@ -22,7 +22,7 @@ public class Team : MonoBehaviour
     }
     private void Start() 
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 10; i++)
         {
             GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
