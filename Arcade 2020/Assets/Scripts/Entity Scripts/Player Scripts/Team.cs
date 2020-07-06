@@ -66,6 +66,7 @@ public class Team : MonoBehaviour
             players[i].collisionController.touchingStairs = false;
             //players[i].transform.position = new Vector2(10 + 5*i, 10 + 5*i);
         }
+        FindObjectOfType<AudioManager>().Play("StairUp");
         players[0].transform.position = new Vector2(Roomsize.x/2 + 8, Roomsize.y/2);
         players[1].transform.position = new Vector2(Roomsize.x/2 - 8, Roomsize.y/2);
     }
