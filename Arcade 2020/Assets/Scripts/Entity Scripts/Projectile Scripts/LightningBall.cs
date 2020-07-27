@@ -56,7 +56,6 @@ public class LightningBall : Ball
                         targetedEntities.Add(entity);
                         FindObjectOfType<AudioManager>().Play("LightningBallZap");
                         i++;
-                        Debug.Break();
                     }
                 }
             }

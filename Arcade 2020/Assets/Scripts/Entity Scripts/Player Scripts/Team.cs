@@ -22,7 +22,7 @@ public class Team : MonoBehaviour
     }
     private void Start() 
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 1; i++)
         {
             GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
@@ -79,12 +79,15 @@ public class Team : MonoBehaviour
         player.GetComponent<PlayerBallController>().balls.Add(newBall);
     }
 
-    public bool PowerUpBall(GameObject player, PowerUp.PowerUpType typeToChangeTo)
+    public bool PowerUpBall(GameObject player, PowerUp.PowerUpType typeToChangeTo, PowerUp powerUp)
     {
+        projectiles.powerUps.Add(powerUp); powerUp.transform.position = new Vector2(10000, 10000);
+
         foreach(GameObject ball in player.GetComponent<PlayerBallController>().balls)
         {
             if(ball.GetComponent<Ball>().myType == PowerUp.PowerUpType.Basic)
             {
+                //if there is a basic ball to replace
                 player.GetComponent<PlayerBallController>().balls.Remove(ball);
                 Destroy(ball);
                 GameObject newBall = projectiles.GetBall(typeToChangeTo).gameObject;
@@ -96,8 +99,22 @@ public class Team : MonoBehaviour
                 return true;
             }
         }
-       // UI.OpenBallSwitching(player.GetComponent<PlayerBallController>(), Instantiate(powerUpBalls[(int)typeToChangeTo - 1], player.transform.position, Quaternion.identity, transform).GetComponent<Ball>());
+        UI.OpenBallSwitching(player.GetComponent<PlayerBallController>(), projectiles.GetBall(typeToChangeTo));
         return false;
+    }
+    public void RefillBallsOnPlayer(PlayerBallController player, List<GameObject> balls)
+    {
+        player.balls.Clear();
+        //gives a high amount of balls to one player
+        for(int i = 0; i < balls.Count; i++)
+        {
+            balls[i].GetComponent<Ball>().isOn = player.identifier;
+            balls[i].transform.position = player.transform.position;
+            balls[i].GetComponent<Ball>().players[0] = players[0].gameObject;
+            balls[i].GetComponent<Ball>().players[1] = players[1].gameObject;
+            balls[i].SetActive(true);
+            player.balls.Add(balls[i]);
+        }
     }
 
     public IEnumerator WaitUntilCanEnterDoor()

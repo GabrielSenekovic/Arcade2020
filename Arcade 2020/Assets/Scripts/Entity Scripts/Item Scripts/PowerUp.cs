@@ -17,9 +17,6 @@ public class PowerUp : PickUp
 
     public override void OnPickUp(GameObject player)
     {
-        if(player.transform.parent.transform.gameObject.GetComponent<Team>().PowerUpBall(player, myType))
-        {
-            Destroy(gameObject);
-        }
+        player.transform.parent.transform.gameObject.GetComponent<Team>().PowerUpBall(player, myType, this);
     }
 }

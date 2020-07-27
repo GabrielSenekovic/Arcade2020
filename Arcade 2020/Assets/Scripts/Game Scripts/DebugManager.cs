@@ -23,6 +23,34 @@ public class DebugManager : MonoBehaviour
         }
     }
 
+    [SerializeField] bool spawnOnlyBalls;
+
+    public static bool SpawnOnlyBalls
+    {
+        get
+        {
+            return Instance.spawnOnlyBalls;
+        }
+    }
+
+    [SerializeField] bool debugButtons;
+    public static bool DebugButtons
+    {
+        get
+        {
+            return Instance.debugButtons;
+        }
+    }
+
+    [SerializeField] bool debugText;
+    public static bool DebugText
+    {
+        get
+        {
+            return Instance.debugText;
+        }
+    }
+
     private void Awake() 
     {
         Instance = this;

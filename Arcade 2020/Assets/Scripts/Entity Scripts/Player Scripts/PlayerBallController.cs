@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBallController : MonoBehaviour
 {
+    public Ball.OwnedByPlayer identifier;
     public KeyCode SHOOT;
 
     public bool throwing = false;

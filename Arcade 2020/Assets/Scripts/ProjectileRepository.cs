@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileRepository : MonoBehaviour
 {
     public List<Ball> balls = new List<Ball>(){};
+    public List<PowerUp> powerUps = new List<PowerUp>(){};
 
     public Ball GetBall(PowerUp.PowerUpType type)
     {
@@ -14,6 +15,19 @@ public class ProjectileRepository : MonoBehaviour
             {
                 Ball temp = balls[i];
                 balls.RemoveAt(i);
+                return temp;
+            }
+        }
+        return null;
+    }
+    public PowerUp GetPowerUp(PowerUp.PowerUpType type)
+    {
+        for(int i = 0; i < powerUps.Count; i++)
+        {
+            if(powerUps[i].myType == type)
+            {
+                PowerUp temp = powerUps[i];
+                powerUps.RemoveAt(i);
                 return temp;
             }
         }

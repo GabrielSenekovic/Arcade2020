@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Cursor : MonoBehaviour
 {
     [SerializeField]Image heldObjectSprite;
-    GameObject heldObject;
+    [SerializeField] GameObject heldObject;
     private void Start() 
     {
         UnityEngine.Cursor.visible = false;
@@ -27,7 +27,14 @@ public class Cursor : MonoBehaviour
             {
                 Ball.myBall = heldObject.GetComponent<Ball>();
                 Ball.ballSprite.color = Color.white;
-                Ball.ballSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                if(heldObject.GetComponent<SpriteRenderer>())
+                {
+                    Ball.ballSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    Ball.ballSprite.sprite = heldObject.GetComponentInChildren<SpriteRenderer>().sprite;
+                }
                 heldObjectSprite.color = Color.clear;
                 heldObjectSprite.sprite = null;
                 heldObject = null;
@@ -38,7 +45,14 @@ public class Cursor : MonoBehaviour
             if(heldObject == null)
             {
                 heldObject = Ball.myBall.gameObject;
-                heldObjectSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                if(heldObject.GetComponent<SpriteRenderer>())
+                {
+                    heldObjectSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    heldObjectSprite.sprite = heldObject.GetComponentInChildren<SpriteRenderer>().sprite;
+                }
                 heldObjectSprite.color = Color.white;
                 Ball.ballSprite.sprite = null; Ball.ballSprite.color = Color.clear;
                 Ball.myBall = null;
@@ -47,7 +61,14 @@ public class Cursor : MonoBehaviour
             {
                 GameObject temp = heldObject;
                 heldObject = Ball.myBall.gameObject;
-                heldObjectSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                if(heldObject.GetComponent<SpriteRenderer>())
+                {
+                    heldObjectSprite.sprite = heldObject.GetComponent<SpriteRenderer>().sprite;
+                }
+                else
+                {
+                    heldObjectSprite.sprite = heldObject.GetComponentInChildren<SpriteRenderer>().sprite;
+                }
                 Ball.myBall = temp.GetComponent<Ball>();
                 Ball.ballSprite.sprite = temp.GetComponent<SpriteRenderer>().sprite;
             }

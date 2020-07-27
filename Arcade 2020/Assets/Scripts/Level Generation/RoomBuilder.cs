@@ -94,6 +94,10 @@ public class RoomBuilder : MonoBehaviour
 
         foreach(Blueprint.PickUpEntry pickup in blueprint.pickUps)
         {
+            if(DebugManager.SpawnOnlyBalls && !pickup.item.gameObject.GetComponent<PowerUp>())
+            {
+                continue;
+            }
             for(int i = 0; i < (int)pickup.rarity; i++)
             {
                 pickUpProbabilityList.Add(pickup.item);
