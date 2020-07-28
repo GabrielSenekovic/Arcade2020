@@ -69,7 +69,8 @@ public class BlackHoleBall : Ball
                     Victims.RemoveAt(i);
                     i--;
                 }
-            }
+                    FindObjectOfType<AudioManager>().Play("BlackHoleBall");
+                }
         }
     }
 
