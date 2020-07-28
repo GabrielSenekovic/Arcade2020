@@ -11,7 +11,7 @@ public class PickUp : MonoBehaviour
     float moveSpeed = 0.1f;
     public virtual void OnPickUp(GameObject player)
     {
-
+        
     }
     private void FixedUpdate() 
     {
@@ -42,6 +42,7 @@ public class PickUp : MonoBehaviour
         if(other.gameObject.GetComponent<PlayerMovementController>())
         {
             OnPickUp(other.gameObject);
+            FindObjectOfType<AudioManager>().Play("ItemPickUp");
         }
     }
 }
