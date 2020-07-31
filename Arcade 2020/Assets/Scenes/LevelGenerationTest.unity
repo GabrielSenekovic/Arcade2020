@@ -1708,9 +1708,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypesOfEnemies:
-  - {fileID: 4801573099651461842, guid: 9a67093df4c50054598e9da9a973e303, type: 3}
   - {fileID: 7681568081088685130, guid: 73b6cc6f05964a74fadd56f42be0b324, type: 3}
+  - {fileID: 5604544609566537471, guid: 77e869afc3a42744f9875d5d00ff05cb, type: 3}
+  - {fileID: 4801573099651461842, guid: 9a67093df4c50054598e9da9a973e303, type: 3}
   - {fileID: 2174428973314186189, guid: 9d12e5bda8a78a34fb1e99fc8fb119e7, type: 3}
+  - {fileID: 2849942292651559446, guid: e9cf15e2507832649b9448249dd7fbfb, type: 3}
   entities:
   - {fileID: 1962673706}
   - {fileID: 651495867}
@@ -2116,18 +2118,36 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: StairUp
-    clip: {fileID: 8300000, guid: 93be8e42c1259e54b84b6c0ab3aa2e19, type: 3}
+    clip: {fileID: 8300000, guid: 4f6db3e598833a3418be8f07b8cdf24c, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: BlackHoleBall
-    clip: {fileID: 8300000, guid: 51c01a243458da240931bf9f667b32ab, type: 3}
+    clip: {fileID: 8300000, guid: 53508387eb6ff314c9f3913e6faac7e7, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ItemPickUp
+    clip: {fileID: 8300000, guid: 2998026ba7911524e8f55ae28f92ae38, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShadowEnter
+    clip: {fileID: 8300000, guid: 51c01a243458da240931bf9f667b32ab, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShadowHit
+    clip: {fileID: 8300000, guid: 51c01a243458da240931bf9f667b32ab, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShadowDamage
     clip: {fileID: 8300000, guid: 51c01a243458da240931bf9f667b32ab, type: 3}
     volume: 0.5
     pitch: 1
