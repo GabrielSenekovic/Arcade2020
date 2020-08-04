@@ -76,6 +76,7 @@ public partial class LevelManager : MonoBehaviour
                     if(team.amountOfKeys > 0)
                     {
                         team.amountOfKeys--;
+                        UI.keyAmount.text = ": " + team.amountOfKeys;
                         team.GetDoor().Unlock();
                     }
                 }
@@ -155,11 +156,21 @@ partial class LevelManager
             currentRoom.roomCleared = true;
             UI.minimap.gameObject.SetActive(true);
             UI.minimap.currentRoom.GetComponent<SpriteRenderer>().color = UI.colors[1];
-            currentRoom.RevealItem();
+            if(!team.HasTakenDamage() && entityManager.roomDifficultyLevel > 4 && !currentRoom.myItem.GetComponent<Key>())
+            {
+                Destroy(currentRoom.myItem);
+                currentRoom.myItem = null;
+                currentRoom.myItem = Instantiate(GetComponent<RoomBuilder>().blueprint.ballUp, new Vector3(currentRoom.transform.position.x + roomSize.x / 2, currentRoom.transform.position.y + roomSize.y / 2, currentRoom.transform.position.z), Quaternion.identity, currentRoom.transform);
+            }
+            else
+            {
+                currentRoom.RevealItem();
+            }
             foreach(GameObject door in currentRoom.doors)
             {
                 door.GetComponent<Door>().OpenClose(true);
             }
+            entityManager.roomDifficultyLevel = 0;
         }
     } 
 

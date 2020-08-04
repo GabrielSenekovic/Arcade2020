@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomBuilder : MonoBehaviour
 {
-    [SerializeField] Blueprint blueprint;
+    public Blueprint blueprint;
 
     [SerializeField] ProjectileRepository projectiles;
     public void Build(List<Room> rooms, LevelManager level, Vector2 RoomSize)

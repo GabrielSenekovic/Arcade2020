@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public Score score;
 
     public Text floorText;
+    public Text keyAmount;
 
     public Cursor cursor;
 

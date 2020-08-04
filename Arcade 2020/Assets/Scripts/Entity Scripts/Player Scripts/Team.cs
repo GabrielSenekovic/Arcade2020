@@ -49,12 +49,17 @@ public class Team : MonoBehaviour
     {
         return players[0].collisionController.touchingDoor.GetComponent<Door>();
     }
+    public bool HasTakenDamage()
+    {
+        return players[0].healthController.hasBeenHit && players[1].healthController.hasBeenHit;
+    }
     public bool GetIfBothPlayersDead()
     {
         return players[0].gameObject.GetComponent<PlayerMovementController>().isDowned && players[1].gameObject.GetComponent<PlayerMovementController>().isDowned;
     }
     public void MoveTeamToNewRoom()
     {
+        players[0].healthController.hasBeenHit = false; players[1].healthController.hasBeenHit = false;
         Vector2 temp = GetDoor().directionModifier * 4 + (Vector2)GetDoor().otherDoor.transform.position;
         players[0].transform.position = new Vector3(temp.x, temp.y, players[0].transform.position.z);
         players[1].transform.position = new Vector3(temp.x, temp.y, players[1].transform.position.z);
@@ -122,5 +127,10 @@ public class Team : MonoBehaviour
         canEnterDoor = false;
         yield return new WaitForSeconds(doorCooldown);
         canEnterDoor = true;
+    }
+    public void AddKey()
+    {
+        amountOfKeys++;
+        UI.keyAmount.text = ": " + amountOfKeys;
     }
 }

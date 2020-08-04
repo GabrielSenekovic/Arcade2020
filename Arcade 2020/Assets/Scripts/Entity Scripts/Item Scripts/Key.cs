@@ -9,7 +9,7 @@ public class Key : PickUp
     float currentRotation;
     public override void OnPickUp(GameObject otherObject)
     {
-        otherObject.gameObject.GetComponentInParent<Team>().amountOfKeys++;
+        otherObject.gameObject.GetComponentInParent<Team>().AddKey();
         Destroy(gameObject);
     }
     private void FixedUpdate()

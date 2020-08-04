@@ -45,9 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 8011198522655915051, guid: bc78d4495d560c44691312e1b292eb05, type: 3}
   key: {fileID: 6483086451136978034, guid: 6399c1727a3beb6498b1a8dd5dc23601, type: 3}
+  ballUp: {fileID: 8325218751262637738, guid: 8b56828780aaedc45850bcf85f40e6ba, type: 3}
   pickUps:
-  - item: {fileID: 8325218751262637738, guid: 8b56828780aaedc45850bcf85f40e6ba, type: 3}
-    rarity: 1
   - item: {fileID: 2888848646233066039, guid: 1cfb8ba51710f6a41949ccb3f28ad728, type: 3}
     rarity: 8
   - item: {fileID: 3740590953073654436, guid: 62dfd1be482a41c42bcb451eb23f9459, type: 3}

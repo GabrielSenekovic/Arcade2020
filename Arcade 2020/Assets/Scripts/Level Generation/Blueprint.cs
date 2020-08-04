@@ -5,7 +5,9 @@ using UnityEngine;
 public class Blueprint : MonoBehaviour
 {
     public GameObject door;
+
     public Key key;
+    public BallUp ballUp;
 
     public enum Rarity
     {

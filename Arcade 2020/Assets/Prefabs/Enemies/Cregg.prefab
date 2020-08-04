@@ -51,6 +51,7 @@ MonoBehaviour:
   Fric: 0
   body: {fileID: 5832948629810039047}
   shadow: {fileID: 5549217624253689828}
+  difficultyLevel: 1
   creggDamage: 1
   movetype: 1
 --- !u!50 &4801573099651461854

@@ -9,6 +9,7 @@ public class EnemyController : Movement
     [SerializeField]Transform shadow;
     Vector2 scale;
     float fallSpeed = 6;
+    public int difficultyLevel;
 
     public void Spawn()
     {

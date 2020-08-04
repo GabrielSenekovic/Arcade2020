@@ -8,6 +8,7 @@ public class PlayerHealthController : HealthManager
     // Update is called once per frame
 
     public SpriteRenderer healingLight;
+    public bool hasBeenHit = false;
     void Update()
     {
         
@@ -34,6 +35,10 @@ public class PlayerHealthController : HealthManager
                 }
             }
         }
+    }
+    public override void OnTakeDamage()
+    {
+        hasBeenHit = true;
     }
     public override void HitAnimationOver()
     {

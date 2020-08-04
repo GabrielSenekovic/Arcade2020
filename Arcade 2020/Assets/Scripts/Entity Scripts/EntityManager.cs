@@ -10,6 +10,8 @@ public class EntityManager : MonoBehaviour
     public bool battleInitiated = false;
 
     public int amountOfEnemiesSpawned = 0;
+
+    public int roomDifficultyLevel = 0;
     public void ToggleFreezeAllEntities(bool value)
     {
         foreach(Movement entity in entities)
@@ -51,6 +53,7 @@ public class EntityManager : MonoBehaviour
 
             GameObject newEnemy = Instantiate(TypesOfEnemies[Random.Range(0, TypesOfEnemies.Count)], newSpawnLocation, Quaternion.identity, newRoom.transform);
             entities.Add(newEnemy.GetComponent<Movement>());
+            roomDifficultyLevel += newEnemy.GetComponent<EnemyController>().difficultyLevel;
             amountOfEnemiesSpawned++;
             
             if(newEnemy.GetComponent<HomingEnemyController>())

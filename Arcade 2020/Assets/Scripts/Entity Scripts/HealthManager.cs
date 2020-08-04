@@ -52,6 +52,10 @@ public class HealthManager : MonoBehaviour
     {
 
     }
+    public virtual void OnTakeDamage()
+    {
+
+    }
     public virtual void HitAnimationOver()
     {
 
@@ -70,6 +74,7 @@ public class HealthManager : MonoBehaviour
             {
                 currentHealth -= damage;
                 isIFrame = true;
+                OnTakeDamage();
                 FindObjectOfType<AudioManager>().Play("EnemyHit");
             }
         }

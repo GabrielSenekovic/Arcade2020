@@ -67,6 +67,7 @@ MonoBehaviour:
   Fric: 0
   body: {fileID: 945587376461850580}
   shadow: {fileID: 3029093459683787940}
+  difficultyLevel: 3
   movementType: 2
   targetIndex: 0
   AggroCoolDown: 10
