@@ -74,7 +74,7 @@ MonoBehaviour:
   time: 0
   scorpacaSpeed: 3
   scorpacaDamage: 3
-  projectileSpeed: 3
+  projectileSpeed: 2
   projectileStartDist: 1
   projectile: {fileID: 1549325417559639341, guid: fdf899fb0f93ed0428f53d42024bf92d,
     type: 3}
