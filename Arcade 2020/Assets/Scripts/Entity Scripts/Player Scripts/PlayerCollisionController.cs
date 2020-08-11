@@ -8,46 +8,25 @@ public class PlayerCollisionController : MonoBehaviour
     public bool touchingStairs = false;
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.gameObject.GetComponent<Door>())
+        touchingDoor = other.gameObject.GetComponent<Door>() ? other.gameObject : null;
+        if (!other.gameObject.CompareTag("ball")){ return; }; //prevent code from running the following for loop unless youre colliding with a ball
+
+        for(int i = 1; i < 3; i++)
         {
-            touchingDoor = other.gameObject;
-        }
-        if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player1") && other.gameObject.GetComponent<Ball>().isTraveling)
-        {
-            if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_ONE)
+            //Go through both players
+            if (gameObject.CompareTag("player" + i) && other.gameObject.GetComponent<Ball>().isTraveling && other.gameObject.GetComponent<Ball>().isOn != (Ball.OwnedByPlayer)i-1)
             {
-                return;
+                CatchBall(other.gameObject.GetComponent<Ball>(), (Ball.OwnedByPlayer)i-1);
+                if (GetComponent<PlayerBallController>().balls.Count == transform.parent.GetComponent<Team>().GetAmountOfBalls())
+                {
+                    transform.parent.GetComponent<Team>().ToggleShield(i-1, true);
+                }
             }
-            this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
-            other.gameObject.GetComponent<Ball>().isTraveling = false;
-            other.gameObject.GetComponent<Ball>().isOn =  Ball.OwnedByPlayer.PLAYER_ONE;
-            FindObjectOfType<AudioManager>().Play("BallPassing");
-        }
-        else if( other.gameObject.CompareTag("ball") && this.gameObject.CompareTag("player2") && other.gameObject.GetComponent<Ball>().isTraveling)
-        {
-            if(other.gameObject.GetComponent<Ball>().isOn == Ball.OwnedByPlayer.PLAYER_TWO)
-            {
-                return;
-            }
-            this.GetComponent<PlayerBallController>().balls.Add(other.gameObject);
-            other.gameObject.GetComponent<Ball>().isTraveling = false;
-            other.gameObject.GetComponent<Ball>().isOn = Ball.OwnedByPlayer.PLAYER_TWO;
-            FindObjectOfType<AudioManager>().Play("BallPassing");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.GetComponent<Door>())
-        {
-            touchingDoor = other.gameObject;
-        }
-        if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
-        {
-            other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
-            other.gameObject.GetComponent<PlayerHealthController>().isIFrame = true;
-            other.gameObject.GetComponent<PlayerMovementController>().isDowned = false; 
-            other.gameObject.transform.eulerAngles = new Vector3(other.gameObject.transform.eulerAngles.x,other.gameObject.transform.eulerAngles.y,0 );
-        }
+        touchingDoor = other.gameObject.GetComponent<Door>() ? other.gameObject : null;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -59,10 +38,8 @@ public class PlayerCollisionController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if(other.gameObject.GetComponent<Stairs>())
-        {
-            touchingStairs = true;
-        }
+        touchingStairs = other.gameObject.GetComponent<Stairs>();
+
         if(other.gameObject.GetComponent<PlayerMovementController>() && other.gameObject.GetComponent<PlayerHealthController>().currentHealth == 0)
         {
             other.gameObject.GetComponent<PlayerHealthController>().currentHealth = 1;
@@ -73,9 +50,15 @@ public class PlayerCollisionController : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D other) 
     {
-        if(other.gameObject.GetComponent<Stairs>())
-        {
-            touchingStairs = false;
-        }
+        touchingStairs = other.gameObject.GetComponent<Stairs>()?false:false;
     }
+
+    private void CatchBall(Ball ball, Ball.OwnedByPlayer catcher)
+    {
+        GetComponent<PlayerBallController>().balls.Add(ball.gameObject);
+        ball.isTraveling = false;
+        ball.isOn = catcher;
+        FindObjectOfType<AudioManager>().Play("BallPassing");
+    }
+
 }

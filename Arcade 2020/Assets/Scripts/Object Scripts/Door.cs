@@ -23,6 +23,7 @@ public class Door : MonoBehaviour
     }
     public void Unlock()
     {
+        Debug.Log("Unlocking door");
         locked = false;
         otherDoor.locked = false;
         GetComponentInChildren<Animator>().SetBool("IsLocked", false);

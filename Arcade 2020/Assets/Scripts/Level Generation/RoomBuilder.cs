@@ -85,7 +85,7 @@ public class RoomBuilder : MonoBehaviour
             }
         }
         Room chosenRoom = roomsToChooseBetween[Random.Range(0, roomsToChooseBetween.Count)];
-        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + level.roomSize.x/2, chosenRoom.transform.position.y + level.roomSize.y/2 + 1.5f, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
+        Key theKey = Instantiate(blueprint.key, new Vector3(chosenRoom.transform.position.x + level.roomSize.x/2, chosenRoom.transform.position.y + level.roomSize.y/2 + 3f, chosenRoom.transform.position.z), Quaternion.identity, chosenRoom.transform);
         chosenRoom.myItem = theKey;
         chosenRoom.myItem.gameObject.SetActive(false);
         roomsToChooseBetween.Remove(chosenRoom);

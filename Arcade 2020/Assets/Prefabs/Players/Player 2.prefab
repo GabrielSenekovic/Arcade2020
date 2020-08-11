@@ -2568,13 +2568,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8952820575542865621}
-  - component: {fileID: 8952820575542865619}
   - component: {fileID: 8414576408674080829}
   - component: {fileID: 8952820575542865616}
   - component: {fileID: 8952820575542865620}
   - component: {fileID: 8952820575542865623}
-  - component: {fileID: 651495865}
   - component: {fileID: 651495868}
+  - component: {fileID: 651495865}
+  - component: {fileID: 8952820575542865619}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: player2
@@ -2598,27 +2598,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &8952820575542865619
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952820575542865617}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &8414576408674080829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2631,6 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937be7393b0d893408510145c865c0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boosts: {fileID: 0}
 --- !u!114 &8952820575542865616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,24 +2663,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchingDoor: {fileID: 0}
   touchingStairs: 0
---- !u!114 &651495865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8952820575542865617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfcb22a7db39359479f0f05355059fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SHOOT: 32
-  throwing: 0
-  deltatime: 0.1
-  orbitDist: 2
-  balls: []
-  ballHand: {fileID: 3141549837992418651}
 --- !u!114 &651495868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2721,3 +2683,44 @@ MonoBehaviour:
   isdead: 0
   spritesSource: {fileID: 0}
   healingLight: {fileID: 2061961340797996235}
+  hasBeenHit: 0
+--- !u!114 &651495865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952820575542865617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfcb22a7db39359479f0f05355059fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  identifier: 0
+  SHOOT: 32
+  throwing: 0
+  deltatime: 0.1
+  orbitDist: 2
+  balls: []
+  ballHand: {fileID: 3141549837992418651}
+--- !u!50 &8952820575542865619
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952820575542865617}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

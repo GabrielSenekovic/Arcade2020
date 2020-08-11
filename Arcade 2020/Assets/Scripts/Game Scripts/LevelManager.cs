@@ -75,9 +75,13 @@ public partial class LevelManager : MonoBehaviour
                 {
                     if(team.amountOfKeys > 0)
                     {
+                        Debug.Log("Depleting amount of keys");
+                        Door door = team.GetDoor();
                         team.amountOfKeys--;
                         UI.keyAmount.text = ": " + team.amountOfKeys;
-                        team.GetDoor().Unlock();
+                        door.Unlock();
+                        door.otherDoor.Unlock();
+                        StartCoroutine(team.WaitUntilCanEnterDoor());
                     }
                 }
             }
@@ -156,7 +160,7 @@ partial class LevelManager
             currentRoom.roomCleared = true;
             UI.minimap.gameObject.SetActive(true);
             UI.minimap.currentRoom.GetComponent<SpriteRenderer>().color = UI.colors[1];
-            if(!team.HasTakenDamage() && entityManager.roomDifficultyLevel > 4 && !currentRoom.myItem.GetComponent<Key>())
+            if(!team.GetIfHasTakenDamage() && entityManager.roomDifficultyLevel > 4 && !currentRoom.myItem.GetComponent<Key>())
             {
                 Destroy(currentRoom.myItem);
                 currentRoom.myItem = null;

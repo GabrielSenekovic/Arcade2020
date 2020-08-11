@@ -22,43 +22,9 @@ public class PlayerBallController : MonoBehaviour
     {
         if(Input.GetKeyDown(SHOOT) && balls.Count > 0 && !gameObject.GetComponent<PlayerMovementController>().isDowned && !throwing)
         {
-            if(gameObject.CompareTag("player1"))
-            {
-                Vector3 temp = (balls[0].GetComponent<Ball>().players[1].transform.position - transform.position);
-                balls[0].transform.position = transform.position + temp.normalized * orbitDist;
-                if(balls[0].GetComponent<Ball>().players[1].transform.position.x < transform.position.x) 
-                { 
-                    Vector3 tempscale = transform.localScale;
-                    transform.localScale = new Vector3(-1,tempscale.y, tempscale.z);
-                }
-                else
-                {
-                    Vector3 tempscale = transform.localScale;
-                    transform.localScale = new Vector3( 1, tempscale.y, tempscale.z);
-                }
-            }
-            if(gameObject.CompareTag("player2"))
-            {
-                Vector3 temp = (balls[0].GetComponent<Ball>().players[0].transform.position - transform.position);
-                balls[0].transform.position = transform.position + temp.normalized * orbitDist;
-                if(balls[0].GetComponent<Ball>().players[0].transform.position.x < transform.position.x) 
-                { 
-                    Vector3 tempscale = transform.localScale;
-                    transform.localScale = new Vector3(-1, tempscale.y, tempscale.z);
-                }
-                else
-                {
-                    Vector3 tempscale = transform.localScale;
-                    transform.localScale = new Vector3(1, tempscale.y, tempscale.z);
-                }
-            }
-            balls[0].transform.parent = ballHand; throwing = true;
-            balls[0].GetComponent<Ball>().isOrbiting = false;
-            balls[0].transform.localPosition = new Vector2(5,0);
-            GetComponentInChildren<PlayerAnimationListener>().currentBall = balls[0];
-            balls.Remove(GetComponentInParent<PlayerBallController>().balls[0]);
-            GetComponentInChildren<Animator>().SetTrigger("Throw");
-            GetComponent<Movement>().ToggleFrozen(true);
+            int player = gameObject.CompareTag("player1") ? 1 : 0;
+            ThrowBall(player);
+            transform.parent.GetComponent<Team>().ToggleShield(player, false);
         }
     }
 
@@ -84,5 +50,28 @@ public class PlayerBallController : MonoBehaviour
         {
             time = 0.0f;
         }
+    }
+    void ThrowBall(int player)
+    {
+        Vector3 temp = (balls[0].GetComponent<Ball>().players[player].transform.position - transform.position);
+        balls[0].transform.position = transform.position + temp.normalized * orbitDist;
+        if (balls[0].GetComponent<Ball>().players[player].transform.position.x < transform.position.x)
+        {
+            Vector3 tempscale = transform.localScale;
+            transform.localScale = new Vector3(-1, tempscale.y, tempscale.z);
+        }
+        else
+        {
+            Vector3 tempscale = transform.localScale;
+            transform.localScale = new Vector3(1, tempscale.y, tempscale.z);
+        }
+
+        balls[0].transform.parent = ballHand; throwing = true;
+        balls[0].GetComponent<Ball>().isOrbiting = false;
+        balls[0].transform.localPosition = new Vector2(5, 0);
+        GetComponentInChildren<PlayerAnimationListener>().currentBall = balls[0];
+        balls.Remove(GetComponentInParent<PlayerBallController>().balls[0]);
+        GetComponentInChildren<Animator>().SetTrigger("Throw");
+        GetComponent<Movement>().ToggleFrozen(true);
     }
 }

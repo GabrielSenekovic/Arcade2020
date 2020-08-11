@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Team : MonoBehaviour
+public partial class Team : MonoBehaviour
 {
     [SerializeField] ProjectileRepository projectiles;
     [System.NonSerialized] public Player[] players;
@@ -16,13 +16,19 @@ public class Team : MonoBehaviour
     [SerializeField] UIManager UI;
     public uint amountOfKeys = 0;
 
+    [SerializeField]GameObject shield;
+    Color shieldColor;
+
     private void Awake()
     {
         players = GetComponentsInChildren<Player>();
+        shieldColor = shield.GetComponentInChildren<SpriteRenderer>().color;
+        ToggleShield(0, true);
+        AddKey();
     }
     private void Start() 
     {
-        for(int i = 0; i < 1; i++)
+        for(int i = 0; i < 3; i++)
         {
             GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;
@@ -30,32 +36,6 @@ public class Team : MonoBehaviour
             players[0].GetComponent<PlayerBallController>().balls.Add(newBall);
             newBall.GetComponent<Ball>().isOn = Ball.OwnedByPlayer.PLAYER_ONE;
         }
-    }
-
-    public bool GetIfBothTouchingDoor()
-    {
-        bool temp = (players[0].collisionController.touchingDoor == players[1].collisionController.touchingDoor) && players[0].collisionController.touchingDoor != null;
-        if(players[0].collisionController.touchingDoor && temp)
-        {
-            players[0].collisionController.touchingDoor.GetComponent<Door>().LightUp(true);
-        }
-        return temp;
-    }
-    public bool GetIfTouchingStairs()
-    {
-        return (players[0].collisionController.touchingStairs || players[1].collisionController.touchingStairs);
-    }
-    public Door GetDoor()
-    {
-        return players[0].collisionController.touchingDoor.GetComponent<Door>();
-    }
-    public bool HasTakenDamage()
-    {
-        return players[0].healthController.hasBeenHit && players[1].healthController.hasBeenHit;
-    }
-    public bool GetIfBothPlayersDead()
-    {
-        return players[0].gameObject.GetComponent<PlayerMovementController>().isDowned && players[1].gameObject.GetComponent<PlayerMovementController>().isDowned;
     }
     public void MoveTeamToNewRoom()
     {
@@ -84,7 +64,7 @@ public class Team : MonoBehaviour
         player.GetComponent<PlayerBallController>().balls.Add(newBall);
     }
 
-    public bool PowerUpBall(GameObject player, PowerUp.PowerUpType typeToChangeTo, PowerUp powerUp)
+    public void PowerUpBall(GameObject player, PowerUp.PowerUpType typeToChangeTo, PowerUp powerUp)
     {
         projectiles.powerUps.Add(powerUp); powerUp.transform.position = new Vector2(10000, 10000);
 
@@ -101,11 +81,15 @@ public class Team : MonoBehaviour
                 newBall.GetComponent<Ball>().players[1] = players[1].gameObject;
                 newBall.SetActive(true);           
                 player.GetComponent<PlayerBallController>().balls.Add(newBall);
-                return true;
+                return;
             }
         }
         UI.OpenBallSwitching(player.GetComponent<PlayerBallController>(), projectiles.GetBall(typeToChangeTo));
-        return false;
+    }
+   
+    public void PowerUpShield(GameObject player, ShieldUpgrade.ShieldUpgradeType effect, ShieldUpgrade shieldUpgrade)
+    {
+        return;
     }
     public void RefillBallsOnPlayer(PlayerBallController player, List<GameObject> balls)
     {
@@ -132,5 +116,46 @@ public class Team : MonoBehaviour
     {
         amountOfKeys++;
         UI.keyAmount.text = ": " + amountOfKeys;
+    }
+    
+    public void ToggleShield(int player, bool value)
+    {
+        shield.transform.parent = players[player].transform;
+        shield.transform.position = players[player].transform.position;
+        players[player].healthController.shieldOn = value;
+        shield.GetComponentInChildren<SpriteRenderer>().color = value? shieldColor: Color.clear;
+    }
+}
+//Get functions below
+public partial class Team : MonoBehaviour
+{
+    public bool GetIfBothTouchingDoor()
+    {
+        bool temp = (players[0].collisionController.touchingDoor == players[1].collisionController.touchingDoor) && players[0].collisionController.touchingDoor != null;
+        if (players[0].collisionController.touchingDoor && temp)
+        {
+            players[0].collisionController.touchingDoor.GetComponent<Door>().LightUp(true);
+        }
+        return temp;
+    }
+    public bool GetIfTouchingStairs()
+    {
+        return players[0].collisionController.touchingStairs || players[1].collisionController.touchingStairs;
+    }
+    public Door GetDoor()
+    {
+        return players[0].collisionController.touchingDoor.GetComponent<Door>();
+    }
+    public int GetAmountOfBalls()
+    {
+        return players[0].ballController.balls.Count + players[1].ballController.balls.Count;
+    }
+    public bool GetIfHasTakenDamage()
+    {
+        return players[0].healthController.hasBeenHit || players[1].healthController.hasBeenHit;
+    }
+    public bool GetIfBothPlayersDead()
+    {
+        return players[0].gameObject.GetComponent<PlayerMovementController>().isDowned && players[1].gameObject.GetComponent<PlayerMovementController>().isDowned;
     }
 }
