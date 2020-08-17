@@ -6,8 +6,9 @@ public class Game : MonoBehaviour
 {
     static public List<int> highscores = new List<int>(){};
     static bool created = false;
-
-    static bool flashingOFF = false;
+    static public float musicVolume = 0;
+    static public float soundVolume = 0;
+    static public SaveData.HPDisplay hpDisplay;
 
     void Awake()
     {

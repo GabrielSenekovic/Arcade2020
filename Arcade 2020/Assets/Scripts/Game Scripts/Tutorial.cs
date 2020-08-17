@@ -9,7 +9,7 @@ public class Tutorial : MonoBehaviour
         team.players[0].GetComponent<Movement>().ToggleFrozen(true);
         team.players[1].GetComponent<Movement>().ToggleFrozen(true);
         GameObject newEnemy = Instantiate(entityManager.TypesOfEnemies[0], new Vector2(RoomSize.x/2, RoomSize.y/2), Quaternion.identity, currentRoom.transform);
-        entityManager.entities.Add(newEnemy.GetComponent<Movement>());
+        entityManager.currentlySpawnedEntities.Add(newEnemy.GetComponent<Movement>());
         entityManager.amountOfEnemiesSpawned++;
         UI.minimap.gameObject.SetActive(false);
         currentRoom.roomCleared = false;
@@ -22,11 +22,11 @@ public class Tutorial : MonoBehaviour
     }
     public bool OnPlay(EntityManager entityManager, UIManager UI, Manuscript.Dialog dialog, Team team)
     {
-        if(entityManager.entities.Count > 2)
+        if(entityManager.currentlySpawnedEntities.Count > 2)
         {
-            if(!entityManager.entities[2].GetComponent<EnemyController>().isSpawning &&UI.speechBubble_Obj.lineIndex == 0)
+            if(!entityManager.currentlySpawnedEntities[2].GetComponent<EnemyController>().isSpawning &&UI.speechBubble_Obj.lineIndex == 0)
             {
-                entityManager.entities[2].ToggleFrozen(true);
+                entityManager.currentlySpawnedEntities[2].ToggleFrozen(true);
                 UI.OpenOrClose(UI.speechBubble);
                 UI.speechBubble_Obj.Say(dialog.myLines[0]);
             }

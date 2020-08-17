@@ -31,7 +31,7 @@ public class LightningBall : Ball
         }
         victim.GetComponent<Movement>().ToggleFrozen(true);
         int i = 0;
-        foreach(Movement entity in victim.transform.parent.transform.parent.GetComponent<EntityManager>().entities)
+        foreach(Movement entity in victim.transform.parent.transform.parent.GetComponent<EntityManager>().currentlySpawnedEntities)
         {
             if(entity != null)
             {

@@ -57,12 +57,34 @@ MonoBehaviour:
     rarity: 20
   - item: {fileID: 921480397968742648, guid: 9aa18fecdbbf85e48939d5debfa49173, type: 3}
     rarity: 2
+  - item: {fileID: 1168662055738844779, guid: 6ad7cddc4cbd204488b0b744e55fc5dd, type: 3}
+    rarity: 2
+  - item: {fileID: -3642634237288593779, guid: e9df5d8067abd1a48952bda70e4459bd, type: 3}
+    rarity: 2
+  - item: {fileID: 2658110677831849759, guid: 601f746da469ecc44a93a7048f997504, type: 3}
+    rarity: 2
+  - item: {fileID: 7577189962876526939, guid: 26e3d182badca9d4cab13c86a8a617f2, type: 3}
+    rarity: 2
+  - item: {fileID: 3236899519328639251, guid: cf4308d2e5b611849981bfc04eb56c46, type: 3}
+    rarity: 20
+  - item: {fileID: -4092403186921156171, guid: 8e67f301e055271478b8a810fa27fb31, type: 3}
+    rarity: 2
+  - item: {fileID: 8171052993842218238, guid: f811c6a0f7c818c48ab755882e4a1288, type: 3}
+    rarity: 8
   powerUpBalls:
   - {fileID: 2225837014187637723, guid: 70e30d87ece4a974b82e80ea1fee537d, type: 3}
   - {fileID: 8769231734526243667, guid: 3d43e98684a92894886e547a71b07d88, type: 3}
   - {fileID: 728138150297854692, guid: 53ae839fffac77a46b32dae4b5a21bfb, type: 3}
+  - {fileID: 7349609349592196861, guid: a0d3ce56bdabb3246b834d124255eda7, type: 3}
+  - {fileID: 9082319397906044208, guid: 4502e4dfefd46dc45be115606050dd6c, type: 3}
+  - {fileID: 2288387677292003180, guid: bd0a5f01a0b2ff94d84fb93b174aff06, type: 3}
+  - {fileID: 3987789067982235982, guid: e805f862b99ad0945a8e4640e56bec68, type: 3}
+  - {fileID: 3341888248585932371, guid: 6e8a0bf85cc4fbd43ae7a84d11cdb5d8, type: 3}
+  - {fileID: 8136184237060506720, guid: 163c3528fdd0aaa4f8728059a20ec6a2, type: 3}
+  - {fileID: 4681084826331687372, guid: b48b5aee720e2b840b2b3831cae33d8a, type: 3}
   obstacles:
-  - {fileID: 4678486112735887921, guid: 5cbc0573d463e6d429c61cb89f7ccc09, type: 3}
+  - {fileID: 2796601639139044341, guid: 0bee320d2531cfa4fb0e1fe9524dfd84, type: 3}
+  - {fileID: 8513750500229560717, guid: 04de16f6142fced478681fd1e5557dd6, type: 3}
   stairs: {fileID: 3170862104553450987, guid: f07f1a0cbf73dc745bfae0211081e0ea, type: 3}
   piedestal: {fileID: 7538270183678848524, guid: 1e0969c26d750774c8336c4560884639,
     type: 3}

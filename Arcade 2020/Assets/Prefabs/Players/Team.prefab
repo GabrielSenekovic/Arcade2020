@@ -101,7 +101,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 128860239
   m_SortingLayer: 2
-  m_SortingOrder: 20
+  m_SortingOrder: 50
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.2028302, g: 0.86308795, b: 1, a: 0.54509807}
   m_FlipX: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   projectiles: {fileID: 0}
   ballPrefab: {fileID: 4255977375218036868, guid: c67d0a4320ee2cc458ad5e61071aab98,
     type: 3}
-  doorCooldown: 0.5
+  doorCooldown: 1.5
   canEnterDoor: 1
   UI: {fileID: 0}
   amountOfKeys: 0
@@ -181,6 +181,10 @@ PrefabInstance:
       propertyPath: spritesSource
       value: 
       objectReference: {fileID: 7157456755131243656}
+    - target: {fileID: 651495868, guid: 42ea38eae090d464f911d6ad6392fbf2, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 197229025695833014, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -561,6 +565,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8952820575542865620, guid: 42ea38eae090d464f911d6ad6392fbf2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 8952820575542865621, guid: 42ea38eae090d464f911d6ad6392fbf2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -641,6 +650,10 @@ PrefabInstance:
       propertyPath: spritesSource
       value: 
       objectReference: {fileID: 5201584999867071657}
+    - target: {fileID: 1962673707, guid: 660a298eb8e2113438a93be343201174, type: 3}
+      propertyPath: maxHealth
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 73355048486869007, guid: 660a298eb8e2113438a93be343201174,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -1085,6 +1098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4668183146512851052, guid: 660a298eb8e2113438a93be343201174,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4750101087695876851, guid: 660a298eb8e2113438a93be343201174,
         type: 3}

@@ -19,7 +19,9 @@ public class RoomBuilder : MonoBehaviour
         CloseOpenDoors(rooms);
         PlaceItems(rooms, level);
         PlaceObstacles(rooms, RoomSize);
-        Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + RoomSize.x/2, level.lastRoom.transform.position.y + RoomSize.y/2, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
+        level.stairs = Instantiate(blueprint.stairs, new Vector3(level.lastRoom.transform.position.x + RoomSize.x/2, level.lastRoom.transform.position.y + RoomSize.y/2, level.lastRoom.transform.position.z), Quaternion.identity, level.lastRoom.transform);
+        level.stairs.SetActive(false);
+
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to build rooms: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
@@ -29,10 +31,12 @@ public class RoomBuilder : MonoBehaviour
     {
         for(int i = 0; i < rooms.Count - 1; i++)
         {
-            if(rooms[i].myItem is Key){
+            if(rooms[i].myItem is Key)
+            {
                 Instantiate(blueprint.piedestal, new Vector3(rooms[i].transform.position.x + RoomSize.x/2, rooms[i].transform.position.y + RoomSize.y/2, rooms[i].transform.position.z), Quaternion.identity, rooms[i].transform);
-                continue;};
-            rooms[i].InstantiateObstacles(blueprint, Random.Range(0, 4));
+                continue;
+            };
+            rooms[i].InstantiateObstacles(blueprint, 4);
         }
     }
     void ConnectDoors(List<Room> rooms, Vector2 RoomSize)

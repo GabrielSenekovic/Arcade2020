@@ -15,6 +15,7 @@ public class SaveManager : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath+"/" + "SaveTest.dat", FileMode.Create);
             SaveData saveData = new SaveData();
             SaveHighscore(saveData);
+            SaveSettings(saveData);
             bf.Serialize(file, saveData);
             file.Close();
             Debug.Log("Trying to save");
@@ -35,6 +36,7 @@ public class SaveManager : MonoBehaviour
             Debug.Log(saveData);
             file.Close();
             LoadHighscore(saveData);
+            LoadSettings(saveData);
             foreach(int score in saveData.highscores)
             {
                 Debug.Log(score);
@@ -57,5 +59,18 @@ public class SaveManager : MonoBehaviour
     static void LoadHighscore(SaveData data)
     {
         Game.highscores = data.highscores;
+    }
+    static void SaveSettings(SaveData data)
+    {
+        data.soundVolume = Game.soundVolume;
+        data.musicVolume = Game.musicVolume;
+        data.hpDisplay = Game.hpDisplay;
+    }
+
+    static void LoadSettings(SaveData data)
+    {
+        Game.musicVolume = data.musicVolume;
+        Game.soundVolume = data.soundVolume;
+        Game.hpDisplay = data.hpDisplay;
     }
 }

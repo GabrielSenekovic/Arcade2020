@@ -7,14 +7,15 @@ using UnityEngine.Scripting;
 
 public partial class LevelManager : MonoBehaviour
 {
-    [System.NonSerialized]public Room firstRoom;
-    [System.NonSerialized]public Room lastRoom;
+    public Room firstRoom;
+    public Room lastRoom;
+    public Room currentRoom;
+    public GameObject stairs;
 
     public float enemyLoadTime;
 
     Manuscript script = new Manuscript();
 
-    Room currentRoom;
     [SerializeField] Team team;
     [SerializeField] CameraMovement cameraM;
 
@@ -31,18 +32,17 @@ public partial class LevelManager : MonoBehaviour
 
     public UIManager UI;
 
-    void Awake()
+    void Start()
     {
         entityManager = GetComponent<EntityManager>();
         generator = GetComponent<LevelGenerator>();
-    }
-
-    void Start()
-    {
         int seed = Random.Range(0, int.MaxValue);
         Random.InitState(seed);
         Debug.Log("Seed: " + seed);
 
+        team.PreStart();
+
+        generator.Initialize();
         ResetLevel();
 
         if(DebugManager.PlayTutorial)
@@ -126,7 +126,8 @@ public partial class LevelManager : MonoBehaviour
         System.DateTime after = System.DateTime.Now; 
         System.TimeSpan duration = after.Subtract(before);
         Debug.Log("Time to reset: " + duration.TotalMilliseconds + " milliseconds, which is: " + duration.TotalSeconds + " seconds");
-       // GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
+        FindObjectOfType<AudioManager>().PlayMusic("Main");
+        // GarbageCollector.GCMode = GarbageCollector.Mode.Disabled;
     }
 }
 
@@ -139,7 +140,7 @@ partial class LevelManager
         currentRoom = team.GetDoor().otherDoor.transform.parent.GetComponent<Room>();
         if(!currentRoom.roomCleared)
         {
-            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime, team, roomSize));
+            StartCoroutine(entityManager.spawnEnemies(currentRoom, enemyLoadTime, team, roomSize, currentRoom == lastRoom? true:false));
             foreach(GameObject door in currentRoom.doors)
             {
                 door.GetComponent<Door>().OpenClose(false);
@@ -169,6 +170,10 @@ partial class LevelManager
             else
             {
                 currentRoom.RevealItem();
+            }
+            if(currentRoom == lastRoom)
+            {
+                stairs.SetActive(true);
             }
             foreach(GameObject door in currentRoom.doors)
             {

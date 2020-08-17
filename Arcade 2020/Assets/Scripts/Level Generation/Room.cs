@@ -6,7 +6,9 @@ public class Room : MonoBehaviour
 {
     RoomDirections directions;
     Vector2 CameraBoundaries;
+    public GameObject locationFound;
 
+    [System.Serializable]
     public class ObstacleEntry
     {
         public ObstacleEntry(Vector2 newLocation, bool value)
@@ -17,7 +19,7 @@ public class Room : MonoBehaviour
         public Vector2 location;
         public bool occupied;
     }
-    public List<List<ObstacleEntry>> ObstacleLocations = new List<List<ObstacleEntry>>(){};
+    public List<ObstacleEntry> ObstacleLocations = new List<ObstacleEntry>(){};
 
     public List<GameObject> doors;
     public PickUp myItem = null;
@@ -45,24 +47,13 @@ public class Room : MonoBehaviour
 
     public void AddLocations(Vector2 RoomSize)
     {
-        for(int i = 5; i < RoomSize.x - 5; i++)
+        int width = (int)RoomSize.x - 8;
+        for (int j = (int)RoomSize.y-3; j >= 5; j -= 2)
         {
-            ObstacleLocations.Add(new List<ObstacleEntry>(){});
-            for(int j = 5; j < RoomSize.y - 5; j++)
+            for (int i = 4; i <= RoomSize.x - 4; i += 2)
             {
-                ObstacleLocations[i-5].Add(new ObstacleEntry(new Vector2(i,j), false));
+                ObstacleLocations.Add(new ObstacleEntry(new Vector2(i, j), false));
             }
-        }
-        for(int i = 0; i > 3; i++)
-        {
-            ObstacleLocations[(int)RoomSize.x/2 + i][4].occupied = true;
-            ObstacleLocations[(int)RoomSize.x/2 + i][4 + i].occupied = true;
-            ObstacleLocations[(int)RoomSize.x/2 + i][(int)RoomSize.y - 4].occupied = true;
-            ObstacleLocations[(int)RoomSize.x/2 + i][(int)RoomSize.y - 4 - i].occupied = true;
-            ObstacleLocations[4][(int)RoomSize.y/2 + i].occupied = true;
-            ObstacleLocations[4 + i][(int)RoomSize.y/2 + i].occupied = true;
-            ObstacleLocations[(int)RoomSize.x - 4][(int)RoomSize.y/2 + i].occupied = true;
-            ObstacleLocations[(int)RoomSize.x - 4 - i][(int)RoomSize.y/2 + i].occupied = true;
         }
     }
     public void AdjustColliders(Vector2 RoomSize)
@@ -136,6 +127,19 @@ public class Room : MonoBehaviour
     void OnInstantiateDoor(Blueprint blueprints, int i, float Xoffset, float Yoffset, int rotation)
     {
         GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + Xoffset, transform.position.y + Yoffset), Quaternion.identity, transform);
+        if(ObstacleLocations.Count > 0)
+        {
+            Debug.Log("Y offset: " + Yoffset);
+            float yPosition = Mathf.Ceil(7 -(Yoffset / 2 + 5)/2);
+            Debug.Log("Y position: " + yPosition);
+            Debug.Log("X offset: " + Xoffset + directions.m_directions[i].DirectionModifier.x);
+            int xPosition = (int)((Xoffset-4- directions.m_directions[i].DirectionModifier.x) / 2);
+            Debug.Log("X position: " + xPosition);
+            int obstacleIndex = (int)(yPosition * 11) + xPosition;
+            Debug.Log("Index:" + obstacleIndex);
+            ObstacleLocations[obstacleIndex].occupied = true;
+            Instantiate(locationFound, ObstacleLocations[obstacleIndex].location, Quaternion.identity);
+        }
         door.transform.Rotate(new Vector3(0, 0, rotation), Space.Self);
         door.GetComponent<Door>().directionModifier = directions.m_directions[i].DirectionModifier;
         if(directions.m_directions[i].GetEntranceType() == EntranceType.LockedDoor)
@@ -154,27 +158,14 @@ public class Room : MonoBehaviour
         for(int i = 0; i < amount; i++)
         {
             int index = Random.Range(0, blueprints.obstacles.Count);
-            int Xindex = Random.Range(0, ObstacleLocations.Count);
-            int Yindex = Random.Range(0, ObstacleLocations[Xindex].Count);
-            Vector2 location = ObstacleLocations[Xindex][Yindex].location;
-            for(int j = 0; j < blueprints.obstacles[index].sizeToTakeUp.x; j++)
+            int Xindex = Random.Range(0, 11);
+            int Yindex = Random.Range(0, 7);
+            ObstacleEntry temp = ObstacleLocations[Yindex * 11 + Xindex];
+            if(!temp.occupied)
             {
-                if(Xindex + j >= ObstacleLocations.Count){goto End;}
-                for(int k = 0; k < blueprints.obstacles[index].sizeToTakeUp.y; k++)
-                {
-                    if(Yindex - k < 0){goto End;}
-                    if(ObstacleLocations[Xindex + j][Yindex - k].occupied == true)
-                    {
-                        goto End;
-                    }
-                    else
-                    {
-                        ObstacleLocations[Xindex+j][Yindex-k].occupied = true;
-                    }
-                }
+                Vector2 location = temp.location;
+                Instantiate(blueprints.obstacles[index], location + (Vector2)transform.position, Quaternion.identity, transform);
             }
-            Instantiate(blueprints.obstacles[index], location + (Vector2)transform.position, Quaternion.identity, transform);
-            End:;
         }
     }
 }

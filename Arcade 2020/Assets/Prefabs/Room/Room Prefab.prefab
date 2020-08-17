@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca701e2653378b74696350740380ace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  locationFound: {fileID: 9102032412014336373, guid: 6fed6e20cb982794a93589ece647065f,
+    type: 3}
+  ObstacleLocations: []
   doors: []
   myItem: {fileID: 0}
   roomCleared: 0

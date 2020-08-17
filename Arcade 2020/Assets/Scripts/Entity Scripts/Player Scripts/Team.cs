@@ -18,17 +18,15 @@ public partial class Team : MonoBehaviour
 
     [SerializeField]GameObject shield;
     Color shieldColor;
-
-    private void Awake()
+    public void PreStart()
     {
         players = GetComponentsInChildren<Player>();
         shieldColor = shield.GetComponentInChildren<SpriteRenderer>().color;
         ToggleShield(0, true);
-        AddKey();
     }
     private void Start() 
     {
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameObject newBall = Instantiate(ballPrefab, players[0].transform.position, Quaternion.identity, transform);
             newBall.GetComponent<Ball>().players[0] = players[0].gameObject;

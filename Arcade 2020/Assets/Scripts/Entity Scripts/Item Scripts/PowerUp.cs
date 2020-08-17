@@ -11,7 +11,12 @@ public class PowerUp : PickUp
         Orbital = 2,
         BlackHole = 3,
         Heavy = 4,
-        Train = 5
+        Train = 5,
+        Disco = 6,
+        Laser = 7,
+        Shockwave = 8, 
+        Turret = 9,
+        Angle = 10
     }
     public PowerUpType myType;
 
