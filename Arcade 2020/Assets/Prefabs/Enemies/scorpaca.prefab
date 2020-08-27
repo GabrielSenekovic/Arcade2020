@@ -112,9 +112,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2174428973314186191}
   - component: {fileID: 2174428973314186184}
+  - component: {fileID: 2174428973314186187}
   - component: {fileID: 2174428973314186185}
   - component: {fileID: 2174428973314186186}
-  - component: {fileID: 2174428973314186187}
   m_Layer: 0
   m_Name: scorpaca
   m_TagString: enemy
@@ -154,6 +154,27 @@ CircleCollider2D:
   m_Offset: {x: -0.3028199, y: -2.2876768}
   serializedVersion: 2
   m_Radius: 2.2274506
+--- !u!50 &2174428973314186187
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2174428973314186189}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &2174428973314186185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,27 +225,6 @@ MonoBehaviour:
   deathSprites:
   - {fileID: 9198679614646628586, guid: 161135878212926499670e819f8dc0ae, type: 3}
   - {fileID: 4894506590354250593, guid: 6fc8ec4efd0b9194781d02c7936a6f62, type: 3}
---- !u!50 &2174428973314186187
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2174428973314186189}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!1 &7829302895562934947
 GameObject:
   m_ObjectHideFlags: 0
