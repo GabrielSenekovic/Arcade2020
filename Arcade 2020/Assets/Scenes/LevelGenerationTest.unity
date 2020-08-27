@@ -1446,8 +1446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypesOfEnemies:
-  - {fileID: 2174428973314186189, guid: 9d12e5bda8a78a34fb1e99fc8fb119e7, type: 3}
-  - {fileID: 8629681292885866247, guid: 740f97cba8189714c94b0cae0736886e, type: 3}
+  - {fileID: 9009616925591413757, guid: a3c250f4aba23ed48bb01430b5cc492c, type: 3}
+  - {fileID: 9009616925591413757, guid: a3c250f4aba23ed48bb01430b5cc492c, type: 3}
   entities:
   - {fileID: 1962673706}
   - {fileID: 651495867}
