@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour
 
         public bool loop;
 
-        [HideInInspector]
+        //[HideInInspector]
         public AudioSource source;
     }
     [System.Serializable]
