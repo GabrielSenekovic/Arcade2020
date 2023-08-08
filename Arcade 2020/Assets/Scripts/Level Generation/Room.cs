@@ -6,7 +6,6 @@ public class Room : MonoBehaviour
 {
     RoomDirections directions;
     Vector2 CameraBoundaries;
-    public GameObject locationFound;
 
     [System.Serializable]
     public class ObstacleEntry
@@ -129,16 +128,10 @@ public class Room : MonoBehaviour
         GameObject door = Instantiate(blueprints.door, new Vector2(transform.position.x + Xoffset, transform.position.y + Yoffset), Quaternion.identity, transform);
         if(ObstacleLocations.Count > 0)
         {
-            Debug.Log("Y offset: " + Yoffset);
             float yPosition = Mathf.Ceil(7 -(Yoffset / 2 + 5)/2);
-            Debug.Log("Y position: " + yPosition);
-            Debug.Log("X offset: " + Xoffset + directions.m_directions[i].DirectionModifier.x);
             int xPosition = (int)((Xoffset-4- directions.m_directions[i].DirectionModifier.x) / 2);
-            Debug.Log("X position: " + xPosition);
             int obstacleIndex = (int)(yPosition * 11) + xPosition;
-            Debug.Log("Index:" + obstacleIndex);
             ObstacleLocations[obstacleIndex].occupied = true;
-            Instantiate(locationFound, ObstacleLocations[obstacleIndex].location, Quaternion.identity);
         }
         door.transform.Rotate(new Vector3(0, 0, rotation), Space.Self);
         door.GetComponent<Door>().directionModifier = directions.m_directions[i].DirectionModifier;

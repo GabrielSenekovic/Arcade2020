@@ -21,7 +21,7 @@ public class BoostsDisplay : MonoBehaviour
     public void Awake()
     {
         speedBoost_Image.sprite = null;
-        strengthBoost_Image.sprite = null;
+        //strengthBoost_Image.sprite = null;
     }
     public bool AddBoost(BoostType type)
     {
