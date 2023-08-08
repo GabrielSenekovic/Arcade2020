@@ -1456,6 +1456,8 @@ GameObject:
   - component: {fileID: 1839633348}
   - component: {fileID: 1839633347}
   - component: {fileID: 1839633349}
+  - component: {fileID: 1839633351}
+  - component: {fileID: 1839633350}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -1510,6 +1512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypesOfEnemies:
+<<<<<<< HEAD
   - {fileID: 7681568081088685130, guid: 73b6cc6f05964a74fadd56f42be0b324, type: 3}
   - {fileID: 4801573099651461842, guid: 9a67093df4c50054598e9da9a973e303, type: 3}
   - {fileID: 2174428973314186189, guid: 9d12e5bda8a78a34fb1e99fc8fb119e7, type: 3}
@@ -1519,6 +1522,13 @@ MonoBehaviour:
   - {fileID: 8363229899183840384, guid: 588ee75af522d4a4a9ee33f0f72c8ccb, type: 3}
   - {fileID: 4207042810424392580, guid: d255a58677ff7e84da18b84594b5a621, type: 3}
   currentlySpawnedEntities: []
+=======
+  - {fileID: 9009616925591413757, guid: a3c250f4aba23ed48bb01430b5cc492c, type: 3}
+  - {fileID: 9009616925591413757, guid: a3c250f4aba23ed48bb01430b5cc492c, type: 3}
+  entities:
+  - {fileID: 1962673706}
+  - {fileID: 651495867}
+>>>>>>> Johannes-Thebuilder
   battleInitiated: 0
   amountOfEnemiesSpawned: 0
   roomDifficultyLevel: 0
@@ -1570,6 +1580,85 @@ MonoBehaviour:
   spawnOnlyBalls: 0
   debugButtons: 0
   debugText: 0
+<<<<<<< HEAD
+=======
+--- !u!212 &1839633350
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839633343}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.16, y: 5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1839633351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839633343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ad8838b6fb4a364d8491ee9aede7663, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1867177416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7157456755131243656, guid: c95b9960ce05db94288c7f13b29298f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3865408820893052337}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> Johannes-Thebuilder
 --- !u!114 &1871163926 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3865408820599218087, guid: c95b9960ce05db94288c7f13b29298f0,
