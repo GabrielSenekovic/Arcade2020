@@ -10,7 +10,7 @@ public class PlayIntro : MonoBehaviour
 
     private void Start() 
     {
-        music = GetComponent<AudioSource>();
+        music = gameObject.AddComponent<AudioSource>();
         StartCoroutine(playMusic());
     }
     
